@@ -16,8 +16,6 @@ const props = defineProps<{
 const postJobStore = usePostjobStore();
 const {
   orgTypesDropdown,
-  gradeLevelDropdown,
-  subjectsDropdown,
   experienceLevelOptions
 } = storeToRefs(postJobStore);
 
@@ -37,17 +35,6 @@ const experienceLevelLabel = computed(() => {
 
 const jobRoleLabel= computed(() => {
   return jobRolesOptions.filter((job) => job?.value == props.formData.stepTwo?.jobRoleId)[0].label
-})
-
-const gradeLevelsLabels = computed(() => {
-  return props.formData.stepTwo?.grades.map((value :any) => {
-    const foundItem = gradeLevelDropdown.value.find(item => item.value === value);
-    return foundItem ? foundItem.label : null;
-  }).join(', ');
-})
-
-const subjectLabel = computed(() => {
-  return subjectsDropdown.value.filter((subject) => subject?.value == props.formData.stepTwo?.subjects)[0].label
 })
 
 const compensationPreview = computed(() => {
@@ -307,56 +294,6 @@ async function processJobSaving() {
 
               <p class="preview-field-text">
                 {{ jobRoleLabel }}
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div v-if="formData.stepTwo?.jobRoleId === 'Instructional'" class="preview-field-layout">
-          <div class="">
-            <div class="preview-field-wrapper">
-              <div class="preview-field-update">
-                <p class="preview-field-heading">
-                  Grade Level(s)
-                </p>
-                <button
-                  id="tooltipButton"
-                  type="button"
-                  @click="() => emit('editIconClicked', 1, 'gradeLevels')"
-                >
-                  <BaseTooltip id="edit-icon-8" tooltip-content="Edit" position="right">
-                    <SvgoEditPensil class="edit-field-icon" />
-                  </BaseTooltip>
-                </button>
-              </div>
-
-              <p class="preview-field-text">
-                {{ formData.stepTwo?.grades.length ? gradeLevelsLabels : "N/A" }}
-              </p>
-            </div>
-          </div>
-
-          <div class="">
-            <div class="preview-field-wrapper">
-              <div class="preview-field-update">
-                <p class="preview-field-heading">
-                  Subject Area(s)
-                </p>
-                <button
-                  id="tooltipButton"
-                  type="button"
-                  @click="() => emit('editIconClicked', 1, 'subjects')"
-                >
-                  <BaseTooltip id="edit-icon-9" tooltip-content="Edit" position="right">
-                    <SvgoEditPensil class="edit-field-icon" />
-                  </BaseTooltip>
-                </button>
-              </div>
-
-              <p
-                class="preview-field-text"
-              >
-                {{ formData.stepTwo?.subjects ? subjectLabel : "N/A" }}
               </p>
             </div>
           </div>

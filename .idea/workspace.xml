@@ -4,14 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ab7611ed-6f98-4ae4-b454-38c2d1a8a2f3" name="Changes" comment="old colors updated">
+    <list default="true" id="ab7611ed-6f98-4ae4-b454-38c2d1a8a2f3" name="Changes" comment="theme updated">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/css/tailwind.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/tailwind.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/icons/ring-1-4.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/icons/ring-1-4.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/icons/ring-2-4.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/icons/ring-2-4.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/icons/ring-3-4.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/icons/ring-3-4.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/icons/ring-4-4.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/icons/ring-4-4.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/post-a-job/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/post-a-job/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/pages/post-job/FormStepFour.vue" beforeDir="false" afterPath="$PROJECT_DIR$/components/pages/post-job/FormStepFour.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/pages/post-job/FormStepTwo.vue" beforeDir="false" afterPath="$PROJECT_DIR$/components/pages/post-job/FormStepTwo.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -215,15 +211,7 @@
       <workItem from="1722020172852" duration="5424000" />
       <workItem from="1722365581573" duration="116000" />
       <workItem from="1722365897589" duration="389000" />
-      <workItem from="1722366321911" duration="3555000" />
-    </task>
-    <task id="LOCAL-00241" summary="compensation filters on refresh">
-      <option name="closed" value="true" />
-      <created>1718396414856</created>
-      <option name="number" value="00241" />
-      <option name="presentableId" value="LOCAL-00241" />
-      <option name="project" value="LOCAL" />
-      <updated>1718396414856</updated>
+      <workItem from="1722366321911" duration="4187000" />
     </task>
     <task id="LOCAL-00242" summary="blog categories integrated">
       <option name="closed" value="true" />
@@ -609,7 +597,15 @@
       <option name="project" value="LOCAL" />
       <updated>1722369235805</updated>
     </task>
-    <option name="localTasksCounter" value="290" />
+    <task id="LOCAL-00290" summary="theme updated">
+      <option name="closed" value="true" />
+      <created>1722370065043</created>
+      <option name="number" value="00290" />
+      <option name="presentableId" value="LOCAL-00290" />
+      <option name="project" value="LOCAL" />
+      <updated>1722370065043</updated>
+    </task>
+    <option name="localTasksCounter" value="291" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -639,7 +635,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="alphabet filter in charter schools and colleges" />
     <MESSAGE value="facet count in colleges" />
     <MESSAGE value="clear filters" />
     <MESSAGE value="mega menu college org fix" />
@@ -664,7 +659,8 @@
     <MESSAGE value="Edujobs cloned" />
     <MESSAGE value="colors and favicons updated" />
     <MESSAGE value="old colors updated" />
-    <option name="LAST_COMMIT_MESSAGE" value="old colors updated" />
+    <MESSAGE value="theme updated" />
+    <option name="LAST_COMMIT_MESSAGE" value="theme updated" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

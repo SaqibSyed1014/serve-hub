@@ -22,11 +22,7 @@ const props = defineProps<{
 }>()
 
 const postJobStore = usePostjobStore();
-const {
-  gradeLevelDropdown,
-  subjectsDropdown,
-  experienceLevelOptions
-} = storeToRefs(postJobStore);
+const { experienceLevelOptions } = storeToRefs(postJobStore);
 
 const jobRoles = ref(jobRolesOptions);
 
@@ -59,14 +55,6 @@ const schema = Yup.object({
       then: (schema) => schema.required("Hourly End Range is required")
     }),
     jobRoleId: Yup.number().required("Job Role is required"),
-    grades: Yup.array().of(Yup.number()).when("jobRoleId", {
-      is: 1,
-      then: (schema) => schema.min(1, "Grade Level(s) is required")
-    }),
-    subjects: Yup.number().when("jobRoleId", {
-      is: 1,
-      then: (schema) => schema.required("Subject Area(s) is required")
-    }),
     jobDescription: Yup.string().required("Job Description is required"),
 })
 
@@ -89,8 +77,6 @@ const [maxSalaryId, maxSalaryIdAttrs] = defineField('maxSalaryId');
 const [minHourlyId, minHourlyIdAttrs] = defineField('minHourlyId');
 const [maxHourlyId, maxHourlyIdAttrs] = defineField('maxHourlyId');
 const [jobRoleId] = defineField('jobRoleId');
-const [grades] = defineField('grades');
-const [subjects, subjectsAttrs] = defineField('subjects');
 const [jobDescription, jobDescriptionAttrs] = defineField('jobDescription');
 
 resetForm({
@@ -178,26 +164,13 @@ const selectedMin = computed(() => {
   return compensationTypeId.value === 1 ? minSalaryId.value : minHourlyId.value;
 });
 
-let selectedGrades = ref<{ label: string, value: string }[]>([]);
 
 watch(() => props.initialFormValues, (initialData) => {
-  selectedGrades.value = (props.initialFormValues?.grades || []).map((selectedGrade :any) => {
-    return gradeLevelDropdown.value.find(grade => grade.value === selectedGrade);
-  }).filter((item :any) => item !== undefined) as any[];
-
   setTimeout(() => {
     const locationInput = document.getElementById('jobLocationInput')
     if (locationInput) locationInput.value = jobLocation.value;
   }, 1000)
 }, { immediate: true })
-
-watch(() => jobRoleId.value, (val) => {  // remove selected grades on non-instructional selection
-  if (val === 2) selectedGrades.value = [];
-})
-
-function checkSelection() {
-  grades.value = selectedGrades.value.map(grade => grade.value);
-}
 </script>
 
 <template>
@@ -398,61 +371,6 @@ function checkSelection() {
             :label-value-options="true"
             subLabel=""
             :value="values.jobRoleId"
-            className="form-field-layout"
-        />
-
-        <!--    Grade Level Field    -->
-        <div class="form-field-layout mb-2"  v-if="jobRoleId == 1">
-          <label class="block text-sm font-semibold text-gray-700 sm:pt-1.5">
-            Grade Level
-          </label>
-          <div class="mt-2 sm:col-span-2 sm:mt-0">
-            <multiselect
-                id="gradeLevels"
-                v-model="selectedGrades"
-                :options="gradeLevelDropdown"
-                label="label"
-                track-by="value"
-                :multiple="true"
-                :taggable="true"
-                :show-labels="false"
-                :searchable="false"
-                :max="4"
-                class="custom-multi-select"
-                placeholder="Select grades"
-                @select="checkSelection"
-                @Remove="checkSelection"
-            >
-              <template #caret>
-                <div class="multiselect__select">
-                  <SvgoChevronDown class="w-4 h-4" />
-                </div>
-              </template>
-              <template #maxElements>
-                <span class="error-message">
-                  Maximum of 4 grades have been elements. First remove a selected option to select another.
-                </span>
-              </template>
-            </multiselect>
-
-            <ErrorMessage
-                class="error-message"
-                name="grades"
-            />
-          </div>
-        </div>
-
-        <!--    Subject Areas Field    -->
-        <SelectBox
-            v-if="jobRoleId == 1"
-            v-model="subjects"
-            name="subjects"
-            label="Subject Area(s)"
-            :data="subjectsDropdown"
-            :label-value-options="true"
-            subLabel=""
-            :value="values.subjects"
-            placeholder="Select subject"
             className="form-field-layout"
         />
 
