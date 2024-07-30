@@ -4,7 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ab7611ed-6f98-4ae4-b454-38c2d1a8a2f3" name="Changes" comment="about images border updated" />
+    <list default="true" id="ab7611ed-6f98-4ae4-b454-38c2d1a8a2f3" name="Changes" comment="Edujobs cloned">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/core/ListingFilters.vue" beforeDir="false" afterPath="$PROJECT_DIR$/components/core/ListingFilters.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/pages/job-listings/JobCard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/components/pages/job-listings/JobCard.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nuxt.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/nuxt.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/apple-touch-icon.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/apple-touch-icon.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/favicon-16x16.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/favicon-16x16.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/favicon-32x32.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/favicon-32x32.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/public/favicon.ico" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/logo.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/logo.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/robots.txt" beforeDir="false" afterPath="$PROJECT_DIR$/public/robots.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/tailwind.config.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -37,7 +49,7 @@
   &quot;associatedIndex&quot;: 1
 }</component>
   <component name="ProjectId" id="2dXyor2MwC2b8s9QMstpzLr90Az" />
-  <component name="ProjectLevelVcsManager">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
@@ -49,7 +61,8 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/DevDock/WebstormProjects/Upwork Projects/ServeHub",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/Users/DevDock/WebstormProjects/Upwork Projects/ServeHub/public",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -69,11 +82,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\DevDock\WebstormProjects\Upwork Projects\ServeHub\public" />
       <recent name="C:\Users\DevDock\WebstormProjects\Upwork Projects\EduJobs\assets\icons" />
       <recent name="C:\Users\DevDock\WebstormProjects\Upwork Projects\EduJobs\public\images\about" />
       <recent name="C:\Users\DevDock\WebstormProjects\Upwork Projects\EduJobs\segments" />
       <recent name="C:\Users\DevDock\WebstormProjects\Upwork Projects\EduJobs\segments\schools" />
-      <recent name="C:\Users\DevDock\WebstormProjects\Upwork Projects\EduJobs\pages" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\DevDock\WebstormProjects\Upwork Projects\EduJobs\components\pages\job-listings" />
@@ -206,14 +219,7 @@
       <workItem from="1722020172852" duration="5424000" />
       <workItem from="1722365581573" duration="116000" />
       <workItem from="1722365897589" duration="389000" />
-    </task>
-    <task id="LOCAL-00238" summary="unix timestamp in job detail">
-      <option name="closed" value="true" />
-      <created>1718359754878</created>
-      <option name="number" value="00238" />
-      <option name="presentableId" value="LOCAL-00238" />
-      <option name="project" value="LOCAL" />
-      <updated>1718359754879</updated>
+      <workItem from="1722366321911" duration="1266000" />
     </task>
     <task id="LOCAL-00239" summary="compensation filters synced with location filter">
       <option name="closed" value="true" />
@@ -599,7 +605,15 @@
       <option name="project" value="LOCAL" />
       <updated>1722035885033</updated>
     </task>
-    <option name="localTasksCounter" value="287" />
+    <task id="LOCAL-00287" summary="Edujobs cloned">
+      <option name="closed" value="true" />
+      <created>1722366496902</created>
+      <option name="number" value="00287" />
+      <option name="presentableId" value="LOCAL-00287" />
+      <option name="project" value="LOCAL" />
+      <updated>1722366496903</updated>
+    </task>
+    <option name="localTasksCounter" value="288" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -629,7 +643,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="selected alphabets on refresh" />
     <MESSAGE value="salary/hourly in job details" />
     <MESSAGE value="alphabet filter fix" />
     <MESSAGE value="alphabet filter in charter schools and colleges" />
@@ -654,7 +667,8 @@
     <MESSAGE value="about us page created" />
     <MESSAGE value="minor fix" />
     <MESSAGE value="about images border updated" />
-    <option name="LAST_COMMIT_MESSAGE" value="about images border updated" />
+    <MESSAGE value="Edujobs cloned" />
+    <option name="LAST_COMMIT_MESSAGE" value="Edujobs cloned" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -8,7 +8,7 @@ const appEnv: string  = process.env.ENV || 'development'
 export default defineNuxtConfig({
     app: {
         head: {
-            title: 'EduJobs',
+            title: 'ServeHub',
             charset: 'utf-8',
             viewport: 'width=device-width, initial-scale=1',
             link:  [
@@ -16,39 +16,7 @@ export default defineNuxtConfig({
                 { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon-16x16.png' },
                 { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32x32.png' },
                 { rel: 'apple-touch-icon', type: 'image/png', sizes: '76x76', href: '/apple-touch-icon.png' }
-            ],
-          //   script: [
-          //       // Crisp Chat
-          //       {
-          //           src: 'https://client.crisp.chat/l.js',
-          //           async: true,
-          //           onload: () => {
-          //               window.$crisp = [];
-          //               window.CRISP_WEBSITE_ID = "9294fd27-8592-41bf-a6c9-ec44aa6d0905";
-          //           }
-          //       },
-          //
-          //       // Google Analytics
-          //       {
-          //           src: 'https://www.googletagmanager.com/gtag/js?id=G-6S59LVT28G',
-          //           async: true,
-          //       },
-          //       {
-          //           innerHTML: `
-          //   window.dataLayer = window.dataLayer || [];
-          //   function gtag(){dataLayer.push(arguments);}
-          //   gtag('js', new Date());
-          //   gtag('config', 'G-6S9LVT28G');
-          // `,
-          //           type: 'text/javascript'
-          //       },
-          //
-          //       // // Hotjar
-          //       // {
-          //       //     src: 'https://static.hotjar.com/c/hotjar-1582803.js?sv=6',
-          //       //     async: true,
-          //       // },
-          //   ]
+            ]
         }
     },
     runtimeConfig: {

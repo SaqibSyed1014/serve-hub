@@ -36,7 +36,7 @@ defineProps<{
           </div>
 
           <div v-if="job?.job_role" class="badges-outline">
-            <div class="w-2 h-2 rounded-full bg-blue-500"/>
+            <div class="w-2 h-2 rounded-full bg-brand-500"/>
             {{ job.job_role }}
           </div>
         </div>
@@ -99,7 +99,7 @@ defineProps<{
           </div>
 
           <div v-if="job?.job_role" class="badges-outline">
-            <div class="w-2 h-2 rounded-full bg-blue-500"/>
+            <div class="w-2 h-2 rounded-full bg-brand-500"/>
             {{ job.job_role }}
           </div>
         </div>

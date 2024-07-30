@@ -23,7 +23,7 @@ const router = useRouter();
   <div class="org-menu-wrapper w-[800px]">
     <div class="grid grid-cols-12">
       <div class="col-span-4">
-        <h4 class="text-blue-600 text-lg font-semibold mb-4">Organizations Types</h4>
+        <h4 class="text-brand-600 text-lg font-semibold mb-4">Organizations Types</h4>
         <ul class="flex flex-col gap-4">
           <template v-for="orgLink in subLinks">
             <li>
@@ -39,7 +39,7 @@ const router = useRouter();
         </ul>
       </div>
       <div class="col-span-8">
-        <h4 class="text-blue-600 text-lg font-semibold mb-4">Organizations</h4>
+        <h4 class="text-brand-600 text-lg font-semibold mb-4">Organizations</h4>
         <div v-if="loading" class="flex justify-center pt-6">
           <BaseSpinner :show-loader="loading" size="sm"/>
         </div>
