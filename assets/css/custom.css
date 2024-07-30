@@ -1,0 +1,79 @@
+.hero-section .dashed-ring{
+    @apply absolute left-1/2 transform -translate-x-1/2 rounded-full z-10 border border-gray-200 border-dashed
+}
+.hero-section .dashed-ring.first-ring{
+    @apply -top-[80%]  w-[800px] h-[800px]
+}
+.hero-section .dashed-ring.second-ring{
+    @apply -top-[90%]  w-[1000px] h-[1000px]
+}
+.hero-section .dashed-ring.third-ring{
+    @apply -top-[110%]  w-[1200px] h-[1200px]
+}
+.hero-section .dashed-ring.forth-ring{
+    @apply -top-[125%]  w-[1400px] h-[1400px]
+}
+
+.section-title{
+    @apply relative text-lg z-10 overflow-hidden text-center mb-8
+}
+.section-title:before, .section-title:after {
+   @apply absolute top-1/2 ml-[3%] overflow-hidden w-[47%] h-px bg-gray-200 content-['\a0']
+}
+.section-title:before {
+    @apply -ml-[50%] text-right
+}
+
+.cta-banner .dashed-ring{
+    @apply absolute -top-20 transform -translate-y-1/2 rounded-full z-10 border border-brand-700 border-dashed
+}
+.cta-banner .dashed-ring.first-ring{
+    @apply w-[430px] h-[430px] right-0
+}
+.cta-banner .dashed-ring.second-ring{
+    @apply w-[580px] h-[580px] -right-[8%]
+}
+.cta-banner .dashed-ring.third-ring{
+    @apply w-[730px] h-[730px] -right-[16%]
+}
+.cta-banner .dashed-ring.forth-ring{
+    @apply w-[880px] h-[880px] -right-[24%]
+}
+
+/* Swiper wrapper linear autoplay */
+swiper-container::part(wrapper) {
+    transition-timing-function : linear !important;
+}
+
+.reviews-slider swiper-container::part(swiper-pagination-bullet) {
+    padding-top: 3rem;
+}
+
+
+.dp__input_icons{
+    @apply !hidden
+}
+
+.dp__input{
+   @apply !bg-transparent !py-[9px] !px-3.5
+}
+
+/* Content List View CSS (privacy policy, terms & conditions) */
+.content-list-view{
+    @apply py-24
+}
+.content-list-view .content-body{
+    @apply pt-16 md:pt-24 md:px-8 max-w-[960px] mx-auto
+}
+.content-list-view .content-body p{
+    @apply md:text-lg pb-4 last:pb-0
+}
+.content-list-view .content-body h2{
+    @apply pt-8 md:pt-10 pb-4 md:pb-5 text-3xl text-gray-900
+}
+.content-list-view .content-body h3{
+    @apply pt-8 pb-3 md:pb-4 text-2xl text-gray-900
+}
+.content-list-view .content-body ol{
+    @apply md:text-lg
+}

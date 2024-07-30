@@ -1,0 +1,690 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="ab7611ed-6f98-4ae4-b454-38c2d1a8a2f3" name="Changes" comment="about images border updated" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+        <option value="JavaScript File" />
+        <option value="Vue Options API Component" />
+        <option value="Vue Composition API Component" />
+        <option value="TypeScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="PUSH_AUTO_UPDATE" value="true" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="feature/blogs-integration" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
+  <component name="ProjectId" id="2dXyor2MwC2b8s9QMstpzLr90Az" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/DevDock/WebstormProjects/Upwork Projects/ServeHub",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\WebStorm 2023.2.2\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external",
+    "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "vue.recent.templates": [
+      "Vue Options API Component",
+      "Vue Composition API Component"
+    ]
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\DevDock\WebstormProjects\Upwork Projects\EduJobs\assets\icons" />
+      <recent name="C:\Users\DevDock\WebstormProjects\Upwork Projects\EduJobs\public\images\about" />
+      <recent name="C:\Users\DevDock\WebstormProjects\Upwork Projects\EduJobs\segments" />
+      <recent name="C:\Users\DevDock\WebstormProjects\Upwork Projects\EduJobs\segments\schools" />
+      <recent name="C:\Users\DevDock\WebstormProjects\Upwork Projects\EduJobs\pages" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\DevDock\WebstormProjects\Upwork Projects\EduJobs\components\pages\job-listings" />
+      <recent name="C:\Users\DevDock\WebstormProjects\Upwork Projects\EduJobs\segments" />
+      <recent name="C:\Users\DevDock\WebstormProjects\Upwork Projects\EduJobs\segments\blogs" />
+      <recent name="C:\Users\DevDock\WebstormProjects\Upwork Projects\EduJobs\segments\store" />
+      <recent name="C:\Users\DevDock\WebstormProjects\Upwork Projects\EduJobs\segments\districts" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ab7611ed-6f98-4ae4-b454-38c2d1a8a2f3" name="Changes" comment="" />
+      <created>1710168896170</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1710168896170</updated>
+      <workItem from="1710168897361" duration="4826000" />
+      <workItem from="1710174110186" duration="11073000" />
+      <workItem from="1710192706447" duration="3751000" />
+      <workItem from="1710263349063" duration="16914000" />
+      <workItem from="1710350447373" duration="10177000" />
+      <workItem from="1710399633366" duration="49000" />
+      <workItem from="1710428057739" duration="2182000" />
+      <workItem from="1710445182797" duration="12511000" />
+      <workItem from="1710521150406" duration="10604000" />
+      <workItem from="1710751219123" duration="34000" />
+      <workItem from="1710773082675" duration="19452000" />
+      <workItem from="1710962511598" duration="38911000" />
+      <workItem from="1711482791218" duration="8830000" />
+      <workItem from="1711564712644" duration="11455000" />
+      <workItem from="1711617230909" duration="204000" />
+      <workItem from="1711653790730" duration="1356000" />
+      <workItem from="1711736991444" duration="2253000" />
+      <workItem from="1711825994429" duration="3682000" />
+      <workItem from="1711907669457" duration="1169000" />
+      <workItem from="1711912356721" duration="901000" />
+      <workItem from="1711913319553" duration="3951000" />
+      <workItem from="1711959138758" duration="44000" />
+      <workItem from="1711983719636" duration="2809000" />
+      <workItem from="1712069227883" duration="84000" />
+      <workItem from="1712163796083" duration="1876000" />
+      <workItem from="1712258884267" duration="9611000" />
+      <workItem from="1712280973846" duration="884000" />
+      <workItem from="1712328855636" duration="836000" />
+      <workItem from="1712343223113" duration="9640000" />
+      <workItem from="1712470127332" duration="5552000" />
+      <workItem from="1712565584675" duration="1749000" />
+      <workItem from="1712657905592" duration="9166000" />
+      <workItem from="1712698217740" duration="2769000" />
+      <workItem from="1712952172337" duration="12356000" />
+      <workItem from="1713026826226" duration="4682000" />
+      <workItem from="1713031664441" duration="21197000" />
+      <workItem from="1713250241010" duration="89000" />
+      <workItem from="1713264116093" duration="3573000" />
+      <workItem from="1713268900051" duration="8397000" />
+      <workItem from="1713335062884" duration="16112000" />
+      <workItem from="1713446090426" duration="9672000" />
+      <workItem from="1713518158266" duration="23761000" />
+      <workItem from="1713636952440" duration="650000" />
+      <workItem from="1713685512365" duration="4021000" />
+      <workItem from="1713772836950" duration="10181000" />
+      <workItem from="1713881384334" duration="5758000" />
+      <workItem from="1714297484757" duration="195000" />
+      <workItem from="1714329816105" duration="1768000" />
+      <workItem from="1714405703432" duration="6514000" />
+      <workItem from="1714503542022" duration="2637000" />
+      <workItem from="1714572829583" duration="5565000" />
+      <workItem from="1714596458940" duration="2731000" />
+      <workItem from="1714658713927" duration="17634000" />
+      <workItem from="1714801728848" duration="9237000" />
+      <workItem from="1714923573848" duration="6038000" />
+      <workItem from="1715020190502" duration="6681000" />
+      <workItem from="1715089009662" duration="16211000" />
+      <workItem from="1715624426613" duration="11905000" />
+      <workItem from="1715787507472" duration="43000" />
+      <workItem from="1715793832895" duration="3462000" />
+      <workItem from="1715805405180" duration="130000" />
+      <workItem from="1715885177435" duration="7759000" />
+      <workItem from="1715980933959" duration="49000" />
+      <workItem from="1716058714316" duration="15463000" />
+      <workItem from="1716110825199" duration="12592000" />
+      <workItem from="1716225934288" duration="10792000" />
+      <workItem from="1716316485348" duration="6773000" />
+      <workItem from="1716402150834" duration="11560000" />
+      <workItem from="1716487912711" duration="12749000" />
+      <workItem from="1716506329650" duration="18000" />
+      <workItem from="1716574014163" duration="9770000" />
+      <workItem from="1716642581412" duration="3977000" />
+      <workItem from="1716702605017" duration="3148000" />
+      <workItem from="1716730942318" duration="101000" />
+      <workItem from="1716747880995" duration="9649000" />
+      <workItem from="1716929690207" duration="5678000" />
+      <workItem from="1717010342516" duration="58751000" />
+      <workItem from="1717566290238" duration="5295000" />
+      <workItem from="1717594824126" duration="13361000" />
+      <workItem from="1717700362960" duration="3135000" />
+      <workItem from="1717704866170" duration="12847000" />
+      <workItem from="1717783803534" duration="6479000" />
+      <workItem from="1717790760802" duration="107000" />
+      <workItem from="1717879805870" duration="5003000" />
+      <workItem from="1717886546898" duration="25000" />
+      <workItem from="1718050415249" duration="9052000" />
+      <workItem from="1718088735902" duration="602000" />
+      <workItem from="1718128280438" duration="14491000" />
+      <workItem from="1718215582649" duration="14884000" />
+      <workItem from="1718270782378" duration="213000" />
+      <workItem from="1718300575780" duration="23042000" />
+      <workItem from="1718433234989" duration="8674000" />
+      <workItem from="1718482149883" duration="3160000" />
+      <workItem from="1718626663875" duration="6359000" />
+      <workItem from="1718856891506" duration="4485000" />
+      <workItem from="1718908238270" duration="11344000" />
+      <workItem from="1718957274001" duration="424000" />
+      <workItem from="1718957727375" duration="13689000" />
+      <workItem from="1719054825171" duration="9573000" />
+      <workItem from="1719119092266" duration="7147000" />
+      <workItem from="1719235823317" duration="5219000" />
+      <workItem from="1719323090227" duration="1038000" />
+      <workItem from="1719381897562" duration="3728000" />
+      <workItem from="1719510536655" duration="5432000" />
+      <workItem from="1719571969727" duration="639000" />
+      <workItem from="1720034030975" duration="2371000" />
+      <workItem from="1720638559328" duration="33000" />
+      <workItem from="1720640476961" duration="210000" />
+      <workItem from="1720640943310" duration="617000" />
+      <workItem from="1720641945625" duration="126000" />
+      <workItem from="1720737830065" duration="105000" />
+      <workItem from="1720742976746" duration="4455000" />
+      <workItem from="1722020172852" duration="5424000" />
+      <workItem from="1722365581573" duration="116000" />
+      <workItem from="1722365897589" duration="389000" />
+    </task>
+    <task id="LOCAL-00238" summary="unix timestamp in job detail">
+      <option name="closed" value="true" />
+      <created>1718359754878</created>
+      <option name="number" value="00238" />
+      <option name="presentableId" value="LOCAL-00238" />
+      <option name="project" value="LOCAL" />
+      <updated>1718359754879</updated>
+    </task>
+    <task id="LOCAL-00239" summary="compensation filters synced with location filter">
+      <option name="closed" value="true" />
+      <created>1718367900501</created>
+      <option name="number" value="00239" />
+      <option name="presentableId" value="LOCAL-00239" />
+      <option name="project" value="LOCAL" />
+      <updated>1718367900501</updated>
+    </task>
+    <task id="LOCAL-00240" summary="minor fix">
+      <option name="closed" value="true" />
+      <created>1718368762875</created>
+      <option name="number" value="00240" />
+      <option name="presentableId" value="LOCAL-00240" />
+      <option name="project" value="LOCAL" />
+      <updated>1718368762875</updated>
+    </task>
+    <task id="LOCAL-00241" summary="compensation filters on refresh">
+      <option name="closed" value="true" />
+      <created>1718396414856</created>
+      <option name="number" value="00241" />
+      <option name="presentableId" value="LOCAL-00241" />
+      <option name="project" value="LOCAL" />
+      <updated>1718396414856</updated>
+    </task>
+    <task id="LOCAL-00242" summary="blog categories integrated">
+      <option name="closed" value="true" />
+      <created>1718399249414</created>
+      <option name="number" value="00242" />
+      <option name="presentableId" value="LOCAL-00242" />
+      <option name="project" value="LOCAL" />
+      <updated>1718399249414</updated>
+    </task>
+    <task id="LOCAL-00243" summary="blog categories fix">
+      <option name="closed" value="true" />
+      <created>1718400795259</created>
+      <option name="number" value="00243" />
+      <option name="presentableId" value="LOCAL-00243" />
+      <option name="project" value="LOCAL" />
+      <updated>1718400795259</updated>
+    </task>
+    <task id="LOCAL-00244" summary="jobs relation with include jobs checkbox">
+      <option name="closed" value="true" />
+      <created>1718434860913</created>
+      <option name="number" value="00244" />
+      <option name="presentableId" value="LOCAL-00244" />
+      <option name="project" value="LOCAL" />
+      <updated>1718434860913</updated>
+    </task>
+    <task id="LOCAL-00245" summary="job filters on mobile">
+      <option name="closed" value="true" />
+      <created>1718437607124</created>
+      <option name="number" value="00245" />
+      <option name="presentableId" value="LOCAL-00245" />
+      <option name="project" value="LOCAL" />
+      <updated>1718437607124</updated>
+    </task>
+    <task id="LOCAL-00246" summary="clear job filters">
+      <option name="closed" value="true" />
+      <created>1718438746920</created>
+      <option name="number" value="00246" />
+      <option name="presentableId" value="LOCAL-00246" />
+      <option name="project" value="LOCAL" />
+      <updated>1718438746920</updated>
+    </task>
+    <task id="LOCAL-00247" summary="spacing updated">
+      <option name="closed" value="true" />
+      <created>1718438950607</created>
+      <option name="number" value="00247" />
+      <option name="presentableId" value="LOCAL-00247" />
+      <option name="project" value="LOCAL" />
+      <updated>1718438950607</updated>
+    </task>
+    <task id="LOCAL-00248" summary="blog cards updated">
+      <option name="closed" value="true" />
+      <created>1718441854332</created>
+      <option name="number" value="00248" />
+      <option name="presentableId" value="LOCAL-00248" />
+      <option name="project" value="LOCAL" />
+      <updated>1718441854332</updated>
+    </task>
+    <task id="LOCAL-00249" summary="home blogs bug fixed">
+      <option name="closed" value="true" />
+      <created>1718482622294</created>
+      <option name="number" value="00249" />
+      <option name="presentableId" value="LOCAL-00249" />
+      <option name="project" value="LOCAL" />
+      <updated>1718482622294</updated>
+    </task>
+    <task id="LOCAL-00250" summary="fixes">
+      <option name="closed" value="true" />
+      <created>1718482836818</created>
+      <option name="number" value="00250" />
+      <option name="presentableId" value="LOCAL-00250" />
+      <option name="project" value="LOCAL" />
+      <updated>1718482836818</updated>
+    </task>
+    <task id="LOCAL-00251" summary="location selected from home to jobs">
+      <option name="closed" value="true" />
+      <created>1718486031460</created>
+      <option name="number" value="00251" />
+      <option name="presentableId" value="LOCAL-00251" />
+      <option name="project" value="LOCAL" />
+      <updated>1718486031460</updated>
+    </task>
+    <task id="LOCAL-00252" summary="fix">
+      <option name="closed" value="true" />
+      <created>1718486058392</created>
+      <option name="number" value="00252" />
+      <option name="presentableId" value="LOCAL-00252" />
+      <option name="project" value="LOCAL" />
+      <updated>1718486058392</updated>
+    </task>
+    <task id="LOCAL-00253" summary="jobs by cities safety check">
+      <option name="closed" value="true" />
+      <created>1718627215652</created>
+      <option name="number" value="00253" />
+      <option name="presentableId" value="LOCAL-00253" />
+      <option name="project" value="LOCAL" />
+      <updated>1718627215652</updated>
+    </task>
+    <task id="LOCAL-00254" summary="fetch blogs by categories integrated">
+      <option name="closed" value="true" />
+      <created>1718631283446</created>
+      <option name="number" value="00254" />
+      <option name="presentableId" value="LOCAL-00254" />
+      <option name="project" value="LOCAL" />
+      <updated>1718631283446</updated>
+    </task>
+    <task id="LOCAL-00255" summary="fixes in blogs">
+      <option name="closed" value="true" />
+      <created>1718632001180</created>
+      <option name="number" value="00255" />
+      <option name="presentableId" value="LOCAL-00255" />
+      <option name="project" value="LOCAL" />
+      <updated>1718632001180</updated>
+    </task>
+    <task id="LOCAL-00256" summary="minor fix">
+      <option name="closed" value="true" />
+      <created>1718651325729</created>
+      <option name="number" value="00256" />
+      <option name="presentableId" value="LOCAL-00256" />
+      <option name="project" value="LOCAL" />
+      <updated>1718651325729</updated>
+    </task>
+    <task id="LOCAL-00257" summary="crisp live chat script check">
+      <option name="closed" value="true" />
+      <created>1718857549785</created>
+      <option name="number" value="00257" />
+      <option name="presentableId" value="LOCAL-00257" />
+      <option name="project" value="LOCAL" />
+      <updated>1718857549786</updated>
+    </task>
+    <task id="LOCAL-00258" summary="selected alphabets on refresh">
+      <option name="closed" value="true" />
+      <created>1718859709804</created>
+      <option name="number" value="00258" />
+      <option name="presentableId" value="LOCAL-00258" />
+      <option name="project" value="LOCAL" />
+      <updated>1718859709804</updated>
+    </task>
+    <task id="LOCAL-00259" summary="salary/hourly in job details">
+      <option name="closed" value="true" />
+      <created>1718866249877</created>
+      <option name="number" value="00259" />
+      <option name="presentableId" value="LOCAL-00259" />
+      <option name="project" value="LOCAL" />
+      <updated>1718866249877</updated>
+    </task>
+    <task id="LOCAL-00260" summary="fixes">
+      <option name="closed" value="true" />
+      <created>1718908757206</created>
+      <option name="number" value="00260" />
+      <option name="presentableId" value="LOCAL-00260" />
+      <option name="project" value="LOCAL" />
+      <updated>1718908757206</updated>
+    </task>
+    <task id="LOCAL-00261" summary="alphabet filter fix">
+      <option name="closed" value="true" />
+      <created>1718910315618</created>
+      <option name="number" value="00261" />
+      <option name="presentableId" value="LOCAL-00261" />
+      <option name="project" value="LOCAL" />
+      <updated>1718910315618</updated>
+    </task>
+    <task id="LOCAL-00262" summary="alphabet filter in charter schools and colleges">
+      <option name="closed" value="true" />
+      <created>1718915797738</created>
+      <option name="number" value="00262" />
+      <option name="presentableId" value="LOCAL-00262" />
+      <option name="project" value="LOCAL" />
+      <updated>1718915797738</updated>
+    </task>
+    <task id="LOCAL-00263" summary="facet count in colleges">
+      <option name="closed" value="true" />
+      <created>1718916103341</created>
+      <option name="number" value="00263" />
+      <option name="presentableId" value="LOCAL-00263" />
+      <option name="project" value="LOCAL" />
+      <updated>1718916103342</updated>
+    </task>
+    <task id="LOCAL-00264" summary="fixes">
+      <option name="closed" value="true" />
+      <created>1718916434779</created>
+      <option name="number" value="00264" />
+      <option name="presentableId" value="LOCAL-00264" />
+      <option name="project" value="LOCAL" />
+      <updated>1718916434779</updated>
+    </task>
+    <task id="LOCAL-00265" summary="minor fix">
+      <option name="closed" value="true" />
+      <created>1718917106789</created>
+      <option name="number" value="00265" />
+      <option name="presentableId" value="LOCAL-00265" />
+      <option name="project" value="LOCAL" />
+      <updated>1718917106789</updated>
+    </task>
+    <task id="LOCAL-00266" summary="fixes">
+      <option name="closed" value="true" />
+      <created>1718918479435</created>
+      <option name="number" value="00266" />
+      <option name="presentableId" value="LOCAL-00266" />
+      <option name="project" value="LOCAL" />
+      <updated>1718918479435</updated>
+    </task>
+    <task id="LOCAL-00267" summary="clear filters">
+      <option name="closed" value="true" />
+      <created>1718919435086</created>
+      <option name="number" value="00267" />
+      <option name="presentableId" value="LOCAL-00267" />
+      <option name="project" value="LOCAL" />
+      <updated>1718919435086</updated>
+    </task>
+    <task id="LOCAL-00268" summary="mega menu college org fix">
+      <option name="closed" value="true" />
+      <created>1718992700703</created>
+      <option name="number" value="00268" />
+      <option name="presentableId" value="LOCAL-00268" />
+      <option name="project" value="LOCAL" />
+      <updated>1718992700707</updated>
+    </task>
+    <task id="LOCAL-00269" summary="school district jobs list">
+      <option name="closed" value="true" />
+      <created>1719016987614</created>
+      <option name="number" value="00269" />
+      <option name="presentableId" value="LOCAL-00269" />
+      <option name="project" value="LOCAL" />
+      <updated>1719016987614</updated>
+    </task>
+    <task id="LOCAL-00270" summary="fixes">
+      <option name="closed" value="true" />
+      <created>1719020662509</created>
+      <option name="number" value="00270" />
+      <option name="presentableId" value="LOCAL-00270" />
+      <option name="project" value="LOCAL" />
+      <updated>1719020662509</updated>
+    </task>
+    <task id="LOCAL-00271" summary="job listing in college and charter schools">
+      <option name="closed" value="true" />
+      <created>1719023707497</created>
+      <option name="number" value="00271" />
+      <option name="presentableId" value="LOCAL-00271" />
+      <option name="project" value="LOCAL" />
+      <updated>1719023707497</updated>
+    </task>
+    <task id="LOCAL-00272" summary="fixes + filters updated in school district">
+      <option name="closed" value="true" />
+      <created>1719063992768</created>
+      <option name="number" value="00272" />
+      <option name="presentableId" value="LOCAL-00272" />
+      <option name="project" value="LOCAL" />
+      <updated>1719063992768</updated>
+    </task>
+    <task id="LOCAL-00273" summary="scrolling to top in blog">
+      <option name="closed" value="true" />
+      <created>1719120271505</created>
+      <option name="number" value="00273" />
+      <option name="presentableId" value="LOCAL-00273" />
+      <option name="project" value="LOCAL" />
+      <updated>1719120271505</updated>
+    </task>
+    <task id="LOCAL-00274" summary="school district job filter value updated + its counts removed">
+      <option name="closed" value="true" />
+      <created>1719120770838</created>
+      <option name="number" value="00274" />
+      <option name="presentableId" value="LOCAL-00274" />
+      <option name="project" value="LOCAL" />
+      <updated>1719120770838</updated>
+    </task>
+    <task id="LOCAL-00275" summary="apply button in org filters on mobile">
+      <option name="closed" value="true" />
+      <created>1719126803659</created>
+      <option name="number" value="00275" />
+      <option name="presentableId" value="LOCAL-00275" />
+      <option name="project" value="LOCAL" />
+      <updated>1719126803659</updated>
+    </task>
+    <task id="LOCAL-00276" summary="reload active route on clicking">
+      <option name="closed" value="true" />
+      <created>1719260532575</created>
+      <option name="number" value="00276" />
+      <option name="presentableId" value="LOCAL-00276" />
+      <option name="project" value="LOCAL" />
+      <updated>1719260532575</updated>
+    </task>
+    <task id="LOCAL-00277" summary="application deadline in job detail added">
+      <option name="closed" value="true" />
+      <created>1719261771114</created>
+      <option name="number" value="00277" />
+      <option name="presentableId" value="LOCAL-00277" />
+      <option name="project" value="LOCAL" />
+      <updated>1719261771114</updated>
+    </task>
+    <task id="LOCAL-00278" summary="another apply btn on desktop in job detail page">
+      <option name="closed" value="true" />
+      <created>1719262148817</created>
+      <option name="number" value="00278" />
+      <option name="presentableId" value="LOCAL-00278" />
+      <option name="project" value="LOCAL" />
+      <updated>1719262148817</updated>
+    </task>
+    <task id="LOCAL-00279" summary="list of colleges tab removed + schoo list, video and images removed from detail page">
+      <option name="closed" value="true" />
+      <created>1719323679602</created>
+      <option name="number" value="00279" />
+      <option name="presentableId" value="LOCAL-00279" />
+      <option name="project" value="LOCAL" />
+      <updated>1719323679603</updated>
+    </task>
+    <task id="LOCAL-00280" summary="job sort and date_posting_Expires filters updated">
+      <option name="closed" value="true" />
+      <created>1719382687866</created>
+      <option name="number" value="00280" />
+      <option name="presentableId" value="LOCAL-00280" />
+      <option name="project" value="LOCAL" />
+      <updated>1719382687867</updated>
+    </task>
+    <task id="LOCAL-00281" summary="organization_description field added in district, college and charter school">
+      <option name="closed" value="true" />
+      <created>1719385075319</created>
+      <option name="number" value="00281" />
+      <option name="presentableId" value="LOCAL-00281" />
+      <option name="project" value="LOCAL" />
+      <updated>1719385075319</updated>
+    </task>
+    <task id="LOCAL-00282" summary="blog searching with categories in blogs">
+      <option name="closed" value="true" />
+      <created>1719515553419</created>
+      <option name="number" value="00282" />
+      <option name="presentableId" value="LOCAL-00282" />
+      <option name="project" value="LOCAL" />
+      <updated>1719515553420</updated>
+    </task>
+    <task id="LOCAL-00283" summary="solved js error on home">
+      <option name="closed" value="true" />
+      <created>1720035105537</created>
+      <option name="number" value="00283" />
+      <option name="presentableId" value="LOCAL-00283" />
+      <option name="project" value="LOCAL" />
+      <updated>1720035105537</updated>
+    </task>
+    <task id="LOCAL-00284" summary="about us page created">
+      <option name="closed" value="true" />
+      <created>1722033725832</created>
+      <option name="number" value="00284" />
+      <option name="presentableId" value="LOCAL-00284" />
+      <option name="project" value="LOCAL" />
+      <updated>1722033725832</updated>
+    </task>
+    <task id="LOCAL-00285" summary="minor fix">
+      <option name="closed" value="true" />
+      <created>1722033921758</created>
+      <option name="number" value="00285" />
+      <option name="presentableId" value="LOCAL-00285" />
+      <option name="project" value="LOCAL" />
+      <updated>1722033921758</updated>
+    </task>
+    <task id="LOCAL-00286" summary="about images border updated">
+      <option name="closed" value="true" />
+      <created>1722035885033</created>
+      <option name="number" value="00286" />
+      <option name="presentableId" value="LOCAL-00286" />
+      <option name="project" value="LOCAL" />
+      <updated>1722035885033</updated>
+    </task>
+    <option name="localTasksCounter" value="287" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="feature/jobs-integration" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="selected alphabets on refresh" />
+    <MESSAGE value="salary/hourly in job details" />
+    <MESSAGE value="alphabet filter fix" />
+    <MESSAGE value="alphabet filter in charter schools and colleges" />
+    <MESSAGE value="facet count in colleges" />
+    <MESSAGE value="clear filters" />
+    <MESSAGE value="mega menu college org fix" />
+    <MESSAGE value="school district jobs list" />
+    <MESSAGE value="fixes" />
+    <MESSAGE value="job listing in college and charter schools" />
+    <MESSAGE value="fixes + filters updated in school district" />
+    <MESSAGE value="scrolling to top in blog" />
+    <MESSAGE value="school district job filter value updated + its counts removed" />
+    <MESSAGE value="apply button in org filters on mobile" />
+    <MESSAGE value="reload active route on clicking" />
+    <MESSAGE value="application deadline in job detail added" />
+    <MESSAGE value="another apply btn on desktop in job detail page" />
+    <MESSAGE value="list of colleges tab removed + schoo list, video and images removed from detail page" />
+    <MESSAGE value="job sort and date_posting_Expires filters updated" />
+    <MESSAGE value="organization_description field added in district, college and charter school" />
+    <MESSAGE value="blog searching with categories in blogs" />
+    <MESSAGE value="solved js error on home" />
+    <MESSAGE value="about us page created" />
+    <MESSAGE value="minor fix" />
+    <MESSAGE value="about images border updated" />
+    <option name="LAST_COMMIT_MESSAGE" value="about images border updated" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/components/pages/common/CTABanner.vue</url>
+          <line>6</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/pages/school-districts/index.vue</url>
+          <line>127</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/pages/colleges/index.vue</url>
+          <line>264</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/tailwind.config.js</url>
+          <line>40</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/pages/pricing.vue</url>
+          <line>111</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

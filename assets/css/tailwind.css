@@ -1,0 +1,182 @@
+@import "custom.css";
+/*@import "fonts.css";*/
+/*@import url('https://fonts.googleapis.com/css2?family=Courier+Prime&family=Unica+One&display=swap');*/
+
+@tailwind base;
+input[type=text], input[type=email], input[type=password], .form-input, .form-textarea{
+    @apply bg-transparent rounded-lg border border-gray-200 py-2.5 px-3.5 shadow-field placeholder-gray-400
+}
+@tailwind components;
+@tailwind utilities;
+
+body{
+    @apply font-inter
+}
+
+
+input[type=checkbox]{
+    @apply appearance-none w-5 h-5 border border-gray-300 rounded-md focus:ring-0 cursor-pointer
+}
+input[type=radio]{
+    @apply appearance-none w-5 h-5  border border-gray-300 rounded-full focus:ring-0 cursor-pointer
+}
+input[type='radio']:checked{
+    @apply bg-brand-600
+}
+input[type="search"]::-webkit-search-cancel-button {
+    /* Remove default */
+    -webkit-appearance: none;
+  }
+
+.form-control{
+    @apply flex flex-col gap-1.5
+}
+.form-control input{
+    @apply w-full
+}
+section{
+    @apply pb-24
+}
+h1, h2, h3, h4, h5, h6{
+    @apply font-semibold
+}
+.slider-nav-arrows{
+    @apply flex justify-center items-center w-14 h-14 border border-gray-200 rounded-full cursor-pointer transition hover:bg-gray-200 text-gray-500
+}
+
+.section-subheading{
+    @apply text-brand-700 font-semibold
+}
+.section-heading{
+    @apply text-3xl md:text-4xl
+}
+.supporting-text{
+    @apply text-lg md:text-xl text-gray-600
+}
+
+.page-heading{
+    @apply text-4xl md:text-5xl text-gray-900
+}
+.page-subheading{
+    @apply max-md:text-sm text-brand-700 font-semibold
+}
+
+.input-error{
+    @apply text-error-400 text-sm
+}
+.form-input.has-error{
+    @apply ring-2 !border-0 !ring-error-400
+}
+.form-field-layout{
+    @apply sm:grid xl:grid-cols-3 xl:items-start gap-1.5 xl:gap-4 py-4 xl:py-6
+}
+.error-message{
+    @apply text-red-500 text-sm font-medium leading-tight
+}
+
+
+.form-input.dp__input{
+    @apply bg-transparent rounded-lg border border-gray-200 py-2.5 px-3.5 shadow-field placeholder-gray-400
+}
+.form-input.dp__input_focus{
+    @apply ring-2 ring-blue-600
+}
+.form-input.dp__input_valid {
+    @apply shadow-none hover:border-inherit
+}
+.form-input.dp__input_invalid{
+    @apply ring-2 ring-error-400 hover:border-inherit
+}
+.form-input.dp__menu_inner {
+    @apply rounded-lg bg-white p-4 shadow-lg;
+}
+.form-input.dp__arrow_bottom {
+    @apply bg-white transform-none;
+}
+.form-input.dp__month_year_select {
+    width: 20%;
+}
+.form-input.dp__month_year_wrap {
+    align-items: center;
+    justify-content: center;
+}
+.form-input.dp__active_date {
+    @apply bg-brand-600 !text-white;
+}
+.form-input.dp__today {
+    @apply border border-brand-600;
+}
+.form-input.dp__calendar_header {
+    @apply leading-6 text-sm font-medium text-gray-500;
+}
+.form-input.dp__cell_inner {
+    @apply font-semibold text-sm;
+}
+.form-input.dp__icon {
+    @apply stroke-gray-600;
+}
+.multiselect.custom-multi-select .multiselect__tags{
+    @apply h-11 bg-transparent !rounded-lg border border-gray-300 py-2.5 px-3.5 shadow-field placeholder-gray-400 bg-gray-50 text-gray-900 text-sm
+}
+.multiselect.custom-multi-select .multiselect__tag{
+    @apply bg-brand-600 mb-0
+}
+.multiselect.custom-multi-select .multiselect__tags-wrap{
+    @apply flex flex-nowrap overflow-x-auto mr-5
+}
+.multiselect.custom-multi-select .multiselect__tag-icon::after{
+    @apply text-white
+}
+.multiselect.custom-multi-select .multiselect__option--selected.multiselect__option--highlight{
+    @apply bg-brand-300
+}
+.multiselect.custom-multi-select .multiselect__content-wrapper .multiselect__option:hover,
+.multiselect.custom-multi-select .multiselect__content-wrapper .multiselect__option--highlight{
+    @apply bg-brand-600
+}
+.multiselect.custom-multi-select .multiselect__select:before{
+    @apply hidden
+}
+.multiselect.custom-multi-select .multiselect__select{
+    @apply !rotate-0 -right-1 top-1/4
+}
+.multiselect.custom-multi-select .multiselect__content-wrapper .multiselect__option:has(> .error-message) {
+    @apply hover:bg-transparent
+}
+.multiselect.custom-multi-select .multiselect__tags .multiselect__placeholder{
+    @apply !block !text-gray-900
+}
+.multiselect.custom-multi-select.autocomplete .multiselect__input{
+    @apply !p-0 focus:ring-0 focus:border-0 bg-transparent placeholder-gray-400 rounded-none text-sm !shadow-none mt-0.5
+}
+.multiselect.custom-multi-select.autocomplete .multiselect__placeholder{
+    @apply !text-gray-400
+}
+.multiselect.custom-multi-select .multiselect__spinner::before,
+.multiselect.custom-multi-select .multiselect__spinner::after{
+    @apply border-t-brand-600
+}
+.multiselect.custom-multi-select.autocomplete .multiselect__single{
+    @apply text-sm mb-0 mt-0.5 pl-0
+}
+.multiselect.custom-multi-select.multiselect--active .multiselect__tags{
+    @apply ring-2 ring-brand-600
+}
+.multiselect.custom-multi-select.has-error .multiselect__tags{
+    @apply ring-2 ring-red-400
+}
+.multiselect.custom-multi-select .multiselect__content-wrapper{
+    @apply border-0
+}
+
+
+/* Search Bar */
+.search-input-prepended{
+    @apply relative
+}
+.search-input-prepended .search-prepend-icon{
+    @apply pointer-events-none absolute inset-y-0 left-2 h-full w-5 text-gray-500
+}
+.search-input-prepended .search-input{
+    @apply block h-full rounded-lg w-full shadow-xs border border-gray-300 bg-transparent py-[13px] pl-8 pr-0 text-black sm:text-sm
+}

@@ -1,0 +1,5 @@
+:root {
+    --toastify-color-info: theme('colors.warning.600');
+    --toastify-color-success: theme('colors.success.500');
+    --toastify-color-warning: theme('colors.error.600');
+}
