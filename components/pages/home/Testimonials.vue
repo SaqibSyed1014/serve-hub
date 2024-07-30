@@ -10,7 +10,7 @@ const testimonialsList = [
     reviewerName: 'Olivia Rhye',
     reviewerEmail: 'olivia@untitledui.com',
     review: [
-        'Whether you want to build a team of 2 or 200, edujobs provides best options to everyone keeping the process easy and simple.'
+        'Whether you want to build a team of 2 or 200, ServeHub provides best options to everyone keeping the process easy and simple.'
     ],
     reviewDate: '23 April 2023',
     reviewTime: '8:13 AM',
@@ -21,8 +21,8 @@ const testimonialsList = [
     reviewerName: 'Pheonix Baker',
     reviewerEmail: 'olivia@untitledui.com',
     review: [
-        'Whether you want to build a team of 2 or 200, edujobs provides best options to everyone keeping the process easy and simple.',
-        'Whether you want to build a team of 2 or 200, edujobs provides best options to everyone keeping the process easy and simple.'
+        'Whether you want to build a team of 2 or 200, ServeHub provides best options to everyone keeping the process easy and simple.',
+        'Whether you want to build a team of 2 or 200, ServeHub provides best options to everyone keeping the process easy and simple.'
     ],
     reviewDate: '23 April 2023',
     reviewTime: '8:13 AM',
@@ -33,7 +33,7 @@ const testimonialsList = [
     reviewerName: 'Lana Stiener',
     reviewerEmail: 'olivia@untitledui.com',
     review: [
-      'Whether you want to build a team of 2 or 200, edujobs provides best options to everyone keeping the process easy and simple.'
+      'Whether you want to build a team of 2 or 200, ServeHub provides best options to everyone keeping the process easy and simple.'
     ],
     reviewDate: '23 April 2023',
     reviewTime: '8:13 AM',
@@ -44,8 +44,8 @@ const testimonialsList = [
     reviewerName: 'Demi Wilkinson',
     reviewerEmail: 'olivia@untitledui.com',
     review: [
-      'Whether you want to build a team of 2 or 200, edujobs provides best options to everyone keeping the process easy and simple.',
-      'Whether you want to build a team of 2 or 200, edujobs provides best options to everyone keeping the process easy and simple.'
+      'Whether you want to build a team of 2 or 200, ServeHub provides best options to everyone keeping the process easy and simple.',
+      'Whether you want to build a team of 2 or 200, ServeHub provides best options to everyone keeping the process easy and simple.'
     ],
     reviewDate: '23 April 2023',
     reviewTime: '8:13 AM',
@@ -56,7 +56,7 @@ const testimonialsList = [
     reviewerName: 'Andi Lane',
     reviewerEmail: 'olivia@untitledui.com',
     review: [
-      'Whether you want to build a team of 2 or 200, edujobs provides best options to everyone keeping the process easy and simple.'
+      'Whether you want to build a team of 2 or 200, ServeHub provides best options to everyone keeping the process easy and simple.'
     ],
     reviewDate: '23 April 2023',
     reviewTime: '8:13 AM',
@@ -67,8 +67,8 @@ const testimonialsList = [
     reviewerName: 'Natalie Crag',
     reviewerEmail: 'olivia@untitledui.com',
     review: [
-      'Whether you want to build a team of 2 or 200, edujobs provides best options to everyone keeping the process easy and simple.',
-        'Whether you want to build a team of 2 or 200, edujobs provides best options to everyone keeping the process easy and simple.'
+      'Whether you want to build a team of 2 or 200, ServeHub provides best options to everyone keeping the process easy and simple.',
+        'Whether you want to build a team of 2 or 200, ServeHub provides best options to everyone keeping the process easy and simple.'
     ],
     reviewDate: '23 April 2023',
     reviewTime: '8:13 AM',
@@ -79,8 +79,8 @@ const testimonialsList = [
     reviewerName: 'Demi Wilkinson',
     reviewerEmail: 'olivia@untitledui.com',
     review: [
-      'Whether you want to build a team of 2 or 200, edujobs provides best options to everyone keeping the process easy and simple.',
-      'Whether you want to build a team of 2 or 200, edujobs provides best options to everyone keeping the process easy and simple.'
+      'Whether you want to build a team of 2 or 200, ServeHub provides best options to everyone keeping the process easy and simple.',
+      'Whether you want to build a team of 2 or 200, ServeHub provides best options to everyone keeping the process easy and simple.'
     ],
     reviewDate: '23 April 2023',
     reviewTime: '8:13 AM',
@@ -91,7 +91,7 @@ const testimonialsList = [
     reviewerName: 'Andi Lane',
     reviewerEmail: 'olivia@untitledui.com',
     review: [
-      'Whether you want to build a team of 2 or 200, edujobs provides best options to everyone keeping the process easy and simple.'
+      'Whether you want to build a team of 2 or 200, ServeHub provides best options to everyone keeping the process easy and simple.'
     ],
     reviewDate: '23 April 2023',
     reviewTime: '8:13 AM',
@@ -102,7 +102,7 @@ const testimonialsList = [
     reviewerName: 'Olivia Rhye',
     reviewerEmail: 'olivia@untitledui.com',
     review: [
-      'Whether you want to build a team of 2 or 200, edujobs provides best options to everyone keeping the process easy and simple.'
+      'Whether you want to build a team of 2 or 200, ServeHub provides best options to everyone keeping the process easy and simple.'
     ],
     reviewDate: '23 April 2023',
     reviewTime: '8:13 AM',

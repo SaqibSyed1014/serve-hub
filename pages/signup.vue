@@ -70,7 +70,7 @@ onUnmounted(() => selectedUserType.value = 'organization')
     </NuxtLink>
     <div class="flex flex-col gap-3">
       <h1 class="font-semibold text-3xl">Sign up</h1>
-      <p>Get started today and join EduJobs!</p>
+      <p>Get started today and join ServeHub!</p>
     </div>
     <div class="w-full">
       <form

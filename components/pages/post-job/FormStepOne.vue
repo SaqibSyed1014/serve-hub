@@ -213,7 +213,7 @@ async function checkUserEmail(isFieldValid :boolean) {
             name="email"
             type="email"
             label="Your work email address*"
-            placeholder="example@edujobs.com"
+            placeholder="example@servehub.com"
             subLabel="Used to send you an email confirmation"
             className="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:py-6"
             @blur="checkUserEmail"

@@ -93,7 +93,7 @@ const date = new Date()
       </div>
 
       <p class="text-left w-full">
-        © EduJobs {{ date.getFullYear() }}
+        © ServeHub {{ date.getFullYear() }}
       </p>
     </div>
 

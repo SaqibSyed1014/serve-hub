@@ -53,7 +53,7 @@ const selectUserType = (type :string) => {
     <div class="container">
       <div class="grid grid-cols-4 sm:grid-cols-4 md:grid-cols-12 max-md:gap-8 py-24">
         <div class="logo-and-text col-span-4">
-          <img src="/images/logo.svg" alt="EduJobs Logo">
+          <img src="/images/logo.svg" alt="ServeHub Logo">
 
           <p class="max-md:pb-4 pt-8">Explore jobs and hire talent in the easiest possible way.</p>
         </div>
@@ -97,7 +97,7 @@ const selectUserType = (type :string) => {
       <div class="flex justify-between max-md:flex-col-reverse md:items-center text-gray-500 font-normal max-md:gap-6">
         <div class="flex max-md:flex-col md:items-center gap-4">
           <span class="max-md:block flex-1">
-            &copy; {{ currentYear }} EduJobs.org
+            &copy; {{ currentYear }} ServeHub.org
           </span>
           <div class="hidden md:block w-2 h-2 rounded-full bg-gray-500"/>
           <div class="flex items-center gap-4">

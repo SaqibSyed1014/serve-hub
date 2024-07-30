@@ -76,7 +76,7 @@ const router = useRouter();
       <div class="content flex items-center justify-between gap-7 xl:gap-10">
         <div class="logo shrink-0">
           <NuxtLink to="/">
-            <img src="/images/logo.svg" alt="EduJobs Logo" />
+            <img src="/images/logo.svg" alt="ServeHub Logo" />
           </NuxtLink>
         </div>
         <!-- Menu Links -->
