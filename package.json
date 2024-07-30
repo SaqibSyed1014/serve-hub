@@ -1,9 +1,9 @@
 {
-  "name": "edu-jobs",
+  "name": "serve-hub",
   "version": "1.0.0",
-  "description": "Explore thousands of job opportunities with all the information you need and manage all your job applications from start to finish.",
+  "description": "Find top jobs for bartenders, cooks, servers, chefs, and more in hotels, restaurants and bars.",
   "license": "MIT",
-  "repository": "https://github.com/mfr415/edujobs.git",
+  "repository": "https://github.com/servehub-llc/web.git",
   "homepage": "",
   "scripts": {
     "build": "nuxt build",
