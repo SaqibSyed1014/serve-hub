@@ -305,7 +305,7 @@ async function processJobSaving() {
                   </p>
                 </div>
               </template>
-              <div>
+              <div class="text-brand-600">
                 <SvgoRing14 v-if="currentStep === 0" class="h-14 xl:hidden" />
                 <SvgoRing24
                   v-else-if="currentStep === 1"

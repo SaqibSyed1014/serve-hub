@@ -4,7 +4,7 @@
 
 @tailwind base;
 input[type=text], input[type=email], input[type=password], .form-input, .form-textarea{
-    @apply bg-transparent rounded-lg border border-gray-200 py-2.5 px-3.5 shadow-field placeholder-gray-400
+    @apply bg-transparent rounded-lg border border-gray-200 py-2.5 px-3.5 shadow-field placeholder-gray-400 focus:ring-brand-600 focus:border-brand-600
 }
 @tailwind components;
 @tailwind utilities;
@@ -79,7 +79,7 @@ h1, h2, h3, h4, h5, h6{
     @apply bg-transparent rounded-lg border border-gray-200 py-2.5 px-3.5 shadow-field placeholder-gray-400
 }
 .form-input.dp__input_focus{
-    @apply ring-2 ring-range-600
+    @apply ring-2 ring-brand-600
 }
 .form-input.dp__input_valid {
     @apply shadow-none hover:border-inherit
