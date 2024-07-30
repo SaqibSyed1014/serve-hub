@@ -33,7 +33,7 @@ function selectingAlphabet(value :string) {
         <button
             :class="[
                   capital === selectedAlphabet
-                    ? 'text-blue-800 border-b-2 px-[5px] border-blue-800'
+                    ? 'text-brand-800 border-b-2 px-[5px] border-brand-800'
                     : 'md:px-[5px]',
                 ]"
             @click="selectingAlphabet(capital)"

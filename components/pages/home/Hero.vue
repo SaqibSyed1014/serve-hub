@@ -40,11 +40,11 @@ function searchJobs(filters :JobSearchFilters) {
     <div class="container relative">
       <div class="content text-center relative z-20 py-24">
         <h1 class="font-inter font-semibold text-4xl md:text-5xl lg:text-6xl tracking-[-2%] w-full md:w-10/12 2xl:w-8/12 mx-auto">
-          Your Future in Education <span class="text-brand-600">Awaits</span>
+          Find Your Next Job <span class="text-brand-600">Today</span>
         </h1>
 
         <p class="text-gray-600 text-lg md:text-xl w-full md:w-8/12 mx-auto pt-6 pb-12">
-          Embark on a rewarding educational career, from classroom teaching to district office roles
+          Find top jobs for bartenders, cooks, servers, chefs, and more in hotels, restaurants and bars.
         </p>
 
         <SearchBar

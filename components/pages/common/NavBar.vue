@@ -15,19 +15,19 @@ const menuLinks : MenuLinksType[] = [
     type: 'link'
   },
   {
-    label: "Organizations",
+    label: "Businesses",
     type: 'megaMenu',
     subLinks: [
       {
-        label: "School Districts",
+        label: "Restaurants",
         path: "/school-districts",
       },
       {
-        label: "Charter Schools",
+        label: "Hotels & Resorts",
         path: "/charter-schools",
       },
       {
-        label: "Colleges",
+        label: "Bars",
         path: "/colleges",
       },
     ]

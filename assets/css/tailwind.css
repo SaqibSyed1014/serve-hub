@@ -15,7 +15,7 @@ body{
 
 
 input[type=checkbox]{
-    @apply appearance-none w-5 h-5 border border-gray-300 rounded-md focus:ring-0 cursor-pointer
+    @apply appearance-none w-5 h-5 text-brand-600 border border-gray-300 rounded-md focus:ring-0 cursor-pointer
 }
 input[type=radio]{
     @apply appearance-none w-5 h-5  border border-gray-300 rounded-full focus:ring-0 cursor-pointer
@@ -79,7 +79,7 @@ h1, h2, h3, h4, h5, h6{
     @apply bg-transparent rounded-lg border border-gray-200 py-2.5 px-3.5 shadow-field placeholder-gray-400
 }
 .form-input.dp__input_focus{
-    @apply ring-2 ring-blue-600
+    @apply ring-2 ring-range-600
 }
 .form-input.dp__input_valid {
     @apply shadow-none hover:border-inherit

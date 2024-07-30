@@ -79,7 +79,7 @@ onUnmounted(() => selectedUserType.value = 'organization')
       >
         <div class="flex gap-12">
           <div class="flex items-center">
-            <input v-model="userType" id="org-cb" type="radio" value="organization" name="user-type" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 focus:ring-2">
+            <input v-model="userType" id="org-cb" type="radio" value="organization" name="user-type" class="w-4 h-4 text-brand-500 bg-gray-100 border-gray-300 focus:ring-brand-500 focus:ring-2">
             <label for="org-cb" class="ms-2 cursor-pointer">Organization</label>
           </div>
           <div class="flex items-center">

@@ -4,18 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ab7611ed-6f98-4ae4-b454-38c2d1a8a2f3" name="Changes" comment="Edujobs cloned">
+    <list default="true" id="ab7611ed-6f98-4ae4-b454-38c2d1a8a2f3" name="Changes" comment="colors and favicons updated">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/core/ListingFilters.vue" beforeDir="false" afterPath="$PROJECT_DIR$/components/core/ListingFilters.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/pages/job-listings/JobCard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/components/pages/job-listings/JobCard.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nuxt.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/nuxt.config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/apple-touch-icon.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/apple-touch-icon.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/favicon-16x16.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/favicon-16x16.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/favicon-32x32.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/favicon-32x32.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/public/favicon.ico" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/logo.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/logo.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/robots.txt" beforeDir="false" afterPath="$PROJECT_DIR$/public/robots.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/tailwind.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/css/tailwind.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/tailwind.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/pages/common/NavBar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/components/pages/common/NavBar.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/pages/common/OrganizationsMegaMenu.vue" beforeDir="false" afterPath="$PROJECT_DIR$/components/pages/common/OrganizationsMegaMenu.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/pages/home/Hero.vue" beforeDir="false" afterPath="$PROJECT_DIR$/components/pages/home/Hero.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/login.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -219,15 +214,7 @@
       <workItem from="1722020172852" duration="5424000" />
       <workItem from="1722365581573" duration="116000" />
       <workItem from="1722365897589" duration="389000" />
-      <workItem from="1722366321911" duration="1266000" />
-    </task>
-    <task id="LOCAL-00239" summary="compensation filters synced with location filter">
-      <option name="closed" value="true" />
-      <created>1718367900501</created>
-      <option name="number" value="00239" />
-      <option name="presentableId" value="LOCAL-00239" />
-      <option name="project" value="LOCAL" />
-      <updated>1718367900501</updated>
+      <workItem from="1722366321911" duration="2364000" />
     </task>
     <task id="LOCAL-00240" summary="minor fix">
       <option name="closed" value="true" />
@@ -613,7 +600,15 @@
       <option name="project" value="LOCAL" />
       <updated>1722366496903</updated>
     </task>
-    <option name="localTasksCounter" value="288" />
+    <task id="LOCAL-00288" summary="colors and favicons updated">
+      <option name="closed" value="true" />
+      <created>1722368049503</created>
+      <option name="number" value="00288" />
+      <option name="presentableId" value="LOCAL-00288" />
+      <option name="project" value="LOCAL" />
+      <updated>1722368049503</updated>
+    </task>
+    <option name="localTasksCounter" value="289" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -643,7 +638,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="salary/hourly in job details" />
     <MESSAGE value="alphabet filter fix" />
     <MESSAGE value="alphabet filter in charter schools and colleges" />
     <MESSAGE value="facet count in colleges" />
@@ -668,7 +662,8 @@
     <MESSAGE value="minor fix" />
     <MESSAGE value="about images border updated" />
     <MESSAGE value="Edujobs cloned" />
-    <option name="LAST_COMMIT_MESSAGE" value="Edujobs cloned" />
+    <MESSAGE value="colors and favicons updated" />
+    <option name="LAST_COMMIT_MESSAGE" value="colors and favicons updated" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

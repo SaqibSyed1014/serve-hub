@@ -76,7 +76,7 @@ async function redirectToStripe(priceId :string, idx :number) {
                     <div v-if="offer.id !== 4">
                       <label class="text-sm font-medium">Quantity:</label>
                       <template v-if="offer.id === 3">  <!--- quantity select options for job slots plans --->
-                        <select v-model="selectedSlot" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full py-[11px] px-2.5">
+                        <select v-model="selectedSlot" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-brand-500 focus:border-brand-500 block w-full py-[11px] px-2.5">
                           <option value="">Please choose slots</option>
                           <template v-for="option in offer?.slotsPricing">
                             <option :value="option.totalSlots">
@@ -86,7 +86,7 @@ async function redirectToStripe(priceId :string, idx :number) {
                         </select>
                       </template>
                       <template v-else> <!--- quantity select options for standard and featured plans --->
-                        <select v-model="selectedQty[index]" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full py-[11px] px-2.5">
+                        <select v-model="selectedQty[index]" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-brand-500 focus:border-brand-500 block w-full py-[11px] px-2.5">
                           <option value="">Please choose quantity</option>
                           <template v-for="value in Array.from({ length: offer.slotEndRange - offer.slotStartRange + 1 }, (_, i) => offer.slotStartRange + i)">
                             <option :value="value">

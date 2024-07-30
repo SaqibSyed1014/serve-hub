@@ -73,7 +73,7 @@ const canProceed = computed(() => {
           <input type="checkbox" class="form-checkbox"/>
           <span class="font-medium">Remember for 30 days</span>
         </div>
-        <NuxtLink to="/forgot-password" class="font-semibold text-sm text-blue-500 hover:underline">
+        <NuxtLink to="/forgot-password" class="font-semibold text-sm text-brand-500 hover:underline">
           Forgot password
         </NuxtLink>
       </div>

@@ -107,7 +107,7 @@ watch(
   @apply bg-transparent rounded-lg border border-gray-200 py-2.5 px-3.5 shadow-field placeholder-gray-400
 }
 .dp__input_focus{
-  @apply ring-2 ring-blue-600
+  @apply ring-2 ring-brand-600
 }
 .dp__input_valid {
   @apply shadow-none hover:border-inherit
