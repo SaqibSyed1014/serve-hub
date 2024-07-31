@@ -74,7 +74,7 @@ async function processJobSaving() {
               <button
                 id="tooltipButton"
                 type="button"
-                @click="() => emit('editIconClicked', 0, 'orgName')"
+                @click="() => emit('editIconClicked', 0, 'businessName')"
               >
                 <BaseTooltip id="edit-icon-1" tooltip-content="Edit" position="right">
                   <SvgoEditPensil class="edit-field-icon" />
@@ -83,7 +83,7 @@ async function processJobSaving() {
             </div>
 
             <p class="preview-field-text">
-              {{ formData.stepOne?.organizationName ? formData.stepOne.organizationName : "N/A" }}
+              {{ formData.stepOne?.businessName ? formData.stepOne.businessName : "N/A" }}
             </p>
           </div>
 
@@ -95,7 +95,7 @@ async function processJobSaving() {
               <button
                   id="tooltipButton"
                   type="button"
-                  @click="() => emit('editIconClicked', 0, 'organizationTypeId')"
+                  @click="() => emit('editIconClicked', 0, 'businessTypeId')"
               >
                 <BaseTooltip id="edit-icon-2" tooltip-content="Edit" position="right">
                   <SvgoEditPensil class="edit-field-icon" />

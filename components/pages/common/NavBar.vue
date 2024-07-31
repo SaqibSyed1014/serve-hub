@@ -28,7 +28,7 @@ const menuLinks : MenuLinksType[] = [
       },
       {
         label: "Bars",
-        path: "/colleges",
+        path: "/bars",
       },
     ]
   },

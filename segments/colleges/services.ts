@@ -7,7 +7,7 @@ const getCollegesList = (query: any) :Promise<CollegesResponseType> => {
         'API-Key': apiKey,
     }
     const queryString = convertQueryToString(query);
-    return $fetch(`${baseUrl}/colleges/list?${queryString}`, {
+    return $fetch(`${baseUrl}/bars/list?${queryString}`, {
         method: 'get',
         headers: apiHeaders,
     })

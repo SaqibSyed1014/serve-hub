@@ -53,8 +53,8 @@ async function checkout () {
         email: formsCollectiveData.stepOne.email,
         price_id: jobPostingPrice.value === '$49' ? pricingPlansIDs[0] : pricingPlansIDs[1],
         fullName: formsCollectiveData.stepOne.fullName,
-        organizationName: formsCollectiveData.stepOne.organizationName,
-        organizationTypeId: formsCollectiveData.stepOne.organizationTypeId,
+        businessName: formsCollectiveData.stepOne.businessName,
+        businessTypeId: formsCollectiveData.stepOne.businessTypeId,
         jobTitle : formsCollectiveData.stepTwo.jobTitle,
     };
   await postjobStore.fetchPayment(payload)

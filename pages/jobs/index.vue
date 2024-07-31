@@ -7,7 +7,6 @@ import type {JobQueryParams, JobSearchFilters, PaginationInfo, TypesenseQueryPar
 import SignUpCard from "~/components/pages/job-listings/SignUpCard.vue";
 import {
   divideFilterQuery,
-  extractMinMaxCompensationValues,
   getFilterByQuery,
   itemsViewOptions,
   jobFilters

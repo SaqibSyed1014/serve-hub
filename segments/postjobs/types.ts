@@ -127,8 +127,8 @@
      email: string;
      price_id: string;
      fullName: string;
-     organizationName: string;
-     organizationTypeId: number;
+     businessName: string;
+     businessTypeId: number;
      jobTitle: string;
  }
 

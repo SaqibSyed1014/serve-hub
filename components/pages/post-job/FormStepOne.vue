@@ -18,8 +18,8 @@ const { businessTypesDropdown, orgNamesDropdown, searchedOrgNames } = storeToRef
 const uploadedImage = ref("");
 
 const schema = Yup.object({
-  OrgId: Yup.string(),
-  organizationName: Yup.string().required("Business Name is required"),
+  businessId: Yup.string(),
+  businessName: Yup.string().required("Business Name is required"),
   businessTypeId: Yup.number().typeError('Business type is required').required('Business type is required'),
   logoPath: Yup.mixed(),
   email: Yup.string().required('Email is required').email('Invalid email'),
@@ -30,8 +30,8 @@ const schema = Yup.object({
 const { defineField, handleSubmit, values, errors, resetForm } = useForm({
   validationSchema: schema
 });
-const [OrgId] = defineField('OrgId');
-const [organizationName, orgNameAttrs] = defineField('organizationName');
+const [businessId] = defineField('businessId');
+const [businessName, businessNameAttrs] = defineField('businessName');
 const [businessTypeId, businessTypeAttrs] = defineField('businessTypeId');
 const [logoPath] = defineField('logoPath');
 const [email, emailAttrs] = defineField('email');
@@ -56,7 +56,7 @@ resetForm({
   values: props.initialFormValues,
 });
 
-watch(() => [values.organizationName, uploadedImage.value], (val) => {
+watch(() => [values.businessName, uploadedImage.value], (val) => {
   emit('formDataListener', {
     orgName: val[0],
     image: val[1]
@@ -98,16 +98,16 @@ const getSearchedText = debounce(async (input :string) => {
 }, 600)
 
 function checkSelection() {
-  organizationName.value = searchedName.value.label;
-  OrgId.value = searchedName.value.value;
-  if (orgAutocomplete.value) orgAutocomplete.value.search = organizationName.value;
+  businessName.value = searchedName.value.label;
+  businessId.value = searchedName.value.value;
+  if (orgAutocomplete.value) orgAutocomplete.value.search = businessName.value;
 }
 
 watch(() => props.initialFormValues, (val) => {
-  if (val.organizationName) {  // if orgName is selected and exists in form
+  if (val.businessName) {  // if orgName is selected and exists in form
     searchedName.value = {
-      label: val.organizationName,
-      value: val.OrgId
+      label: val.businessName,
+      value: val.businessId
     }
   }
 }, { immediate: true })
@@ -122,8 +122,8 @@ function dropdownClosed() {
 function resetOrgAutocomplete() {
   searchedOrgNames.value = [];
   searchedName.value = null;
-  organizationName.value = '';
-  OrgId.value = null;
+  businessName.value = '';
+  businessId.value = null;
 }
 
 async function checkUserEmail(isFieldValid :boolean) {
@@ -147,7 +147,7 @@ async function checkUserEmail(isFieldValid :boolean) {
         <div class="sm:col-span-2 sm:mt-0">
           <multiselect
               ref="orgAutocomplete"
-              id="orgName"
+              id="businessName"
               v-model="searchedName"
               :options="orgNamesDropdown"
               label="label"
@@ -165,7 +165,7 @@ async function checkUserEmail(isFieldValid :boolean) {
               @search-change="getSearchedText"
               @select="checkSelection"
               @close="dropdownClosed"
-              :class="{ 'has-error': errors?.organizationName }"
+              :class="{ 'has-error': errors?.businessName }"
           >
             <template #caret>
               <span></span>
@@ -180,7 +180,7 @@ async function checkUserEmail(isFieldValid :boolean) {
 
           <ErrorMessage
               class="error-message"
-              name="organizationName"
+              name="businessName"
           />
         </div>
       </div>
@@ -188,7 +188,7 @@ async function checkUserEmail(isFieldValid :boolean) {
       <SelectBox
           v-model="businessTypeId"
           v-bind="businessTypeAttrs"
-          name="organizationTypeId"
+          name="businessTypeId"
           label="Business Type"
           :data="businessTypesDropdown"
           :label-value-options="true"
