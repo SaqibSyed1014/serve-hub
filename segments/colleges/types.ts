@@ -1,9 +1,9 @@
-interface CollegeDocument {
+interface BusinessDocument {
   city: string;
   county_name: string;
   id: string;
   institution_level: number;
-  institution_name: string;
+  business_name: string;
   latitude: number;
   location:  [number, number];
   longitude: number;
@@ -20,7 +20,7 @@ interface CollegeDocument {
 }
 
 interface Hit {
-  document: CollegeDocument;
+  document: BusinessDocument;
   highlight: Record<string, any>;
   highlights: any[];
 }

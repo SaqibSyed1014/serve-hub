@@ -13,7 +13,7 @@ defineProps<{ data: any; isSchool: Boolean }>();
         <h4
           class="text-gray-900 text-sm md:text-base font-semibold leading-normal"
         >
-          {{ data?.document?.institution_name }}
+          {{ data?.document?.business_name }}
         </h4>
 
         <div class="inline-flex flex-wrap gap-5 pt-2">

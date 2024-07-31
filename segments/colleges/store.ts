@@ -1,4 +1,4 @@
-import { getCollegesList, getCollegeDetails } from "~/segments/colleges/services"
+import { getBarsList, getCollegeDetails } from "~/segments/colleges/services"
 import { getJobsList } from "~/segments/jobs/services";
 
 interface CollegesState {
@@ -22,8 +22,8 @@ export const useCollegesStore = defineStore('collegesStore', {
         collegeJobs: []
     } as CollegesState),
     actions: {
-        async fetchColleges(query:any) {
-            const { hits, found} = await getCollegesList(query)
+        async fetchBars(query:any) {
+            const { hits, found} = await getBarsList(query)
             this.$state.collegesList = hits;
             this.$state.total_page = Math.ceil(found / 24);
         },

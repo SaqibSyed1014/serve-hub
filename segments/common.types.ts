@@ -22,7 +22,8 @@ export interface TypesenseQueryParam {
     per_page: number,
     page: number, query_by ?:string,
     filter_by: string
-    sort_by?: string
+    sort_by?: string,
+    business_type: string
 }
 
 export interface JobQueryParams extends LocationQueryRaw{

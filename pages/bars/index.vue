@@ -33,7 +33,7 @@ const switchView = (view: string) => {
   isGridView.value = view;
   localStorage.setItem('collegesLayout', view);
   router.replace({
-    path: "/colleges",
+    path: "/bars",
     query: {
       view: view,
       ...queryParams?.value,
@@ -54,7 +54,7 @@ onMounted(async () => {
   if (route?.query?.filter_by) {
     query.value.filter_by = route?.query?.filter_by.toString();
     const splitFilterBy = query?.value?.filter_by.split('&&');
-    const alphabetFilterVal = splitFilterBy.filter(val => val.includes('institution_name'))[0] || ''
+    const alphabetFilterVal = splitFilterBy.filter(val => val.includes('business_name'))[0] || ''
     if (alphabetFilterVal.length) {
       selectedAlphabet.value = alphabetFilterVal?.match(/:=([a-zA-Z]+)/)[1] || '';
       alphabetFilter.value = alphabetFilterVal;
@@ -102,7 +102,8 @@ const query = ref<TypesenseQueryParam>({
   q: "*",
   page: pageInfo.value.currentPage,
   per_page: pageInfo.value.itemsPerPage,
-  filter_by: 'status:=active'
+  filter_by: 'status:=active',
+  business_type: 'Bars'
 });
 
 if (route?.query.filter_by?.length) { // If it exists, assign its value to the filter_by property
@@ -120,7 +121,7 @@ const queryParams = computed(() => {
 async function fetchColleges() {
   localStorage.setItem('collegesLayout', isGridView.value)
   isLoading.value = true;
-  await collegesStore.fetchColleges(query?.value);
+  await collegesStore.fetchBars(query?.value);
   isLoading.value = false;
   totalPages.value = total_page?.value;
 }
@@ -132,7 +133,7 @@ const paginate = (page: number | "prev" | "next") => {
   query.value.page = currentPage?.value;
 
   router.replace({
-    path: "/colleges",
+    path: "/bars",
     query: {
       view: isGridView.value,
       ...queryParams.value,
@@ -165,11 +166,11 @@ const jobOptions = ref({
 
 const selectAlphabet = (letter: string) => {
   selectedAlphabet.value = letter;
-  if (letter.length) alphabetFilter.value = `institution_name:=${letter}*`
+  if (letter.length) alphabetFilter.value = `business_name:=${letter}*`
   else alphabetFilter.value = '';
   query.value.filter_by = getCollegesFilterQuery(alphabetFilter.value, checkboxesFilter.value);
   router.replace({
-    path: "/colleges",
+    path: "/bars",
     query: {
       view: isGridView.value,
       ...queryParams.value,
@@ -184,12 +185,12 @@ const handleInput = _debounce(() => {
 
 const search = (resetToDefaultPage = false) => {
   query.value.q = searchedValue.value.toString() ?? "*";
-  query.value.query_by = "institution_name";
+  query.value.query_by = "business_name";
   if (resetToDefaultPage) query.value.page = 1;
   else query.value.page = route?.query?.page ? route.query.page : 1;  // search with page number if there's page number in the query params
   currentPage.value = 1;
   router.replace({
-    path: "/colleges",
+    path: "/bars",
     query: {
       view: isGridView.value,
       ...queryParams.value,
@@ -217,7 +218,7 @@ function processFiltration() {
   query.value.filter_by = getCollegesFilterQuery(alphabetFilter.value, checkboxesFilter.value);
 
   router.replace({
-    path: "/colleges",
+    path: "/bars",
     query: {
       view: isGridView.value,
       ...queryParams.value,
