@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ab7611ed-6f98-4ae4-b454-38c2d1a8a2f3" name="Changes" comment="theme updated">
+    <list default="true" id="ab7611ed-6f98-4ae4-b454-38c2d1a8a2f3" name="Changes" comment="api url updated">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/pages/post-job/FormStepFour.vue" beforeDir="false" afterPath="$PROJECT_DIR$/components/pages/post-job/FormStepFour.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/pages/post-job/FormStepTwo.vue" beforeDir="false" afterPath="$PROJECT_DIR$/components/pages/post-job/FormStepTwo.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,7 +52,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/DevDock/WebstormProjects/Upwork Projects/ServeHub/public",
+    "last_opened_file_path": "C:/Users/DevDock/WebstormProjects/DevDock Portfolio/conceal-react",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -211,31 +209,8 @@
       <workItem from="1722020172852" duration="5424000" />
       <workItem from="1722365581573" duration="116000" />
       <workItem from="1722365897589" duration="389000" />
-      <workItem from="1722366321911" duration="4187000" />
-    </task>
-    <task id="LOCAL-00242" summary="blog categories integrated">
-      <option name="closed" value="true" />
-      <created>1718399249414</created>
-      <option name="number" value="00242" />
-      <option name="presentableId" value="LOCAL-00242" />
-      <option name="project" value="LOCAL" />
-      <updated>1718399249414</updated>
-    </task>
-    <task id="LOCAL-00243" summary="blog categories fix">
-      <option name="closed" value="true" />
-      <created>1718400795259</created>
-      <option name="number" value="00243" />
-      <option name="presentableId" value="LOCAL-00243" />
-      <option name="project" value="LOCAL" />
-      <updated>1718400795259</updated>
-    </task>
-    <task id="LOCAL-00244" summary="jobs relation with include jobs checkbox">
-      <option name="closed" value="true" />
-      <created>1718434860913</created>
-      <option name="number" value="00244" />
-      <option name="presentableId" value="LOCAL-00244" />
-      <option name="project" value="LOCAL" />
-      <updated>1718434860913</updated>
+      <workItem from="1722366321911" duration="6997000" />
+      <workItem from="1722425468980" duration="610000" />
     </task>
     <task id="LOCAL-00245" summary="job filters on mobile">
       <option name="closed" value="true" />
@@ -605,7 +580,31 @@
       <option name="project" value="LOCAL" />
       <updated>1722370065043</updated>
     </task>
-    <option name="localTasksCounter" value="291" />
+    <task id="LOCAL-00291" summary="grade and subject fields removed">
+      <option name="closed" value="true" />
+      <created>1722370744670</created>
+      <option name="number" value="00291" />
+      <option name="presentableId" value="LOCAL-00291" />
+      <option name="project" value="LOCAL" />
+      <updated>1722370744670</updated>
+    </task>
+    <task id="LOCAL-00292" summary="branding name updated">
+      <option name="closed" value="true" />
+      <created>1722371231205</created>
+      <option name="number" value="00292" />
+      <option name="presentableId" value="LOCAL-00292" />
+      <option name="project" value="LOCAL" />
+      <updated>1722371231205</updated>
+    </task>
+    <task id="LOCAL-00293" summary="api url updated">
+      <option name="closed" value="true" />
+      <created>1722375592130</created>
+      <option name="number" value="00293" />
+      <option name="presentableId" value="LOCAL-00293" />
+      <option name="project" value="LOCAL" />
+      <updated>1722375592131</updated>
+    </task>
+    <option name="localTasksCounter" value="294" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -622,7 +621,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="feature/jobs-integration" />
+                        <option value="main" />
                       </list>
                     </value>
                   </entry>
@@ -635,9 +634,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="facet count in colleges" />
-    <MESSAGE value="clear filters" />
-    <MESSAGE value="mega menu college org fix" />
     <MESSAGE value="school district jobs list" />
     <MESSAGE value="fixes" />
     <MESSAGE value="job listing in college and charter schools" />
@@ -660,7 +656,10 @@
     <MESSAGE value="colors and favicons updated" />
     <MESSAGE value="old colors updated" />
     <MESSAGE value="theme updated" />
-    <option name="LAST_COMMIT_MESSAGE" value="theme updated" />
+    <MESSAGE value="grade and subject fields removed" />
+    <MESSAGE value="branding name updated" />
+    <MESSAGE value="api url updated" />
+    <option name="LAST_COMMIT_MESSAGE" value="api url updated" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

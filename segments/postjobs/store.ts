@@ -1,8 +1,6 @@
 import {
     getStripeCheckDetails,
     getOrgTypes,
-    getGradesLevels,
-    getSubjects,
     getExperienceLevels,
     getSearchedOrgName,
     checkUserMailExists,
@@ -14,9 +12,7 @@ interface StripeCheckout {
     duration: number | null;
     status: string | null;
     requestId: string | null;
-    organizationTypes: OrganizationType[];
-    gradeLevels: GradeLevel[];
-    subjects: Subject[];
+    businessTypes: BusinessType[];
     experienceLevels: ExperienceLevel[];
     searchedOrgNames: OrgDocument[];
     checkoutURL: string;
@@ -28,9 +24,7 @@ export const usePostjobStore = defineStore('postjobStore', {
         duration: null,
         status: null,
         requestId: null,
-        organizationTypes: [],
-        gradeLevels: [],
-        subjects: [],
+        businessTypes: [],
         experienceLevels: [],
         searchedOrgNames: [],
         checkoutURL: ''
@@ -54,13 +48,7 @@ export const usePostjobStore = defineStore('postjobStore', {
         },
 
         async fetchOrgTypes() {
-            this.$state.organizationTypes = await getOrgTypes();
-        },
-        async fetchGradeLevels() {
-            this.$state.gradeLevels = await getGradesLevels();
-        },
-        async fetchSubjects() {
-            this.$state.subjects = await getSubjects();
+            this.$state.businessTypes = await getOrgTypes();
         },
         async fetchExperienceLevels() {
             this.$state.experienceLevels = await getExperienceLevels();
@@ -91,22 +79,10 @@ export const usePostjobStore = defineStore('postjobStore', {
         },
     },
     getters: {
-        orgTypesDropdown: (state) => {
-            return state.organizationTypes.map((org :OrganizationType) => ({
-                label: org.organization_type,
-                value: org.organization_type_id
-            }))
-        },
-        gradeLevelDropdown: (state) => {
-            return state.gradeLevels.map((grade :GradeLevel) => ({
-                label: grade.grade_level_long,
-                value: grade.grade_level_id
-            }))
-        },
-        subjectsDropdown: (state) => {
-            return state.subjects.map((grade :Subject) => ({
-                label: grade.subject_long,
-                value: grade.subject_id
+        businessTypesDropdown: (state) => {
+            return state.businessTypes.map((org :BusinessType) => ({
+                label: org.business_type,
+                value: org.business_type_id
             }))
         },
         experienceLevelOptions: (state) => {

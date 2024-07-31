@@ -135,7 +135,7 @@ const sliderBreakpoints = {
           <div class="heading-and-subheading flex flex-col gap-3">
             <p class="section-subheading">Testimonials</p>
             <h2 class="section-heading">Trusted by the Education Community</h2>
-            <p class="supporting-text">See what candidates and hiring teams at organizations are saying</p>
+            <p class="supporting-text">See what candidates and hiring teams at businesses are saying</p>
           </div>
           <div>
             <BaseButton navigate-to="/jobs" label="Search Jobs" color="primary">

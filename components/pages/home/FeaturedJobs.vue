@@ -94,7 +94,7 @@ const sliderBreakpoints = {
               Featured Jobs
             </h3>
             <p class="supporting-text md:pb-8">
-              These organizations are actively hiring.
+              These businesses are actively hiring.
             </p>
             <BaseButton navigate-to="/jobs" class="max-md:hidden" label="View Featured Jobs" color="primary">
               <template #append-icon>

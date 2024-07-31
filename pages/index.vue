@@ -2,13 +2,11 @@
   <div>
     <Hero />
     <Partnerships />
-<!--    <Testimonials />-->
     <BrowseJobsByCities />
     <FeaturedJobs />
     <ForCandidates />
-    <ForOrganizations />
+    <ForBusinesses />
     <Blogs />
-<!--    <ContactForm />-->
   </div>
 </template>
 

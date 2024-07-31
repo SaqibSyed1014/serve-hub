@@ -82,7 +82,7 @@ function returnToMainMenu() {
           </ul>
 
           <div class="py-6">
-            <BaseButton full-sized-on-small navigate-to="/signup" label="Create an Organization Account"/>
+            <BaseButton full-sized-on-small navigate-to="/signup" label="Create a Business Account"/>
           </div>
         </div>
       </transition>

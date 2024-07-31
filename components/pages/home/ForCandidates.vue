@@ -38,10 +38,10 @@ const selectedTab = ref(0)
                 with your career aspirations and timing.
               </p>
 
-              <button class="flex items-center gap-3 text-brand-700 font-semibold group">
+              <NuxtLink to="/jobs" class="flex items-center gap-3 text-brand-700 font-semibold group">
                 Apply Now
                 <ArrowIcon class="w-3 h-3 group-hover:translate-x-[8px] transition" />
-              </button>
+              </NuxtLink>
             </div>
             <div :class="[ selectedTab === 2 ? 'border-brand-600' : 'border-gray-100' ]" @click="selectedTab = 2" class="border-l-4 px-6 py-4 cursor-pointer">
               <h4 class="font-semibold text-lg">
@@ -51,10 +51,10 @@ const selectedTab = ref(0)
                 Gain exclusive access to insights on salary trends, comprehensive career resources, and valuable industry data, all designed to inform and enhance your career trajectory.
               </p>
 
-              <button class="flex items-center gap-3 text-brand-700 font-semibold group">
+              <NuxtLink to="/signup" class="flex items-center gap-3 text-brand-700 font-semibold group">
                 Sign Up
                 <ArrowIcon class="w-3 h-3 group-hover:translate-x-[8px] transition" />
-              </button>
+              </NuxtLink>
             </div>
           </div>
           <div>

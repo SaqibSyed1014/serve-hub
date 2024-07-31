@@ -13,14 +13,14 @@ const props = defineProps<{
 }>()
 
 const jobPostStore = usePostjobStore();
-const { orgTypesDropdown, orgNamesDropdown, searchedOrgNames } = storeToRefs(jobPostStore);
+const { businessTypesDropdown, orgNamesDropdown, searchedOrgNames } = storeToRefs(jobPostStore);
 
 const uploadedImage = ref("");
 
 const schema = Yup.object({
   OrgId: Yup.string(),
-  organizationName: Yup.string().required("Organization Name is required"),
-  organizationTypeId: Yup.number().typeError('Organization type is required').required('Organization type is required'),
+  organizationName: Yup.string().required("Business Name is required"),
+  businessTypeId: Yup.number().typeError('Business type is required').required('Business type is required'),
   logoPath: Yup.mixed(),
   email: Yup.string().required('Email is required').email('Invalid email'),
   fullName: Yup.string().required("Full Name is required"),
@@ -32,7 +32,7 @@ const { defineField, handleSubmit, values, errors, resetForm } = useForm({
 });
 const [OrgId] = defineField('OrgId');
 const [organizationName, orgNameAttrs] = defineField('organizationName');
-const [organizationTypeId, orgTypeAttrs] = defineField('organizationTypeId');
+const [businessTypeId, businessTypeAttrs] = defineField('businessTypeId');
 const [logoPath] = defineField('logoPath');
 const [email, emailAttrs] = defineField('email');
 const [fullName, fullNameAttrs] = defineField('fullName');
@@ -186,19 +186,19 @@ async function checkUserEmail(isFieldValid :boolean) {
       </div>
 
       <SelectBox
-          v-model="organizationTypeId"
-          v-bind="orgTypeAttrs"
+          v-model="businessTypeId"
+          v-bind="businessTypeAttrs"
           name="organizationTypeId"
-          label="Organization Type"
-          :data="orgTypesDropdown"
+          label="Business Type"
+          :data="businessTypesDropdown"
           :label-value-options="true"
           subLabel=""
-          :value="values.organizationTypeId"
+          :value="values.businessTypeId"
           className="form-field-layout mt-0"
       />
 
       <ImageFileUpload
-          label="Organization Logo/Icon"
+          label="Business Logo/Icon"
           subLabel="This will be displayed on your profile."
           :uploaded-image="uploadedImage"
           :handle-image-upload="handleImageUpload"

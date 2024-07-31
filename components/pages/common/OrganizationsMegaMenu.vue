@@ -71,7 +71,7 @@ const router = useRouter();
     <hr class="my-4">
 
     <div class="text-end">
-      <BaseButton navigate-to="/signup" label="Create an Organization Account" />
+      <BaseButton navigate-to="/signup" label="Create a Business Account" />
     </div>
   </div>
 </template>

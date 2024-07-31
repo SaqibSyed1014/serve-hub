@@ -9,7 +9,7 @@ const cardsList = [
   {
     title: 'Get Started',
     text: 'Set up a profile that highlights your schools\'s ethos and mission. Attract potential candidates by showcasing what makes your institution unique.',
-    linkText: 'Create your organization profile today',
+    linkText: 'Create your business profile today',
     path: '/signup',
     icon: UsersIcon
   },
@@ -23,7 +23,7 @@ const cardsList = [
   {
     title: 'Attract Top Talent',
     text: 'Showcase your tech, company culture, perks and benefits, and more. We\'ll help you tell your story to make sure you attract the best talent.',
-    linkText: 'Showcase your organization',
+    linkText: 'Showcase your business',
     path: '/signup',
     icon: AnnouncementIcon
   }
@@ -35,7 +35,7 @@ const cardsList = [
     <div class="container">
       <div class="content">
         <div class="heading-and-subheading flex flex-col justify-center sm:items-center gap-3 sm:text-center">
-          <p class="section-subheading">For Organizations</p>
+          <p class="section-subheading">For Business</p>
           <h2 class="section-heading">
             Find out what we have for your company
           </h2>

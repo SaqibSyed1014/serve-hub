@@ -10,7 +10,7 @@ const { partnersLogo } = storeToRefs(homeStore)
   <section v-if="partnersLogo.length" class="py-24">
     <div class="container">
         <p class="section-title">
-          Trusted by Education Organizations Nationwide
+          Trusted by Businesses Nationwide
         </p>
       <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 justify-center items-center gap-x-8 sm:gap-x-12 md:gap-x-16 gap-y-4 sm:gap-y-8">
         <template v-for="partner in partnersLogo">

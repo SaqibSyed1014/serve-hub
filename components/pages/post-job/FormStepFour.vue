@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import {convertTZDateToShortDate} from "~/segments/utils";
-import {usePostjobStore} from "~/segments/postjobs/store";
+import { convertTZDateToShortDate } from "~/segments/utils";
+import { usePostjobStore } from "~/segments/postjobs/store";
 import {
   compensationTypesOptions,
   employmentOptions,
@@ -15,14 +15,14 @@ const props = defineProps<{
 
 const postJobStore = usePostjobStore();
 const {
-  orgTypesDropdown,
+  businessTypesDropdown,
   experienceLevelOptions
 } = storeToRefs(postJobStore);
 
 const emit = defineEmits(['editIconClicked', 'moveToPrevStep', 'updatedJobPostingPricing']);
 
-const orgTypeLabel = computed(() => {
-  return orgTypesDropdown.value.filter((org) => org?.value == props.formData.stepOne?.organizationTypeId)[0].label
+const businessTypeLabel = computed(() => {
+  return businessTypesDropdown.value.filter((business) => business?.value == props.formData.stepOne?.businessTypeId)[0].label
 })
 
 const employmentTypeLabel = computed(() => {
@@ -39,8 +39,7 @@ const jobRoleLabel= computed(() => {
 
 const compensationPreview = computed(() => {
   const stepTwoData = props.formData.stepTwo;
-  const selectedCompensationTypeLabel = compensationTypesOptions.filter(compensation => compensation.value === stepTwoData.compensationTypeId)[0].label
-  return selectedCompensationTypeLabel
+  return compensationTypesOptions.filter(compensation => compensation.value === stepTwoData.compensationTypeId)[0].label
 })
 
 let processingSaveJob = ref<boolean>(false);
@@ -64,13 +63,13 @@ async function processJobSaving() {
     <div class="mt-5 border-b border-gray-900/10 divide-y divide-gray-900/10 border-t pb-0">
       <div class="flex-col justify-start items-start inline-flex w-full gap-6 py-4 md:py-6">
         <h4 class="text-gray-900 text-base font-semibold leading-normal">
-          Organization Information
+          Business Information
         </h4>
         <div class="preview-field-layout">
           <div class="preview-field-wrapper">
             <div class="preview-field-update">
               <p class="preview-field-heading">
-                Organization Name
+                Business Name
               </p>
               <button
                 id="tooltipButton"
@@ -91,7 +90,7 @@ async function processJobSaving() {
           <div class="preview-field-wrapper">
             <div class="preview-field-update">
               <p class="preview-field-heading">
-                Organization Type
+                Business Type
               </p>
               <button
                   id="tooltipButton"
@@ -105,7 +104,7 @@ async function processJobSaving() {
             </div>
 
             <p class="preview-field-text">
-              {{ orgTypeLabel }}
+              {{ businessTypeLabel }}
             </p>
           </div>
         </div>

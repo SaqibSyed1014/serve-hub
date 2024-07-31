@@ -14,7 +14,7 @@
                     <span
                         class="text-gray-600 text-xs font-normal leading-[18px]"
                     >We donate a percentage of job posting revenue to
-                      classroom projects through our partnership</span
+                      non-profit organizations through our partnership</span
                     ><span
               class="text-gray-600 text-sm font-normal leading-tight"
           >

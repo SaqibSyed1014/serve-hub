@@ -18,8 +18,6 @@ onMounted(async() => {
   isFormLoading.value = true;
   await Promise.all([
     postjobStore.fetchOrgTypes(),
-    postjobStore.fetchGradeLevels(),
-    postjobStore.fetchSubjects(),
     postjobStore.fetchExperienceLevels()
   ])
   isFormLoading.value = false;

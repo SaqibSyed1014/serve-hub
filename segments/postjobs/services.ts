@@ -15,34 +15,12 @@ const  getStripeCheckDetails = async (requestBody :JobPaymentPayload) :Promise<S
     });
 }
 
-const getOrgTypes = () :Promise<OrganizationType[]> => {
+const getOrgTypes = () :Promise<BusinessType[]> => {
     const { baseUrl, apiKey } = usePayloadUrl()
     const apiHeaders = {
         'API-Key': apiKey,
     }
-    return $fetch(`${baseUrl}/reference/organizationtypes`, {
-        method: 'get',
-        headers: apiHeaders,
-    })
-}
-
-const getGradesLevels = () :Promise<GradeLevel[]> => {
-    const { baseUrl, apiKey } = usePayloadUrl()
-    const apiHeaders = {
-        'API-Key': apiKey,
-    }
-    return $fetch(`${baseUrl}/reference/gradelevels`, {
-        method: 'get',
-        headers: apiHeaders,
-    })
-}
-
-const getSubjects = () :Promise<Subject[]> => {
-    const { baseUrl, apiKey } = usePayloadUrl()
-    const apiHeaders = {
-        'API-Key': apiKey,
-    }
-    return $fetch(`${baseUrl}/reference/subjects`, {
+    return $fetch(`${baseUrl}/businesses/types`, {
         method: 'get',
         headers: apiHeaders,
     })
@@ -96,8 +74,6 @@ const saveJobData = (payload :any) :Promise<JobSaveResponseType> => {
 
 export {
     getStripeCheckDetails,
-    getGradesLevels,
-    getSubjects,
     getExperienceLevels,
     getOrgTypes,
     getSearchedOrgName,

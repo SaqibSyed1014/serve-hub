@@ -132,9 +132,9 @@
      jobTitle: string;
  }
 
- interface OrganizationType {
-     organization_type_id: number;
-     organization_type: string;
+ interface BusinessType {
+     business_type_id: number;
+     business_type: string;
  }
 
 interface GradeLevel {

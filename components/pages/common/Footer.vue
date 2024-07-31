@@ -7,7 +7,7 @@ const currentYear = computed(() => new Date().getFullYear());
 
 const footerLinks = [
   {
-    heading: 'For Organizations',
+    heading: 'For Businesses',
     links: [
       { label: 'Why Us', path: '/why-us-organizations' },
       { label: 'Post Job', path: '/post-a-job' },

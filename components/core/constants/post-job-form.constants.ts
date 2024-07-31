@@ -94,7 +94,7 @@ export const hourlyRange = [
 ]
 
 export const formStepsOptions = [
-    { name: "Organization Information", href: "/post-a-job", status: "current" },
+    { name: "Business Information", href: "/post-a-job", status: "current" },
     { name: "Job Details", href: "/post-a-job/job-details", status: "upcoming" },
     {
         name: "Application Details",
@@ -131,7 +131,7 @@ export const toolbarOptions = [
 
 export const formStepsHeaderContent = [
     {
-        title: 'Organization Information',
+        title: 'Business Information',
         text: 'Please fill the fields below regarding institution information.'
     },
     {

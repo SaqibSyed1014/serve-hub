@@ -13,7 +13,7 @@ import BaseButton from "~/components/core/BaseButton.vue";
               We believe in supporting the community
             </h4>
             <p class="text-brand-200 text-lg pb-3">
-              We donate a percentage of our revenue to classrooms in need
+              We donate a percentage of our revenue to non-profit organizations
             </p>
           </div>
           <div class="shrink-0">
