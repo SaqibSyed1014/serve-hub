@@ -3,7 +3,7 @@
 /*@import url('https://fonts.googleapis.com/css2?family=Courier+Prime&family=Unica+One&display=swap');*/
 
 @tailwind base;
-input[type=text], input[type=email], input[type=password], .form-input, .form-textarea{
+input[type=text], input[type=email], input[type=password], input[type=search], .form-input, .form-textarea{
     @apply bg-transparent rounded-lg border border-gray-200 py-2.5 px-3.5 shadow-field placeholder-gray-400 focus:ring-brand-600 focus:border-brand-600
 }
 @tailwind components;

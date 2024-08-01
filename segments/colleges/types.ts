@@ -19,7 +19,7 @@ interface BusinessDocument {
   zip_code: string;
 }
 
-interface Hit {
+interface BusinessHit {
   document: BusinessDocument;
   highlight: Record<string, any>;
   highlights: any[];
@@ -35,7 +35,7 @@ interface RequestParams {
 interface SearchResult {
   facet_counts: any[];
   found: number;
-  hits: Hit[];
+  hits: BusinessHit[];
   out_of: number;
   page: number;
   request_params: RequestParams;
@@ -44,10 +44,10 @@ interface SearchResult {
 }
 
 
-interface CollegesResponseType {
+interface BusinessResponseType {
   facet_counts: any[];
   found: number;
-  hits: Hit[];
+  hits: BusinessHit[];
   out_of: number;
   page: number;
   request_params: RequestParams;

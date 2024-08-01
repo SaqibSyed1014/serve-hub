@@ -20,7 +20,7 @@ const menuLinks : MenuLinksType[] = [
     subLinks: [
       {
         label: "Restaurants",
-        path: "/school-districts",
+        path: "/restaurants",
       },
       {
         label: "Hotels & Resorts",

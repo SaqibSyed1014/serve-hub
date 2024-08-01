@@ -2,20 +2,20 @@
 import { usePayloadUrl , convertQueryToString} from "~/segments/utils"
 
 
-const getDistrictList = (query: any) :Promise<DisrictResponseType> => {
+const getRestaurantsList = (query: any) :Promise<BusinessResponseType> => {
     const { baseUrl, apiKey } = usePayloadUrl()
         const queryString = convertQueryToString(query);
         const apiHeaders = {
             'API-Key': apiKey,
         }
 
-    return $fetch(`${baseUrl}/districts/list?${queryString}`, {
+    return $fetch(`${baseUrl}/businesses/list?${queryString}`, {
         method: 'get',
         headers: apiHeaders,
     })
 }
 
-const getDistrictSchoolDetail = (slug: string) :Promise<DistrictDocument> => {
+const getDistrictSchoolDetail = (slug: string) :Promise<BusinessDocument> => {
     const { baseUrl, apiKey } = usePayloadUrl()
     const apiHeaders = {
         'API-Key': apiKey,
@@ -28,6 +28,6 @@ const getDistrictSchoolDetail = (slug: string) :Promise<DistrictDocument> => {
 }
 
 export {
-    getDistrictList,
+    getRestaurantsList,
     getDistrictSchoolDetail
 }

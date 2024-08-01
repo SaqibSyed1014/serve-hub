@@ -1,7 +1,7 @@
 import { usePayloadUrl , convertQueryToString} from "~/segments/utils"
 
 
-const getBarsList = (query: any) :Promise<CollegesResponseType> => {
+const getBarsList = (query: any) :Promise<BusinessResponseType> => {
     const { baseUrl, apiKey } = usePayloadUrl()
     const apiHeaders = {
         'API-Key': apiKey,
@@ -13,7 +13,7 @@ const getBarsList = (query: any) :Promise<CollegesResponseType> => {
     })
 }
 
-const getCollegeDetails = (slug: string) :Promise<CollegeDocument> => {
+const getCollegeDetails = (slug: string) :Promise<BusinessDocument> => {
     const { baseUrl, apiKey } = usePayloadUrl()
     const apiHeaders = {
         'API-Key': apiKey,

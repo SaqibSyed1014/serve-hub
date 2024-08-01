@@ -1,21 +1,21 @@
 import {
-    getDistrictList,
+    getRestaurantsList,
     getDistrictSchoolDetail
 } from "~/segments/districts/services"
 import { getJobsList } from "~/segments/jobs/services";
 
 interface DistrictState {
-    distictsList: DistrictHit[],
+    restaurantsList: BusinessHit[],
     total_page: number
     openedJobs: number
     totalPagesInDistrictJobs: number
-    schoolDistrictDetails: DistrictDocument | null
+    schoolDistrictDetails: BusinessDocument | null
     schoolDistrictJobs: Job[]
 }
 
 export const useDisrictsStore = defineStore('districtStore', {
     state: () => ({
-        distictsList: [],
+        restaurantsList: [],
         total_page: 0,
         openedJobs: 0,
         totalPagesInDistrictJobs: 0,
@@ -23,9 +23,9 @@ export const useDisrictsStore = defineStore('districtStore', {
         schoolDistrictJobs: []
     } as DistrictState),
     actions: {
-        async fetchDistricts(query:any) {
-            const { hits, found} = await getDistrictList(query)
-            this.$state.distictsList = hits;
+        async fetchRestaurants(query:any) {
+            const { hits, found} = await getRestaurantsList(query)
+            this.$state.restaurantsList = hits;
             this.$state.total_page = Math.ceil(found / 24);
         },
         async fetchDistrictSchoolDetails(slug :string) {

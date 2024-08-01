@@ -2,12 +2,12 @@ import { getBarsList, getCollegeDetails } from "~/segments/colleges/services"
 import { getJobsList } from "~/segments/jobs/services";
 
 interface CollegesState {
-    collegesList: Hit[]
+    collegesList: BusinessHit[]
     total_page: number
     openedJobs: number
     collegesFound: number
     totalPagesInCollegeJobs: number
-    collegeDetails: CollegeDocument | null
+    collegeDetails: BusinessDocument | null
     collegeJobs: Job[]
 }
 
