@@ -22,6 +22,17 @@ const getPartnersLogo = () :Promise<PartnerLogo[]> => {
     })
 }
 
+const getBusinessTypes = () :Promise<BusinessType[]> => {
+    const { baseUrl, apiKey } = usePayloadUrl()
+    const apiHeaders = {
+        'API-Key': apiKey,
+    }
+    return $fetch(`${baseUrl}/businesses/types`, {
+        method: 'get',
+        headers: apiHeaders,
+    })
+}
+
 const getFeaturedOrganizations = () :Promise<FeaturedOrganizations[]> => {
     const { baseUrl, apiKey } = usePayloadUrl()
     const apiHeaders = {
@@ -60,6 +71,7 @@ const getStripeCheckoutURL = (payload :any) :Promise<{ content: { url: string } 
 export {
     getJobsSummaryByCities,
     getPartnersLogo,
+    getBusinessTypes,
     getFeaturedOrganizations,
     getOrgDetails,
     getStripeCheckoutURL

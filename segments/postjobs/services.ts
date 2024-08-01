@@ -15,17 +15,6 @@ const  getStripeCheckDetails = async (requestBody :JobPaymentPayload) :Promise<S
     });
 }
 
-const getOrgTypes = () :Promise<BusinessType[]> => {
-    const { baseUrl, apiKey } = usePayloadUrl()
-    const apiHeaders = {
-        'API-Key': apiKey,
-    }
-    return $fetch(`${baseUrl}/businesses/types`, {
-        method: 'get',
-        headers: apiHeaders,
-    })
-}
-
 const getExperienceLevels = () :Promise<ExperienceLevel[]> => {
     const { baseUrl, apiKey } = usePayloadUrl()
     const apiHeaders = {

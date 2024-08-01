@@ -17,7 +17,6 @@ const router = useRouter();
 onMounted(async() => {
   isFormLoading.value = true;
   await Promise.all([
-    postjobStore.fetchOrgTypes(),
     postjobStore.fetchExperienceLevels()
   ])
   isFormLoading.value = false;

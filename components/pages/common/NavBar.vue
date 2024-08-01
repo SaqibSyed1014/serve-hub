@@ -1,12 +1,14 @@
 <script setup lang="ts">
 import HamburgerIcon from "~/assets/icons/hamburger.svg";
 import XCloseIcon from "~/assets/icons/x-close.svg";
-import OrganizationsMegaMenu from "~/components/pages/common/OrganizationsMegaMenu.vue";
 import type {MenuLinksType} from "~/segments/common.types";
 import {useHomeStore} from "~/segments/home/store";
 import {reloadActiveRouteOnClick} from "~/segments/utils";
+import BusinessMegaMenu from "~/components/pages/common/BusinessMegaMenu.vue";
 
 const homeStore = useHomeStore();
+
+const { businessTypesList } = storeToRefs(homeStore);
 
 const menuLinks : MenuLinksType[] = [
   {
@@ -16,21 +18,7 @@ const menuLinks : MenuLinksType[] = [
   },
   {
     label: "Businesses",
-    type: 'megaMenu',
-    subLinks: [
-      {
-        label: "Restaurants",
-        path: "/restaurants",
-      },
-      {
-        label: "Hotels & Resorts",
-        path: "/charter-schools",
-      },
-      {
-        label: "Bars",
-        path: "/bars",
-      },
-    ]
+    type: 'megaMenu'
   },
   {
     label: "Pricing",
@@ -63,6 +51,7 @@ function togglingSidebarVisibility() {
 const orgsFetching = ref(false);
 onMounted(async () => {
   orgsFetching.value = true;
+  await homeStore.fetchBusinessTypes();
   await homeStore.fetchFeaturedOrganizations();
   orgsFetching.value = false;
 })
@@ -88,7 +77,7 @@ const router = useRouter();
               <li>
                 <NuxtLink v-if="link.type === 'link'" :to="link.path" @click.native.prevent="reloadActiveRouteOnClick(link.path, router)" class="hover:text-brand-500 transition">{{ link.label }}</NuxtLink>
                 <MegaMenu v-else-if="link.type === 'megaMenu'" :label="link.label">
-                  <OrganizationsMegaMenu v-if="link.subLinks?.length" :sub-links="link.subLinks" :loading="orgsFetching" />
+                  <BusinessMegaMenu v-if="businessTypesList.length" :sub-links="businessTypesList" :loading="orgsFetching" />
                 </MegaMenu>
               </li>
             </template>

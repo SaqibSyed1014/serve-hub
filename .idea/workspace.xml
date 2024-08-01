@@ -4,8 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ab7611ed-6f98-4ae4-b454-38c2d1a8a2f3" name="Changes" comment="api url updated">
+    <list default="true" id="ab7611ed-6f98-4ae4-b454-38c2d1a8a2f3" name="Changes" comment="restaurants and bars page structures updated to components">
+      <change afterPath="$PROJECT_DIR$/components/pages/common/BusinessMegaMenu.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/pages/common/NavBar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/components/pages/common/NavBar.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/pages/common/OrganizationsMegaMenu.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/pages/post-job/FormStepOne.vue" beforeDir="false" afterPath="$PROJECT_DIR$/components/pages/post-job/FormStepOne.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/bars/[id]/index.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/bars/index.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/post-a-job/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/post-a-job/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/restaurants/[id]/index.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/restaurants/index.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/segments/home/services.ts" beforeDir="false" afterPath="$PROJECT_DIR$/segments/home/services.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/segments/home/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/segments/home/store.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/segments/postjobs/services.ts" beforeDir="false" afterPath="$PROJECT_DIR$/segments/postjobs/services.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/segments/postjobs/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/segments/postjobs/store.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/segments/postjobs/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/segments/postjobs/types.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,8 +32,8 @@
         <option value="CSS File" />
         <option value="JavaScript File" />
         <option value="Vue Options API Component" />
-        <option value="Vue Composition API Component" />
         <option value="TypeScript File" />
+        <option value="Vue Composition API Component" />
       </list>
     </option>
   </component>
@@ -46,44 +60,44 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/DevDock/WebstormProjects/DevDock Portfolio/conceal-react",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\WebStorm 2023.2.2\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/DevDock/WebstormProjects/Upwork Projects/ServeHub/pages&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\WebStorm 2023.2.2\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "vue.recent.templates": [
-      "Vue Options API Component",
-      "Vue Composition API Component"
+  &quot;keyToStringList&quot;: {
+    &quot;vue.recent.templates&quot;: [
+      &quot;Vue Options API Component&quot;,
+      &quot;Vue Composition API Component&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\DevDock\WebstormProjects\Upwork Projects\ServeHub\pages" />
+      <recent name="C:\Users\DevDock\WebstormProjects\Upwork Projects\ServeHub\pages\bars" />
       <recent name="C:\Users\DevDock\WebstormProjects\Upwork Projects\ServeHub\public" />
       <recent name="C:\Users\DevDock\WebstormProjects\Upwork Projects\EduJobs\assets\icons" />
       <recent name="C:\Users\DevDock\WebstormProjects\Upwork Projects\EduJobs\public\images\about" />
-      <recent name="C:\Users\DevDock\WebstormProjects\Upwork Projects\EduJobs\segments" />
-      <recent name="C:\Users\DevDock\WebstormProjects\Upwork Projects\EduJobs\segments\schools" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\DevDock\WebstormProjects\Upwork Projects\ServeHub\pages\businesses" />
       <recent name="C:\Users\DevDock\WebstormProjects\Upwork Projects\EduJobs\components\pages\job-listings" />
       <recent name="C:\Users\DevDock\WebstormProjects\Upwork Projects\EduJobs\segments" />
       <recent name="C:\Users\DevDock\WebstormProjects\Upwork Projects\EduJobs\segments\blogs" />
       <recent name="C:\Users\DevDock\WebstormProjects\Upwork Projects\EduJobs\segments\store" />
-      <recent name="C:\Users\DevDock\WebstormProjects\Upwork Projects\EduJobs\segments\districts" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -211,54 +225,8 @@
       <workItem from="1722365897589" duration="389000" />
       <workItem from="1722366321911" duration="6997000" />
       <workItem from="1722425468980" duration="610000" />
-    </task>
-    <task id="LOCAL-00245" summary="job filters on mobile">
-      <option name="closed" value="true" />
-      <created>1718437607124</created>
-      <option name="number" value="00245" />
-      <option name="presentableId" value="LOCAL-00245" />
-      <option name="project" value="LOCAL" />
-      <updated>1718437607124</updated>
-    </task>
-    <task id="LOCAL-00246" summary="clear job filters">
-      <option name="closed" value="true" />
-      <created>1718438746920</created>
-      <option name="number" value="00246" />
-      <option name="presentableId" value="LOCAL-00246" />
-      <option name="project" value="LOCAL" />
-      <updated>1718438746920</updated>
-    </task>
-    <task id="LOCAL-00247" summary="spacing updated">
-      <option name="closed" value="true" />
-      <created>1718438950607</created>
-      <option name="number" value="00247" />
-      <option name="presentableId" value="LOCAL-00247" />
-      <option name="project" value="LOCAL" />
-      <updated>1718438950607</updated>
-    </task>
-    <task id="LOCAL-00248" summary="blog cards updated">
-      <option name="closed" value="true" />
-      <created>1718441854332</created>
-      <option name="number" value="00248" />
-      <option name="presentableId" value="LOCAL-00248" />
-      <option name="project" value="LOCAL" />
-      <updated>1718441854332</updated>
-    </task>
-    <task id="LOCAL-00249" summary="home blogs bug fixed">
-      <option name="closed" value="true" />
-      <created>1718482622294</created>
-      <option name="number" value="00249" />
-      <option name="presentableId" value="LOCAL-00249" />
-      <option name="project" value="LOCAL" />
-      <updated>1718482622294</updated>
-    </task>
-    <task id="LOCAL-00250" summary="fixes">
-      <option name="closed" value="true" />
-      <created>1718482836818</created>
-      <option name="number" value="00250" />
-      <option name="presentableId" value="LOCAL-00250" />
-      <option name="project" value="LOCAL" />
-      <updated>1718482836818</updated>
+      <workItem from="1722455330315" duration="15129000" />
+      <workItem from="1722546294785" duration="696000" />
     </task>
     <task id="LOCAL-00251" summary="location selected from home to jobs">
       <option name="closed" value="true" />
@@ -604,7 +572,55 @@
       <option name="project" value="LOCAL" />
       <updated>1722375592131</updated>
     </task>
-    <option name="localTasksCounter" value="294" />
+    <task id="LOCAL-00294" summary="organization updated to business">
+      <option name="closed" value="true" />
+      <created>1722457568646</created>
+      <option name="number" value="00294" />
+      <option name="presentableId" value="LOCAL-00294" />
+      <option name="project" value="LOCAL" />
+      <updated>1722457568647</updated>
+    </task>
+    <task id="LOCAL-00295" summary="job post form fields updated">
+      <option name="closed" value="true" />
+      <created>1722461322214</created>
+      <option name="number" value="00295" />
+      <option name="presentableId" value="LOCAL-00295" />
+      <option name="project" value="LOCAL" />
+      <updated>1722461322215</updated>
+    </task>
+    <task id="LOCAL-00296" summary="fetching bars">
+      <option name="closed" value="true" />
+      <created>1722462119068</created>
+      <option name="number" value="00296" />
+      <option name="presentableId" value="LOCAL-00296" />
+      <option name="project" value="LOCAL" />
+      <updated>1722462119068</updated>
+    </task>
+    <task id="LOCAL-00297" summary="job roles updated">
+      <option name="closed" value="true" />
+      <created>1722492955041</created>
+      <option name="number" value="00297" />
+      <option name="presentableId" value="LOCAL-00297" />
+      <option name="project" value="LOCAL" />
+      <updated>1722492955041</updated>
+    </task>
+    <task id="LOCAL-00298" summary="restaurant listing added">
+      <option name="closed" value="true" />
+      <created>1722539470135</created>
+      <option name="number" value="00298" />
+      <option name="presentableId" value="LOCAL-00298" />
+      <option name="project" value="LOCAL" />
+      <updated>1722539470136</updated>
+    </task>
+    <task id="LOCAL-00299" summary="restaurants and bars page structures updated to components">
+      <option name="closed" value="true" />
+      <created>1722541949541</created>
+      <option name="number" value="00299" />
+      <option name="presentableId" value="LOCAL-00299" />
+      <option name="project" value="LOCAL" />
+      <updated>1722541949541</updated>
+    </task>
+    <option name="localTasksCounter" value="300" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -634,12 +650,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="school district jobs list" />
-    <MESSAGE value="fixes" />
-    <MESSAGE value="job listing in college and charter schools" />
-    <MESSAGE value="fixes + filters updated in school district" />
-    <MESSAGE value="scrolling to top in blog" />
-    <MESSAGE value="school district job filter value updated + its counts removed" />
     <MESSAGE value="apply button in org filters on mobile" />
     <MESSAGE value="reload active route on clicking" />
     <MESSAGE value="application deadline in job detail added" />
@@ -659,7 +669,13 @@
     <MESSAGE value="grade and subject fields removed" />
     <MESSAGE value="branding name updated" />
     <MESSAGE value="api url updated" />
-    <option name="LAST_COMMIT_MESSAGE" value="api url updated" />
+    <MESSAGE value="organization updated to business" />
+    <MESSAGE value="job post form fields updated" />
+    <MESSAGE value="fetching bars" />
+    <MESSAGE value="job roles updated" />
+    <MESSAGE value="restaurant listing added" />
+    <MESSAGE value="restaurants and bars page structures updated to components" />
+    <option name="LAST_COMMIT_MESSAGE" value="restaurants and bars page structures updated to components" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

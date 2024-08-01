@@ -135,6 +135,9 @@
  interface BusinessType {
      business_type_id: number;
      business_type: string;
+     business_type_slug: string;
+     show_primary_nav: number;
+     sort_order: number;
  }
 
 interface GradeLevel {

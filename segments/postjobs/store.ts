@@ -12,7 +12,6 @@ interface StripeCheckout {
     duration: number | null;
     status: string | null;
     requestId: string | null;
-    businessTypes: BusinessType[];
     experienceLevels: ExperienceLevel[];
     searchedOrgNames: OrgDocument[];
     checkoutURL: string;
@@ -24,7 +23,6 @@ export const usePostjobStore = defineStore('postjobStore', {
         duration: null,
         status: null,
         requestId: null,
-        businessTypes: [],
         experienceLevels: [],
         searchedOrgNames: [],
         checkoutURL: ''
@@ -45,10 +43,6 @@ export const usePostjobStore = defineStore('postjobStore', {
         reset() {
             this.$state.content  = null;
             this.$state.status  = null;
-        },
-
-        async fetchOrgTypes() {
-            this.$state.businessTypes = await getOrgTypes();
         },
         async fetchExperienceLevels() {
             this.$state.experienceLevels = await getExperienceLevels();
@@ -79,12 +73,6 @@ export const usePostjobStore = defineStore('postjobStore', {
         },
     },
     getters: {
-        businessTypesDropdown: (state) => {
-            return state.businessTypes.map((org :BusinessType) => ({
-                label: org.business_type,
-                value: org.business_type_id
-            }))
-        },
         experienceLevelOptions: (state) => {
             return state.experienceLevels
                 .sort((a :ExperienceLevel, b :ExperienceLevel) => a.sort_order - b.sort_order)

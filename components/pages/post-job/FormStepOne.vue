@@ -5,6 +5,7 @@ import {usePostjobStore} from "~/segments/postjobs/store";
 import Multiselect from "vue-multiselect";
 import {debounce} from "~/segments/utils";
 import {drop} from "lodash-es";
+import {useHomeStore} from "~/segments/home/store";
 
 const emit = defineEmits(['handleFormSubmission', 'formDataListener']);
 
@@ -13,7 +14,10 @@ const props = defineProps<{
 }>()
 
 const jobPostStore = usePostjobStore();
-const { businessTypesDropdown, orgNamesDropdown, searchedOrgNames } = storeToRefs(jobPostStore);
+const homeStore = useHomeStore();
+
+const { businessTypesList } = storeToRefs(homeStore)
+const { orgNamesDropdown, searchedOrgNames } = storeToRefs(jobPostStore);
 
 const uploadedImage = ref("");
 
@@ -190,7 +194,7 @@ async function checkUserEmail(isFieldValid :boolean) {
           v-bind="businessTypeAttrs"
           name="businessTypeId"
           label="Business Type"
-          :data="businessTypesDropdown"
+          :data="businessTypesList"
           :label-value-options="true"
           subLabel=""
           :value="values.businessTypeId"
