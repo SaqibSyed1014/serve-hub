@@ -3,9 +3,12 @@ import {ref} from "vue";
 import {useCollegesStore} from "~/segments/colleges/store";
 import type {PaginationInfo, TypesenseQueryParam,} from "~/segments/common.types";
 import AlphabetsInRow from "~/components/pages/common/AlphabetsInRow.vue";
+import JobSkeleton from "~/components/pages/job-listings/JobSkeleton.vue";
+import SignUpCard from "~/components/pages/job-listings/SignUpCard.vue";
+import BusinessCardSkeleton from "~/components/pages/business-types/BusinessCardSkeleton.vue";
 
 const collegesStore = useCollegesStore();
-const { collegesList, total_page, collegesFound } = storeToRefs(collegesStore);
+const { barsList, total_page, collegesFound } = storeToRefs(collegesStore);
 
 const route = useRoute();
 const router = useRouter();
@@ -308,9 +311,7 @@ function getCollegesFilterQuery(alphabetFilter :string, cbFilters :string) {
         <div
           class="flex grow flex-col gap-y-5 pt-8 overflow-y-auto border-r pr-4 border-gray-200 bg-transparent ring-1 ring-white/5"
         >
-          <div
-            class="py-2 flex-col justify-start items-start gap-2.5 inline-flex"
-          >
+          <div class="py-2 flex-col justify-start items-start gap-2.5 inline-flex">
             <div
               class="justify-between items-center inline-flex w-full border-b border-gray-200 pb-2"
             >
@@ -406,9 +407,9 @@ function getCollegesFilterQuery(alphabetFilter :string, cbFilters :string) {
                 }"
               >
                 <SvgoList class="size-5" />
-                <div class="text-slate-700 text-sm font-semibold leading-tight">
+                <span class="text-slate-700 text-sm font-semibold leading-tight">
                   List
-                </div>
+                </span>
               </button>
               <button
                 type="button"
@@ -421,9 +422,9 @@ function getCollegesFilterQuery(alphabetFilter :string, cbFilters :string) {
                 }"
               >
                 <SvgoGrid class="size-5" />
-                <div class="text-gray-800 text-sm font-semibold leading-tight">
+                <span class="text-gray-800 text-sm font-semibold leading-tight">
                   Grid
-                </div>
+                </span>
               </button>
             </div>
           </div>
@@ -435,81 +436,37 @@ function getCollegesFilterQuery(alphabetFilter :string, cbFilters :string) {
             @select-alphabet="selectAlphabet"
         />
 
-<!--        <div-->
-<!--          class="pt-6 w-full gap-2 flex flex-col xl:flex-row border-b border-gray-200"-->
-<!--        >-->
-<!--          <div>-->
-<!--            <p class="text-gray-500 text-sm font-semibold !w-[139px]">-->
-<!--              Search by alphabet-->
-<!--            </p>-->
-<!--          </div>-->
+        <!--  Listing    -->
+        <div class="pt-8 mt-1.5 mb-8">
+          <div v-if="isLoading || barsList.length" class="grid gap-6" :class="[isGridView === 'grid' ? 'md:grid-cols-3' : 'grid-cols-1']">
+            <template v-if="isLoading" v-for="i in pageInfo.itemsPerPage">
+              <client-only>
+                <BusinessCardSkeleton :has-grid-layout="isGridView === 'grid'"  />
+              </client-only>
+            </template>
 
-<!--          <div-->
-<!--            class="flex flex-wrap gap-2.5 sm:gap-x-0 items-center w-full justify-between"-->
-<!--          >-->
-<!--            <div-->
-<!--              v-for="(capital, index) in capitals"-->
-<!--              :key="index"-->
-<!--              class="pr-1.5 borer-b border-gray-200"-->
-<!--            >-->
-<!--              <button-->
-<!--                :class="[-->
-<!--                  index === selectedAlphabet-->
-<!--                    ? 'text-blue-800 border-b-2 px-[5px] border-blue-800'-->
-<!--                    : 'md:px-[5px]',-->
-<!--                ]"-->
-<!--                @click="selectAlphabet(index)"-->
-<!--              >-->
-<!--                <span class="text-xs md:text-sm">{{ capital }}</span>-->
-<!--              </button>-->
-<!--            </div>-->
-<!--            <div class="text-brand-800 text-sm font-semibold leading-tight">-->
-<!--              Clear-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </div>-->
+            <template v-else v-for="(bar) in barsList">
+              <BusinessCard
+                  business-type="bars"
+                  :data="bar"
+                  :has-grid-layout="isGridView === 'grid'"
+              />
+            </template>
+          </div>
 
-        <div class="mt-1.5 mb-8">
-          <!-- Grid View -->
-          <template v-if="isLoading || collegesList.length">
-            <div
-              v-if="isGridView === 'grid'"
-              class="grid sm:grid-cols-2 pt-8 lg:grid-cols-3 gap-6"
-            >
-              <div v-if="isLoading" v-for="i in 24">
-                <client-only>
-                  <SDGridSkelton />
-                </client-only>
-              </div>
-              <div v-else v-for="(item, index) in collegesList" :key="index">
-                <CollegeGridCard :data="item" :isSchool="false" />
-              </div>
-            </div>
-            <!-- Lsit View -->
-            <div v-if="isGridView === 'list'" class="grid gap-6 pt-8">
-              <div v-if="isLoading" v-for="i in 24">
-                <client-only>
-                  <SDListSkelton />
-                </client-only>
-              </div>
-              <div v-else v-for="(item, index) in collegesList" :key="index">
-                <CollegeListCard :data="item" :isSchool="false" />
-              </div>
-            </div>
-          </template>
           <template v-else>
-            <NoRecordFound name="schools" :search-value="searchedValue" />
+            <NoRecordFound name="bars" :search-value="searchedValue" />
           </template>
         </div>
-        <div v-if="collegesList?.length > 0">
+
+        <!--   Pagination     -->
+        <template v-if="barsList?.length > 0">
           <CustomPagination
             :current-page="currentPage"
             :total-pages="totalPages"
             @paginate="paginate"
           />
-        </div>
-
-        <!-- <Pagination /> -->
+        </template>
       </div>
     </div>
   </div>

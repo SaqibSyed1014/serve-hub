@@ -5,7 +5,7 @@ import {
 import { getJobsList } from "~/segments/jobs/services";
 
 interface DistrictState {
-    restaurantsList: BusinessHit[],
+    restaurantsList: BusinessDocument[],
     total_page: number
     openedJobs: number
     totalPagesInDistrictJobs: number
@@ -25,7 +25,7 @@ export const useDisrictsStore = defineStore('districtStore', {
     actions: {
         async fetchRestaurants(query:any) {
             const { hits, found} = await getRestaurantsList(query)
-            this.$state.restaurantsList = hits;
+            this.$state.restaurantsList = hits.map((hit :BusinessHit) => hit.document);
             this.$state.total_page = Math.ceil(found / 24);
         },
         async fetchDistrictSchoolDetails(slug :string) {

@@ -35,25 +35,6 @@ defineProps<{ data: any; isSchool: Boolean }>();
           0 jobs
         </span>
       </div>
-
-<!--      <div class="inline-flex space-x-3">-->
-<!--        <div-->
-<!--          class="inline-flex items-center text-center space-x-2 text-gray-600"-->
-<!--        >-->
-<!--          <SvgoBuildingLight class="size-5" />-->
-<!--          <span class="text-xs md:text-sm font-medium leading-tight">-->
-<!--            0 schools-->
-<!--          </span>-->
-<!--        </div>-->
-<!--        <div class="inline-flex items-center text-center space-x-2">-->
-<!--          <SvgoGraduationHat class="size-5" />-->
-<!--          <span class="text-gray-600 text-sm font-medium leading-tight">-->
-<!--            0 students-->
-<!--          </span>-->
-<!--        </div>-->
-<!--      </div>-->
     </div>
   </NuxtLink>
 </template>
-
-<style scoped lang="postcss"></style>

@@ -22,13 +22,6 @@
       <div class="">
         <Skeleton class="h-6 mb-2 w-1/4" />
       </div>
-<!--      <div-->
-<!--        class="job-post-footer flex items-center gap-x-5 font-medium text-gray-600"-->
-<!--      >-->
-<!--        <Skeleton class="w-1/2 h-5" />-->
-
-<!--        <Skeleton class="w-1/2 h-5" />-->
-<!--      </div>-->
     </div>
   </div>
 </template>

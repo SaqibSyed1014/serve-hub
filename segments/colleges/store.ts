@@ -2,7 +2,7 @@ import { getBarsList, getCollegeDetails } from "~/segments/colleges/services"
 import { getJobsList } from "~/segments/jobs/services";
 
 interface CollegesState {
-    collegesList: BusinessHit[]
+    barsList: BusinessDocument[]
     total_page: number
     openedJobs: number
     collegesFound: number
@@ -13,7 +13,7 @@ interface CollegesState {
 
 export const useCollegesStore = defineStore('collegesStore', {
     state: () => ({
-        collegesList: [],
+        barsList: [],
         total_page: 0,
         collegesFound: 0,
         openedJobs: 0,
@@ -24,7 +24,7 @@ export const useCollegesStore = defineStore('collegesStore', {
     actions: {
         async fetchBars(query:any) {
             const { hits, found} = await getBarsList(query)
-            this.$state.collegesList = hits;
+            this.$state.barsList = hits.map((hit :BusinessHit) => hit.document);
             this.$state.total_page = Math.ceil(found / 24);
         },
         async fetchCollegeDetails(slug :string) {

@@ -2,6 +2,7 @@
 import {useDisrictsStore} from "~/segments/districts/store";
 import type {TypesenseQueryParam} from "~/segments/common.types";
 import AlphabetsInRow from "~/components/pages/common/AlphabetsInRow.vue";
+import BusinessCardSkeleton from "~/components/pages/business-types/BusinessCardSkeleton.vue";
 
 const districtStore = useDisrictsStore();
 const { restaurantsList, total_page } = storeToRefs(districtStore);
@@ -564,46 +565,37 @@ function getDistrictFilterQuery(alphabetFilter :string, cbFilters :string) {
             @select-alphabet="selectAlphabet"
         />
 
-        <div class="mt-1.5 mb-8">
-          <!-- Grid View -->
+        <!--  Listing    -->
+        <div class="pt-8 mt-1.5 mb-8">
+          <div v-if="isLoading || restaurantsList.length" class="grid gap-6" :class="[isGridView === 'grid' ? 'md:grid-cols-3' : 'grid-cols-1']">
+            <template v-if="isLoading" v-for="i in 24">
+              <client-only>
+                <BusinessCardSkeleton :has-grid-layout="isGridView === 'grid'"  />
+              </client-only>
+            </template>
 
-          <template v-if="isLoading || restaurantsList?.length">
-            <div
-              v-if="isGridView === 'grid'"
-              class="grid sm:grid-cols-2 pt-8 lg:grid-cols-3 gap-6"
-            >
-              <div v-if="isLoading" v-for="i in 24">
-                <client-only>
-                  <SDGridSkelton />
-                </client-only>
-              </div>
-              <div v-else v-for="(item, index) in restaurantsList" :key="index">
-                <DIstrictsGridCard :data="item" />
-              </div>
-            </div>
-            <!-- List View -->
-            <div v-if="isGridView === 'list'" class="grid gap-6 pt-8">
-              <div v-if="isLoading" v-for="i in 24">
-                <client-only>
-                  <SDListSkelton/>
-                </client-only>
-              </div>
-              <div v-else v-for="(item, index) in restaurantsList" :key="index">
-                <DistrictsListCard :data="item" />
-              </div>
-            </div>
-          </template>
+            <template v-else v-for="(bar) in restaurantsList">
+              <BusinessCard
+                  business-type="restaurants"
+                  :data="bar"
+                  :has-grid-layout="isGridView === 'grid'"
+              />
+            </template>
+          </div>
+
           <template v-else>
-            <NoRecordFound name="schools" :search-value="searchedValue" />
+            <NoRecordFound name="restaurants" :search-value="searchedValue" />
           </template>
         </div>
-        <div v-if="restaurantsList?.length > 0">
+
+        <!--   Pagination     -->
+        <template v-if="restaurantsList?.length > 0">
           <CustomPagination
             :current-page="currentPage"
             :total-pages="totalPages"
             @paginate="paginate"
           />
-        </div>
+        </template>
       </div>
     </div>
   </div>
