@@ -33,6 +33,17 @@ const getBusinessTypes = () :Promise<BusinessType[]> => {
     })
 }
 
+const getEmploymentTypes= () :Promise<EmploymentType[]> => {
+    const { baseUrl, apiKey } = usePayloadUrl()
+    const apiHeaders = {
+        'API-Key': apiKey,
+    }
+    return $fetch(`${baseUrl}/jobs/employmenttypes`, {
+        method: 'get',
+        headers: apiHeaders,
+    })
+}
+
 const getFeaturedOrganizations = () :Promise<FeaturedOrganizations[]> => {
     const { baseUrl, apiKey } = usePayloadUrl()
     const apiHeaders = {
@@ -72,6 +83,7 @@ export {
     getJobsSummaryByCities,
     getPartnersLogo,
     getBusinessTypes,
+    getEmploymentTypes,
     getFeaturedOrganizations,
     getOrgDetails,
     getStripeCheckoutURL

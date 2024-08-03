@@ -52,3 +52,18 @@ interface Org {
     website_url: string;
     zip_code: string;
 }
+
+interface BusinessType {
+    business_type_id: number;
+    business_type: string;
+    business_type_slug: string;
+    show_primary_nav: number;
+    sort_order: number;
+}
+
+interface EmploymentType {
+    active: number;
+    employment_type: string;
+    employment_type_id: number;
+    sort_order: number;
+}

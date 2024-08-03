@@ -1,38 +1,5 @@
 export const jobFilters = [
     {
-        fieldName: 'employment_type',
-        type: 'checkbox',
-        title: 'Employment Type',
-        icon: 'SvgoClock',
-        list: [
-            {
-                label: 'Full-time',
-                value: 'Full-time',
-                checked: false,
-                counts: 0
-            },
-            {
-                label: 'Part-time',
-                value: 'Part-time',
-                checked: false,
-                counts: 0
-            },
-            {
-                label: 'Internship',
-                value: 'Internship',
-                checked: false,
-                counts: 0
-            },
-            {
-                label: 'Volunteer',
-                value: 'Volunteer',
-                checked: false,
-                counts: 0
-            }
-        ],
-
-    },
-    {
         fieldName: 'job_role',
         type: 'checkbox',
         title: 'Role Type',

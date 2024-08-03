@@ -132,28 +132,6 @@
      jobTitle: string;
  }
 
- interface BusinessType {
-     business_type_id: number;
-     business_type: string;
-     business_type_slug: string;
-     show_primary_nav: number;
-     sort_order: number;
- }
-
-interface GradeLevel {
-    grade_level_id: number;
-    grade_level_long: string;
-    grade_level: string;
-    grade_level_int: number;
-    sort_order: number;
-}
-
-interface Subject {
-    subject_id: number;
-    subject_long: string;
-    subject: string;
-    sort_order: number;
-}
 
  interface ExperienceLevel {
      experience_level_id: number;

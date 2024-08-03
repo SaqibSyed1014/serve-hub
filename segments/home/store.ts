@@ -2,6 +2,7 @@ import {
     getJobsSummaryByCities,
     getPartnersLogo,
     getBusinessTypes,
+    getEmploymentTypes,
     getFeaturedOrganizations,
     getOrgDetails,
     getStripeCheckoutURL
@@ -12,6 +13,7 @@ interface HomeSectionsData {
     jobsByCities: JobsInCities[]
     partnersLogos: PartnerLogo[]
     businessTypes: BusinessType[]
+    employmentTypes: EmploymentType[]
     featuredOrganizations: FeaturedOrganizations[]
     orgDetail: Org | null
     checkoutURL: string
@@ -22,6 +24,7 @@ export const useHomeStore = defineStore('homeStore', {
         jobsByCities: [],
         partnersLogos: [],
         businessTypes: [],
+        employmentTypes: [],
         featuredOrganizations: [],
         orgDetail: null,
         checkoutURL: ''
@@ -35,7 +38,9 @@ export const useHomeStore = defineStore('homeStore', {
         },
         async fetchBusinessTypes() {
             this.$state.businessTypes = await getBusinessTypes();
-            console.log('hdhd ', this.$state.businessTypes)
+        },
+        async fetchEmploymentTypes() {
+            this.$state.employmentTypes = await getEmploymentTypes();
         },
         async fetchFeaturedOrganizations() {
             this.$state.featuredOrganizations = await getFeaturedOrganizations();
@@ -65,5 +70,39 @@ export const useHomeStore = defineStore('homeStore', {
                 ...business
             })).sort((a :BusinessType, b :BusinessType) => a.sort_order - b.sort_order) || []
         },
+        employmentTypesFilter: (state) => {
+             const filterList = state.employmentTypes
+                 .sort((a :EmploymentType, b :EmploymentType) => a.sort_order - b.sort_order)
+                 ?.map((employment :EmploymentType) => ({
+                    label: employment.employment_type,
+                    value: employment.employment_type,
+                     checked: false,
+                     counts: 0
+                })) || []
+            return {
+                fieldName: 'employment_type',
+                type: 'checkbox',
+                title: 'Employment Type',
+                icon: 'SvgoClock',
+                list: filterList
+            }
+        },
+        businessTypesFilter: (state) => {
+            const filterList = state.businessTypes
+                .sort((a :BusinessType, b :BusinessType) => a.sort_order - b.sort_order)
+                ?.map((business :BusinessType) => ({
+                    label: business.business_type,
+                    value: business.business_type,
+                    checked: false,
+                    counts: 0
+                })) || []
+            return {
+                fieldName: 'business_type',
+                type: 'checkbox',
+                title: 'Business Type',
+                icon: 'SvgoClock',
+                list: filterList
+            }
+        }
     }
 })

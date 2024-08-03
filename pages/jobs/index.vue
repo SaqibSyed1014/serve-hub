@@ -11,13 +11,18 @@ import {
   itemsViewOptions,
   jobFilters
 } from "~/components/core/constants/jobs.constants";
+import {useHomeStore} from "~/segments/home/store";
+
 
 const filters = ref(jobFilters);  // job's filters
 
 const route = useRoute();
 const router = useRouter();
 const jobStore = useJobStore();
+const homeStore = useHomeStore();
+
 const { jobListings, facetCounts, totalPages, coordinates } = storeToRefs(jobStore);
+const { employmentTypesFilter, businessTypesFilter } = storeToRefs(homeStore);
 
 const layoutOptionSelected = ref(0);
 const searchedLocationText = ref('');
@@ -36,7 +41,7 @@ const initialQuery = {
   page: pageInfo.value.currentPage,
   per_page: pageInfo.value.itemsPerPage,
   sort_by: 'date_posted:desc',
-  facet_by: 'employment_type,job_role,experience_level',
+  facet_by: 'employment_type,job_role,experience_level,business_type',
   filter_by: ''
 };
 const query = ref<TypesenseQueryParam>(initialQuery);
@@ -69,6 +74,7 @@ watch(() => layoutOptionSelected.value, (val) => {
 onMounted(async () => {
   initDropdowns();
   let savedLayout = '';
+  await fetchFilters();
   if (process.client) {  // using process.client due to SSR
     savedLayout = localStorage.getItem('jobsLayout') ?? 'list';  // use layout if it's saved earlier else default layout
     layoutOptionSelected.value = savedLayout === 'grid' ? 1 : 0;
@@ -82,6 +88,15 @@ onMounted(async () => {
 
   await doSearch(); // Initial fetch
 });
+
+async function fetchFilters() {
+  await Promise.all([
+      homeStore.fetchEmploymentTypes(),
+      homeStore.fetchBusinessTypes()
+  ])
+  filters.value.unshift(employmentTypesFilter.value);
+  filters.value.splice(1, 0, businessTypesFilter.value)
+}
 
 onUnmounted(() => {
   jobStore.jobsList = [];
@@ -208,7 +223,7 @@ const wageType = ref('salary');  // initial values for wage type and compensatio
 const includeAllJobs = ref(true);
 
 async function assignQueryParamsOnInitialLoad(queryParams :JobQueryParams) {
-  const { keyword, mode, location, employment_type, job_role, experience_level, coordinates, filter_by, ...otherParams }
+  const { keyword, mode, location, employment_type, business_type, job_role, experience_level, coordinates, filter_by, ...otherParams }
       = queryParams
   query.value = {
     ...query.value,
@@ -219,9 +234,10 @@ async function assignQueryParamsOnInitialLoad(queryParams :JobQueryParams) {
   layoutOptionSelected.value = mode === 'list' ? 0 : 1;
   if (location) searchedLocationText.value = location as string; // assign location in url for google map field
 
-  if (employment_type) sidebarFilters.value.employment_type = employment_type
-  if (job_role) sidebarFilters.value.job_role = job_role
-  if (experience_level) sidebarFilters.value.experience_level = experience_level
+  if (employment_type) sidebarFilters.value.employment_type = employment_type;
+  if (business_type) sidebarFilters.value.business_type = business_type;
+  if (job_role) sidebarFilters.value.job_role = job_role;
+  if (experience_level) sidebarFilters.value.experience_level = experience_level;
   filters.value.forEach(filter => {
     if (filter.type === 'checkbox' && filter.list?.length) {
       filter.list.forEach(item => {
