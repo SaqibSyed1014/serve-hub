@@ -109,7 +109,7 @@ function jobOrgType() {
   </div>
 
 
-  <div v-else-if="jobDetails.job_id">
+  <div v-else-if="jobDetails">
     <section class="pt-8 pb-16">
       <div class="container">
         <div class="grid md:grid-cols-12 gap-8">
@@ -151,7 +151,7 @@ function jobOrgType() {
                         </h2>
                       </BaseTooltip>
                       <p v-if="jobDetails?.organization_name" class="text-gray-600 md:line-clamp-1">
-                        {{ jobDetails.organization_name }}
+                        {{ jobDetails?.organization_name || 'N/A' }}
                       </p>
                     </div>
                   </div>
@@ -195,7 +195,7 @@ function jobOrgType() {
                     <p class="font-medium text-sm">Location</p>
                     <div class="text-gray-600 flex items-center gap-2">
                       <SvgoLocationPin class="w-4 h-4" />
-                      {{ jobDetails.job_location }}
+                      {{ jobDetails?.job_location || 'N/A' }}
                     </div>
                   </div>
 
@@ -239,10 +239,10 @@ function jobOrgType() {
                   </div>
 
                   <div>
-                    <p class="font-medium text-sm">Length of Work Year</p>
+                    <p class="font-medium text-sm">Shift Type</p>
                     <div class="text-gray-600 flex items-center gap-2">
                       <SvgoClock class="w-4 h-4"/>
-                      {{ jobDetails?.length_work_year || 'N/A' }}
+                      {{ jobDetails?.shift_type || 'N/A' }}
                     </div>
                   </div>
                 </div>
