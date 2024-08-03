@@ -39,7 +39,7 @@ const canProceed = computed(() => {
 <template>
   <div class="flex flex-col justify-center gap-8 w-full h-full">
     <NuxtLink to="/" class="max-lg:block hidden">
-      <img src="/images/logo.svg" alt="EduJob Logo" />
+      <img src="/images/logo.svg" alt="ServeHub Logo" />
     </NuxtLink>
     <div class="flex flex-col gap-3">
       <h1 class="font-semibold text-3xl">Welcome back</h1>

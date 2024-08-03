@@ -42,7 +42,7 @@ const date = new Date()
   <div class="auth-form-layout w-full h-screen flex">
     <div class="flex h-screen justify-between flex-col pl-8 py-8 w-full items-center max-lg:hidden bg-gray-50">
       <NuxtLink to="/" class="flex items-center gap-2.5 w-full">
-        <img src="/images/logo.svg" alt="EduJob Logo" />
+        <img src="/images/logo.svg" alt="ServeHub Logo" />
       </NuxtLink>
 
       <div class="flex flex-col max-w-[560px] gap-8 justify-center items-center">

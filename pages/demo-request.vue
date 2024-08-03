@@ -3,7 +3,7 @@ onMounted(() => {
   const scriptEle = document.createElement('script');
   scriptEle.setAttribute('src','https://embed.ycb.me');
   scriptEle.setAttribute('async','true');
-  scriptEle.setAttribute('data-domain','edujobs');
+  scriptEle.setAttribute('data-domain','servehub');
 
   const demoForm = document.getElementById('demo-request-form');
   if (demoForm) demoForm.appendChild(scriptEle);
