@@ -20,7 +20,7 @@ const selectedTab = ref(0)
                 Seamlessly Discover Your Next Opportunity
               </h4>
               <p class="text-gray-600 pt-1 pb-5">
-                Dive into a user-friendly, modern job search experience with Edujobs. Uncover new openings effortlessly, where clarity meets convenience, guiding
+                Dive into a user-friendly, modern job search experience with ServeHub. Uncover new openings effortlessly, where clarity meets convenience, guiding
                 you to your ideal educational role."
               </p>
 

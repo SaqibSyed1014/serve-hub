@@ -76,22 +76,6 @@ const selectUserType = (type :string) => {
         </template>
       </div>
     </div>
-    <!---
-    <section class="bg-gray-25 py-12">
-      <div class="container">
-        <div class="content flex max-md:flex-col justify-between md:items-center gap-8">
-          <div class="supporting-text">
-            <p class="font-semibold text-lg text-gray-900">Join our monthly newsletter</p>
-            <p class="text-gray-600 text-base">We’ll send you updates on EduJobs, new blog posts, and resources monthly. No spam.</p>
-          </div>
-          <form class="flex max-md:flex-col md:justify-end gap-4 w-full">
-            <input type="email" placeholder="Enter your email">
-            <BaseButton label="Subscribe" color="primary" class="" />
-          </form>
-        </div>
-      </div>
-    </section>
-    --->
     <div class="container py-12">
       <hr class="border-b border-gray-200 mb-8">
       <div class="flex justify-between max-md:flex-col-reverse md:items-center text-gray-500 font-normal max-md:gap-6">
