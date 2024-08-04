@@ -60,6 +60,7 @@ interface JobResponseType {
     request_params: RequestParams;
     search_cutoff: boolean;
     search_time_ms: number;
+
 }
 
 interface JobDetails extends Job {
@@ -67,6 +68,7 @@ interface JobDetails extends Job {
     geo_lat: number
     geo_lng: number
     business_type: string
+    banner_path?: string
     slug: string
     max_salary?: string
     min_salary?: string

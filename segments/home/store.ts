@@ -3,6 +3,7 @@ import {
     getPartnersLogo,
     getBusinessTypes,
     getEmploymentTypes,
+    getShiftTypes,
     getFeaturedOrganizations,
     getOrgDetails,
     getStripeCheckoutURL
@@ -14,6 +15,7 @@ interface HomeSectionsData {
     partnersLogos: PartnerLogo[]
     businessTypes: BusinessType[]
     employmentTypes: EmploymentType[]
+    shiftTypes: ShiftType[]
     featuredOrganizations: FeaturedOrganizations[]
     orgDetail: Org | null
     checkoutURL: string
@@ -25,6 +27,7 @@ export const useHomeStore = defineStore('homeStore', {
         partnersLogos: [],
         businessTypes: [],
         employmentTypes: [],
+        shiftTypes: [],
         featuredOrganizations: [],
         orgDetail: null,
         checkoutURL: ''
@@ -41,6 +44,9 @@ export const useHomeStore = defineStore('homeStore', {
         },
         async fetchEmploymentTypes() {
             this.$state.employmentTypes = await getEmploymentTypes();
+        },
+        async fetchShiftTypes() {
+            this.$state.shiftTypes = await getShiftTypes();
         },
         async fetchFeaturedOrganizations() {
             this.$state.featuredOrganizations = await getFeaturedOrganizations();
@@ -100,6 +106,23 @@ export const useHomeStore = defineStore('homeStore', {
                 fieldName: 'business_type',
                 type: 'checkbox',
                 title: 'Business Type',
+                icon: 'SvgoClock',
+                list: filterList
+            }
+        },
+        shiftTypesFilter: (state) => {
+            const filterList = state.shiftTypes
+                .sort((a :ShiftType, b :ShiftType) => a.sort_order - b.sort_order)
+                ?.map((shift :ShiftType) => ({
+                    label: shift.shift_type,
+                    value: shift.shift_type,
+                    checked: false,
+                    counts: 0
+                })) || []
+            return {
+                fieldName: 'shift_type',
+                type: 'checkbox',
+                title: 'Shift Type',
                 icon: 'SvgoClock',
                 list: filterList
             }
