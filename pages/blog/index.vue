@@ -149,7 +149,7 @@ watch(() => selectedCategory.value, async (val :string) => {
                 <template v-if="firstBlog">
                   <div class="flex justify-around max-xl:flex-col gap-8 lg:col-span-2">
                     <div class="overflow-hidden md:h-[320px] md:grow shrink-0">
-                      <img :src="firstBlog.post_photo?.url ?? '/images/others/blog-mockup.jpg'" alt="blog-list-img"
+                      <img :src="firstBlog.attributes.post_photo?.url ?? '/images/others/blog-mockup.jpg'" alt="blog-list-img"
                            class="w-full h-full object-cover">
                     </div>
                     <div class="flex flex-col xl:w-[350px]">
@@ -159,28 +159,28 @@ watch(() => selectedCategory.value, async (val :string) => {
                             class="bg-gray-50 rounded-full p-1 pr-2.5 border border-brand-200 text-xs text-brand-600 inline-flex items-center gap-2 mb-4">
                           <span
                               class="h-[22px] flex items-center justify-center bg-white rounded-full py-0.5 px-2 border border-brand-200 leading-[18px]">
-                            {{ firstBlog?.category?.category_name || 'General' }}
+                            {{ firstBlog?.attributes.category?.category_name || 'General' }}
                           </span>
-                          {{ firstBlog.reading_time }}
+                          {{ firstBlog.attributes.reading_time }}
                         </span>
                         </div>
                         <h3>
-                          <NuxtLink :to="`/blog/${firstBlog.slug}`"
+                          <NuxtLink :to="`/blog/${firstBlog.attributes.slug}`"
                                     class="flex items-center justify-between gap-3 text-3xl font-semibold hover:text-brand-600">
-                            {{ firstBlog.title }}
+                            {{ firstBlog.attributes.title }}
                           </NuxtLink>
                         </h3>
-                        <p class="text-black-light font-normal">{{ firstBlog.post_excerpt }}</p>
+                        <p class="text-black-light font-normal">{{ firstBlog.attributes.post_excerpt }}</p>
                       </div>
 
                       <div class="flex items-center gap-3">
                         <div class="h-10 w-10 rounded-full overflow-hidden">
-                          <img :src="firstBlog.author.avatar || '/images/people/olivia.png'"
-                               :alt="firstBlog.author.name">
+                          <img :src="firstBlog.attributes.author?.avatar || '/images/people/olivia.png'"
+                               :alt="firstBlog.attributes.author.data.attributes.name">
                         </div>
                         <div class="flex flex-col text-sm">
-                          <h6 class="font-semibold">{{ firstBlog.author.name }}</h6>
-                          <p>{{ firstBlog.post_date }}</p>
+                          <h6 class="font-semibold">{{ firstBlog.attributes.author.data.attributes.name }}</h6>
+                          <p>{{ firstBlog.attributes.post_date }}</p>
                         </div>
                       </div>
                     </div>
@@ -191,7 +191,7 @@ watch(() => selectedCategory.value, async (val :string) => {
                     <div v-if="blogs.length" class="flex flex-col justify-around">
                       <div class="overflow-hidden mb-5">
                         <div class="h-60">
-                          <img :src="blog.post_photo?.url ?? '/images/others/blog-mockup.jpg'" alt="blog-list-img4"
+                          <img :src="blog.attributes.post_photo?.url ?? '/images/others/blog-mockup.jpg'" alt="blog-list-img4"
                                class="w-full h-full object-cover">
                         </div>
                       </div>
@@ -200,29 +200,29 @@ watch(() => selectedCategory.value, async (val :string) => {
                           <span class="bg-gray-50 rounded-full p-1 pr-2.5 border border-brand-200 text-xs text-brand-600 inline-flex items-center gap-2 mb-4">
                             <span
                                 class="h-[22px] flex items-center justify-center bg-white rounded-full py-0.5 px-2 border border-brand-200 leading-[18px]">
-                              {{ blog?.category?.category_name || 'General' }}
+                              {{ blog?.attributes.category?.category_name || 'General' }}
                             </span>
-                            {{ blog.reading_time }}
+                            {{ blog.attributes.reading_time }}
                           </span>
                         </div>
                         <h3>
-                          <NuxtLink :to="`/blog/${blog.slug}`"
+                          <NuxtLink :to="`/blog/${blog.attributes.slug}`"
                                     class="flex items-center justify-between gap-3 text-lg hover:text-brand-600">
-                            <div class="line-clamp-2">{{ blog.title }}</div>
+                            <div class="line-clamp-2">{{ blog.attributes.title }}</div>
                             <span class="shrink-0">
                           <SvgoArrowNarrowUpRight class="w-4 h-4"/>
                         </span>
                           </NuxtLink>
                         </h3>
-                        <p class="font-normal line-clamp-2">{{ blog.post_excerpt }}</p>
+                        <p class="font-normal line-clamp-2">{{ blog.attributes.post_excerpt }}</p>
                       </div>
                       <div class="flex items-center gap-3">
                         <div class="h-10 w-10 rounded-full overflow-hidden">
-                          <img :src="blog.author.avatar || '/images/people/olivia.png'" :alt="blog.author.name">
+                          <img :src="blog.attributes.author?.avatar || '/images/people/olivia.png'" :alt="blog.attributes.author.name">
                         </div>
                         <div class="flex flex-col text-sm">
-                          <h6 class="font-semibold">{{ blog.author.name }}</h6>
-                          <p>{{ blog.post_date }}</p>
+                          <h6 class="font-semibold">{{ blog.attributes.author.data.attributes.name }}</h6>
+                          <p>{{ blog.attributes.post_date }}</p>
                         </div>
                       </div>
                     </div>
