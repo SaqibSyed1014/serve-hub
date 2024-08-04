@@ -67,3 +67,10 @@ interface EmploymentType {
     employment_type_id: number;
     sort_order: number;
 }
+interface ShiftType {
+    active: number;
+    shift_type: string;
+    shift_type_id: number;
+    sort_order: number;
+}
+

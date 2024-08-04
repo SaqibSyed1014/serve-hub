@@ -52,8 +52,8 @@ export const useJobStore = defineStore('jobStore', {
             if (jobDetail)
                 return {
                     ...jobDetail,
-                    application_deadline: jobDetail.application_deadline ? jobDetail.application_deadline.slice(0, jobDetail.application_deadline.indexOf('00:00:00')) : '',
-                    date_posted: jobDetail.date_posted.slice(0, jobDetail.date_posted.indexOf('00:00:00'))
+                    application_deadline: jobDetail?.application_deadline ? jobDetail.application_deadline.slice(0, jobDetail.application_deadline.indexOf('00:00:00')) : '',
+                    date_posted: jobDetail?.date_posted.slice(0, jobDetail.date_posted.indexOf('00:00:00'))
             }
             else return null
         },

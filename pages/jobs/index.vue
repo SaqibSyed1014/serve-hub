@@ -22,7 +22,7 @@ const jobStore = useJobStore();
 const homeStore = useHomeStore();
 
 const { jobListings, facetCounts, totalPages, coordinates } = storeToRefs(jobStore);
-const { employmentTypesFilter, businessTypesFilter } = storeToRefs(homeStore);
+const { employmentTypesFilter, businessTypesFilter, shiftTypesFilter } = storeToRefs(homeStore);
 
 const layoutOptionSelected = ref(0);
 const searchedLocationText = ref('');
@@ -92,10 +92,12 @@ onMounted(async () => {
 async function fetchFilters() {
   await Promise.all([
       homeStore.fetchEmploymentTypes(),
-      homeStore.fetchBusinessTypes()
+      homeStore.fetchBusinessTypes(),
+      homeStore.fetchShiftTypes()
   ])
   filters.value.unshift(employmentTypesFilter.value);
-  filters.value.splice(1, 0, businessTypesFilter.value)
+  filters.value.splice(1, 0, businessTypesFilter.value);
+  filters.value.splice(2, 0, shiftTypesFilter.value)
 }
 
 onUnmounted(() => {
@@ -223,7 +225,7 @@ const wageType = ref('salary');  // initial values for wage type and compensatio
 const includeAllJobs = ref(true);
 
 async function assignQueryParamsOnInitialLoad(queryParams :JobQueryParams) {
-  const { keyword, mode, location, employment_type, business_type, job_role, experience_level, coordinates, filter_by, ...otherParams }
+  const { keyword, mode, location, employment_type, business_type, shift_type, job_role, experience_level, coordinates, filter_by, ...otherParams }
       = queryParams
   query.value = {
     ...query.value,
@@ -236,6 +238,7 @@ async function assignQueryParamsOnInitialLoad(queryParams :JobQueryParams) {
 
   if (employment_type) sidebarFilters.value.employment_type = employment_type;
   if (business_type) sidebarFilters.value.business_type = business_type;
+  if (shift_type) sidebarFilters.value.shift_type = shift_type;
   if (job_role) sidebarFilters.value.job_role = job_role;
   if (experience_level) sidebarFilters.value.experience_level = experience_level;
   filters.value.forEach(filter => {
