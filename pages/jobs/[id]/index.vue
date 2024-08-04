@@ -115,7 +115,7 @@ function jobOrgType() {
             </div>
 
             <div class="mb-8 h-[140px] md:h-[240px] max-md:-mx-5">
-              <img src="/images/others/job-main.jpg" alt="" class="w-full mx-auto h-full object-cover"/>
+              <img :src="jobDetails?.banner_path ?? 'https://assets.servehub.io/images/default_banner.jpg'" alt="" class="w-full mx-auto h-full object-cover"/>
             </div>
             <div class="job-details md:px-8">
               <div class="job-logo-and-title -mt-20 md:-mt-14 mb-8">
