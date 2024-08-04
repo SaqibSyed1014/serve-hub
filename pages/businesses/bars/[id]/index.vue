@@ -1,34 +1,33 @@
 <script setup lang="ts">
-import {useCollegesStore} from "~/segments/colleges/store";
+import {useBarsStore} from "~/segments/bars/store";
 import OrgMapLocation from "~/components/pages/schoolDistrict/OrgMapLocation.vue";
 import BaseSpinner from "~/components/core/BaseSpinner.vue";
 import OrgOpenedJobsList from "~/components/pages/common/OrgOpenedJobsList.vue";
 
-const activeTab = ref(0); // Default to first tab
+const activeTab = ref(0);
 
-// Array of tab names and icons
 const tabs = ref([
-  { name: "About College District" },
+  { name: "About Bar" },
   { name: "Open Jobs" }
 ]);
 
 const route = useRoute();
 const router = useRouter();
-const collegeStore = useCollegesStore();
-const { collegeDetails, collegeJobs } = storeToRefs(collegeStore);
+const barStore = useBarsStore();
+const { barDetails, barJobs } = storeToRefs(barStore);
 
-const isCollegeFetching = ref<boolean>(true);
+const isBarFetching = ref<boolean>(true);
 
 onMounted(async () => {
-  isCollegeFetching.value = true;
-  await collegeStore.fetchCollegeDetails(route.params?.id as string);
-  isCollegeFetching.value = false;
+  isBarFetching.value = true;
+  await barStore.fetchBarDetails(route.params?.id as string);
+  isBarFetching.value = false;
 })
 
 const searchedJob= ref<string>('');
 
 // remove the 'About College tab if no description is found'
-watch(() => collegeDetails.value, (val) => {
+watch(() => barDetails.value, (val) => {
   if (!val?.organization_description.length) {
     tabs.value[0].name = '';
     activeTab.value = 1;
@@ -37,13 +36,13 @@ watch(() => collegeDetails.value, (val) => {
 </script>
 
 <template>
-  <div v-if="isCollegeFetching" class="container">
+  <div v-if="isBarFetching" class="container">
     <div class="flex justify-center items-center h-[calc(100vh-80px)] w-full">
-      <BaseSpinner size="lg" :show-loader="isCollegeFetching" />
+      <BaseSpinner size="lg" :show-loader="isBarFetching" />
     </div>
   </div>
 
-  <div v-else-if="collegeDetails" class="border-t md:border-b border-gray-200 mb-24">
+  <div v-else-if="barDetails" class="border-t md:border-b border-gray-200 mb-24">
     <div class="md:container flex">
       <!-- Sidebar -->
       <div class="flex flex-col border-r border-gray-200">
@@ -82,13 +81,13 @@ watch(() => collegeDetails.value, (val) => {
                     to="/colleges"
                     class="text-slate-600 text-sm font-medium leading-tight"
                 >
-                  College Districts
+                  Bar
                 </NuxtLink>
               </div>
               <SvgoChevronRight class="size-4" />
               <div class="justify-center items-center flex">
                 <div class="text-blue-800 text-sm font-semibold leading-tight">
-                  {{ collegeDetails.name }}
+                  {{ barDetails.name }}
                 </div>
               </div>
             </div>
@@ -117,16 +116,16 @@ watch(() => collegeDetails.value, (val) => {
                 class="justify-start lg:items-center lg:gap-6 flex flex-col lg:flex-row"
             >
               <div class="w-24 h-24 shrink-0 bg-white rounded-[10px] shadow-lg flex justify-center items-center mb-2">
-                <template v-if="collegeDetails?.logo_path?.length">
-                  <img :src="collegeDetails.logo_path" :alt="collegeDetails.name" class="w-full h-full object-cover">
+                <template v-if="barDetails?.logo_path?.length">
+                  <img :src="barDetails.logo_path" :alt="barDetails.name" class="w-full h-full object-cover">
                 </template>
 
                 <SvgoBuilding v-else class="size-14 shrink-0" />
               </div>
               <div class="flex-col justify-start items-start gap-5 inline-flex">
-                <BaseTooltip :tooltip-content="collegeDetails.name" id="orgTitle">
+                <BaseTooltip :tooltip-content="barDetails.name" id="orgTitle">
                   <h2 class="text-2xl lg:text-3xl md:text-ellipsis md:line-clamp-1">
-                    {{ collegeDetails.name }}
+                    {{ barDetails.name }}
                   </h2>
                 </BaseTooltip>
               </div>
@@ -140,7 +139,7 @@ watch(() => collegeDetails.value, (val) => {
                 <div class="inline-flex gap-2">
                   <SvgoUsFlag class="size-5 shrink-0" />
                   <span class="text-slate-600 text-base font-medium leading-normal">
-                    {{ `${collegeDetails.city}, ${collegeDetails.state_code}` }} {{  }}
+                    {{ `${barDetails.city}, ${barDetails.state_code}` }} {{  }}
                   </span>
                 </div>
               </div>
@@ -152,7 +151,7 @@ watch(() => collegeDetails.value, (val) => {
 <!--                <div class="inline-flex gap-2">-->
 <!--                  <SvgoBuilding class="size-5" />-->
 <!--                  <span class="text-slate-600 text-base font-medium leading-normal">-->
-<!--                    {{ collegeDetails.school_count }}-->
+<!--                    {{ barDetails.school_count }}-->
 <!--                  </span>-->
 <!--                </div>-->
 <!--              </div>-->
@@ -163,7 +162,7 @@ watch(() => collegeDetails.value, (val) => {
 <!--                  <SvgoGraduationHat class="size-5" />-->
 <!--                  <span-->
 <!--                      class="text-slate-600 text-base font-medium leading-normal">-->
-<!--                    {{ collegeDetails.student_count }}-->
+<!--                    {{ barDetails.student_count }}-->
 <!--                  </span>-->
 <!--                </div>-->
 <!--              </div>-->
@@ -173,7 +172,7 @@ watch(() => collegeDetails.value, (val) => {
                 <div class="inline-flex gap-2">
                   <SvgoBriefCase class="size-5" />
                   <span class="text-slate-600 text-base font-medium leading-normal">
-                    {{ collegeDetails.job_count }}
+                    {{ barDetails.job_count }}
                   </span>
                 </div>
               </div>
@@ -185,7 +184,7 @@ watch(() => collegeDetails.value, (val) => {
                 <div class="inline-flex gap-2">
                   <SvgoGlobe class="size-5 shrink-0" />
                   <a
-                      :href="collegeDetails.website_url"
+                      :href="barDetails.website_url"
                       target="_blank"
                       class="text-brand-800 text-base font-medium underline leading-normal hover:text-brand-600 transition"
                   >
@@ -225,7 +224,7 @@ watch(() => collegeDetails.value, (val) => {
                 <div class="flex-col justify-start items-start gap-1 inline-flex">
                   <p class="text-gray-900 text-2xl md:text-3xl font-semibold leading-[38px]">
                     {{
-                      activeTab === 0 && collegeDetails.organization_description.length
+                      activeTab === 0 && barDetails.organization_description.length
                           ? "About School District"
                           : activeTab === 1
                               ? "List of Jobs"
@@ -235,7 +234,7 @@ watch(() => collegeDetails.value, (val) => {
                   </p>
                   <p class="text-slate-600 text-base font-normal leading-normal">
                     {{
-                      activeTab === 0 && collegeDetails.organization_description.length
+                      activeTab === 0 && barDetails.organization_description.length
                           ? "Read out the information about patlo alto unified school."
                           : activeTab === 1 ? "Have a look to the list of Jobs." : ""
                     }}
@@ -244,7 +243,7 @@ watch(() => collegeDetails.value, (val) => {
               </div>
 
               <div
-                  v-if="activeTab === 1 && collegeDetails.job_count"
+                  v-if="activeTab === 1 && barDetails.job_count"
                   class="w-full sm:w-1/2 sm:flex sm:items-end sm:justify-end relative"
               >
                 <label for="search-field" class="sr-only">Search</label>
@@ -266,14 +265,14 @@ watch(() => collegeDetails.value, (val) => {
             <!--   College Description   -->
             <template v-if="activeTab === 0">
               <div class="description-content mb-5">
-                <div v-html="collegeDetails.organization_description"></div>
+                <div v-html="barDetails.organization_description"></div>
               </div>
             </template>
 
             <div v-if="activeTab === 1">
               <OrgOpenedJobsList
-                type="college"
-                :opened-jobs="collegeJobs"
+                type="Bars"
+                :opened-jobs="barJobs"
                 :searched-keyword="searchedJob"
               />
             </div>
@@ -282,7 +281,7 @@ watch(() => collegeDetails.value, (val) => {
 <!--            <PhotoCard :data="photoList" v-if="activeTab === 3" />-->
 <!--            <VideoCard v-if="activeTab === 4" :data="videoList" />-->
 
-            <OrgMapLocation v-if="activeTab === 3" :coordinates="[collegeDetails.geo_lat, collegeDetails.geo_lng]" />
+            <OrgMapLocation v-if="activeTab === 3" :coordinates="[barDetails.geo_lat, barDetails.geo_lng]" />
           </div>
         </div>
       </main>
