@@ -66,7 +66,7 @@ interface JobDetails extends Job {
     internal_job_code: string
     geo_lat: number
     geo_lng: number
-    type: string
+    business_type: string
     slug: string
     max_salary?: string
     min_salary?: string

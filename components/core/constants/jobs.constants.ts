@@ -67,7 +67,7 @@ export const jobFilters = [
             },
             {
                 label: 'Restaurant Manager',
-                value: 'Food Runner',
+                value: 'Restaurant Manager',
                 checked: false,
                 counts: 0
             },

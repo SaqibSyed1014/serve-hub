@@ -82,7 +82,8 @@ function jobSharingOnFacebook() {
 }
 
 function jobOrgType() {
-  if (jobDetails.value?.type === 'district') return 'school-districts'
+  if (jobDetails.value?.business_type === 'Bars') return 'businesses/bars'
+  else if (jobDetails.value?.business_type === 'Restaurants') return 'businesses/restaurants'
 }
 </script>
 
