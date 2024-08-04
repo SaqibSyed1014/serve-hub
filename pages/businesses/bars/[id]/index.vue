@@ -247,18 +247,19 @@ watch(() => barDetails.value, (val) => {
                   class="w-full sm:w-1/2 sm:flex sm:items-end sm:justify-end relative"
               >
                 <label for="search-field" class="sr-only">Search</label>
-                <SvgoSearchIcon
-                    class="pointer-events-none absolute inset-y-0 left-2 h-full w-5 text-gray-500"
-                    aria-hidden="true"
-                />
-                <input
-                    v-model="searchedJob"
-                    id="search-field"
-                    class="form-input w-full md:w-[320px] pl-8"
-                    placeholder="Search..."
-                    type="search"
-                    name="search"
-                />
+                <div class="search-input-prepended">
+                  <SvgoSearchIcon
+                      class="search-prepend-icon"
+                      aria-hidden="true"
+                  />
+                  <input
+                      v-model="searchedJob"
+                      id="search-field"
+                      class="search-input !w-full md:!w-[320px]"
+                      placeholder="Search..."
+                      type="search"
+                      name="search"
+                  /></div>
               </div>
             </div>
 

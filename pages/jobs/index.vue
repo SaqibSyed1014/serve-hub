@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import {initDropdowns} from "flowbite";
-import JobSkeleton from "~/components/pages/job-listings/JobSkeleton.vue";
+import JobSkeleton from "~/components/core/Skeletons/JobSkeleton.vue";
 import {useJobStore} from "~/segments/jobs/store";
 import NoRecordFound from "~/components/core/NoRecordFound.vue";
 import type {JobQueryParams, JobSearchFilters, PaginationInfo, TypesenseQueryParam} from "~/segments/common.types";
@@ -12,6 +12,7 @@ import {
   jobFilters
 } from "~/components/core/constants/jobs.constants";
 import {useHomeStore} from "~/segments/home/store";
+import JobFilterSkeleton from "~/components/core/Skeletons/JobFilterSkeleton.vue";
 
 
 const filters = ref(jobFilters);  // job's filters
@@ -27,6 +28,7 @@ const { employmentTypesFilter, businessTypesFilter, shiftTypesFilter } = storeTo
 const layoutOptionSelected = ref(0);
 const searchedLocationText = ref('');
 const isFilterSidebarVisible = ref<boolean>(false);
+const areFiltersLoading = ref<boolean>(true);
 
 const sidebarFilters = ref<{ [key :string]: string | string[] }>({})
 
@@ -41,7 +43,7 @@ const initialQuery = {
   page: pageInfo.value.currentPage,
   per_page: pageInfo.value.itemsPerPage,
   sort_by: 'date_posted:desc',
-  facet_by: 'employment_type,job_role,experience_level,business_type',
+  facet_by: 'employment_type,job_role,experience_level,business_type,shift_type',
   filter_by: ''
 };
 const query = ref<TypesenseQueryParam>(initialQuery);
@@ -74,7 +76,10 @@ watch(() => layoutOptionSelected.value, (val) => {
 onMounted(async () => {
   initDropdowns();
   let savedLayout = '';
-  await fetchFilters();
+  areFiltersLoading.value = true;
+  await fetchFilters();  // fetching side bar filters
+  areFiltersLoading.value = false;
+
   if (process.client) {  // using process.client due to SSR
     savedLayout = localStorage.getItem('jobsLayout') ?? 'list';  // use layout if it's saved earlier else default layout
     layoutOptionSelected.value = savedLayout === 'grid' ? 1 : 0;
@@ -285,18 +290,23 @@ const signUpCardIndex = Math.floor(Math.random() * 25);  // randomly generate in
     <div class="job-listing-view">
       <ListingView>
         <template #filters>
-          <ListingFilters
-              class="hidden lg:flex"
-              :is-sidebar-filter="false"
-              :filtration-list="filters"
-              :items-loading="jobsLoading"
-              :selected-compensation="selectedCompensation"
-              :wage-type="wageType"
-              :include-all-jobs="includeAllJobs"
-              @compensation-filter-type-change="setInitialCompensationValues"
-              @compensation-filter-change="applyCompensationFilters"
-              @on-filters-change="updateSideBarFilters"
-          />
+          <template v-if="areFiltersLoading">
+            <JobFilterSkeleton />
+          </template>
+          <template v-else>
+            <ListingFilters
+                class="hidden lg:flex"
+                :is-sidebar-filter="false"
+                :filtration-list="filters"
+                :items-loading="jobsLoading"
+                :selected-compensation="selectedCompensation"
+                :wage-type="wageType"
+                :include-all-jobs="includeAllJobs"
+                @compensation-filter-type-change="setInitialCompensationValues"
+                @compensation-filter-change="applyCompensationFilters"
+                @on-filters-change="updateSideBarFilters"
+            />
+          </template>
 
           <SideBarWrapper :is-sidebar-visible="isFilterSidebarVisible">
             <ListingFilters
