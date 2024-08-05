@@ -33,7 +33,7 @@ const queryParams = computed(() => {
     q: props.searchedKeyword.length ? props.searchedKeyword : '*',
     page: pageInfo.value.currentPage,
     per_page: pageInfo.value.itemsPerPage,
-    filter_by: `organization_slug:${route.params?.id}`,
+    filter_by: `business_slug:${route.params?.id}`,
     query_by: 'job_title'
   };
 })

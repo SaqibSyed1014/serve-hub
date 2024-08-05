@@ -8,7 +8,7 @@ const activeTab = ref(0); // Default to first tab
 const router = useRouter();
 // Array of tab names and icons
 const tabs = ref([
-  { name: "About School District" },
+  { name: "About Restaurant" },
   { name: "Open Jobs" },
   { name: "Location" }
 ]);
@@ -28,7 +28,7 @@ onMounted(async () => {
 
 const searchedJob= ref<string>('');
 
-// remove the 'About School District tab if no description is found'
+// remove the 'About Restaurant tab if no description is found'
 watch(() => schoolDistrictDetails.value, (val) => {
   if (!val?.organization_description.length) {
     tabs.value[0].name = '';
@@ -79,7 +79,7 @@ watch(() => schoolDistrictDetails.value, (val) => {
                   to="/school-districts"
                   class="text-slate-600 text-sm font-medium leading-tight"
                 >
-                  School districts
+                  Restaurants
                 </NuxtLink>
               </div>
               <SvgoChevronRight class="size-4" />
@@ -139,28 +139,28 @@ watch(() => schoolDistrictDetails.value, (val) => {
                 </div>
               </div>
 
-              <div class="flex flex-col gap-2">
-                <span class="text-gray-900 text-sm font-medium leading-tight"
-                  >Number of Schools
-                </span>
-                <div class="inline-flex gap-2">
-                  <SvgoBuilding class="size-5 text-gray-500" />
-                  <span class="text-slate-600 text-base font-medium leading-normal">
-                    {{ schoolDistrictDetails.school_count.toLocaleString() }}
-                  </span>
-                </div>
-              </div>
+<!--              <div class="flex flex-col gap-2">-->
+<!--                <span class="text-gray-900 text-sm font-medium leading-tight"-->
+<!--                  >Number of Schools-->
+<!--                </span>-->
+<!--                <div class="inline-flex gap-2">-->
+<!--                  <SvgoBuilding class="size-5 text-gray-500" />-->
+<!--                  <span class="text-slate-600 text-base font-medium leading-normal">-->
+<!--                    {{ schoolDistrictDetails.school_count.toLocaleString() }}-->
+<!--                  </span>-->
+<!--                </div>-->
+<!--              </div>-->
 
-              <div class="flex flex-col gap-2">
-                <span class="text-gray-900 text-sm font-medium leading-tight">Number of Students</span>
-                <div class="inline-flex gap-2 text-gray-900">
-                  <SvgoGraduationHat class="size-5" />
-                  <span
-                    class="text-slate-600 text-base font-medium leading-normal">
-                    {{ schoolDistrictDetails.student_count.toLocaleString() }}
-                  </span>
-                </div>
-              </div>
+<!--              <div class="flex flex-col gap-2">-->
+<!--                <span class="text-gray-900 text-sm font-medium leading-tight">Number of Students</span>-->
+<!--                <div class="inline-flex gap-2 text-gray-900">-->
+<!--                  <SvgoGraduationHat class="size-5" />-->
+<!--                  <span-->
+<!--                    class="text-slate-600 text-base font-medium leading-normal">-->
+<!--                    {{ schoolDistrictDetails.student_count.toLocaleString() }}-->
+<!--                  </span>-->
+<!--                </div>-->
+<!--              </div>-->
 
               <div class="flex flex-col gap-2">
                 <span class="text-gray-900 text-sm font-medium leading-tight">Number of Jobs</span>
@@ -218,7 +218,7 @@ watch(() => schoolDistrictDetails.value, (val) => {
                   <p class="text-gray-900 text-2xl md:text-3xl font-semibold leading-[38px]">
                     {{
                       activeTab === 0 && schoolDistrictDetails.organization_description.length
-                        ? "About School District"
+                        ? "About Restaurant"
                         : activeTab === 1
                         ? "List of Jobs"
                         : activeTab === 2
@@ -245,22 +245,24 @@ watch(() => schoolDistrictDetails.value, (val) => {
                   class="w-full sm:w-1/2 sm:flex sm:items-end sm:justify-end relative"
               >
                 <label for="search-field" class="sr-only">Search</label>
-                <SvgoSearchIcon
-                    class="pointer-events-none absolute inset-y-0 left-2 h-full w-5 text-gray-500"
-                    aria-hidden="true"
-                />
-                <input
-                    v-model="searchedJob"
-                    id="search-field"
-                    class="form-input w-full md:w-[320px] pl-8"
-                    placeholder="Search..."
-                    type="search"
-                    name="search"
-                />
+                <div class="search-input-prepended">
+                  <SvgoSearchIcon
+                      class="search-prepend-icon"
+                      aria-hidden="true"
+                  />
+                  <input
+                      v-model="searchedJob"
+                      id="search-field"
+                      class="search-input !w-full md:!w-[320px]"
+                      placeholder="Search..."
+                      type="search"
+                      name="search"
+                  />
+                </div>
               </div>
             </div>
 
-            <!--   School District Description   -->
+            <!--   Restaurant Description   -->
             <template v-if="activeTab === 0">
               <div class="description-content mb-5">
                 <div v-html="schoolDistrictDetails.organization_description"></div>
@@ -269,7 +271,7 @@ watch(() => schoolDistrictDetails.value, (val) => {
 
             <div v-if="activeTab === 1">
               <OrgOpenedJobsList
-                  type="district"
+                  type="Restaurants"
                   :opened-jobs="schoolDistrictJobs"
                   :searched-keyword="searchedJob"
               />

@@ -159,7 +159,7 @@ watch(() => selectedCategory.value, async (val :string) => {
                             class="bg-gray-50 rounded-full p-1 pr-2.5 border border-brand-200 text-xs text-brand-600 inline-flex items-center gap-2 mb-4">
                           <span
                               class="h-[22px] flex items-center justify-center bg-white rounded-full py-0.5 px-2 border border-brand-200 leading-[18px]">
-                            {{ firstBlog?.attributes.category?.category_name || 'General' }}
+                            {{ firstBlog?.attributes.category.data.attributes.category_name || 'General' }}
                           </span>
                           {{ firstBlog.attributes.reading_time }}
                         </span>
@@ -175,7 +175,7 @@ watch(() => selectedCategory.value, async (val :string) => {
 
                       <div class="flex items-center gap-3">
                         <div class="h-10 w-10 rounded-full overflow-hidden">
-                          <img :src="firstBlog.attributes.author?.avatar || '/images/people/olivia.png'"
+                          <img :src="firstBlog?.attributes.author?.avatar || '/images/people/olivia.png'"
                                :alt="firstBlog.attributes.author.data.attributes.name">
                         </div>
                         <div class="flex flex-col text-sm">
@@ -200,7 +200,7 @@ watch(() => selectedCategory.value, async (val :string) => {
                           <span class="bg-gray-50 rounded-full p-1 pr-2.5 border border-brand-200 text-xs text-brand-600 inline-flex items-center gap-2 mb-4">
                             <span
                                 class="h-[22px] flex items-center justify-center bg-white rounded-full py-0.5 px-2 border border-brand-200 leading-[18px]">
-                              {{ blog?.attributes.category?.category_name || 'General' }}
+                              {{ blog?.attributes.category?.data.attributes.category_name || 'General' }}
                             </span>
                             {{ blog.attributes.reading_time }}
                           </span>
@@ -218,7 +218,7 @@ watch(() => selectedCategory.value, async (val :string) => {
                       </div>
                       <div class="flex items-center gap-3">
                         <div class="h-10 w-10 rounded-full overflow-hidden">
-                          <img :src="blog.attributes.author?.avatar || '/images/people/olivia.png'" :alt="blog.attributes.author.name">
+                          <img :src="blog?.attributes.author?.avatar || '/images/people/olivia.png'" :alt="blog.attributes.author.name">
                         </div>
                         <div class="flex flex-col text-sm">
                           <h6 class="font-semibold">{{ blog.attributes.author.data.attributes.name }}</h6>
