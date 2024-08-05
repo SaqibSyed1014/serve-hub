@@ -122,7 +122,7 @@ const queryParams = computed(() => {
 async function fetchColleges() {
   localStorage.setItem('collegesLayout', isGridView.value)
   isLoading.value = true;
-  await collegesStore.fetchBars(query?.value);
+  await barsStore.fetchBars(query?.value);
   isLoading.value = false;
   totalPages.value = total_page?.value;
 }

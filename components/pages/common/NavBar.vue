@@ -123,6 +123,7 @@ const router = useRouter();
     <MenuSideBar
       :is-sidebar-visible="toggleSideBar"
       :menu-links="menuLinks"
+      :business-types-menu-links="businessTypesList"
       @toggle-sidebar="toggleSideBar = false"
     />
   </header>

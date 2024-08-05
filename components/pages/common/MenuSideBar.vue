@@ -3,7 +3,8 @@ import type { MenuLinksType } from "~/segments/common.types";
 
 const props = defineProps<{
   menuLinks: MenuLinksType[],
-  isSidebarVisible: boolean
+  isSidebarVisible: boolean,
+  businessTypesMenuLinks: { label :string, business_type_slug :string }[]
 }>()
 
 watch(() => props.isSidebarVisible, (val :boolean) => {
@@ -71,11 +72,12 @@ function returnToMainMenu() {
             <span>Back</span>
           </div>
           <ul class="font-semibold">
-            <template v-for="link in currentSubMenuList">
+            <template v-for="businessType in businessTypesMenuLinks">
               <li class="py-3">
                 <NuxtLink
-                    :to="link.path" @click.stop="emits('toggleSidebar')"
-                >{{ link.label }}
+                    :to="`/${businessType.business_type_slug}`"
+                    @click.stop="emits('toggleSidebar')"
+                >{{ businessType.label }}
                 </NuxtLink>
               </li>
             </template>
