@@ -10,10 +10,10 @@ onMounted(() => {
 })
 
 const tutorialsPoints = [
-    'Saving time in the application filtration process',
-    'Writing comprehensive job to find and connect with the most suited applicant',
-    'Managing the applications and your organization\'s data',
-    'Get feedback by the job seekers in order to improve recruitment process '
+  'Attract top-tier talent to your establishment',
+  'Streamline your hiring process and save valuable time',
+  'Expand your reach to a wider pool of qualified candidates',
+  'Learn how ServeHub will partner with you to understand your hiring needs'
 ]
 </script>
 
@@ -24,17 +24,14 @@ const tutorialsPoints = [
         <div class="flex flex-col gap-8">
           <div>
             <h3 class="text-brand-600 text-sm md:text-base mb-3">Request a demo</h3>
-            <h2 class="text-4xl md:text-5xl mb-6">We'd love to show you around</h2>
+            <h2 class="text-4xl md:text-5xl mb-6">Discover the Future of Hospitality Hiring</h2>
             <p class="md:text-xl font-normal">
-              Get in touch to witness an amazing journey of promoting jobs and match with the right candidate.
+              Unlock the potential of your hospitality business with our cutting-edge job board platform. See firsthand how we can transform your recruitment process and help you build a stellar team.
             </p>
           </div>
 
-          <!-- Image Placeholder -->
-          <div class="bg-gray-200 h-64 w-64 mx-auto"></div>
-
           <div class="demo-tutorial-list max-sm:text-sm">
-            <p>Your custom demo will include tutorials on:</p>
+            <p>ServeHub can help you:</p>
             <ul class="pt-4">
               <template v-for="point in tutorialsPoints">
                 <li class="flex gap-5 mb-4">
