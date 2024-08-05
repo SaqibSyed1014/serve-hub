@@ -41,8 +41,12 @@ interface AuthorDetail {
 }
 
 interface Category {
-    id: number
-    category_name: string
+    data: {
+        id: number
+        attributes: {
+            category_name: string
+        }
+    }
 }
 
 
