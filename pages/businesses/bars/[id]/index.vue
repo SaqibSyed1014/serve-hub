@@ -86,7 +86,7 @@ watch(() => barDetails.value, (val) => {
               </div>
               <SvgoChevronRight class="size-4" />
               <div class="justify-center items-center flex">
-                <div class="text-blue-800 text-sm font-semibold leading-tight">
+                <div class="text-brand-800 text-sm font-semibold leading-tight">
                   {{ barDetails.name }}
                 </div>
               </div>
@@ -99,7 +99,7 @@ watch(() => barDetails.value, (val) => {
               <SvgoArrowLeftBlue
                   class="size-5 group-hover:-translate-x-[8px] transition"
               />
-              <div class="text-blue-800 text-sm font-semibold leading-tight">
+              <div class="text-brand-800 text-sm font-semibold leading-tight">
                 Back
               </div>
             </button>
@@ -198,7 +198,7 @@ watch(() => barDetails.value, (val) => {
               <select
                   v-model="activeTab"
                   id="countries"
-                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-brand-500 focus:border-brand-500 block w-full p-2.5"
               >
                 <option disabled value="">Choose an option</option>
                 <template v-for="(option, index) in tabs" :key="index">

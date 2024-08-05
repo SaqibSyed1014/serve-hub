@@ -65,14 +65,28 @@ export const features = [
     }
 ]
 
-export const pricingPlansIDs = [
-    'price_1P0v2M00kiM97A5ms79o8u4q',
-    'price_1PKr2b00kiM97A5mt29JKGeI',
-    'price_1PKr7j00kiM97A5mv5eFqisi',
-    'price_1PKr7j00kiM97A5mwpdXsERn',
-    'price_1PKr7j00kiM97A5mMwDzlWl7',
-    'price_1PKr7j00kiM97A5mMJaL1Sa1'
-]
+let pricingPlanIDsList :string[] = [];
+if (process.env.NODE_ENV === 'production') {
+    pricingPlanIDsList = [
+        'price_1PjUnOLckED7yHH5KCrFFVNJ',
+        'price_1PjV5hLckED7yHH5pfPGMjo1',
+        'price_1PjV7zLckED7yHH5TqoZqROF',
+        'price_1PjV7zLckED7yHH59btqm7qb',
+        'price_1PjV7zLckED7yHH5ii4KzzIz',
+        'price_1PjV7zLckED7yHH5QxkjxGWf'
+    ]
+} else if (process.env.NODE_ENV === 'development') {
+    pricingPlanIDsList = [
+        'price_1OMd9PLckED7yHH5UC3XcJjA',
+        'price_1PjUuaLckED7yHH5Nto134vZ',
+        'price_1PjUzfLckED7yHH5oLVxbDHh',
+        'price_1PjUzfLckED7yHH5AHyUL7a3',
+        'price_1PjUzfLckED7yHH5Xz9CtVjI',
+        'price_1PjUzfLckED7yHH5CEZWTO4g'
+    ]
+}
+
+export const pricingPlansIDs = pricingPlanIDsList
 
 export const pricingPlans = [
     {
