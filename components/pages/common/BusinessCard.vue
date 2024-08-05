@@ -8,7 +8,7 @@ defineProps<{
 
 <template>
   <NuxtLink
-      :to="`/${businessType}/${data?.slug}`"
+      :to="`/businesses/${businessType}/${data?.slug}`"
       class="p-5 rounded-xl border border-gray-200"
   >
     <template v-if="hasGridLayout">

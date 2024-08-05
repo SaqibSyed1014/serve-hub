@@ -78,7 +78,7 @@ watch(() => barDetails.value, (val) => {
             <div class="pl-3 justify-start items-center gap-3 hidden lg:flex">
               <div class="justify-center items-center flex">
                 <NuxtLink
-                    to="/colleges"
+                    to="/businesses/bars"
                     class="text-slate-600 text-sm font-medium leading-tight"
                 >
                   Bar
@@ -263,7 +263,7 @@ watch(() => barDetails.value, (val) => {
               </div>
             </div>
 
-            <!--   College Description   -->
+            <!--   Bar Description   -->
             <template v-if="activeTab === 0">
               <div class="description-content mb-5">
                 <div v-html="barDetails.organization_description"></div>
