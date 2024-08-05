@@ -81,7 +81,7 @@ function jobSharingOnFacebook() {
   window.open(url, '_target');
 }
 
-function jobOrgType() {
+function jobBusinessType() {
   if (jobDetails.value?.business_type === 'Bars') return 'businesses/bars'
   else if (jobDetails.value?.business_type === 'Restaurants') return 'businesses/restaurants'
 }
@@ -104,7 +104,7 @@ function jobOrgType() {
               <div class="hidden md:flex items-center gap-3">
                 <span @click="router.go(-1)">Jobs</span>
                 <SvgoChevronRight class="w-4 h-4 text-gray-300" />
-                <NuxtLink :to="`/${jobOrgType()}/${jobDetails.slug}`" class="text-brand-700 font-medium">
+                <NuxtLink :to="`/${jobBusinessType()}/${jobDetails.slug}`" class="text-brand-700 font-medium">
                   {{ jobDetails.organization_name }}
                 </NuxtLink>
               </div>
