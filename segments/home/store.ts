@@ -6,9 +6,9 @@ import {
     getShiftTypes,
     getFeaturedOrganizations,
     getOrgDetails,
-    getStripeCheckoutURL
+    getStripeCheckoutURL,
+    sendingClientMessage
 } from "~/segments/home/services";
-import {getOrgTypes} from "~/segments/postjobs/services";
 
 interface HomeSectionsData {
     jobsByCities: JobsInCities[]
@@ -57,6 +57,15 @@ export const useHomeStore = defineStore('homeStore', {
         async fetchStripeCheckoutURL(payload :any) {
             const { content } = await getStripeCheckoutURL(payload);
             this.$state.checkoutURL = content.url;
+        },
+        async sendClientMessage(payload :ContactFormPayload) {
+            await sendingClientMessage(payload)
+                .then(() => {
+                    useNuxtApp().$toast.success('Message sent successfully');
+                })
+                .catch(() => {
+                    useNuxtApp().$toast.error('Message sending failed');
+                });
         }
     },
     getters: {

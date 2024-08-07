@@ -91,43 +91,10 @@ const mapOptions = {
             <h2 class="text-3xl md:text-4xl mb-5">How can we assist?</h2>
             <p class="text-black-light md:text-xl font-normal">We'd love to hear from you. Please fill out this form.</p>
           </div>
-          <form class="space-y-6">
-            <div class="grid gap-8 lg:grid-cols-2">
-              <div class="form-control">
-                <label class="font-medium mb-1.5 text-sm">First name</label>
-                <input type="text" name="name" class="form-input" placeholder="First name"/>
-              </div>
-              <div class="form-control">
-                <label class="font-medium mb-1.5 text-sm">Last name</label>
-                <input type="text" name="last" class="form-input" placeholder="Last name"/>
-              </div>
-            </div>
-            <div class="form-control">
-              <label class="font-medium mb-1.5 text-sm">School Email</label>
-              <input type="text" name="name" class="form-input" placeholder="you@company.com"/>
-            </div>
-            <div class="form-control">
-              <label class="font-medium mb-1.5 text-sm">Phone number</label>
-              <input type="text" name="name" class="form-input" placeholder="+1 (555) 000-0000"/>
-            </div>
-            <div class="form-control">
-              <label class="font-medium mb-1.5 text-sm">Message</label>
-              <textarea type="text" name="name" rows="6" class="form-textarea" placeholder="Leave us a message..."></textarea>
-            </div>
-            <div class="col-span-2">
-              <label for="contact-checkbox" class="text-black-light font-normal inline-flex items-start sm:items-center gap-3">
-                <input type="checkbox" class="form-checkbox" id="contact-checkbox" />
-                <span>By checking this box, I consent to the <NuxtLink to="/privacy-policy" class="underline hover:no-underline">privacy policy</NuxtLink>.</span>
-              </label>
-            </div>
-            <BaseButton label="Send message" :full-sized="true" />
-          </form>
+
+          <ContactForm />
         </div>
       </div>
     </section>
   </div>
 </template>
-
-<style scoped lang="postcss">
-
-</style>

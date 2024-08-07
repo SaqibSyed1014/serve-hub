@@ -1,92 +1,99 @@
 <script setup lang="ts">
+import * as Yup from "yup";
+import { useForm } from "vee-validate";
+import {useHomeStore} from "~/segments/home/store";
+
+const homeStore = useHomeStore();
+
+let formData = ref<ContactFormPayload>({
+  fullName: '',
+  email: '',
+  phoneNumber: '',
+  message: '',
+  privacyConsent: false
+})
+
+const formLoader = ref<boolean>(false);
+
+// validation schema
+const schema = Yup.object().shape({
+  fullName: Yup.string(),
+  email: Yup.string().email().required("Email is required"),
+  phoneNumber: Yup.string(),
+  message: Yup.string().required("Message is required"),
+  privacyConsent: Yup.boolean().oneOf([true], "You must accept the privacy policy")
+});
+
+const { handleSubmit, defineField, errors, meta } = useForm({
+  initialValues: formData.value,
+  validationSchema: schema,
+});
+
+const [fullName, fullNameAttrs] = defineField("fullName");
+const [email, emailAttrs] = defineField("email");
+const [phoneNumber, phoneNumberAttrs] = defineField("phoneNumber");
+const [message, messageAttrs] = defineField("message");
+const [privacyConsent, privacyConsentAttrs] = defineField("privacyConsent");
+
+const onSubmit = handleSubmit(async (values) => {
+  formLoader.value = true;
+  await homeStore.sendClientMessage(values);
+  formLoader.value = false;
+});
 
 </script>
 
 <template>
-  <section class="pt-11 pb-24">
-    <div class="container">
-      <div class="grid md:grid-cols-2">
-        <div class="hidden md:block form-side-overlay bg-[url('/images/others/business.jpg')] bg-cover bg-[70%] relative">
-          <div class="absolute top-0 bg-gradient-to-tr from-brand-800 to-brand-600 h-full w-full opacity-80"></div>
-          <div class="relative z-10 py-36 2xl:py-40 px-8">
-            <div class="container flex items-center">
-              <div class="text-white">
-                <h3 class="text-5xl 2xl:text-7xl">
-                  Start turning your ideas into reality.
-                </h3>
-                <p class="text-xl text-brand-200 pt-6 pb-12">
-                  Create a free account and get full access to all features for 30-days. No credit card needed. Trusted
-                  by over 4,000 professionals.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="flex items-center justify-center">
-          <div class="md:pl-12 py-16">
-            <h3 class="text-4xl pb-5">
-              Create an Account
-            </h3>
-            <p class="text-xl text-gray-600">
-              Be a part of our 10k+ member’s community
-            </p>
-            <form class="grid md:grid-cols-2 gap-x-8 gap-y-6 pt-12">
-              <div>
-                <label for="firstName">First Name</label>
-                <input
-                    type="text"
-                    placeholder="First Name"
-                >
-              </div>
-              <div>
-                <label for="lastName">Last Name</label>
-                <input
-                    type="text"
-                    placeholder="Last Name"
-                >
-              </div>
-              <div class="md:col-span-2">
-                <label for="email">Email</label>
-                <input
-                    type="email"
-                    placeholder="you@company.com"
-                >
-              </div>
-              <div class="md:col-span-2">
-                <label for="email">Email</label>
-                <input
-                    type="text"
-                    placeholder="+1 (555) 000-0000"
-                >
-              </div>
-              <div class="md:col-span-2">
-                <div class="flex gap-2 items-center">
-                  <div class="shrink-0">
-                    <input id="policyCB" type="checkbox" value="">
-                  </div>
-                  <label for="policyCB" class="text-base text-gray-600 inline-block !pb-0">
-                    You agree to our friendly <span class="underline cursor-pointer hover:no-underline">privacy policy</span>.
-                  </label>
-                </div>
-              </div>
-
-              <div class="md:col-span-2">
-                <BaseButton label="Sign Up" color="primary" :full-sized="true" />
-              </div>
-            </form>
-          </div>
-        </div>
+  <form @submit.prevent="onSubmit" class="space-y-6">
+      <div class="form-control">
+        <TextInput
+            v-model="fullName"
+            v-bind="fullNameAttrs"
+            name="fullName"
+            type="text"
+            label="Name"
+            placeholder="Enter Full Name"
+        />
       </div>
-    </div>
-  </section>
-</template>
 
-<style scoped lang="postcss">
-form label{
-  @apply block pb-1.5 text-sm text-gray-700
-}
-form input:not(input[type=checkbox]){
-  @apply w-full
-}
-</style>
+    <div class="form-control">
+      <TextInput
+          v-model="email"
+          v-bind="emailAttrs"
+          name="email"
+          type="email"
+          label="Email"
+          placeholder="Enter Email"
+      />
+    </div>
+    <div class="form-control">
+      <TextInput
+          v-model="phoneNumber"
+          v-bind="phoneNumberAttrs"
+          name="phoneNumber"
+          type="text"
+          label="Phone number"
+          placeholder="+1 (555) 000-0000"
+      />
+    </div>
+    <div class="form-control">
+      <TextInput
+          v-model="message"
+          v-bind="messageAttrs"
+          name="message"
+          type="text"
+          label="Message"
+          placeholder="Leave us a message..."
+      />
+    </div>
+    <div class="col-span-2">
+      <label for="contact-checkbox" class="text-black-light font-normal inline-flex items-start sm:items-center gap-3">
+        <input v-model="privacyConsent" v-bind="privacyConsentAttrs" type="checkbox" class="form-checkbox" id="contact-checkbox" />
+        <span>By checking this box, I consent to the <NuxtLink to="/privacy-policy" class="underline hover:no-underline">privacy policy</NuxtLink>.</span>
+      </label>
+      <p class="error-message" v-if="errors.privacyConsent">{{ errors.privacyConsent }}</p>
+    </div>
+
+    <BaseButton type="submit" label="Send message" :full-sized="true" :is-loading="formLoader" />
+  </form>
+</template>
