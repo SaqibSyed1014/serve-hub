@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useDisrictsStore } from "~/segments/districts/store";
+import { useRestaurantStore } from "~/segments/districts/store";
 import BaseSpinner from "~/components/core/BaseSpinner.vue";
 import OrgMapLocation from "~/components/pages/schoolDistrict/OrgMapLocation.vue";
 import OrgOpenedJobsList from "~/components/pages/common/OrgOpenedJobsList.vue";
@@ -14,15 +14,15 @@ const tabs = ref([
 ]);
 
 const route = useRoute();
-const districtStore = useDisrictsStore();
+const restaurantStore = useRestaurantStore();
 
-const { schoolDistrictDetails, schoolDistrictJobs } = storeToRefs(districtStore);
+const { schoolDistrictDetails, schoolDistrictJobs } = storeToRefs(restaurantStore);
 
 const isOrgFetching = ref<boolean>(true);
 
 onMounted(async () => {
   isOrgFetching.value = true;
-  await districtStore.fetchDistrictSchoolDetails(route.params?.id as string);
+  await restaurantStore.fetchDistrictSchoolDetails(route.params?.id as string);
   isOrgFetching.value = false;
 })
 

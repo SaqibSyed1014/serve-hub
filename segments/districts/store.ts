@@ -13,7 +13,7 @@ interface DistrictState {
     schoolDistrictJobs: Job[]
 }
 
-export const useDisrictsStore = defineStore('districtStore', {
+export const useRestaurantStore = defineStore('restaurantStore', {
     state: () => ({
         restaurantsList: [],
         total_page: 0,

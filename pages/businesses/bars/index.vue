@@ -32,7 +32,7 @@ let checkboxesFilter = ref('');
 
 const switchView = (view: string) => {
   isGridView.value = view;
-  localStorage.setItem('collegesLayout', view);
+  localStorage.setItem('BarsLayout', view);
   router.replace({
     path: "/businesses/bars",
     query: {
@@ -45,12 +45,12 @@ const switchView = (view: string) => {
 onMounted(async () => {
   let savedLayout :string | null = '';
   if (process.client) {   // using process.client due to SSR
-    if (localStorage.getItem('collegesLayout')) savedLayout = localStorage.getItem('collegesLayout');
+    if (localStorage.getItem('BarsLayout')) savedLayout = localStorage.getItem('BarsLayout');
     else if (route?.query?.view) savedLayout = route?.query?.view as string
     else savedLayout = 'list'
     isGridView.value = savedLayout as string;
   }
-  await fetchColleges(); // Initial fetch
+  await fetchBars(); // Initial fetch
 
   if (route?.query?.filter_by) {
     query.value.filter_by = route?.query?.filter_by.toString();
@@ -103,8 +103,7 @@ const query = ref<TypesenseQueryParam>({
   q: "*",
   page: pageInfo.value.currentPage,
   per_page: pageInfo.value.itemsPerPage,
-  filter_by: 'status:=active',
-  business_type: 'Bars'
+  filter_by: 'status:=active&&business_type:=Bars',
 });
 
 if (route?.query.filter_by?.length) { // If it exists, assign its value to the filter_by property
@@ -119,8 +118,8 @@ const queryParams = computed(() => {
   };
 });
 
-async function fetchColleges() {
-  localStorage.setItem('collegesLayout', isGridView.value)
+async function fetchBars() {
+  localStorage.setItem('BarsLayout', isGridView.value);
   isLoading.value = true;
   await barsStore.fetchBars(query?.value);
   isLoading.value = false;
@@ -145,7 +144,7 @@ const paginate = (page: number | "prev" | "next") => {
     top: 0,
     behavior: "smooth",
   });
-  fetchColleges();
+  fetchBars();
 };
 
 function togglingSidebarVisibility() {
@@ -169,7 +168,7 @@ const selectAlphabet = (letter: string) => {
   selectedAlphabet.value = letter;
   if (letter.length) alphabetFilter.value = `business_name:=${letter}*`
   else alphabetFilter.value = '';
-  query.value.filter_by = getCollegesFilterQuery(alphabetFilter.value, checkboxesFilter.value);
+  query.value.filter_by = getBarsFilterQuery(alphabetFilter.value, checkboxesFilter.value);
   router.replace({
     path: "/businesses/bars",
     query: {
@@ -177,7 +176,7 @@ const selectAlphabet = (letter: string) => {
       ...queryParams.value,
     },
   });
-  fetchColleges();
+  fetchBars();
 };
 
 const handleInput = _debounce(() => {
@@ -197,7 +196,7 @@ const search = (resetToDefaultPage = false) => {
       ...queryParams.value,
     },
   });
-  fetchColleges();
+  fetchBars();
 };
 
 let selectedValues = ref<string[]>([]);
@@ -216,7 +215,7 @@ function filtersChanged(filterName :string, i :number, label :string, isChecked 
 }
 
 function processFiltration() {
-  query.value.filter_by = getCollegesFilterQuery(alphabetFilter.value, checkboxesFilter.value);
+  query.value.filter_by = getBarsFilterQuery(alphabetFilter.value, checkboxesFilter.value);
 
   router.replace({
     path: "/businesses/bars",
@@ -226,7 +225,7 @@ function processFiltration() {
     },
   });
 
-  fetchColleges();
+  fetchBars();
 }
 
 function applyFiltersOnClick() {
@@ -248,9 +247,9 @@ const clearAll = (applyResetFilters :boolean) => {
   }
 };
 
-function getCollegesFilterQuery(alphabetFilter :string, cbFilters :string) {
+function getBarsFilterQuery(alphabetFilter :string, cbFilters :string) {
   let result :string[] = [];
-  result.push('status:=active');
+  result.push('status:=active&&business_type:=Bars');
   if (alphabetFilter.length) result.push(alphabetFilter);
   if (cbFilters.length) result.push(cbFilters)
   return result.join('&&');
