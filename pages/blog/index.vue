@@ -149,7 +149,7 @@ watch(() => selectedCategory.value, async (val :string) => {
                 <template v-if="firstBlog">
                   <div class="flex justify-around max-xl:flex-col gap-8 lg:col-span-2">
                     <div class="overflow-hidden md:h-[320px] md:grow shrink-0">
-                      <img :src="firstBlog.attributes.post_photo?.data ?? '/images/others/blog-mockup.jpg'" alt="blog-list-img"
+                      <img :src="firstBlog.attributes.post_photo?.data?.attributes.url ?? '/images/others/blog-mockup.jpg'" :alt="`${firstBlog.attributes.title} Cover Photo`"
                            class="w-full h-full object-cover">
                     </div>
                     <div class="flex flex-col xl:w-[350px]">
@@ -191,7 +191,7 @@ watch(() => selectedCategory.value, async (val :string) => {
                     <div v-if="blogs.length" class="flex flex-col justify-around">
                       <div class="overflow-hidden mb-5">
                         <div class="h-60">
-                          <img :src="blog.attributes.post_photo?.data ?? '/images/others/blog-mockup.jpg'" alt="blog-list-img4"
+                          <img :src="blog.attributes.post_photo.data?.attributes.url ?? '/images/others/blog-mockup.jpg'" :alt="`${blog.attributes.title} Cover Photo`"
                                class="w-full h-full object-cover">
                         </div>
                       </div>
