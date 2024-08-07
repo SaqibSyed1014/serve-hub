@@ -14,7 +14,7 @@ interface Blog {
         reading_time: string
         post_photo: {
             id: string
-            url: string
+            data: string
         }
     }
 }

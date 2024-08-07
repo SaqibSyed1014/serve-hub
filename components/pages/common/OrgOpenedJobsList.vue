@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type {PaginationInfo} from "~/segments/common.types";
 import BaseSpinner from "~/components/core/BaseSpinner.vue";
-import {useDisrictsStore} from "~/segments/districts/store";
+import {useRestaurantStore} from "~/segments/districts/store";
 import {useBarsStore} from "~/segments/bars/store";
 import {useSchoolsStore} from "~/segments/schools/store";
 
@@ -12,11 +12,11 @@ const props = defineProps<{
 }>()
 
 const route = useRoute();
-const districtStore = useDisrictsStore();
+const restaurantStore = useRestaurantStore();
 const schoolStore = useSchoolsStore();
 const barStore = useBarsStore();
 
-const { totalPagesInDistrictJobs } = storeToRefs(districtStore);
+const { totalPagesInDistrictJobs } = storeToRefs(restaurantStore);
 const { totalPagesInSchoolsJobs } = storeToRefs(schoolStore);
 const { totalPagesInBarJobs } = storeToRefs(barStore);
 
@@ -33,7 +33,7 @@ const queryParams = computed(() => {
     q: props.searchedKeyword.length ? props.searchedKeyword : '*',
     page: pageInfo.value.currentPage,
     per_page: pageInfo.value.itemsPerPage,
-    filter_by: `business_slug:${route.params?.id}`,
+    filter_by: `slug:${route.params?.id}`,
     query_by: 'job_title'
   };
 })
