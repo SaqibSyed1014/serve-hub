@@ -1,14 +1,12 @@
 <script setup lang="ts">
 import {ref} from "vue";
-import {useCollegesStore} from "~/segments/colleges/store";
+import {useBarsStore} from "~/segments/bars/store";
 import type {PaginationInfo, TypesenseQueryParam,} from "~/segments/common.types";
 import AlphabetsInRow from "~/components/pages/common/AlphabetsInRow.vue";
-import JobSkeleton from "~/components/pages/job-listings/JobSkeleton.vue";
-import SignUpCard from "~/components/pages/job-listings/SignUpCard.vue";
 import BusinessCardSkeleton from "~/components/pages/business-types/BusinessCardSkeleton.vue";
 
-const collegesStore = useCollegesStore();
-const { barsList, total_page, collegesFound } = storeToRefs(collegesStore);
+const barsStore = useBarsStore();
+const { barsList, total_page, barsFound } = storeToRefs(barsStore);
 
 const route = useRoute();
 const router = useRouter();
@@ -124,7 +122,7 @@ const queryParams = computed(() => {
 async function fetchColleges() {
   localStorage.setItem('collegesLayout', isGridView.value)
   isLoading.value = true;
-  await collegesStore.fetchBars(query?.value);
+  await barsStore.fetchBars(query?.value);
   isLoading.value = false;
   totalPages.value = total_page?.value;
 }
@@ -293,7 +291,7 @@ function getCollegesFilterQuery(alphabetFilter :string, cbFilters :string) {
                 <FilterSection
                   title="No. of jobs"
                   :options="jobOptions"
-                  :total-jobs="collegesFound"
+                  :total-jobs="barsFound"
                   :inside-sidebar="true"
                   @toggleSchoolOption="(f, i, l ,c) => filtersChanged(f, i, l, c, false)"
                 />
@@ -337,7 +335,7 @@ function getCollegesFilterQuery(alphabetFilter :string, cbFilters :string) {
               <FilterSection
                 title="No. of jobs"
                 :options="jobOptions"
-                :total-jobs="collegesFound"
+                :total-jobs="barsFound"
                 @toggleSchoolOption="filtersChanged"
               />
             </div>

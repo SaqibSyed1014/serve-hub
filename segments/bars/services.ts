@@ -13,7 +13,7 @@ const getBarsList = (query: any) :Promise<BusinessResponseType> => {
     })
 }
 
-const getCollegeDetails = (slug: string) :Promise<BusinessDocument> => {
+const getBarDetails = (slug: string) :Promise<BusinessDocument> => {
     const { baseUrl, apiKey } = usePayloadUrl()
     const apiHeaders = {
         'API-Key': apiKey,
@@ -26,5 +26,5 @@ const getCollegeDetails = (slug: string) :Promise<BusinessDocument> => {
 
 export {
     getBarsList,
-    getCollegeDetails
+    getBarDetails
 }

@@ -1,7 +1,4 @@
 <script setup lang="ts">
-import ClockIcon from '~/assets/icons/clock.svg'
-import DollarIcon from '~/assets/icons/currency-dollar.svg'
-
 defineProps<{
   cardForm: Boolean
 }>()

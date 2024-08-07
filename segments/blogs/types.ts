@@ -1,41 +1,52 @@
 interface Blog {
     id: number
-    title: string
-    author: AuthorDetail
-    category?: Category
-    post_content: string
-    post_excerpt: string
-    post_date: string
-    publishedAt: Date
-    updatedAt: Date
-    createdAt: Date
-    slug: string
-    reading_time: string
-    post_photo: {
-        id: string
-        url: string
+    attributes: {
+        title: string
+        author: AuthorDetail
+        category?: Category
+        post_content: string
+        post_excerpt: string
+        post_date: string
+        publishedAt: Date
+        updatedAt: Date
+        createdAt: Date
+        slug: string
+        reading_time: string
+        post_photo: {
+            id: string
+            url: string
+        }
     }
 }
 
 interface BlogCategory {
-    category_name: string;
-    category_slug: string;
-    createdAt: string;
     id: number;
-    publishedAt: string;
-    updatedAt: string;
+    attributes: {
+        category_name: string;
+        category_slug: string;
+        createdAt: string;
+        publishedAt: string;
+        updatedAt: string;
+    }
 }
 
 
 interface AuthorDetail {
-    id: number
-    name: string
-    avatar: string
+    data: {
+        id: number
+        attributes: {
+            name: string
+        }
+    }
 }
 
 interface Category {
-    id: number
-    category_name: string
+    data: {
+        id: number
+        attributes: {
+            category_name: string
+        }
+    }
 }
 
 

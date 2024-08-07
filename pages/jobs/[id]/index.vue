@@ -81,7 +81,7 @@ function jobSharingOnFacebook() {
   window.open(url, '_target');
 }
 
-function jobOrgType() {
+function jobBusinessType() {
   if (jobDetails.value?.business_type === 'Bars') return 'businesses/bars'
   else if (jobDetails.value?.business_type === 'Restaurants') return 'businesses/restaurants'
 }
@@ -104,7 +104,7 @@ function jobOrgType() {
               <div class="hidden md:flex items-center gap-3">
                 <span @click="router.go(-1)">Jobs</span>
                 <SvgoChevronRight class="w-4 h-4 text-gray-300" />
-                <NuxtLink :to="`/${jobOrgType()}/${jobDetails.slug}`" class="text-brand-700 font-medium">
+                <NuxtLink :to="`/${jobBusinessType()}/${jobDetails.slug}`" class="text-brand-700 font-medium">
                   {{ jobDetails.organization_name }}
                 </NuxtLink>
               </div>
@@ -115,7 +115,7 @@ function jobOrgType() {
             </div>
 
             <div class="mb-8 h-[140px] md:h-[240px] max-md:-mx-5">
-              <img :src="jobDetails?.banner_path ?? 'https://assets.servehub.io/images/default_banner.jpg'" alt="" class="w-full mx-auto h-full object-cover"/>
+              <img :src="jobDetails?.banner_path || '/images/mockups/bg_job_posting_default.png'" alt="" class="w-full mx-auto h-full object-cover"/>
             </div>
             <div class="job-details md:px-8">
               <div class="job-logo-and-title -mt-20 md:-mt-14 mb-8">

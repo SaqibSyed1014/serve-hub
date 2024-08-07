@@ -2,11 +2,11 @@
 import type {PaginationInfo} from "~/segments/common.types";
 import BaseSpinner from "~/components/core/BaseSpinner.vue";
 import {useDisrictsStore} from "~/segments/districts/store";
-import {useCollegesStore} from "~/segments/colleges/store";
+import {useBarsStore} from "~/segments/bars/store";
 import {useSchoolsStore} from "~/segments/schools/store";
 
 const props = defineProps<{
-  type: string
+  type: 'Bars' | 'Restaurants'
   openedJobs: any
   searchedKeyword: string
 }>()
@@ -14,11 +14,11 @@ const props = defineProps<{
 const route = useRoute();
 const districtStore = useDisrictsStore();
 const schoolStore = useSchoolsStore();
-const collegeStore = useCollegesStore();
+const barStore = useBarsStore();
 
 const { totalPagesInDistrictJobs } = storeToRefs(districtStore);
 const { totalPagesInSchoolsJobs } = storeToRefs(schoolStore);
-const { totalPagesInCollegeJobs } = storeToRefs(collegeStore);
+const { totalPagesInBarJobs } = storeToRefs(barStore);
 
 const orgJobsFetching = ref<boolean>(false);
 
@@ -33,7 +33,7 @@ const queryParams = computed(() => {
     q: props.searchedKeyword.length ? props.searchedKeyword : '*',
     page: pageInfo.value.currentPage,
     per_page: pageInfo.value.itemsPerPage,
-    filter_by: `organization_slug:${route.params?.id}`,
+    filter_by: `business_slug:${route.params?.id}`,
     query_by: 'job_title'
   };
 })
@@ -53,17 +53,13 @@ onMounted(async () => {
 async function getOrgJobs() {
   orgJobsFetching.value = true;
   switch (props.type) {
-    case 'district':
-      await districtStore.fetchSchoolDistrictJobs(queryParams.value);
-      pageInfo.value.totalPages = totalPagesInDistrictJobs.value;
+    case 'Bars':
+      await barStore.fetchBarJobs(queryParams.value);
+      pageInfo.value.totalPages = totalPagesInBarJobs.value;
       break;
-    case 'school':
+    case 'Restaurants':
       await schoolStore.fetchSchoolJobs(queryParams.value);
       pageInfo.value.totalPages = totalPagesInSchoolsJobs.value;
-      break;
-    case 'college':
-      await collegeStore.fetchCollegeJobs(queryParams.value);
-      pageInfo.value.totalPages = totalPagesInCollegeJobs.value;
       break;
   }
   orgJobsFetching.value = false;

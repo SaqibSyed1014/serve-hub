@@ -55,7 +55,7 @@ async function redirectToStripe(priceId :string, idx :number) {
                   </div>
                   <div class="text-center">
                     <h4 class="capitalize text-xl mb-1">{{ offer.title }}</h4>
-                    <h3 v-if="[3, 4].includes(offer.id)" class="text-2xl my-4">
+                    <h3 v-if="[3].includes(offer.id)" class="text-2xl my-4">
                       Starts at {{ getSelectedSlotDetails.price }}
                       <template v-if="offer.showSlotOptions">for {{ getSelectedSlotDetails.totalSlots }}</template>
                     </h3>
