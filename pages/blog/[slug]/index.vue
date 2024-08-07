@@ -59,7 +59,7 @@ function copyURL() {
             </div>
             <div>
               <div v-if="blogDetails?.attributes.post_photo?.data" class="mb-8 w-full lg:w-[65%] h-[250px] md:h-[450px]">
-                <img :src="blogDetails.attributes.post_photo.data" :alt="blogDetails.attributes.title" class="h-full w-full object-cover"/>
+                <img :src="blogDetails.attributes.post_photo.data?.attributes.url" :alt="`${blogDetails.attributes.title} Cover Photo`" class="h-full w-full object-cover"/>
               </div>
               <div class="flex items-center gap-24">
                 <div class="flex gap-12">
@@ -165,7 +165,7 @@ function copyURL() {
                 <template v-for="blog in blogs.slice(1, 3)">
                   <div class="">
                     <div class="mb-5">
-                      <img :src="blog.attributes.post_photo?.data ?? '/images/others/blog-mockup.jpg'" alt=""
+                      <img :src="blog.attributes.post_photo.data?.attributes.url ?? '/images/others/blog-mockup.jpg'" :alt="`${blog.attributes.title} Cover Photo`"
                            class="w-full h-[240px] rounded-lg object-cover">
                     </div>
                     <span

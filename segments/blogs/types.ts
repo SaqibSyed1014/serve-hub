@@ -12,10 +12,7 @@ interface Blog {
         createdAt: Date
         slug: string
         reading_time: string
-        post_photo: {
-            id: string
-            data: string
-        }
+        post_photo: BlogPostPhoto
     }
 }
 
@@ -36,6 +33,19 @@ interface AuthorDetail {
         id: number
         attributes: {
             name: string
+        }
+    }
+}
+
+interface BlogPostPhoto {
+    data: {
+        id: string
+        attributes: {
+            url: string,
+            width: number
+            height: number
+            name: string
+            ext: string
         }
     }
 }
