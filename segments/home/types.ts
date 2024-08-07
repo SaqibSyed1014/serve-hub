@@ -74,3 +74,10 @@ interface ShiftType {
     sort_order: number;
 }
 
+interface ContactFormPayload {
+    fullName: string;
+    email: string;
+    message: string;
+    phoneNumber: string;
+    privacyConsent: boolean;
+}
