@@ -4,6 +4,7 @@ import {useJobStore} from "~/segments/jobs/store";
 import QuickSignUpModal from "~/components/pages/job-listings/QuickSignUpModal.vue";
 import BaseSpinner from "~/components/core/BaseSpinner.vue";
 import {convertTZDateToShortDate} from "~/segments/utils";
+import {defaultImageMockup} from "~/components/core/constants/common.constants";
 const center = ref({ lat: 0, lng: 0 })
 
 const router = useRouter();
@@ -115,7 +116,7 @@ function jobBusinessType() {
             </div>
 
             <div class="mb-8 h-[140px] md:h-[240px] max-md:-mx-5">
-              <img :src="jobDetails?.banner_path || '/images/mockups/bg_job_posting_default.png'" alt="" class="w-full mx-auto h-full object-cover"/>
+              <img :src="jobDetails?.banner_path || defaultImageMockup" alt="" class="w-full mx-auto h-full object-cover"/>
             </div>
             <div class="job-details md:px-8">
               <div class="job-logo-and-title -mt-20 md:-mt-14 mb-8">

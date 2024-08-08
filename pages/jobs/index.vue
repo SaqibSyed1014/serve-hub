@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import {storeToRefs} from "pinia";
 import {initDropdowns} from "flowbite";
 import JobSkeleton from "~/components/core/Skeletons/JobSkeleton.vue";
 import {useJobStore} from "~/segments/jobs/store";

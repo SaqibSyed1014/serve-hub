@@ -3,6 +3,7 @@ import OrgMapLocation from "~/components/pages/schoolDistrict/OrgMapLocation.vue
 import BaseSpinner from "~/components/core/BaseSpinner.vue";
 import OrgOpenedJobsList from "~/components/pages/common/OrgOpenedJobsList.vue";
 import {useHotelsStore} from "~/segments/hotels/store";
+import {defaultImageMockup} from "~/components/core/constants/common.constants";
 
 const activeTab = ref(0);
 
@@ -105,7 +106,7 @@ watch(() => hotelDetails.value, (val) => {
 
           <div class="pt-5">
             <img
-                src="/images/schoolDistrict/cover.webp"
+                :src="defaultImageMockup"
                 alt="Default Cover Image"
                 class="h-[140px] md:h-60 w-full object-cover"
             />
@@ -176,10 +177,8 @@ watch(() => hotelDetails.value, (val) => {
                 </div>
               </div>
 
-              <div class="flex flex-col gap-2 col-span-2 sm:col-span-1">
-                <span class="text-gray-900 text-sm font-medium leading-tight"
-                >Website
-                </span>
+              <div v-if="hotelDetails?.website_url" class="flex flex-col gap-2 col-span-2 sm:col-span-1">
+                <span class="text-gray-900 text-sm font-medium leading-tight">Website</span>
                 <div class="inline-flex gap-2">
                   <SvgoGlobe class="size-5 shrink-0" />
                   <a
@@ -224,17 +223,15 @@ watch(() => hotelDetails.value, (val) => {
                   <p class="text-gray-900 text-2xl md:text-3xl font-semibold leading-[38px]">
                     {{
                       activeTab === 0 && hotelDetails.organization_description.length
-                          ? "About Restaurant"
+                          ? "About The Hotel"
                           : activeTab === 1
-                              ? "List of Jobs"
-                                    : activeTab === 2
-                                        ? "Location" : ""
+                              ? "List of Jobs" : ""
                     }}
                   </p>
                   <p class="text-slate-600 text-base font-normal leading-normal">
                     {{
                       activeTab === 0 && hotelDetails.organization_description.length
-                          ? "Read out the information"
+                          ? `Read out the information about ${hotelDetails.name}`
                           : activeTab === 1 ? "Have a look to the list of Jobs." : ""
                     }}
                   </p>
