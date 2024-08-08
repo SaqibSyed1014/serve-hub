@@ -168,7 +168,7 @@ function includeJobsWithoutCompensation($event :any) {
             <template v-for="(item, i) in filter.list">
               <div class="flex items-center gap-3 first:pt-2 pb-4">
                 <div class="shrink-0 relative">
-                  <input :checked="isItemChecked(item.value)" @change="updateChecked(index as number, i as number, $event.target.checked, item.value, filter.fieldName)"
+                  <input :checked="item.checked" @change="updateChecked(index as number, i as number, $event.target.checked, item.value, filter.fieldName)"
                          :id="`${isSidebarFilter?'sidebar-':''}filter-cb-${index}-${i}`" type="checkbox">
                 </div>
                 <BaseTooltip v-if="item.tooltipText" :tooltip-content="item.tooltipText" position="right" :id="`label-cb-${index}-${i}`">
