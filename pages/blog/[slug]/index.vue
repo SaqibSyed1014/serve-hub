@@ -58,7 +58,7 @@ function copyURL() {
               </p>
             </div>
             <div>
-              <div v-if="blogDetails?.attributes.post_photo?.data" class="mb-8 w-full lg:w-[65%] h-[250px] md:h-[450px]">
+              <div v-if="blogDetails?.attributes.post_photo?.data" class="overflow-hidden mb-8 w-full lg:w-[65%] h-[250px] md:h-[450px] rounded-lg md:rounded-xl">
                 <img :src="blogDetails.attributes.post_photo.data?.attributes.url" :alt="`${blogDetails.attributes.title} Cover Photo`" class="h-full w-full object-cover"/>
               </div>
               <div class="flex items-center gap-24">

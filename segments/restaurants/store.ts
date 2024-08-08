@@ -1,16 +1,16 @@
 import {
     getRestaurantsList,
-    getDistrictSchoolDetail
-} from "~/segments/districts/services"
+    getRestaurantDetail
+} from "~/segments/restaurants/services"
 import { getJobsList } from "~/segments/jobs/services";
 
 interface DistrictState {
     restaurantsList: BusinessDocument[],
     total_page: number
     openedJobs: number
-    totalPagesInDistrictJobs: number
-    schoolDistrictDetails: BusinessDocument | null
-    schoolDistrictJobs: Job[]
+    totalPagesInRestaurantJobs: number
+    restaurantDetails: BusinessDocument | null
+    restaurantJobs: Job[]
 }
 
 export const useRestaurantStore = defineStore('restaurantStore', {
@@ -18,9 +18,9 @@ export const useRestaurantStore = defineStore('restaurantStore', {
         restaurantsList: [],
         total_page: 0,
         openedJobs: 0,
-        totalPagesInDistrictJobs: 0,
-        schoolDistrictDetails: null,
-        schoolDistrictJobs: []
+        totalPagesInRestaurantJobs: 0,
+        restaurantDetails: null,
+        restaurantJobs: []
     } as DistrictState),
     actions: {
         async fetchRestaurants(query:any) {
@@ -28,16 +28,16 @@ export const useRestaurantStore = defineStore('restaurantStore', {
             this.$state.restaurantsList = hits.map((hit :BusinessHit) => hit.document);
             this.$state.total_page = Math.ceil(found / 24);
         },
-        async fetchDistrictSchoolDetails(slug :string) {
-            this.$state.schoolDistrictDetails = await getDistrictSchoolDetail(slug);
+        async fetchRestaurantDetails(slug :string) {
+            this.$state.restaurantDetails = await getRestaurantDetail(slug);
         },
-        async fetchSchoolDistrictJobs(query :any) {
+        async fetchRestaurantJobs(query :any) {
             if (query.q.length) query.query_by = 'job_title';
             else delete query.query_by;
             const { hits, found } = await getJobsList(query);
-            this.$state.schoolDistrictJobs = hits.map((hit :JobHit) => hit.document);
+            this.$state.restaurantJobs = hits.map((hit :JobHit) => hit.document);
             this.$state.openedJobs = found;
-            this.$state.totalPagesInDistrictJobs = Math.ceil(found / 10);
+            this.$state.totalPagesInRestaurantJobs = Math.ceil(found / 10);
         }
     }
 })

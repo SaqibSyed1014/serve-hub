@@ -41,19 +41,16 @@ let toggleSideBar = ref(false);
 
 function togglingSidebarVisibility() {
   toggleSideBar.value = !toggleSideBar.value;
-  if (toggleSideBar.value) {
-    document.body.classList.add("overflow-hidden");
-  } else {
-    document.body.classList.remove("overflow-hidden");
-  }
+  if (toggleSideBar.value) document.body.classList.add("overflow-hidden");
+  else document.body.classList.remove("overflow-hidden");
 }
 
-const orgsFetching = ref(false);
+const businessesFetching = ref(false);
 onMounted(async () => {
-  orgsFetching.value = true;
+  businessesFetching.value = true;
   await homeStore.fetchBusinessTypes();
-  await homeStore.fetchFeaturedOrganizations();
-  orgsFetching.value = false;
+  await homeStore.fetchFeaturedBusinesses();
+  businessesFetching.value = false;
 })
 
 const router = useRouter();
@@ -77,7 +74,7 @@ const router = useRouter();
               <li>
                 <NuxtLink v-if="link.type === 'link'" :to="link.path" @click.native.prevent="reloadActiveRouteOnClick(link.path, router)" class="hover:text-brand-500 transition">{{ link.label }}</NuxtLink>
                 <MegaMenu v-else-if="link.type === 'megaMenu'" :label="link.label">
-                  <BusinessMegaMenu v-if="businessTypesList.length" :sub-links="businessTypesList" :loading="orgsFetching" />
+                  <BusinessMegaMenu v-if="businessTypesList.length" :sub-links="businessTypesList" :loading="businessesFetching" />
                 </MegaMenu>
               </li>
             </template>

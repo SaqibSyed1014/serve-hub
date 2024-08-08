@@ -1,24 +1,24 @@
 <script setup lang="ts">
 import type {PaginationInfo} from "~/segments/common.types";
 import BaseSpinner from "~/components/core/BaseSpinner.vue";
-import {useRestaurantStore} from "~/segments/districts/store";
+import {useRestaurantStore} from "~/segments/restaurants/store";
 import {useBarsStore} from "~/segments/bars/store";
-import {useSchoolsStore} from "~/segments/schools/store";
+import {useHotelsStore} from "~/segments/hotels/store";
 
 const props = defineProps<{
-  type: 'Bars' | 'Restaurants'
+  type: 'Bars' | 'Restaurants' | 'Hotels'
   openedJobs: any
   searchedKeyword: string
 }>()
 
 const route = useRoute();
-const restaurantStore = useRestaurantStore();
-const schoolStore = useSchoolsStore();
 const barStore = useBarsStore();
+const restaurantStore = useRestaurantStore();
+const hotelStore = useHotelsStore();
 
-const { totalPagesInDistrictJobs } = storeToRefs(restaurantStore);
-const { totalPagesInSchoolsJobs } = storeToRefs(schoolStore);
 const { totalPagesInBarJobs } = storeToRefs(barStore);
+const { totalPagesInRestaurantJobs } = storeToRefs(restaurantStore);
+const { totalPagesInHotelJobs } = storeToRefs(hotelStore);
 
 const orgJobsFetching = ref<boolean>(false);
 
@@ -58,8 +58,12 @@ async function getOrgJobs() {
       pageInfo.value.totalPages = totalPagesInBarJobs.value;
       break;
     case 'Restaurants':
-      await schoolStore.fetchSchoolJobs(queryParams.value);
-      pageInfo.value.totalPages = totalPagesInSchoolsJobs.value;
+      await restaurantStore.fetchRestaurantJobs(queryParams.value)
+      pageInfo.value.totalPages = totalPagesInRestaurantJobs.value;
+      break;
+    case 'Hotels':
+      await hotelStore.fetchHotelsJobs(queryParams.value)
+      pageInfo.value.totalPages = totalPagesInHotelJobs.value;
       break;
   }
   orgJobsFetching.value = false;
@@ -108,5 +112,4 @@ const paginate = (page: number | "prev" | "next") => {
 
     <NoRecordFound v-else name="jobs" :searchValue="searchedKeyword" />
   </div>
-
 </template>

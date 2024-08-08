@@ -148,7 +148,7 @@ watch(() => selectedCategory.value, async (val :string) => {
               <div v-else-if="splitBlogs.length" class="grid lg:grid-cols-2 gap-12 pb-16">
                 <template v-if="firstBlog">
                   <div class="flex justify-around max-xl:flex-col gap-8 lg:col-span-2">
-                    <div class="overflow-hidden md:h-[320px] md:grow shrink-0">
+                    <div class="overflow-hidden md:h-[320px] md:grow shrink-0 rounded-lg">
                       <img :src="firstBlog.attributes.post_photo?.data?.attributes.url ?? '/images/others/blog-mockup.jpg'" :alt="`${firstBlog.attributes.title} Cover Photo`"
                            class="w-full h-full object-cover">
                     </div>
@@ -189,11 +189,9 @@ watch(() => selectedCategory.value, async (val :string) => {
 
                 <template v-for="blog in splitBlogs">
                     <div v-if="blogs.length" class="flex flex-col justify-around">
-                      <div class="overflow-hidden mb-5">
-                        <div class="h-60">
-                          <img :src="blog.attributes.post_photo.data?.attributes.url ?? '/images/others/blog-mockup.jpg'" :alt="`${blog.attributes.title} Cover Photo`"
-                               class="w-full h-full object-cover">
-                        </div>
+                      <div class="overflow-hidden mb-5 h-60 rounded-lg">
+                        <img :src="blog.attributes.post_photo.data?.attributes.url ?? '/images/others/blog-mockup.jpg'" :alt="`${blog.attributes.title} Cover Photo`"
+                             class="w-full h-full object-cover">
                       </div>
                       <div class="flex flex-col gap-2 mb-6">
                         <div>

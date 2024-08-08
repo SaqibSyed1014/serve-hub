@@ -43,7 +43,7 @@ const initialQuery = {
   page: pageInfo.value.currentPage,
   per_page: pageInfo.value.itemsPerPage,
   sort_by: 'date_posted:desc',
-  facet_by: 'employment_type,job_role,experience_level,business_type,shift_type',
+  facet_by: 'employment_type,job_role,experience_level,business_type_id,shift_type',
   filter_by: ''
 };
 const query = ref<TypesenseQueryParam>(initialQuery);
@@ -158,7 +158,7 @@ function updateFiltersWithFacetCounts() {
       facetCounts.value.forEach((facet) => {
         if (facet.field_name === filter.fieldName) {
           filter.list.forEach((filterItem) => {
-            const count = facet.counts.find(count => count.value === filterItem.value);
+            const count = facet.counts.find(count => count.value == filterItem.value);
             if (count) filterItem.counts = count.count;
             else filterItem.counts = 0;
           });
@@ -230,7 +230,7 @@ const wageType = ref('salary');  // initial values for wage type and compensatio
 const includeAllJobs = ref(true);
 
 async function assignQueryParamsOnInitialLoad(queryParams :JobQueryParams) {
-  const { keyword, mode, location, employment_type, business_type, shift_type, job_role, experience_level, coordinates, filter_by, ...otherParams }
+  const { keyword, mode, location, employment_type, business_type_id, shift_type, job_role, experience_level, coordinates, filter_by, ...otherParams }
       = queryParams
   query.value = {
     ...query.value,
@@ -242,7 +242,7 @@ async function assignQueryParamsOnInitialLoad(queryParams :JobQueryParams) {
   if (location) searchedLocationText.value = location as string; // assign location in url for google map field
 
   if (employment_type) sidebarFilters.value.employment_type = employment_type;
-  if (business_type) sidebarFilters.value.business_type = business_type;
+  if (business_type_id) sidebarFilters.value.business_type_id = business_type_id;
   if (shift_type) sidebarFilters.value.shift_type = shift_type;
   if (job_role) sidebarFilters.value.job_role = job_role;
   if (experience_level) sidebarFilters.value.experience_level = experience_level;
