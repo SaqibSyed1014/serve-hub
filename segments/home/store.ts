@@ -107,12 +107,12 @@ export const useHomeStore = defineStore('homeStore', {
                 .sort((a :BusinessType, b :BusinessType) => a.sort_order - b.sort_order)
                 ?.map((business :BusinessType) => ({
                     label: business.business_type,
-                    value: business.business_type,
+                    value: business.business_type_id,
                     checked: false,
                     counts: 0
                 })) || []
             return {
-                fieldName: 'business_type',
+                fieldName: 'business_type_id',
                 type: 'checkbox',
                 title: 'Business Type',
                 icon: 'SvgoClock',

@@ -31,7 +31,6 @@ watch(props.filtrationList, (val) => {   // watcher for checking if the filters 
       if (filter.type === 'checkbox') {
         const updatedValues = filter.list.filter((item :any) => item.checked).map((item :any) => item.value);
         if (updatedValues.length > 0) {
-          console.log('inside ', index)
           selectedValues.value[index] = {
             field: filter.fieldName,
             values: updatedValues,

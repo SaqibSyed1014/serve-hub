@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {useRestaurantStore} from "~/segments/districts/store";
+import {useRestaurantStore} from "~/segments/restaurants/store";
 import type {TypesenseQueryParam} from "~/segments/common.types";
 import AlphabetsInRow from "~/components/pages/common/AlphabetsInRow.vue";
 import BusinessCardSkeleton from "~/components/pages/business-types/BusinessCardSkeleton.vue";
