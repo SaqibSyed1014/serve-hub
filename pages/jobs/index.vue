@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import {storeToRefs} from "pinia";
 import {initDropdowns} from "flowbite";
 import JobSkeleton from "~/components/core/Skeletons/JobSkeleton.vue";
 import {useJobStore} from "~/segments/jobs/store";
@@ -99,10 +100,13 @@ async function fetchFilters() {
       homeStore.fetchEmploymentTypes(),
       homeStore.fetchBusinessTypes(),
       homeStore.fetchShiftTypes()
-  ])
-  filters.value.unshift(employmentTypesFilter.value);
-  filters.value.splice(1, 0, businessTypesFilter.value);
-  filters.value.splice(2, 0, shiftTypesFilter.value)
+  ]);
+  if (filters.value[1].fieldName !== 'employment_type_id')  // check to avoid duplicate occurrence of employment type filter
+    filters.value.unshift(employmentTypesFilter.value);
+  if (filters.value[1].fieldName !== 'business_type_id')  // check to avoid duplicate occurrence of business type filter
+    filters.value.splice(1, 0, businessTypesFilter.value);
+  if (filters.value[2].fieldName !== 'shift_type_id')  // check to avoid duplicate occurrence of shift type filter
+    filters.value.splice(2, 0, shiftTypesFilter.value);
 }
 
 onUnmounted(() => {
@@ -230,7 +234,7 @@ const wageType = ref('salary');  // initial values for wage type and compensatio
 const includeAllJobs = ref(true);
 
 async function assignQueryParamsOnInitialLoad(queryParams :JobQueryParams) {
-  const { keyword, mode, location, employment_type, business_type_id, shift_type, job_role, experience_level, coordinates, filter_by, ...otherParams }
+  const { keyword, mode, location, employment_type_id, business_type_id, shift_type_id, job_role, experience_level, coordinates, filter_by, ...otherParams }
       = queryParams
   query.value = {
     ...query.value,
@@ -241,9 +245,9 @@ async function assignQueryParamsOnInitialLoad(queryParams :JobQueryParams) {
   layoutOptionSelected.value = mode === 'list' ? 0 : 1;
   if (location) searchedLocationText.value = location as string; // assign location in url for google map field
 
-  if (employment_type) sidebarFilters.value.employment_type = employment_type;
+  if (employment_type_id) sidebarFilters.value.employment_type_id = employment_type_id;
   if (business_type_id) sidebarFilters.value.business_type_id = business_type_id;
-  if (shift_type) sidebarFilters.value.shift_type = shift_type;
+  if (shift_type_id) sidebarFilters.value.shift_type_id = shift_type_id;
   if (job_role) sidebarFilters.value.job_role = job_role;
   if (experience_level) sidebarFilters.value.experience_level = experience_level;
   filters.value.forEach(filter => {

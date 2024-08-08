@@ -90,12 +90,12 @@ export const useHomeStore = defineStore('homeStore', {
                  .sort((a :EmploymentType, b :EmploymentType) => a.sort_order - b.sort_order)
                  ?.map((employment :EmploymentType) => ({
                     label: employment.employment_type,
-                    value: employment.employment_type,
-                     checked: false,
-                     counts: 0
+                    value: employment.employment_type_id,
+                    checked: false,
+                    counts: 0
                 })) || []
             return {
-                fieldName: 'employment_type',
+                fieldName: 'employment_type_id',
                 type: 'checkbox',
                 title: 'Employment Type',
                 icon: 'SvgoClock',
@@ -124,12 +124,12 @@ export const useHomeStore = defineStore('homeStore', {
                 .sort((a :ShiftType, b :ShiftType) => a.sort_order - b.sort_order)
                 ?.map((shift :ShiftType) => ({
                     label: shift.shift_type,
-                    value: shift.shift_type,
+                    value: shift.shift_type_id,
                     checked: false,
                     counts: 0
                 })) || []
             return {
-                fieldName: 'shift_type',
+                fieldName: 'shift_type_id',
                 type: 'checkbox',
                 title: 'Shift Type',
                 icon: 'SvgoClock',

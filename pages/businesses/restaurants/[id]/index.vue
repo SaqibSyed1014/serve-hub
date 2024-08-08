@@ -3,6 +3,7 @@ import { useRestaurantStore } from "~/segments/restaurants/store";
 import BaseSpinner from "~/components/core/BaseSpinner.vue";
 import OrgMapLocation from "~/components/pages/schoolDistrict/OrgMapLocation.vue";
 import OrgOpenedJobsList from "~/components/pages/common/OrgOpenedJobsList.vue";
+import {defaultImageMockup} from "~/components/core/constants/common.constants";
 
 const activeTab = ref(0); // Default to first tab
 const router = useRouter();
@@ -103,7 +104,7 @@ watch(() => restaurantDetails.value, (val) => {
 
           <div class="pt-5">
             <img
-              src="/images/schoolDistrict/cover.webp"
+              :src="defaultImageMockup"
               alt="Default Cover Image"
               class="h-[140px] md:h-60 w-full object-cover"
             />
@@ -217,12 +218,9 @@ watch(() => restaurantDetails.value, (val) => {
                   <p class="text-gray-900 text-2xl md:text-3xl font-semibold leading-[38px]">
                     {{
                       activeTab === 0 && restaurantDetails.organization_description.length
-                        ? "About Restaurant"
-                        : activeTab === 1
-                        ? "List of Jobs"
-                        : activeTab === 2
-                        ? "Location"
-                        : ""
+                        ? "About The Restaurant"
+                          : activeTab === 1
+                              ? "List of Jobs" : ""
                     }}
                   </p>
                   <p
@@ -230,10 +228,10 @@ watch(() => restaurantDetails.value, (val) => {
                   >
                     {{
                       activeTab === 0 && restaurantDetails.organization_description.length
-                        ? "Read out the information about patlo alto unified school."
-                        : activeTab === 1
-                        ? "Have a look to the list of Jobs."
-                        : ""
+                          ? `Read out the information about ${restaurantDetails.name}`
+                          : activeTab === 1
+                              ? "Have a look to the list of Jobs."
+                              : ""
                     }}
                   </p>
                 </div>

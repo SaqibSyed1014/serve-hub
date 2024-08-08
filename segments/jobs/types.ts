@@ -94,3 +94,28 @@ interface ExtendedJobDetails {
     job_faqs: JobFaq[]
     job_details: JobDetails | null
 }
+
+
+interface JobFilter {
+    fieldName: string
+    type: string
+    title: string
+    icon: string
+    list: {
+        label: string
+        value: string | number
+        checked: boolean
+        counts: number
+        tooltipText?: string
+    }[]
+    hasSwitcher?: boolean
+    isSalaryRange?: boolean
+    salary?: {
+        min: number
+        max: number
+    }
+    hourly?: {
+        min: number
+        max: number
+    }
+}
