@@ -32,9 +32,9 @@ export interface JobQueryParams extends LocationQueryRaw{
     location?: string
     coordinates?: number[]
     sort_by?: string
-    employment_type?: string
+    employment_type_id?: string
     business_type_id?: string
-    shift_type?: string
+    shift_type_id?: string
     job_role?: string
     experience_level?: string
     filter_by: string
