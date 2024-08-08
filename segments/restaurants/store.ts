@@ -1,6 +1,6 @@
 import {
     getRestaurantsList,
-    getDistrictSchoolDetail
+    getRestaurantDetail
 } from "~/segments/restaurants/services"
 import { getJobsList } from "~/segments/jobs/services";
 
@@ -29,7 +29,7 @@ export const useRestaurantStore = defineStore('restaurantStore', {
             this.$state.total_page = Math.ceil(found / 24);
         },
         async fetchRestaurantDetails(slug :string) {
-            this.$state.restaurantDetails = await getDistrictSchoolDetail(slug);
+            this.$state.restaurantDetails = await getRestaurantDetail(slug);
         },
         async fetchRestaurantJobs(query :any) {
             if (query.q.length) query.query_by = 'job_title';
