@@ -4,7 +4,7 @@ import {
     getBusinessTypes,
     getEmploymentTypes,
     getShiftTypes,
-    getFeaturedOrganizations,
+    getFeaturedBusinesses,
     getOrgDetails,
     getStripeCheckoutURL,
     sendingClientMessage
@@ -16,7 +16,7 @@ interface HomeSectionsData {
     businessTypes: BusinessType[]
     employmentTypes: EmploymentType[]
     shiftTypes: ShiftType[]
-    featuredOrganizations: FeaturedOrganizations[]
+    featuredBusinesses: FeaturedBusinesses[]
     orgDetail: Org | null
     checkoutURL: string
 }
@@ -28,7 +28,7 @@ export const useHomeStore = defineStore('homeStore', {
         businessTypes: [],
         employmentTypes: [],
         shiftTypes: [],
-        featuredOrganizations: [],
+        featuredBusinesses: [],
         orgDetail: null,
         checkoutURL: ''
     } as HomeSectionsData),
@@ -48,8 +48,8 @@ export const useHomeStore = defineStore('homeStore', {
         async fetchShiftTypes() {
             this.$state.shiftTypes = await getShiftTypes();
         },
-        async fetchFeaturedOrganizations() {
-            this.$state.featuredOrganizations = await getFeaturedOrganizations();
+        async fetchFeaturedBusinesses() {
+            this.$state.featuredBusinesses = await getFeaturedBusinesses();
         },
         async fetchOrgDetails(slug :string) {
             this.$state.orgDetail = await getOrgDetails(slug);

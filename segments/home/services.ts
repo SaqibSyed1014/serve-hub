@@ -55,7 +55,7 @@ const getShiftTypes = () :Promise<ShiftType[]> => {
     })
 }
 
-const getFeaturedOrganizations = () :Promise<FeaturedOrganizations[]> => {
+const getFeaturedBusinesses = () :Promise<FeaturedBusinesses[]> => {
     const { baseUrl, apiKey } = usePayloadUrl()
     const apiHeaders = {
         'API-Key': apiKey,
@@ -110,7 +110,7 @@ export {
     getBusinessTypes,
     getEmploymentTypes,
     getShiftTypes,
-    getFeaturedOrganizations,
+    getFeaturedBusinesses,
     getOrgDetails,
     getStripeCheckoutURL,
     sendingClientMessage

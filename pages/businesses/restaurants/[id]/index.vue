@@ -76,7 +76,7 @@ watch(() => restaurantDetails.value, (val) => {
             <div class="pl-3 justify-start items-center gap-3 hidden lg:flex">
               <div class="justify-center items-center flex">
                 <NuxtLink
-                  to="/school-districts"
+                  to="/businesses/restaurants"
                   class="text-slate-600 text-sm font-medium leading-tight"
                 >
                   Restaurants

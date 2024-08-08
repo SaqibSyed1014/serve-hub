@@ -16,12 +16,11 @@ interface JobsInCities {
     priority_rank: number;
 }
 
-interface FeaturedOrganizations {
+interface FeaturedBusinesses {
     id: number
     name: number
     slug: string
-    type: string
-    charter: string
+    business_type: string
     logo_path: string
     number_jobs: string
 }

@@ -8,12 +8,13 @@ defineProps<{
 }>()
 
 const homeStore = useHomeStore();
-const { featuredOrganizations } = storeToRefs(homeStore);
+const { featuredBusinesses } = storeToRefs(homeStore);
 
-function orgModuleType(org :FeaturedOrganizations) {
-  if (org.charter === 'Y') return 'charter-schools'
-  else if (org.type === 'district') return 'school-districts'
-  else if (org.type === 'college') return 'colleges'
+function businessModuleType(org :getFeaturedBusinesses) {
+  if (org.business_type === 'Bars') return 'bars'
+  else if (org.business_type === 'Restaurant') return 'restaurants'
+  else if (org.business_type === 'Hotels & Resorts') return 'hotels-resorts'
+  else if (org.business_type === 'Other') return 'other'
 }
 
 const router = useRouter();
@@ -45,9 +46,9 @@ const router = useRouter();
         <div class="col-span-8">
           <h4 class="text-brand-600 text-lg font-semibold mb-4">Businesses</h4>
           <div class="grid grid-cols-2 gap-x-4">
-            <template v-for="(business, i) in featuredOrganizations">
+            <template v-for="(business, i) in featuredBusinesses">
               <NuxtLink
-                  :to="`/${orgModuleType(business)}/${business.slug}`"
+                  :to="`/businesses/${businessModuleType(business)}/${business.slug}`"
                   class="flex items-center justify-between rounded-lg py-3 px-2 hover:bg-gray-200 transition cursor-pointer"
               >
                 <div class="flex items-center gap-3">
