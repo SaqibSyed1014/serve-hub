@@ -92,20 +92,19 @@ watch(() => restaurantDetails.value, (val) => {
             <button
               @click="router.back()"
               type="button"
-              class="justify-center items-center gap-1.5 flex group"
+              class="justify-center items-center gap-1.5 flex group text-brand-800"
             >
-              <SvgoArrowLeftBlue
-                class="size-5 group-hover:-translate-x-[8px] transition"
+              <SvgoArrowLeft
+                class="size-5 group-hover:-translate-x-2 transition"
               />
-              <div class="text-brand-800 text-sm font-semibold leading-tight">
-                Back
-              </div>
+              <span class="text-sm font-semibold leading-tight">Back</span>
             </button>
           </div>
 
           <div class="pt-5">
             <img
               src="/images/schoolDistrict/cover.webp"
+              alt="Default Cover Image"
               class="h-[140px] md:h-60 w-full object-cover"
             />
           </div>

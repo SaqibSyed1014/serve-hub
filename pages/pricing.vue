@@ -155,7 +155,7 @@ async function redirectToStripe(priceId :string, idx :number) {
             <p class="font-normal">Can't find the answer you're looking for? Please chat to our friendly team.</p>
           </div>
           <div class="shrink-0">
-            <BaseButton label="Contact us"/>
+            <BaseButton label="Contact us" navigate-to="/contact-us" />
           </div>
         </div>
       </div>

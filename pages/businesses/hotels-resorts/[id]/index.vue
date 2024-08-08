@@ -78,10 +78,10 @@ watch(() => hotelDetails.value, (val) => {
             <div class="pl-3 justify-start items-center gap-3 hidden lg:flex">
               <div class="justify-center items-center flex">
                 <NuxtLink
-                    to="/businesses/bars"
+                    to="/businesses/hotels-resorts"
                     class="text-slate-600 text-sm font-medium leading-tight"
                 >
-                  Bar
+                  Hotels & Resorts
                 </NuxtLink>
               </div>
               <SvgoChevronRight class="size-4" />
@@ -94,20 +94,19 @@ watch(() => hotelDetails.value, (val) => {
             <button
                 @click="router.back()"
                 type="button"
-                class="justify-center items-center gap-1.5 flex group"
+                class="justify-center items-center gap-1.5 flex group text-brand-800"
             >
-              <SvgoArrowLeftBlue
-                  class="size-5 group-hover:-translate-x-[8px] transition"
+              <SvgoArrowLeft
+                  class="size-5 group-hover:-translate-x-2 transition"
               />
-              <div class="text-brand-800 text-sm font-semibold leading-tight">
-                Back
-              </div>
+              <span class="text-sm font-semibold leading-tight">Back</span>
             </button>
           </div>
 
           <div class="pt-5">
             <img
                 src="/images/schoolDistrict/cover.webp"
+                alt="Default Cover Image"
                 class="h-[140px] md:h-60 w-full object-cover"
             />
           </div>
@@ -263,7 +262,7 @@ watch(() => hotelDetails.value, (val) => {
               </div>
             </div>
 
-            <!--   Bar Description   -->
+            <!--   Hotel Description   -->
             <template v-if="activeTab === 0">
               <div class="description-content mb-5">
                 <div v-html="hotelDetails.organization_description"></div>
