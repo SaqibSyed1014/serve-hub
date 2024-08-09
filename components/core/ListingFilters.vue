@@ -1,11 +1,13 @@
 <script setup lang="ts">
+import JobFilterSkeleton from "~/components/core/Skeletons/JobFilterSkeleton.vue";
+
 const props = defineProps<{
   filtrationList: any[],
-  itemsLoading: boolean,
   isSidebarFilter: boolean,
   selectedCompensation: number[]
   wageType: string
   includeAllJobs: boolean
+  filtersLoading: boolean
 }>()
 
 const emits = defineEmits([
@@ -141,100 +143,106 @@ function includeJobsWithoutCompensation($event :any) {
 </script>
 
 <template>
-  <div class="flex flex-col gap-3 max-md:h-screen">
-    <div @click="emits('closeFilterSidebar')" class="flex justify-end lg:hidden">
-      <SvgoXClose class="w-4 h-4" />
-    </div>
-    <div class="flex justify-between items-center font-semibold border-b border-gray-200 py-2">
-      <div class="flex justify-center items-center gap-3 text-gray-700">
-        <SvgoFilter class="w-4 h-4" />
-        <p>Filters</p>
+  <div v-if="filtersLoading">
+    <JobFilterSkeleton />
+  </div>
+  <div v-else class="flex flex-col gap-3 max-md:h-screen">
+      <div @click="emits('closeFilterSidebar')" class="flex justify-end lg:hidden">
+        <SvgoXClose class="w-4 h-4"/>
       </div>
-      <span @click="resetFilters" class="text-brand-700 text-sm cursor-pointer">
+      <div class="flex justify-between items-center font-semibold border-b border-gray-200 py-2">
+        <div class="flex justify-center items-center gap-3 text-gray-700">
+          <SvgoFilter class="w-4 h-4"/>
+          <p>Filters</p>
+        </div>
+        <span @click="resetFilters" class="text-brand-700 text-sm cursor-pointer">
           Clear All
       </span>
-    </div>
+      </div>
 
-    <template v-for="(filter, index) in filterState">
-      <div>
-        <div class="flex items-center justify-between">
-          <div class="flex items-center gap-3 font-semibold">
-            <component :is="filter.icon" class="w-5 h-5 text-gray-500"/>
-            <span class="text-gray-700">{{ filter.title }}</span>
+      <template v-for="(filter, index) in filterState">
+        <div>
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-3 font-semibold">
+              <component :is="filter.icon" class="w-5 h-5 text-gray-500"/>
+              <span class="text-gray-700">{{ filter.title }}</span>
+            </div>
           </div>
-        </div>
-        <div class="filter-list pl-8 border-b border-gray-200">
-          <template v-if="filter.type === 'checkbox'">
-            <template v-for="(item, i) in filter.list">
-              <div class="flex items-center gap-3 first:pt-2 pb-4">
-                <div class="shrink-0 relative">
-                  <input :checked="item.checked" @change="updateChecked(index as number, i as number, $event.target.checked, item.value, filter.fieldName)"
-                         :id="`${isSidebarFilter?'sidebar-':''}filter-cb-${index}-${i}`" type="checkbox">
-                </div>
-                <BaseTooltip v-if="item.tooltipText" :tooltip-content="item.tooltipText" position="right" :id="`label-cb-${index}-${i}`">
-                  <label :for="`filter-cb-${index}-${i}`" class="font-medium cursor-pointer">
+          <div class="filter-list pl-8 border-b border-gray-200">
+            <template v-if="filter.type === 'checkbox'">
+              <template v-for="(item, i) in filter.list">
+                <div class="flex items-center gap-3 first:pt-2 pb-4">
+                  <div class="shrink-0 relative">
+                    <input :checked="item.checked"
+                           @change="updateChecked(index as number, i as number, $event.target.checked, item.value, filter.fieldName)"
+                           :id="`${isSidebarFilter?'sidebar-':''}filter-cb-${index}-${i}`" type="checkbox">
+                  </div>
+                  <BaseTooltip v-if="item.tooltipText" :tooltip-content="item.tooltipText" position="right"
+                               :id="`label-cb-${index}-${i}`">
+                    <label :for="`filter-cb-${index}-${i}`" class="font-medium cursor-pointer">
+                      {{ item.label }}
+                      <span class="text-gray-400 font-normal">({{ item.counts }})</span>
+                    </label>
+                  </BaseTooltip>
+                  <label v-else :for="`filter-cb-${index}-${i}`" class="font-medium cursor-pointer">
                     {{ item.label }}
                     <span class="text-gray-400 font-normal">({{ item.counts }})</span>
                   </label>
-                </BaseTooltip>
-                <label v-else :for="`filter-cb-${index}-${i}`" class="font-medium cursor-pointer">
-                  {{ item.label }}
-                  <span class="text-gray-400 font-normal">({{ item.counts }})</span>
+                </div>
+              </template>
+            </template>
+            <template v-else-if="filter.type === 'range'">
+              <template v-if="filter.hasSwitcher">
+                <div class="flex justify-end gap-2">
+                  <span class="text-sm font-medium text-gray-900 dark:text-gray-300">Hourly</span>
+                  <label class="inline-flex items-center">
+                    <input :checked="selectedWageType === 'salary'" type="checkbox" class="sr-only peer"
+                           @change="toggleSwitch($event.target.checked)">
+                    <div
+                        class="relative w-11 h-6 cursor-pointer bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-brand-300 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:w-5 after:h-5 after:transition-all dark:border-gray-600 peer-checked:bg-brand-600"></div>
+                  </label>
+                  <span class="text-sm font-medium text-gray-900 dark:text-gray-300">Salary</span>
+                </div>
+              </template>
+              <RangeSlider
+                  v-if="selectedWageType === 'salary'"
+                  :max-value="filter.salary.max"
+                  :min-value="filter.salary.min"
+                  :selected-min="savedCompensationValues[0]"
+                  :selected-max="savedCompensationValues[1]"
+                  :step-value="10000"
+                  @update:value="handleValueChange"
+              />
+              <RangeSlider
+                  v-else
+                  :max-value="filter.hourly.max"
+                  :min-value="filter.hourly.min"
+                  :selected-min="savedCompensationValues[0]"
+                  :selected-max="savedCompensationValues[1]"
+                  :step-value="5"
+                  @update:value="handleValueChange"
+              />
+              <div class="flex gap-3 first:pt-2 pb-4 pt-12">
+                <div class="shrink-0 relative">
+                  <input
+                      id="includeAllJobsCB"
+                      :checked="includeAllJobs"
+                      type="checkbox"
+                      @change="includeJobsWithoutCompensation"
+                  >
+                </div>
+                <label class="font-medium cursor-pointer">
+                  Includes jobs without {{ selectedWageType }} rate
                 </label>
               </div>
             </template>
-          </template>
-          <template v-else-if="filter.type === 'range'">
-            <template v-if="filter.hasSwitcher">
-              <div class="flex justify-end gap-2">
-                <span class="text-sm font-medium text-gray-900 dark:text-gray-300">Hourly</span>
-                <label class="inline-flex items-center">
-                  <input :checked="selectedWageType === 'salary'" type="checkbox" class="sr-only peer" @change="toggleSwitch($event.target.checked)">
-                  <div
-                      class="relative w-11 h-6 cursor-pointer bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-brand-300 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:w-5 after:h-5 after:transition-all dark:border-gray-600 peer-checked:bg-brand-600"></div>
-                </label>
-                <span class="text-sm font-medium text-gray-900 dark:text-gray-300">Salary</span>
-              </div>
-            </template>
-            <RangeSlider
-                v-if="selectedWageType === 'salary'"
-                :max-value="filter.salary.max"
-                :min-value="filter.salary.min"
-                :selected-min="savedCompensationValues[0]"
-                :selected-max="savedCompensationValues[1]"
-                :step-value="10000"
-                @update:value="handleValueChange"
-            />
-            <RangeSlider
-                v-else
-                :max-value="filter.hourly.max"
-                :min-value="filter.hourly.min"
-                :selected-min="savedCompensationValues[0]"
-                :selected-max="savedCompensationValues[1]"
-                :step-value="5"
-                @update:value="handleValueChange"
-            />
-            <div class="flex gap-3 first:pt-2 pb-4 pt-12">
-              <div class="shrink-0 relative">
-                <input
-                    id="includeAllJobsCB"
-                    :checked="includeAllJobs"
-                    type="checkbox"
-                    @change="includeJobsWithoutCompensation"
-                >
-              </div>
-              <label class="font-medium cursor-pointer">
-                Includes jobs without {{ selectedWageType }} rate
-              </label>
-            </div>
-          </template>
+          </div>
         </div>
+      </template>
+
+
+      <div class="lg:hidden pb-36">
+        <BaseButton label="Apply" :full-sized="true" @click="applyFiltersOnClick"/>
       </div>
-    </template>
-
-
-    <div class="lg:hidden pb-36">
-      <BaseButton label="Apply" :full-sized="true" @click="applyFiltersOnClick" />
     </div>
-  </div>
 </template>
