@@ -13,7 +13,6 @@ import {
   jobFilters
 } from "~/components/core/constants/jobs.constants";
 import {useHomeStore} from "~/segments/home/store";
-import JobFilterSkeleton from "~/components/core/Skeletons/JobFilterSkeleton.vue";
 
 
 const filters = ref(jobFilters);  // job's filters
@@ -254,7 +253,7 @@ async function assignQueryParamsOnInitialLoad(queryParams :JobQueryParams) {
     if (filter.type === 'checkbox' && filter.list?.length) {
       filter.list.forEach(item => {
         const filterValues = sidebarFilters.value[filter.fieldName] || [];
-        item.checked = !!filterValues.includes(item.value);
+        item.checked = filterValues.includes(item.value);
       });
     }
   });
@@ -294,32 +293,27 @@ const signUpCardIndex = Math.floor(Math.random() * 25);  // randomly generate in
     <div class="job-listing-view">
       <ListingView>
         <template #filters>
-          <template v-if="areFiltersLoading">
-            <JobFilterSkeleton />
-          </template>
-          <template v-else>
             <ListingFilters
                 class="hidden lg:flex"
                 :is-sidebar-filter="false"
                 :filtration-list="filters"
-                :items-loading="jobsLoading"
                 :selected-compensation="selectedCompensation"
                 :wage-type="wageType"
                 :include-all-jobs="includeAllJobs"
+                :filters-loading="areFiltersLoading"
                 @compensation-filter-type-change="setInitialCompensationValues"
                 @compensation-filter-change="applyCompensationFilters"
                 @on-filters-change="updateSideBarFilters"
             />
-          </template>
 
           <SideBarWrapper :is-sidebar-visible="isFilterSidebarVisible">
             <ListingFilters
                 :is-sidebar-filter="true"
                 :filtration-list="filters"
-                :items-loading="jobsLoading"
                 :selected-compensation="selectedCompensation"
                 :wage-type="wageType"
                 :include-all-jobs="includeAllJobs"
+                :filters-loading="areFiltersLoading"
                 @compensation-filter-type-change="setInitialCompensationValues"
                 @apply-filters-on-click="(val) => updateSideBarFilters(val,true)"
                 @compensation-filter-change="applyCompensationFilters"
@@ -396,7 +390,7 @@ const signUpCardIndex = Math.floor(Math.random() * 25);  // randomly generate in
           <div v-if="jobsLoading || jobListings.length" class="grid gap-6" :class="[layoutOptionSelected ? 'md:grid-cols-2 xl:grid-cols-3' : 'grid-cols-1']">
             <template v-if="jobsLoading" v-for="i in pageInfo.itemsPerPage">
               <client-only>
-                <JobSkeleton :card-form="layoutOptionSelected === 1" />
+                <JobSkeleton :key="i" :card-form="layoutOptionSelected === 1" />
               </client-only>
             </template>
 
