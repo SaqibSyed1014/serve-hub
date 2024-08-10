@@ -13,9 +13,11 @@ import {
   jobFilters
 } from "~/components/core/constants/jobs.constants";
 import {useHomeStore} from "~/segments/home/store";
+import MapView from "~/components/pages/job-listings/MapView.vue";
 
 
 const filters = ref(jobFilters);  // job's filters
+const listingViewOptions = ref(itemsViewOptions);  // Grid/List/Map view options
 
 const route = useRoute();
 const router = useRouter();
@@ -27,6 +29,7 @@ const { employmentTypesFilter, businessTypesFilter, shiftTypesFilter } = storeTo
 
 const layoutOptionSelected = ref(0);
 const searchedLocationText = ref('');
+const coordinatesForMapView = ref([0, 0]);
 const isFilterSidebarVisible = ref<boolean>(false);
 const areFiltersLoading = ref<boolean>(true);
 
@@ -189,12 +192,14 @@ const paginate = (page: number | "prev" | "next") => {
 const fetchOnSearching = (searchValues :JobSearchFilters) => {
   query.value.q = searchValues.keyword.length ? searchValues.keyword : '*'
 
-  if (searchValues.coordinates.lat && searchValues.coordinates.lng)    // when user searches location on 'Search' click (searchValues are null when redirected from Home view)
-    coordinates.value = searchValues.coordinates
+  if (searchValues.coordinates.lat && searchValues.coordinates.lng) {    // when user searches location on 'Search' click (searchValues are null when redirected from Home view)
+    coordinates.value = searchValues.coordinates;
+  }
   if (coordinates.value.lat && coordinates.value.lng) {    // check if both lat and lng are propagated by SearchBar
     appliedLocationFilters.value = `geo_location:(${coordinates.value.lat}, ${coordinates.value.lng}, 10 mi)`
     query.value.filter_by = getFilterByQuery(appliedCompensationFilters.value, appliedCheckboxFilters.value, appliedLocationFilters.value);
     searchedLocationText.value = searchValues.location // saving location string for route query
+    coordinatesForMapView.value = [coordinates.value.lat, coordinates.value.lng]
   }
 
   doSearch(true);
@@ -267,6 +272,7 @@ async function assignQueryParamsOnInitialLoad(queryParams :JobQueryParams) {
   if (coordinates && !coordinates?.includes(0)) {
     jobStore.coordinates.lat = coordinates[0];
     jobStore.coordinates.lng = coordinates[1];
+    coordinatesForMapView.value = coordinates;
   }
 
   query.value.filter_by = filter_by;
@@ -287,6 +293,12 @@ const SortDropdownLabel = computed(() => {
 })
 
 const signUpCardIndex = Math.floor(Math.random() * 25);  // randomly generate index number for signup card
+
+watch(() => coordinatesForMapView.value, (val) => {
+  if (val.length && val[0] !== 0 && val[1] !== 0) {
+    listingViewOptions.value[2].isDisabled = false;  // enable map view option
+  } else listingViewOptions.value[2].isDisabled = true;
+})
 </script>
 
 <template>
@@ -335,6 +347,7 @@ const signUpCardIndex = Math.floor(Math.random() * 25);  // randomly generate in
             :location="searchedLocationText as string"
             :coordinates="coordinates"
             @updated-values="fetchOnSearching"
+            @searched-location-modified="() => coordinatesForMapView = [0, 0]"
           />
         </template>
 
@@ -376,7 +389,7 @@ const signUpCardIndex = Math.floor(Math.random() * 25);  // randomly generate in
                   v-model="layoutOptionSelected"
                   color="gray"
                   :outline="true"
-                  :btns-group="itemsViewOptions"
+                  :btns-group="listingViewOptions"
               />
             </div>
 
@@ -387,31 +400,40 @@ const signUpCardIndex = Math.floor(Math.random() * 25);  // randomly generate in
             </BaseButton>
           </div>
 
-          <div v-if="jobsLoading || jobListings.length" class="grid gap-6" :class="[layoutOptionSelected ? 'md:grid-cols-2 xl:grid-cols-3' : 'grid-cols-1']">
-            <template v-if="jobsLoading" v-for="i in pageInfo.itemsPerPage">
-              <client-only>
-                <JobSkeleton :key="i" :card-form="layoutOptionSelected === 1" />
-              </client-only>
-            </template>
-
-            <template v-else v-for="(job, index) in jobListings">
-              <SignUpCard v-if="signUpCardIndex === index && pageInfo.currentPage === 1" />
-
-              <JobCard :job="job" :card-form="layoutOptionSelected === 1" :show-job-description="false"
-                       :is-job-loading="jobsLoading"/>
-            </template>
-          </div>
-
-          <template v-else>
-            <NoRecordFound name="job" :search-value="query.q" />
+          <template v-if="layoutOptionSelected === 2 && !listingViewOptions[2].isDisabled">
+            <MapView
+                :searched-coordinates="coordinatesForMapView"
+            />
           </template>
 
-          <CustomPagination
-              v-if="jobListings.length"
-              :current-page="pageInfo.currentPage"
-              :total-pages="pageInfo.totalPages"
-              @paginate="paginate"
-          />
+          <template v-else>
+            <div v-if="jobsLoading || jobListings.length" class="grid gap-6"
+                 :class="[layoutOptionSelected ? 'md:grid-cols-2 xl:grid-cols-3' : 'grid-cols-1']">
+              <template v-if="jobsLoading" v-for="i in pageInfo.itemsPerPage">
+                <client-only>
+                  <JobSkeleton :key="i" :card-form="layoutOptionSelected === 1"/>
+                </client-only>
+              </template>
+
+              <template v-else v-for="(job, index) in jobListings">
+                <SignUpCard v-if="signUpCardIndex === index && pageInfo.currentPage === 1"/>
+
+                <JobCard :job="job" :card-form="layoutOptionSelected === 1" :show-job-description="false"
+                         :is-job-loading="jobsLoading"/>
+              </template>
+            </div>
+
+            <template v-else>
+              <NoRecordFound name="job" :search-value="query.q"/>
+            </template>
+
+            <CustomPagination
+                v-if="jobListings.length"
+                :current-page="pageInfo.currentPage"
+                :total-pages="pageInfo.totalPages"
+                @paginate="paginate"
+            />
+          </template>
         </template>
       </ListingView>
 
