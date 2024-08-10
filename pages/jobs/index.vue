@@ -269,6 +269,7 @@ async function assignQueryParamsOnInitialLoad(queryParams :JobQueryParams) {
     wageType.value = type;
     includeAllJobs.value = isCompensationEmpty;
   }
+  console.log('che ', coordinates, queryParams)
   if (coordinates && !coordinates?.includes(0)) {
     jobStore.coordinates.lat = coordinates[0];
     jobStore.coordinates.lng = coordinates[1];

@@ -21,6 +21,7 @@ function searchJobs(filters :JobSearchFilters) {
   const queryParams = {
     keyword: filters.keyword.length ? filters.keyword : '*',
     ...(locationName.length && { location: locationName }),  // skip location from url if no location is searched
+    coordinates: [filters.coordinates.lat, filters.coordinates.lng],
     page: 1,
     mode: 'list',
     filter_by: getFilterByQuery('(min_salary:>=20000&&max_salary:<=200000)||is_salary_empty:true', '', appliedLocationFilter)
