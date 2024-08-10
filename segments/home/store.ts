@@ -62,9 +62,11 @@ export const useHomeStore = defineStore('homeStore', {
             await sendingClientMessage(payload)
                 .then(() => {
                     useNuxtApp().$toast.success('Message sent successfully');
+                    return true;
                 })
-                .catch(() => {
+                .catch((err) => {
                     useNuxtApp().$toast.error('Message sending failed');
+                    throw err
                 });
         }
     },

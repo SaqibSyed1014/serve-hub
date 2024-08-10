@@ -4,10 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ab7611ed-6f98-4ae4-b454-38c2d1a8a2f3" name="Changes" comment="minor fixes">
+    <list default="true" id="ab7611ed-6f98-4ae4-b454-38c2d1a8a2f3" name="Changes" comment="pricing plan font size fix">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/jobs/[id]/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/jobs/[id]/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/pricing.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/pricing.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/pages/common/TextArea.vue" beforeDir="false" afterPath="$PROJECT_DIR$/components/pages/common/TextArea.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/pages/home/ContactForm.vue" beforeDir="false" afterPath="$PROJECT_DIR$/components/pages/home/ContactForm.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/segments/home/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/segments/home/store.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -224,15 +225,7 @@
       <workItem from="1723042116516" duration="16769000" />
       <workItem from="1723140720477" duration="5446000" />
       <workItem from="1723187277931" duration="43000" />
-      <workItem from="1723227409738" duration="9770000" />
-    </task>
-    <task id="LOCAL-00285" summary="minor fix">
-      <option name="closed" value="true" />
-      <created>1722033921758</created>
-      <option name="number" value="00285" />
-      <option name="presentableId" value="LOCAL-00285" />
-      <option name="project" value="LOCAL" />
-      <updated>1722033921758</updated>
+      <workItem from="1723227409738" duration="12427000" />
     </task>
     <task id="LOCAL-00286" summary="about images border updated">
       <option name="closed" value="true" />
@@ -618,7 +611,15 @@
       <option name="project" value="LOCAL" />
       <updated>1723273591310</updated>
     </task>
-    <option name="localTasksCounter" value="334" />
+    <task id="LOCAL-00334" summary="pricing plan font size fix">
+      <option name="closed" value="true" />
+      <created>1723274528033</created>
+      <option name="number" value="00334" />
+      <option name="presentableId" value="LOCAL-00334" />
+      <option name="project" value="LOCAL" />
+      <updated>1723274528033</updated>
+    </task>
+    <option name="localTasksCounter" value="335" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -648,7 +649,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="shift type filter added in jobs" />
     <MESSAGE value="bar segment code updated" />
     <MESSAGE value="Job Filters Skeleton added" />
     <MESSAGE value="blog page bug fixed" />
@@ -673,7 +673,8 @@
     <MESSAGE value="job filters skeleton loader on mobile fixed" />
     <MESSAGE value="job listing map view added" />
     <MESSAGE value="minor fixes" />
-    <option name="LAST_COMMIT_MESSAGE" value="minor fixes" />
+    <MESSAGE value="pricing plan font size fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="pricing plan font size fix" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
