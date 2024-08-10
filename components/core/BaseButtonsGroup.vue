@@ -28,12 +28,13 @@ function selectingOption(index :number) {
         :label="btn.label"
         :color="color"
         :outline="outline"
+        :disabled="btn.isDisabled"
         :class="{
-          'rounded-e-none': i === 0,
-           'rounded-s-none': i === btnsGroup.length - 1,
+          'rounded-s-lg': i === 0,
+           'rounded-e-lg': i === btnsGroup.length - 1,
            'bg-gray-50 text-gray-800': i === selectedOption,
            'bg-white': i !== selectedOption,
-           'text-sm': true
+           'text-sm rounded-none': true
         }"
         @click="selectingOption(i)"
     >
@@ -43,7 +44,3 @@ function selectingOption(index :number) {
     </BaseButton>
   </template>
 </template>
-
-<style scoped lang="postcss">
-
-</style>

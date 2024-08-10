@@ -138,11 +138,18 @@ export const jobFilters :JobFilter[] = [
 export const itemsViewOptions = [
     {
         label: 'List',
-        icon: 'SvgoList'
+        icon: 'SvgoList',
+        isDisabled: false
     },
     {
         label: 'Grid',
-        icon: 'SvgoGrid'
+        icon: 'SvgoGrid',
+        isDisabled: false
+    },
+    {
+        label: 'Map',
+        icon: 'SvgoGrid',
+        isDisabled: true
     }
 ]
 
