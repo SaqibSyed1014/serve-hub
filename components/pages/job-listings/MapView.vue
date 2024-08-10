@@ -27,7 +27,7 @@ const mapOptions = computed(() => {
       <GMapMap
           :center="center"
           :zoom="10"
-          style="height: 500px;"
+          style="height: 600px;"
       >
         <GMapMarker
             v-for="(m, index) in mapOptions.markers"

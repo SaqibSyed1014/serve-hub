@@ -349,7 +349,6 @@ watch(() => coordinatesForMapView.value, (val) => {
             @updated-values="fetchOnSearching"
             @searched-location-modified="() => coordinatesForMapView = [0, 0]"
           />
-          {{coordinatesForMapView}}{{coordinates}}
         </template>
 
         <template #cards-list>
