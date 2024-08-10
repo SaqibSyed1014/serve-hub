@@ -83,8 +83,8 @@ function jobSharingOnFacebook() {
 }
 
 function jobBusinessType() {
-  if (jobDetails.value?.business_type === 'Bars') return 'businesses/bars'
-  else if (jobDetails.value?.business_type === 'Restaurants') return 'businesses/restaurants'
+  if (jobDetails.value?.business_type === 'Bars') return '/businesses/bars'
+  else if (jobDetails.value?.business_type === 'Restaurants') return '/businesses/restaurants'
 }
 </script>
 

@@ -5,13 +5,15 @@ import {useHomeStore} from "~/segments/home/store";
 
 const homeStore = useHomeStore();
 
-let formData = ref<ContactFormPayload>({
+const initialFormData = {
   fullName: '',
   email: '',
   phoneNumber: '',
   message: '',
   privacyConsent: false
-})
+}
+
+let formData = ref<ContactFormPayload>({ ...initialFormData })
 
 const formLoader = ref<boolean>(false);
 
@@ -35,9 +37,10 @@ const [phoneNumber, phoneNumberAttrs] = defineField("phoneNumber");
 const [message, messageAttrs] = defineField("message");
 const [privacyConsent, privacyConsentAttrs] = defineField("privacyConsent");
 
-const onSubmit = handleSubmit(async (values) => {
+const onSubmit = handleSubmit(async (values, { resetForm }) => {
   formLoader.value = true;
-  await homeStore.sendClientMessage(values);
+  await homeStore.sendClientMessage(values)
+      .then(() => resetForm());
   formLoader.value = false;
 });
 
@@ -77,11 +80,10 @@ const onSubmit = handleSubmit(async (values) => {
       />
     </div>
     <div class="form-control">
-      <TextInput
+      <TextArea
           v-model="message"
           v-bind="messageAttrs"
           name="message"
-          type="text"
           label="Message"
           placeholder="Leave us a message..."
       />

@@ -5,7 +5,7 @@ interface Job {
     organization_name: string
     organization_id: string
     organization_slug: string
-    organization_type?: string
+    business_type?: string
     slug?: string
     date_posted: string
     date_posting_expires: string // unix timestamp
