@@ -2,7 +2,7 @@
 import { useRestaurantStore } from "~/segments/restaurants/store";
 import BaseSpinner from "~/components/core/BaseSpinner.vue";
 import OrgMapLocation from "~/components/pages/schoolDistrict/OrgMapLocation.vue";
-import OrgOpenedJobsList from "~/components/pages/common/OrgOpenedJobsList.vue";
+import BusinessOpenedJobsList from "~/components/pages/common/BusinessOpenedJobsList.vue";
 import {defaultImageMockup} from "~/components/core/constants/common.constants";
 
 const activeTab = ref(0); // Default to first tab
@@ -267,7 +267,7 @@ watch(() => restaurantDetails.value, (val) => {
             </template>
 
             <div v-if="activeTab === 1">
-              <OrgOpenedJobsList
+              <BusinessOpenedJobsList
                   type="Restaurants"
                   :opened-jobs="restaurantJobs"
                   :searched-keyword="searchedJob"

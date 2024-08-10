@@ -119,3 +119,15 @@ interface JobFilter {
         max: number
     }
 }
+
+interface JobClusterMarker {
+    id: string
+    title: string
+    businessName?: string
+    location: string
+    slug: string
+    position: {
+        lat: number
+        lng: number
+    }
+}

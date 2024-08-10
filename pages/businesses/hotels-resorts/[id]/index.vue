@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import OrgMapLocation from "~/components/pages/schoolDistrict/OrgMapLocation.vue";
 import BaseSpinner from "~/components/core/BaseSpinner.vue";
-import OrgOpenedJobsList from "~/components/pages/common/OrgOpenedJobsList.vue";
+import BusinessOpenedJobsList from "~/components/pages/common/BusinessOpenedJobsList.vue";
 import {useHotelsStore} from "~/segments/hotels/store";
 import {defaultImageMockup} from "~/components/core/constants/common.constants";
 
@@ -267,7 +267,7 @@ watch(() => hotelDetails.value, (val) => {
             </template>
 
             <div v-if="activeTab === 1">
-              <OrgOpenedJobsList
+              <BusinessOpenedJobsList
                 type="Hotels"
                 :opened-jobs="hotelJobs"
                 :searched-keyword="searchedJob"
@@ -278,7 +278,7 @@ watch(() => hotelDetails.value, (val) => {
 <!--            <PhotoCard :data="photoList" v-if="activeTab === 3" />-->
 <!--            <VideoCard v-if="activeTab === 4" :data="videoList" />-->
 
-            <OrgMapLocation v-if="activeTab === 3" :coordinates="[hotelDetails.geo_lat, hotelDetails.geo_lng]" />
+            <BusinessOpenedJobsList v-if="activeTab === 3" :coordinates="[hotelDetails.geo_lat, hotelDetails.geo_lng]" />
           </div>
         </div>
       </main>

@@ -20,7 +20,7 @@ const { totalPagesInBarJobs } = storeToRefs(barStore);
 const { totalPagesInRestaurantJobs } = storeToRefs(restaurantStore);
 const { totalPagesInHotelJobs } = storeToRefs(hotelStore);
 
-const orgJobsFetching = ref<boolean>(false);
+const businessJobsFetching = ref<boolean>(false);
 
 const pageInfo = ref<PaginationInfo>({
   currentPage: 1,
@@ -33,7 +33,7 @@ const queryParams = computed(() => {
     q: props.searchedKeyword.length ? props.searchedKeyword : '*',
     page: pageInfo.value.currentPage,
     per_page: pageInfo.value.itemsPerPage,
-    filter_by: `slug:${route.params?.id}`,
+    filter_by: `job_slug:${route.params?.id}`,
     query_by: 'job_title'
   };
 })
@@ -41,17 +41,17 @@ const queryParams = computed(() => {
 watch(() => props.searchedKeyword, () => {
   pageInfo.value.currentPage = 1;
   pageInfo.value
-  getOrgJobs();
+  getBusinessJobs();
 })
 
 onMounted(async () => {
-  orgJobsFetching.value = true;
-  await getOrgJobs();
-  orgJobsFetching.value = false;
+  businessJobsFetching.value = true;
+  await getBusinessJobs();
+  businessJobsFetching.value = false;
 })
 
-async function getOrgJobs() {
-  orgJobsFetching.value = true;
+async function getBusinessJobs() {
+  businessJobsFetching.value = true;
   switch (props.type) {
     case 'Bars':
       await barStore.fetchBarJobs(queryParams.value);
@@ -66,7 +66,7 @@ async function getOrgJobs() {
       pageInfo.value.totalPages = totalPagesInHotelJobs.value;
       break;
   }
-  orgJobsFetching.value = false;
+  businessJobsFetching.value = false;
 }
 
 const paginate = (page: number | "prev" | "next") => {
@@ -79,14 +79,14 @@ const paginate = (page: number | "prev" | "next") => {
     behavior: "smooth",
   });
 
-  getOrgJobs();
+  getBusinessJobs();
 };
 </script>
 
 <template>
-  <div v-if="orgJobsFetching" class="container">
+  <div v-if="businessJobsFetching" class="container">
     <div class="flex justify-center items-center h-[calc(100vh-60px)] w-full">
-      <BaseSpinner size="lg" :show-loader="orgJobsFetching" />
+      <BaseSpinner size="lg" :show-loader="businessJobsFetching" />
     </div>
   </div>
 

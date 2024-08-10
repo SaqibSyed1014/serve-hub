@@ -2,7 +2,7 @@
 import {useBarsStore} from "~/segments/bars/store";
 import OrgMapLocation from "~/components/pages/schoolDistrict/OrgMapLocation.vue";
 import BaseSpinner from "~/components/core/BaseSpinner.vue";
-import OrgOpenedJobsList from "~/components/pages/common/OrgOpenedJobsList.vue";
+import BusinessOpenedJobsList from "~/components/pages/common/BusinessOpenedJobsList.vue";
 import {defaultImageMockup} from "~/components/core/constants/common.constants";
 
 const activeTab = ref(0);
@@ -267,7 +267,7 @@ watch(() => barDetails.value, (val) => {
             </template>
 
             <div v-if="activeTab === 1">
-              <OrgOpenedJobsList
+              <BusinessOpenedJobsList
                 type="Bars"
                 :opened-jobs="barJobs"
                 :searched-keyword="searchedJob"
