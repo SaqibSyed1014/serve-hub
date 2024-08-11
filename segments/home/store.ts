@@ -117,7 +117,7 @@ export const useHomeStore = defineStore('homeStore', {
                 fieldName: 'business_type_id',
                 type: 'checkbox',
                 title: 'Business Type',
-                icon: 'SvgoClock',
+                icon: 'SvgoBuilding',
                 list: filterList
             }
         },

@@ -85,7 +85,7 @@ const updateChecked = (index: number, subIndex: number, checked: boolean, value:
 
 function emitSelectedValues() {
   removeSelectedNullValues();
-  emits('onFiltersChange', selectedValues.value);
+  emits('onFiltersChange', selectedValues.value, filterState.value);
 }
 
 function applyFiltersOnClick() {
