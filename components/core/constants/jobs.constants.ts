@@ -148,7 +148,7 @@ export const itemsViewOptions = [
     },
     {
         label: 'Map',
-        icon: 'SvgoGrid',
+        icon: 'SvgoLocationMarker',
         isDisabled: true
     }
 ]

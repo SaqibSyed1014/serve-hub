@@ -103,7 +103,8 @@ async function fetchFilters() {
       homeStore.fetchBusinessTypes(),
       homeStore.fetchShiftTypes()
   ]);
-  if (filters.value[1].fieldName !== 'employment_type_id')  // check to avoid duplicate occurrence of employment type filter
+  console.log('filters ', filters.value)
+  if (filters.value[0].fieldName !== 'employment_type_id')  // check to avoid duplicate occurrence of employment type filter
     filters.value.unshift(employmentTypesFilter.value);
   if (filters.value[1].fieldName !== 'business_type_id')  // check to avoid duplicate occurrence of business type filter
     filters.value.splice(1, 0, businessTypesFilter.value);
@@ -116,6 +117,7 @@ onUnmounted(() => {
   coordinates.value = { lat: 0, lng: 0 };
   query.value = initialQuery;
   sidebarFilters.value = {}
+  filters.value = [];
 })
 
 const jobsLoading = ref(true);
@@ -159,6 +161,7 @@ async function doSearch(resetToDefaultPage = false) {
 }
 
 function updateFiltersWithFacetCounts() {
+  console.log('facet filters', filters.value)
   filters.value.map((filter) => {
     if (filter.type === 'checkbox') {
       facetCounts.value.forEach((facet) => {
@@ -205,7 +208,8 @@ const fetchOnSearching = (searchValues :JobSearchFilters) => {
   doSearch(true);
 }
 
-function updateSideBarFilters(selectedFilters :{ field: string, values: string[] }[], toggleFlag = false) {
+function updateSideBarFilters(selectedFilters :{ field: string, values: string[] }[], updatedFilters :any, toggleFlag = false) {
+  filters.value = updatedFilters;  // update filters with updated one from ListingFilters...
   if (Object.keys(selectedFilters)?.length) {
     sidebarFilters.value = {};   // reset sidebarFilters everytime for avoiding caching data
     selectedFilters.forEach(filter => {
@@ -269,7 +273,6 @@ async function assignQueryParamsOnInitialLoad(queryParams :JobQueryParams) {
     wageType.value = type;
     includeAllJobs.value = isCompensationEmpty;
   }
-  console.log('che ', coordinates, queryParams)
   if (coordinates && !coordinates?.includes(0)) {
     jobStore.coordinates.lat = coordinates[0];
     jobStore.coordinates.lng = coordinates[1];
@@ -328,7 +331,7 @@ watch(() => coordinatesForMapView.value, (val) => {
                 :include-all-jobs="includeAllJobs"
                 :filters-loading="areFiltersLoading"
                 @compensation-filter-type-change="setInitialCompensationValues"
-                @apply-filters-on-click="(val) => updateSideBarFilters(val,true)"
+                @apply-filters-on-click="(selectedFilters, filters) => updateSideBarFilters(selectedFilters, filters, true)"
                 @compensation-filter-change="applyCompensationFilters"
                 @close-filter-sidebar="isFilterSidebarVisible = false"
             />
