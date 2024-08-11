@@ -46,7 +46,7 @@ const initialQuery = {
   page: pageInfo.value.currentPage,
   per_page: pageInfo.value.itemsPerPage,
   sort_by: 'date_posted:desc',
-  facet_by: 'employment_type,job_role,experience_level,business_type_id,shift_type',
+  facet_by: 'employment_type_id,job_role,experience_level,business_type_id,shift_type_id',
   filter_by: ''
 };
 const query = ref<TypesenseQueryParam>(initialQuery);
