@@ -262,7 +262,7 @@ async function assignQueryParamsOnInitialLoad(queryParams :JobQueryParams) {
     if (filter.type === 'checkbox' && filter.list?.length) {
       filter.list.forEach(item => {
         const filterValues = sidebarFilters.value[filter.fieldName] || [];
-        item.checked = filterValues.includes(item.value);
+        item.checked = filterValues.includes(item.value as string);
       });
     }
   });
