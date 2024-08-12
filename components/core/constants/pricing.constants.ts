@@ -66,6 +66,7 @@ export const features = [
 ]
 
 let pricingPlanIDsList :string[] = [];
+console.log('test ', process.env.NODE_ENV)
 if (process.env.NODE_ENV === 'production') {
     pricingPlanIDsList = [
         'price_1PjUnOLckED7yHH5KCrFFVNJ',
