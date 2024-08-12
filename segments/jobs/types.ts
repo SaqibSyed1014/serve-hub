@@ -126,6 +126,7 @@ interface JobClusterMarker {
     businessName?: string
     location: string
     slug: string
+    logo: string
     position: {
         lat: number
         lng: number
