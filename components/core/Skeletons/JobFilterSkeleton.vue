@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <div class="job-filter-skeleton">
+  <div class="job-filter-skeleton flex-1">
     <div class="flex flex-col gap-5">
       <div class="flex justify-between items-center  py-2">
         <div class="flex justify-center items-center gap-3 text-gray-700">

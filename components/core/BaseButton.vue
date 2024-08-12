@@ -3,6 +3,7 @@ type ColorVariant = 'primary' | 'secondary' | 'gray' | 'plain' | 'brand'
 const props = withDefaults(defineProps<{
   color?: ColorVariant,
   label: string
+  type?: string
   outline?: boolean
   fullSized?: boolean
   fullSizedOnSmall?: boolean
@@ -56,7 +57,7 @@ const component = computed(() => {
 </script>
 
 <template>
-  <component :is="component" :to="navigateTo" :target="isExternalLink ? '_blank':''" :class="[defaultStyles, btnStyleClasses]" :disabled="disabled || isLoading">
+  <component :type="type" :is="component" :to="navigateTo" :target="isExternalLink ? '_blank':''" :class="[defaultStyles, btnStyleClasses]" :disabled="disabled || isLoading">
     <slot name="prepend-icon" />
     <template v-if="!isLoading">{{ label }}</template>
     <BaseSpinner size="xs" :show-loader="isLoading" />

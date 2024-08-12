@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import {storeToRefs} from "pinia";
 import {initDropdowns} from "flowbite";
 import JobSkeleton from "~/components/core/Skeletons/JobSkeleton.vue";
 import {useJobStore} from "~/segments/jobs/store";
@@ -12,10 +13,11 @@ import {
   jobFilters
 } from "~/components/core/constants/jobs.constants";
 import {useHomeStore} from "~/segments/home/store";
-import JobFilterSkeleton from "~/components/core/Skeletons/JobFilterSkeleton.vue";
+import MapView from "~/components/pages/job-listings/MapView.vue";
 
 
 const filters = ref(jobFilters);  // job's filters
+const listingViewOptions = ref(itemsViewOptions);  // Grid/List/Map view options
 
 const route = useRoute();
 const router = useRouter();
@@ -27,6 +29,7 @@ const { employmentTypesFilter, businessTypesFilter, shiftTypesFilter } = storeTo
 
 const layoutOptionSelected = ref(0);
 const searchedLocationText = ref('');
+const coordinatesForMapView = ref([0, 0]);
 const isFilterSidebarVisible = ref<boolean>(false);
 const areFiltersLoading = ref<boolean>(true);
 
@@ -43,7 +46,7 @@ const initialQuery = {
   page: pageInfo.value.currentPage,
   per_page: pageInfo.value.itemsPerPage,
   sort_by: 'date_posted:desc',
-  facet_by: 'employment_type,job_role,experience_level,business_type,shift_type',
+  facet_by: 'employment_type_id,job_role,experience_level,business_type_id,shift_type_id',
   filter_by: ''
 };
 const query = ref<TypesenseQueryParam>(initialQuery);
@@ -99,10 +102,14 @@ async function fetchFilters() {
       homeStore.fetchEmploymentTypes(),
       homeStore.fetchBusinessTypes(),
       homeStore.fetchShiftTypes()
-  ])
-  filters.value.unshift(employmentTypesFilter.value);
-  filters.value.splice(1, 0, businessTypesFilter.value);
-  filters.value.splice(2, 0, shiftTypesFilter.value)
+  ]);
+  console.log('filters ', filters.value)
+  if (filters.value[0].fieldName !== 'employment_type_id')  // check to avoid duplicate occurrence of employment type filter
+    filters.value.unshift(employmentTypesFilter.value);
+  if (filters.value[1].fieldName !== 'business_type_id')  // check to avoid duplicate occurrence of business type filter
+    filters.value.splice(1, 0, businessTypesFilter.value);
+  if (filters.value[2].fieldName !== 'shift_type_id')  // check to avoid duplicate occurrence of shift type filter
+    filters.value.splice(2, 0, shiftTypesFilter.value);
 }
 
 onUnmounted(() => {
@@ -110,6 +117,7 @@ onUnmounted(() => {
   coordinates.value = { lat: 0, lng: 0 };
   query.value = initialQuery;
   sidebarFilters.value = {}
+  filters.value = [];
 })
 
 const jobsLoading = ref(true);
@@ -153,12 +161,13 @@ async function doSearch(resetToDefaultPage = false) {
 }
 
 function updateFiltersWithFacetCounts() {
+  console.log('facet filters', filters.value)
   filters.value.map((filter) => {
     if (filter.type === 'checkbox') {
       facetCounts.value.forEach((facet) => {
         if (facet.field_name === filter.fieldName) {
           filter.list.forEach((filterItem) => {
-            const count = facet.counts.find(count => count.value === filterItem.value);
+            const count = facet.counts.find(count => count.value == filterItem.value);
             if (count) filterItem.counts = count.count;
             else filterItem.counts = 0;
           });
@@ -186,18 +195,21 @@ const paginate = (page: number | "prev" | "next") => {
 const fetchOnSearching = (searchValues :JobSearchFilters) => {
   query.value.q = searchValues.keyword.length ? searchValues.keyword : '*'
 
-  if (searchValues.coordinates.lat && searchValues.coordinates.lng)    // when user searches location on 'Search' click (searchValues are null when redirected from Home view)
-    coordinates.value = searchValues.coordinates
+  if (searchValues.coordinates.lat && searchValues.coordinates.lng) {    // when user searches location on 'Search' click (searchValues are null when redirected from Home view)
+    coordinates.value = searchValues.coordinates;
+  }
   if (coordinates.value.lat && coordinates.value.lng) {    // check if both lat and lng are propagated by SearchBar
     appliedLocationFilters.value = `geo_location:(${coordinates.value.lat}, ${coordinates.value.lng}, 10 mi)`
     query.value.filter_by = getFilterByQuery(appliedCompensationFilters.value, appliedCheckboxFilters.value, appliedLocationFilters.value);
     searchedLocationText.value = searchValues.location // saving location string for route query
+    coordinatesForMapView.value = [coordinates.value.lat, coordinates.value.lng]
   }
 
   doSearch(true);
 }
 
-function updateSideBarFilters(selectedFilters :{ field: string, values: string[] }[], toggleFlag = false) {
+function updateSideBarFilters(selectedFilters :{ field: string, values: string[] }[], updatedFilters :any, toggleFlag = false) {
+  filters.value = updatedFilters;  // update filters with updated one from ListingFilters...
   if (Object.keys(selectedFilters)?.length) {
     sidebarFilters.value = {};   // reset sidebarFilters everytime for avoiding caching data
     selectedFilters.forEach(filter => {
@@ -230,7 +242,7 @@ const wageType = ref('salary');  // initial values for wage type and compensatio
 const includeAllJobs = ref(true);
 
 async function assignQueryParamsOnInitialLoad(queryParams :JobQueryParams) {
-  const { keyword, mode, location, employment_type, business_type, shift_type, job_role, experience_level, coordinates, filter_by, ...otherParams }
+  const { keyword, mode, location, employment_type_id, business_type_id, shift_type_id, job_role, experience_level, coordinates, filter_by, ...otherParams }
       = queryParams
   query.value = {
     ...query.value,
@@ -241,16 +253,16 @@ async function assignQueryParamsOnInitialLoad(queryParams :JobQueryParams) {
   layoutOptionSelected.value = mode === 'list' ? 0 : 1;
   if (location) searchedLocationText.value = location as string; // assign location in url for google map field
 
-  if (employment_type) sidebarFilters.value.employment_type = employment_type;
-  if (business_type) sidebarFilters.value.business_type = business_type;
-  if (shift_type) sidebarFilters.value.shift_type = shift_type;
+  if (employment_type_id) sidebarFilters.value.employment_type_id = employment_type_id;
+  if (business_type_id) sidebarFilters.value.business_type_id = business_type_id;
+  if (shift_type_id) sidebarFilters.value.shift_type_id = shift_type_id;
   if (job_role) sidebarFilters.value.job_role = job_role;
   if (experience_level) sidebarFilters.value.experience_level = experience_level;
   filters.value.forEach(filter => {
     if (filter.type === 'checkbox' && filter.list?.length) {
       filter.list.forEach(item => {
         const filterValues = sidebarFilters.value[filter.fieldName] || [];
-        item.checked = !!filterValues.includes(item.value);
+        item.checked = filterValues.includes(item.value as string);
       });
     }
   });
@@ -264,6 +276,7 @@ async function assignQueryParamsOnInitialLoad(queryParams :JobQueryParams) {
   if (coordinates && !coordinates?.includes(0)) {
     jobStore.coordinates.lat = coordinates[0];
     jobStore.coordinates.lng = coordinates[1];
+    coordinatesForMapView.value = coordinates;
   }
 
   query.value.filter_by = filter_by;
@@ -284,40 +297,41 @@ const SortDropdownLabel = computed(() => {
 })
 
 const signUpCardIndex = Math.floor(Math.random() * 25);  // randomly generate index number for signup card
+
+watch(() => coordinatesForMapView.value, (val) => {
+  if (val.length && val[0] !== 0 && val[1] !== 0) {
+    listingViewOptions.value[2].isDisabled = false;  // enable map view option
+  } else listingViewOptions.value[2].isDisabled = true;
+})
 </script>
 
 <template>
     <div class="job-listing-view">
       <ListingView>
         <template #filters>
-          <template v-if="areFiltersLoading">
-            <JobFilterSkeleton />
-          </template>
-          <template v-else>
             <ListingFilters
                 class="hidden lg:flex"
                 :is-sidebar-filter="false"
                 :filtration-list="filters"
-                :items-loading="jobsLoading"
                 :selected-compensation="selectedCompensation"
                 :wage-type="wageType"
                 :include-all-jobs="includeAllJobs"
+                :filters-loading="areFiltersLoading"
                 @compensation-filter-type-change="setInitialCompensationValues"
                 @compensation-filter-change="applyCompensationFilters"
                 @on-filters-change="updateSideBarFilters"
             />
-          </template>
 
           <SideBarWrapper :is-sidebar-visible="isFilterSidebarVisible">
             <ListingFilters
                 :is-sidebar-filter="true"
                 :filtration-list="filters"
-                :items-loading="jobsLoading"
                 :selected-compensation="selectedCompensation"
                 :wage-type="wageType"
                 :include-all-jobs="includeAllJobs"
+                :filters-loading="areFiltersLoading"
                 @compensation-filter-type-change="setInitialCompensationValues"
-                @apply-filters-on-click="(val) => updateSideBarFilters(val,true)"
+                @apply-filters-on-click="(selectedFilters, filters) => updateSideBarFilters(selectedFilters, filters, true)"
                 @compensation-filter-change="applyCompensationFilters"
                 @close-filter-sidebar="isFilterSidebarVisible = false"
             />
@@ -337,6 +351,7 @@ const signUpCardIndex = Math.floor(Math.random() * 25);  // randomly generate in
             :location="searchedLocationText as string"
             :coordinates="coordinates"
             @updated-values="fetchOnSearching"
+            @searched-location-modified="() => coordinatesForMapView = [0, 0]"
           />
         </template>
 
@@ -378,7 +393,7 @@ const signUpCardIndex = Math.floor(Math.random() * 25);  // randomly generate in
                   v-model="layoutOptionSelected"
                   color="gray"
                   :outline="true"
-                  :btns-group="itemsViewOptions"
+                  :btns-group="listingViewOptions"
               />
             </div>
 
@@ -389,31 +404,40 @@ const signUpCardIndex = Math.floor(Math.random() * 25);  // randomly generate in
             </BaseButton>
           </div>
 
-          <div v-if="jobsLoading || jobListings.length" class="grid gap-6" :class="[layoutOptionSelected ? 'md:grid-cols-2 xl:grid-cols-3' : 'grid-cols-1']">
-            <template v-if="jobsLoading" v-for="i in pageInfo.itemsPerPage">
-              <client-only>
-                <JobSkeleton :card-form="layoutOptionSelected === 1" />
-              </client-only>
-            </template>
-
-            <template v-else v-for="(job, index) in jobListings">
-              <SignUpCard v-if="signUpCardIndex === index && pageInfo.currentPage === 1" />
-
-              <JobCard :job="job" :card-form="layoutOptionSelected === 1" :show-job-description="false"
-                       :is-job-loading="jobsLoading"/>
-            </template>
-          </div>
-
-          <template v-else>
-            <NoRecordFound name="job" :search-value="query.q" />
+          <template v-if="layoutOptionSelected === 2 && !listingViewOptions[2].isDisabled">
+            <MapView
+                :searched-coordinates="coordinatesForMapView"
+            />
           </template>
 
-          <CustomPagination
-              v-if="jobListings.length"
-              :current-page="pageInfo.currentPage"
-              :total-pages="pageInfo.totalPages"
-              @paginate="paginate"
-          />
+          <template v-else>
+            <div v-if="jobsLoading || jobListings.length" class="grid gap-6"
+                 :class="[layoutOptionSelected ? 'md:grid-cols-2 xl:grid-cols-3' : 'grid-cols-1']">
+              <template v-if="jobsLoading" v-for="i in pageInfo.itemsPerPage">
+                <client-only>
+                  <JobSkeleton :key="i" :card-form="layoutOptionSelected === 1"/>
+                </client-only>
+              </template>
+
+              <template v-else v-for="(job, index) in jobListings">
+                <SignUpCard v-if="signUpCardIndex === index && pageInfo.currentPage === 1"/>
+
+                <JobCard :job="job" :card-form="layoutOptionSelected === 1" :show-job-description="false"
+                         :is-job-loading="jobsLoading"/>
+              </template>
+            </div>
+
+            <template v-else>
+              <NoRecordFound name="job" :search-value="query.q"/>
+            </template>
+
+            <CustomPagination
+                v-if="jobListings.length"
+                :current-page="pageInfo.currentPage"
+                :total-pages="pageInfo.totalPages"
+                @paginate="paginate"
+            />
+          </template>
         </template>
       </ListingView>
 

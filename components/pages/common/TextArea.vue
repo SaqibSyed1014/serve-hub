@@ -79,16 +79,17 @@ const {
               :name="name"
               rows="4"
               v-model="inputValue"
-              class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-brand-500 focus:border-brand-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-brand-500 dark:focus:border-brand-500"
+              class="form-input w-full"
               :placeholder="placeholder"
               maxlength="50"
               @input="handleChange"
               @blur="handleBlur"
+              :class="{ 'has-error': errorMessage }"
             ></textarea>
           </div>
-          <div class="text-gray-600 text-sm font-normal leading-tight pt-1.5">
-            {{ 40 - inputValue?.length }} words left
-          </div>
+<!--          <div class="text-gray-600 text-sm font-normal leading-tight pt-1.5">-->
+<!--            {{ 40 - inputValue?.length }} words left-->
+<!--          </div>-->
           <p
             class="text-red-500 text-sm font-normal leading-tight"
             v-show="errorMessage || meta.valid"

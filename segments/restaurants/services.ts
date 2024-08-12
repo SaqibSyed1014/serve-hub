@@ -15,7 +15,7 @@ const getRestaurantsList = (query: any) :Promise<BusinessResponseType> => {
     })
 }
 
-const getDistrictSchoolDetail = (slug: string) :Promise<BusinessDocument> => {
+const getRestaurantDetail = (slug: string) :Promise<BusinessDocument> => {
     const { baseUrl, apiKey } = usePayloadUrl()
     const apiHeaders = {
         'API-Key': apiKey,
@@ -29,5 +29,5 @@ const getDistrictSchoolDetail = (slug: string) :Promise<BusinessDocument> => {
 
 export {
     getRestaurantsList,
-    getDistrictSchoolDetail
+    getRestaurantDetail
 }

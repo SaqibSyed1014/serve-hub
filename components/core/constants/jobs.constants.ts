@@ -1,4 +1,4 @@
-export const jobFilters = [
+export const jobFilters :JobFilter[] = [
     {
         fieldName: 'job_role',
         type: 'checkbox',
@@ -117,9 +117,11 @@ export const jobFilters = [
         ],
     },
     {
+        fieldName: 'salary_filter',
         type: 'range',
         title: 'Compensation',
         icon: 'SvgoCurrencyDollar',
+        list: [],
         hasSwitcher: true,
         isSalaryRange: true,
         salary: {
@@ -136,11 +138,18 @@ export const jobFilters = [
 export const itemsViewOptions = [
     {
         label: 'List',
-        icon: 'SvgoList'
+        icon: 'SvgoList',
+        isDisabled: false
     },
     {
         label: 'Grid',
-        icon: 'SvgoGrid'
+        icon: 'SvgoGrid',
+        isDisabled: false
+    },
+    {
+        label: 'Map',
+        icon: 'SvgoLocationMarker',
+        isDisabled: true
     }
 ]
 

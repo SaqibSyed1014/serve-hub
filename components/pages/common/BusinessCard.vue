@@ -1,6 +1,6 @@
 <script setup lang="ts">
 defineProps<{
-  businessType: 'bars' | 'restaurants',
+  businessType: 'bars' | 'restaurants' | 'hotels-resorts',
   data: BusinessDocument,
   hasGridLayout: boolean
 }>();

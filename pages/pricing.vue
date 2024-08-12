@@ -59,8 +59,12 @@ async function redirectToStripe(priceId :string, idx :number) {
                       Starts at {{ getSelectedSlotDetails.price }}
                       <template v-if="offer.showSlotOptions">for {{ getSelectedSlotDetails.totalSlots }}</template>
                     </h3>
-                    <h3 v-else class="text-4xl my-4">{{ offer.priceText }}</h3>
-                    <p v-if="offer.showSlotOptions" class="text-success-600">Saving {{ getSelectedSlotDetails.saving }}</p>
+                    <h3 v-else :class="[[4].includes(offer.id) ? 'text-2xl' : 'text-4xl', 'my-4']">
+                      {{ offer.priceText }}
+                    </h3>
+                    <p v-if="offer.showSlotOptions" class="text-success-600">
+                      Saving {{ getSelectedSlotDetails.saving }}
+                    </p>
                   </div>
                   <ul class="font-normal flex flex-col gap-4 mt-8 mb-8">
                     <template v-for="benefit in offer.benefits">
@@ -155,7 +159,7 @@ async function redirectToStripe(priceId :string, idx :number) {
             <p class="font-normal">Can't find the answer you're looking for? Please chat to our friendly team.</p>
           </div>
           <div class="shrink-0">
-            <BaseButton label="Contact us"/>
+            <BaseButton label="Contact us" navigate-to="/contact-us" />
           </div>
         </div>
       </div>

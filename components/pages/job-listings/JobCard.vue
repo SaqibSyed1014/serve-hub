@@ -51,9 +51,9 @@ defineProps<{
           <span>{{ job.employment_type }}</span>
         </div>
 
-        <div v-if="job?.organization_type" class="flex items-center capitalize gap-2">
+        <div v-if="job?.business_type" class="flex items-center capitalize gap-2">
           <SvgoBuilding class="w-5 h-5 text-gray-400" />
-          <span>{{ job.organization_type }}</span>
+          <span>{{ job.business_type }}</span>
         </div>
       </div>
     </div>
@@ -87,9 +87,9 @@ defineProps<{
             <span>{{ job.employment_type }}</span>
           </div>
 
-          <div v-if="job?.organization_type" class="flex items-center capitalize gap-2">
+          <div v-if="job?.business_type" class="flex items-center capitalize gap-2">
             <SvgoCurrencyDollar class="w-5 h-5 text-gray-400" />
-            <span>{{ job.organization_type }}</span>
+            <span>{{ job.business_type }}</span>
           </div>
         </div>
 

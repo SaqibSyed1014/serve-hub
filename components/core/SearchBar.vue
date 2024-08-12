@@ -6,7 +6,7 @@ const props = defineProps<{
   location?: string
   coordinates?: Coordinates
 }>()
-const emit = defineEmits(['updatedValues'])
+const emit = defineEmits(['updatedValues', 'searchedLocationModified'])
 
 const searchedValue = ref<string>('');
 const coordinates = ref<Coordinates>(props.coordinates ? props.coordinates : { lng: 0, lat: 0 });
@@ -55,9 +55,10 @@ const enableSearching = computed(() => {
 // Resets coordinates if user inputs anything in the field. The logic is to prompt user to
 // select one of the suggested options offered by Google Maps api
 function checkFieldInput() {
-  coordinates.value.lat = 0
-  coordinates.value.lng = 0
-  locationName = ''
+  coordinates.value.lat = 0;
+  coordinates.value.lng = 0;
+  locationName = '';
+  emit('searchedLocationModified');
 }
 
 </script>

@@ -64,6 +64,22 @@ export const useJobStore = defineStore('jobStore', {
         jobBenefits: (state) :JobBenefits[] => {
             const benefits = state.singleJob.job_benefits;
             return benefits.length ? benefits.sort((a, b) => a.display_order - b.display_order) : [];
+        },
+        jobsCoordinatesList: (state) :JobClusterMarker[] => {
+            // @ts-ignore
+            return state.jobsList.map((job :Job) => {
+                if (!job.geo_location) return { position: { lat: 0, lng: 0 } };
+
+                const [lat, lng] = job.geo_location;
+                return {
+                    id: job.job_id,
+                    title: job.job_title,
+                    businessName: job.organization_name,
+                    location: job.job_location,
+                    slug: job.job_slug,
+                    position: { lat, lng },
+                };
+            })
         }
     }
 })

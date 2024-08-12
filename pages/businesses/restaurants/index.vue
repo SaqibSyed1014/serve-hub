@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import {useDisrictsStore} from "~/segments/districts/store";
+import {useRestaurantStore} from "~/segments/restaurants/store";
 import type {TypesenseQueryParam} from "~/segments/common.types";
 import AlphabetsInRow from "~/components/pages/common/AlphabetsInRow.vue";
 import BusinessCardSkeleton from "~/components/pages/business-types/BusinessCardSkeleton.vue";
 
-const districtStore = useDisrictsStore();
-const { restaurantsList, total_page } = storeToRefs(districtStore);
+const restaurantStore = useRestaurantStore();
+const { restaurantsList, total_page } = storeToRefs(restaurantStore);
 
 let toggleSideBar = ref<boolean>(false);
 const route = useRoute();
@@ -77,7 +77,7 @@ const schOptions = ref({
 // Function to switch to layout view
 const switchView = (view: string) => {
   isGridView.value = view;
-  localStorage.setItem('districtsLayout', view);
+  localStorage.setItem('restaurantsLayout', view);
   router.replace({
     path: "/businesses/restaurants",
     query: {
@@ -90,13 +90,13 @@ const switchView = (view: string) => {
 onMounted(async () => {
   let savedLayout :string | null = '';
   if (process.client) {   // using process.client due to SSR
-    if (localStorage.getItem('districtsLayout')) savedLayout = localStorage.getItem('districtsLayout');
+    if (localStorage.getItem('restaurantsLayout')) savedLayout = localStorage.getItem('restaurantsLayout');
     else if (route?.query?.view) savedLayout = route?.query?.view as string
     else savedLayout = 'list'
     isGridView.value = savedLayout as string;
   }
   if (route?.query?.q?.length) await search();  // if search param is there, call search() function
-  else await fetchDistricts(); // Initial fetch
+  else await fetchRestaurants(); // Initial fetch
   if (route?.query?.filter_by) {
     query.value.filter_by = route?.query?.filter_by.toString();
     const splitFilterBy = query?.value?.filter_by.split('&&');
@@ -192,8 +192,7 @@ const query = ref<TypesenseQueryParam>({
   q: route?.query?.q ? route?.query?.q.toString() : "*",
   per_page: itemsPerPage.value,
   page: currentPage.value,
-  filter_by: 'status:=active',
-  business_type: 'Restaurants'
+  filter_by: 'status:=active&&business_type:=Restaurant',
 });
 
 if (route?.query.filter_by?.length) { // If it exists, assign its value to the filter_by property
@@ -208,10 +207,10 @@ const queryParams = computed(() => {
   };
 });
 
-async function fetchDistricts() {
-  localStorage.setItem('districtsLayout', isGridView.value)
+async function fetchRestaurants() {
+  localStorage.setItem('restaurantsLayout', isGridView.value)
   isLoading.value = true;
-  await districtStore.fetchRestaurants(query?.value);
+  await restaurantStore.fetchRestaurants(query?.value);
   isLoading.value = false;
   totalPages.value = total_page?.value;
 }
@@ -234,7 +233,7 @@ const paginate = (page: number | "prev" | "next") => {
     top: 0,
     behavior: "smooth",
   });
-  fetchDistricts();
+  fetchRestaurants();
 };
 
 function togglingSidebarVisibility() {
@@ -295,7 +294,7 @@ function processFiltration() {
 
     checkboxesFilter.value = filterParts.length > 0 ? filterParts.join("&&") : "";
   } else checkboxesFilter.value = '';
-  query.value.filter_by = getDistrictFilterQuery(alphabetFilter.value, checkboxesFilter.value);
+  query.value.filter_by = getRestaurantFilterQuery(alphabetFilter.value, checkboxesFilter.value);
 
   router.replace({
     path: "/businesses/restaurants",
@@ -305,7 +304,7 @@ function processFiltration() {
     },
   });
 
-  fetchDistricts();
+  fetchRestaurants();
 }
 const clearAll = (applyResetFilters :boolean) => {
   [jobOptions, stuOptions, schOptions].forEach((option) => {
@@ -325,7 +324,7 @@ const selectAlphabet = (letter: string) => {
   selectedAlphabet.value = letter;
   if (letter.length) alphabetFilter.value = `business_name:=${letter}*`
   else alphabetFilter.value = '';
-  query.value.filter_by = getDistrictFilterQuery(alphabetFilter.value, checkboxesFilter.value);
+  query.value.filter_by = getRestaurantFilterQuery(alphabetFilter.value, checkboxesFilter.value);
   router.replace({
     path: "/businesses/restaurants",
     query: {
@@ -333,7 +332,7 @@ const selectAlphabet = (letter: string) => {
       ...queryParams.value,
     },
   });
-  fetchDistricts();
+  fetchRestaurants();
 };
 
 const handleInput = _debounce(() => {
@@ -341,7 +340,7 @@ const handleInput = _debounce(() => {
 }, 500); // Adjust the debounce delay as needed (in milliseconds)
 
 const search = (resetToDefaultPage = false) => {
-  localStorage.setItem('districtsLayout', isGridView.value)
+  localStorage.setItem('restaurantsLayout', isGridView.value)
   query.value.q = searchedValue.value.toString() ?? "*";
   query.value.query_by = "business_name";
   if (resetToDefaultPage) query.value.page = 1;
@@ -354,12 +353,12 @@ const search = (resetToDefaultPage = false) => {
       ...queryParams.value,
     },
   });
-  fetchDistricts();
+  fetchRestaurants();
 };
 
-function getDistrictFilterQuery(alphabetFilter :string, cbFilters :string) {
+function getRestaurantFilterQuery(alphabetFilter :string, cbFilters :string) {
   let result :string[] = [];
-  result.push('status:=active');
+  result.push('status:=active&&business_type:=Restaurant');
   if (alphabetFilter.length) result.push(alphabetFilter);
   if (cbFilters.length) result.push(cbFilters)
   return result.join('&&');

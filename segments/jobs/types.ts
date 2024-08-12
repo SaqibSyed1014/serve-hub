@@ -5,7 +5,7 @@ interface Job {
     organization_name: string
     organization_id: string
     organization_slug: string
-    organization_type?: string
+    business_type?: string
     slug?: string
     date_posted: string
     date_posting_expires: string // unix timestamp
@@ -93,4 +93,41 @@ interface ExtendedJobDetails {
     job_benefits: JobBenefits[]
     job_faqs: JobFaq[]
     job_details: JobDetails | null
+}
+
+
+interface JobFilter {
+    fieldName: string
+    type: string
+    title: string
+    icon: string
+    list: {
+        label: string
+        value: string | number
+        checked: boolean
+        counts: number
+        tooltipText?: string
+    }[]
+    hasSwitcher?: boolean
+    isSalaryRange?: boolean
+    salary?: {
+        min: number
+        max: number
+    }
+    hourly?: {
+        min: number
+        max: number
+    }
+}
+
+interface JobClusterMarker {
+    id: string
+    title: string
+    businessName?: string
+    location: string
+    slug: string
+    position: {
+        lat: number
+        lng: number
+    }
 }

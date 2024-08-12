@@ -4,11 +4,11 @@ import {
     getBusinessTypes,
     getEmploymentTypes,
     getShiftTypes,
-    getFeaturedOrganizations,
+    getFeaturedBusinesses,
     getOrgDetails,
-    getStripeCheckoutURL
+    getStripeCheckoutURL,
+    sendingClientMessage
 } from "~/segments/home/services";
-import {getOrgTypes} from "~/segments/postjobs/services";
 
 interface HomeSectionsData {
     jobsByCities: JobsInCities[]
@@ -16,7 +16,7 @@ interface HomeSectionsData {
     businessTypes: BusinessType[]
     employmentTypes: EmploymentType[]
     shiftTypes: ShiftType[]
-    featuredOrganizations: FeaturedOrganizations[]
+    featuredBusinesses: FeaturedBusinesses[]
     orgDetail: Org | null
     checkoutURL: string
 }
@@ -28,7 +28,7 @@ export const useHomeStore = defineStore('homeStore', {
         businessTypes: [],
         employmentTypes: [],
         shiftTypes: [],
-        featuredOrganizations: [],
+        featuredBusinesses: [],
         orgDetail: null,
         checkoutURL: ''
     } as HomeSectionsData),
@@ -48,8 +48,8 @@ export const useHomeStore = defineStore('homeStore', {
         async fetchShiftTypes() {
             this.$state.shiftTypes = await getShiftTypes();
         },
-        async fetchFeaturedOrganizations() {
-            this.$state.featuredOrganizations = await getFeaturedOrganizations();
+        async fetchFeaturedBusinesses() {
+            this.$state.featuredBusinesses = await getFeaturedBusinesses();
         },
         async fetchOrgDetails(slug :string) {
             this.$state.orgDetail = await getOrgDetails(slug);
@@ -57,6 +57,17 @@ export const useHomeStore = defineStore('homeStore', {
         async fetchStripeCheckoutURL(payload :any) {
             const { content } = await getStripeCheckoutURL(payload);
             this.$state.checkoutURL = content.url;
+        },
+        async sendClientMessage(payload :ContactFormPayload) {
+            await sendingClientMessage(payload)
+                .then(() => {
+                    useNuxtApp().$toast.success('Message sent successfully');
+                    return true;
+                })
+                .catch((err) => {
+                    useNuxtApp().$toast.error('Message sending failed');
+                    throw err
+                });
         }
     },
     getters: {
@@ -81,12 +92,12 @@ export const useHomeStore = defineStore('homeStore', {
                  .sort((a :EmploymentType, b :EmploymentType) => a.sort_order - b.sort_order)
                  ?.map((employment :EmploymentType) => ({
                     label: employment.employment_type,
-                    value: employment.employment_type,
-                     checked: false,
-                     counts: 0
+                    value: employment.employment_type_id,
+                    checked: false,
+                    counts: 0
                 })) || []
             return {
-                fieldName: 'employment_type',
+                fieldName: 'employment_type_id',
                 type: 'checkbox',
                 title: 'Employment Type',
                 icon: 'SvgoClock',
@@ -98,15 +109,15 @@ export const useHomeStore = defineStore('homeStore', {
                 .sort((a :BusinessType, b :BusinessType) => a.sort_order - b.sort_order)
                 ?.map((business :BusinessType) => ({
                     label: business.business_type,
-                    value: business.business_type,
+                    value: business.business_type_id,
                     checked: false,
                     counts: 0
                 })) || []
             return {
-                fieldName: 'business_type',
+                fieldName: 'business_type_id',
                 type: 'checkbox',
                 title: 'Business Type',
-                icon: 'SvgoClock',
+                icon: 'SvgoBuilding',
                 list: filterList
             }
         },
@@ -115,12 +126,12 @@ export const useHomeStore = defineStore('homeStore', {
                 .sort((a :ShiftType, b :ShiftType) => a.sort_order - b.sort_order)
                 ?.map((shift :ShiftType) => ({
                     label: shift.shift_type,
-                    value: shift.shift_type,
+                    value: shift.shift_type_id,
                     checked: false,
                     counts: 0
                 })) || []
             return {
-                fieldName: 'shift_type',
+                fieldName: 'shift_type_id',
                 type: 'checkbox',
                 title: 'Shift Type',
                 icon: 'SvgoClock',

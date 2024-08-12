@@ -55,7 +55,7 @@ const getShiftTypes = () :Promise<ShiftType[]> => {
     })
 }
 
-const getFeaturedOrganizations = () :Promise<FeaturedOrganizations[]> => {
+const getFeaturedBusinesses = () :Promise<FeaturedBusinesses[]> => {
     const { baseUrl, apiKey } = usePayloadUrl()
     const apiHeaders = {
         'API-Key': apiKey,
@@ -89,6 +89,18 @@ const getStripeCheckoutURL = (payload :any) :Promise<{ content: { url: string } 
     })
 }
 
+const sendingClientMessage = (payload :ContactFormPayload) :Promise<{ content: { url: string } }> => {
+    const { baseUrl, apiKey } = usePayloadUrl()
+    const apiHeaders = {
+        'API-Key': apiKey,
+    }
+    return $fetch(`${baseUrl}/contactform/save`, {
+        method: 'post',
+        headers: apiHeaders,
+        body: payload
+    })
+}
+
 
 
 
@@ -98,7 +110,8 @@ export {
     getBusinessTypes,
     getEmploymentTypes,
     getShiftTypes,
-    getFeaturedOrganizations,
+    getFeaturedBusinesses,
     getOrgDetails,
-    getStripeCheckoutURL
+    getStripeCheckoutURL,
+    sendingClientMessage
 }

@@ -2,7 +2,8 @@
 import {useBarsStore} from "~/segments/bars/store";
 import OrgMapLocation from "~/components/pages/schoolDistrict/OrgMapLocation.vue";
 import BaseSpinner from "~/components/core/BaseSpinner.vue";
-import OrgOpenedJobsList from "~/components/pages/common/OrgOpenedJobsList.vue";
+import BusinessOpenedJobsList from "~/components/pages/common/BusinessOpenedJobsList.vue";
+import {defaultImageMockup} from "~/components/core/constants/common.constants";
 
 const activeTab = ref(0);
 
@@ -94,20 +95,19 @@ watch(() => barDetails.value, (val) => {
             <button
                 @click="router.back()"
                 type="button"
-                class="justify-center items-center gap-1.5 flex group"
+                class="justify-center items-center gap-1.5 flex group text-brand-800"
             >
-              <SvgoArrowLeftBlue
-                  class="size-5 group-hover:-translate-x-[8px] transition"
+              <SvgoArrowLeft
+                  class="size-5 group-hover:-translate-x-2 transition"
               />
-              <div class="text-brand-800 text-sm font-semibold leading-tight">
-                Back
-              </div>
+              <span class="text-sm font-semibold leading-tight">Back</span>
             </button>
           </div>
 
           <div class="pt-5">
             <img
-                src="/images/schoolDistrict/cover.webp"
+                :src="defaultImageMockup"
+                alt="Default Cover Image"
                 class="h-[140px] md:h-60 w-full object-cover"
             />
           </div>
@@ -177,10 +177,8 @@ watch(() => barDetails.value, (val) => {
                 </div>
               </div>
 
-              <div class="flex flex-col gap-2 col-span-2 sm:col-span-1">
-                <span class="text-gray-900 text-sm font-medium leading-tight"
-                >Website
-                </span>
+              <div v-if="barDetails?.website_url" class="flex flex-col gap-2 col-span-2 sm:col-span-1">
+                <span class="text-gray-900 text-sm font-medium leading-tight">Website</span>
                 <div class="inline-flex gap-2">
                   <SvgoGlobe class="size-5 shrink-0" />
                   <a
@@ -225,17 +223,15 @@ watch(() => barDetails.value, (val) => {
                   <p class="text-gray-900 text-2xl md:text-3xl font-semibold leading-[38px]">
                     {{
                       activeTab === 0 && barDetails.organization_description.length
-                          ? "About School District"
+                          ? "About The Bar"
                           : activeTab === 1
-                              ? "List of Jobs"
-                                    : activeTab === 2
-                                        ? "Location" : ""
+                              ? "List of Jobs" : ""
                     }}
                   </p>
                   <p class="text-slate-600 text-base font-normal leading-normal">
                     {{
                       activeTab === 0 && barDetails.organization_description.length
-                          ? "Read out the information about patlo alto unified school."
+                          ? `Read out the information about ${barDetails.name}.`
                           : activeTab === 1 ? "Have a look to the list of Jobs." : ""
                     }}
                   </p>
@@ -271,7 +267,7 @@ watch(() => barDetails.value, (val) => {
             </template>
 
             <div v-if="activeTab === 1">
-              <OrgOpenedJobsList
+              <BusinessOpenedJobsList
                 type="Bars"
                 :opened-jobs="barJobs"
                 :searched-keyword="searchedJob"
