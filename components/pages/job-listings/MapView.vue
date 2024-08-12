@@ -48,7 +48,15 @@ function openMarker(id :string | null) {
               :opened="openedMarkerID === m.id"
           >
             <div class="flex flex-col gap-1">
-              <h2 class="text-base font-bold">{{ m.title }}</h2>
+              <div class="flex gap-2 items-center mb-2">
+                <div class="flex justify-center items-center size-14 rounded-md overflow-hidden border border-gray-200 shadow-lg">
+                  <img v-if="m.logo" :src="m.logo" alt="Job Logo" class="w-full h-full object-cover">
+                  <SvgoBuilding v-else class="size-10 text-gray-600" />
+                </div>
+
+                <h2 class="text-base font-bold line-clamp-2 w-[120px]">{{ m.title }}</h2>
+              </div>
+
               <div class="flex items-center gap-2">
                 <SvgoBuilding class="size-4 text-brand-600" />
                 <p class="text-sm">{{ m.businessName }}</p>

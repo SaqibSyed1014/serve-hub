@@ -77,6 +77,7 @@ export const useJobStore = defineStore('jobStore', {
                     businessName: job.organization_name,
                     location: job.job_location,
                     slug: job.job_slug,
+                    logo: job.job_logo,
                     position: { lat, lng },
                 };
             })
