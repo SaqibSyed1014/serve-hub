@@ -1,24 +1,15 @@
 <script setup lang="ts">
 import type {PaginationInfo} from "~/segments/common.types";
 import BaseSpinner from "~/components/core/BaseSpinner.vue";
-import {useRestaurantStore} from "~/segments/restaurants/store";
-import {useBarsStore} from "~/segments/bars/store";
-import {useHotelsStore} from "~/segments/hotels/store";
+import {useBusinessesStore} from "~/segments/business/store";
 
 const props = defineProps<{
-  type: 'Bars' | 'Restaurants' | 'Hotels'
-  openedJobs: any
+  openedJobs: Job[]
   searchedKeyword: string
 }>()
 
 const route = useRoute();
-const barStore = useBarsStore();
-const restaurantStore = useRestaurantStore();
-const hotelStore = useHotelsStore();
-
-const { totalPagesInBarJobs } = storeToRefs(barStore);
-const { totalPagesInRestaurantJobs } = storeToRefs(restaurantStore);
-const { totalPagesInHotelJobs } = storeToRefs(hotelStore);
+const businessStore = useBusinessesStore();
 
 const businessJobsFetching = ref<boolean>(false);
 
@@ -33,39 +24,23 @@ const queryParams = computed(() => {
     q: props.searchedKeyword.length ? props.searchedKeyword : '*',
     page: pageInfo.value.currentPage,
     per_page: pageInfo.value.itemsPerPage,
-    filter_by: `job_slug:${route.params?.id}`,
+    filter_by: `business_slug:${route.params?.id}`,
     query_by: 'job_title'
   };
 })
 
 watch(() => props.searchedKeyword, () => {
   pageInfo.value.currentPage = 1;
-  pageInfo.value
   getBusinessJobs();
 })
 
 onMounted(async () => {
-  businessJobsFetching.value = true;
   await getBusinessJobs();
-  businessJobsFetching.value = false;
 })
 
 async function getBusinessJobs() {
   businessJobsFetching.value = true;
-  switch (props.type) {
-    case 'Bars':
-      await barStore.fetchBarJobs(queryParams.value);
-      pageInfo.value.totalPages = totalPagesInBarJobs.value;
-      break;
-    case 'Restaurants':
-      await restaurantStore.fetchRestaurantJobs(queryParams.value)
-      pageInfo.value.totalPages = totalPagesInRestaurantJobs.value;
-      break;
-    case 'Hotels':
-      await hotelStore.fetchHotelsJobs(queryParams.value)
-      pageInfo.value.totalPages = totalPagesInHotelJobs.value;
-      break;
-  }
+  await businessStore.fetchBusinessJobs(queryParams.value);
   businessJobsFetching.value = false;
 }
 

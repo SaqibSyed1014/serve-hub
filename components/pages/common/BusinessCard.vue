@@ -1,6 +1,5 @@
 <script setup lang="ts">
 defineProps<{
-  businessType: 'bars' | 'restaurants' | 'hotels-resorts',
   data: BusinessDocument,
   hasGridLayout: boolean
 }>();
@@ -8,7 +7,7 @@ defineProps<{
 
 <template>
   <NuxtLink
-      :to="`/businesses/${businessType}/${data?.slug}`"
+      :to="`/businesses/${data?.slug}`"
       class="p-5 rounded-xl border border-gray-200"
   >
     <template v-if="hasGridLayout">

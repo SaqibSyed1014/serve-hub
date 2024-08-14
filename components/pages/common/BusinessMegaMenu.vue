@@ -10,13 +10,6 @@ defineProps<{
 const homeStore = useHomeStore();
 const { featuredBusinesses } = storeToRefs(homeStore);
 
-function businessModuleType(org :getFeaturedBusinesses) {
-  if (org.business_type === 'Bars') return 'bars'
-  else if (org.business_type === 'Restaurant') return 'restaurants'
-  else if (org.business_type === 'Hotels & Resorts') return 'hotels-resorts'
-  else if (org.business_type === 'Other') return 'other'
-}
-
 const router = useRouter();
 </script>
 
@@ -44,11 +37,16 @@ const router = useRouter();
           </ul>
         </div>
         <div class="col-span-8">
-          <h4 class="text-brand-600 text-lg font-semibold mb-4">Businesses</h4>
+          <div class="flex justify-between">
+            <h4 class="text-brand-600 text-lg font-semibold mb-4">Businesses</h4>
+            <NuxtLink to="/businesses" class="text-brand-600 hover:text-brand-500 transition">
+              View All
+            </NuxtLink>
+          </div>
           <div class="grid grid-cols-2 gap-x-4">
             <template v-for="(business, i) in featuredBusinesses">
               <NuxtLink
-                  :to="`/businesses/${businessModuleType(business)}/${business.slug}`"
+                  :to="`/businesses/${business.slug}`"
                   class="flex items-center justify-between rounded-lg py-3 px-2 hover:bg-gray-200 transition cursor-pointer"
               >
                 <div class="flex items-center gap-3">

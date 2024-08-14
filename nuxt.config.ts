@@ -16,6 +16,13 @@ export default defineNuxtConfig({
                 { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon-16x16.png' },
                 { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32x32.png' },
                 { rel: 'apple-touch-icon', type: 'image/png', sizes: '76x76', href: '/apple-touch-icon.png' }
+            ],
+            meta: [
+                { property: 'og:title', content: 'ServeHub.io' },
+                { property: 'og:description', content: 'Find your next job in the hospitality industry. Explore roles in hotels, restaurants, bars, and more.' },
+                { property: 'og:image', content: 'https://assets.servehub.io/images/og-logo.png' },
+                { property: 'og:url', content: 'https://www.servehub.io' },
+                { property: 'og:type', content: 'website' },
             ]
         }
     },
