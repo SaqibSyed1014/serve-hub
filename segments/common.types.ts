@@ -40,6 +40,13 @@ export interface JobQueryParams extends LocationQueryRaw{
     filter_by: string
 }
 
+export interface BusinessQueryParams extends LocationQueryRaw {
+    view: string
+    keyword: string
+    page: number
+    filter_by: string
+}
+
 export interface Coordinates {
     lng: number,
     lat: number

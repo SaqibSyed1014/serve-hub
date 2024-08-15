@@ -2,7 +2,7 @@
 import JobFilterSkeleton from "~/components/core/Skeletons/JobFilterSkeleton.vue";
 
 const props = defineProps<{
-  filtrationList: any[],
+  filtrationList: JobFilter[],
   isSidebarFilter: boolean,
   selectedCompensation: number[]
   wageType: string
