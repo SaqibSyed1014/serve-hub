@@ -80,3 +80,39 @@ interface ContactFormPayload {
     phoneNumber: string;
     privacyConsent: boolean;
 }
+
+interface MetaData {
+    id: number
+    metaDescription: string
+    metaTitle: string
+    canonicalURL: string | null
+    keywords: string | null
+    metaRobots: string | null
+    structuredData?: StructuredData | null
+}
+
+interface StructuredData {
+    '@context': string;
+    '@type': string;
+    description: string;
+    name: string;
+    url: string;
+}
+
+interface PageMetaData {
+    id: number
+    page_slug: string
+    seo: MetaData
+}
+
+interface PageMetaResponse {
+    data: PageMetaData[]
+    meta: {
+        pagination: {
+            page: number
+            pageCount: number
+            pageSize: number
+            total: number
+        }
+    }
+}

@@ -6,8 +6,8 @@ export const businessFilters :JobFilter[] = [
         icon: 'SvgoBriefCaseLight',
         list: [
             {
-                label: '0 to 10',
-                value: '0..10',
+                label: '1 to 10',
+                value: '1..10',
                 checked: false,
                 counts: 0
             },

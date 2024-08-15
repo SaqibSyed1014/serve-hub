@@ -7,8 +7,10 @@ import {
     getFeaturedBusinesses,
     getOrgDetails,
     getStripeCheckoutURL,
-    sendingClientMessage
+    sendingClientMessage,
+    fetchingSEOData
 } from "~/segments/home/services";
+import {defaultMetaInfo} from "~/components/core/constants/common.constants";
 
 interface HomeSectionsData {
     jobsByCities: JobsInCities[]
@@ -66,6 +68,16 @@ export const useHomeStore = defineStore('homeStore', {
                 })
                 .catch((err) => {
                     useNuxtApp().$toast.error('Message sending failed');
+                    throw err
+                });
+        },
+        fetchSEOData(routeName :string) {
+            return fetchingSEOData(routeName)
+                .then(({ data }) => {
+                    if (data[0]?.id) return data[0].seo
+                    return defaultMetaInfo;
+                })
+                .catch((err) => {
                     throw err
                 });
         }
