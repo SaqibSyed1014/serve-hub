@@ -92,7 +92,8 @@ function emitSelectedValues() {
 }
 
 function applyFiltersOnClick() {
-  handleValueChange(savedCompensationValues.value, false)
+  if (props.selectedCompensation && props.wageType)
+    handleValueChange(savedCompensationValues.value, false)
   emits('applyFiltersOnClick', selectedValues.value);
 }
 

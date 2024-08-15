@@ -273,7 +273,7 @@ function updateSideBarFilters(selectedFilters :{ field: string, values: string[]
             :show-facet-count="false"
             :filtration-list="filters"
             :filters-loading="areFiltersLoading"
-            @apply-filters-on-click="(selectedFilters, filters) => updateSideBarFilters(selectedFilters, filters, true)"
+            @apply-filters-on-click="(selectedFilters, filterList) => updateSideBarFilters(selectedFilters, filterList, true)"
             @close-filter-sidebar="isFilterSidebarVisible = false"
         />
       </SideBarWrapper>
