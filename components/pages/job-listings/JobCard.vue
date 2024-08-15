@@ -45,7 +45,7 @@ defineProps<{
           <div v-html="job.job_description" class="text-gray-600" />
         </template>
       </div>
-      <div class="job-post-footer flex items-center gap-5 font-medium text-gray-600">
+      <div class="job-post-footer flex items-center gap-5 font-medium text-gray-600 text-sm">
         <div v-if="job?.employment_type" class="flex items-center gap-2">
           <SvgoClock class="w-5 h-5 text-gray-400" />
           <span>{{ job.employment_type }}</span>
@@ -81,7 +81,7 @@ defineProps<{
       </div>
 
       <div class="job-card-bottom flex max-md:flex-col-reverse justify-between md:items-center">
-        <div class="flex items-center gap-5 text-gray-600 font-medium pt-5">
+        <div class="flex items-center gap-5 text-gray-600 font-medium pt-5 text-sm">
           <div v-if="job?.employment_type" class="flex items-center gap-2">
             <SvgoClock class="w-5 h-5 text-gray-400" />
             <span>{{ job.employment_type }}</span>
