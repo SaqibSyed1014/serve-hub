@@ -17,7 +17,7 @@ function selectingAlphabet(value :string) {
 </script>
 
 <template>
-  <div class="pt-6 w-full gap-2 flex flex-col xl:flex-row border-b border-gray-200">
+  <div class="w-full gap-2 flex flex-col xl:flex-row border-b border-gray-200">
     <div>
       <p class="text-gray-500 text-sm font-semibold !w-[139px]">
         Search by alphabet

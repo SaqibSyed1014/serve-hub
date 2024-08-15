@@ -20,7 +20,8 @@ export interface PaginationInfo {
 export interface TypesenseQueryParam {
     q: string,
     per_page: number,
-    page: number, query_by ?:string,
+    page: number,
+    query_by ?:string,
     filter_by: string
     sort_by?: string
 }
@@ -37,6 +38,13 @@ export interface JobQueryParams extends LocationQueryRaw{
     shift_type_id?: string
     job_role?: string
     experience_level?: string
+    filter_by: string
+}
+
+export interface BusinessQueryParams extends LocationQueryRaw {
+    view: string
+    keyword: string
+    page: number
     filter_by: string
 }
 
