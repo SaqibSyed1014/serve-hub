@@ -1,62 +1,47 @@
 interface Blog {
     id: number
-    attributes: {
-        title: string
-        author: AuthorDetail
-        category?: Category
-        post_content: string
-        post_excerpt: string
-        post_date: string
-        publishedAt: Date
-        updatedAt: Date
-        createdAt: Date
-        slug: string
-        reading_time: string
-        post_photo: BlogPostPhoto
-    }
+    title: string
+    author: AuthorDetail
+    category?: Category
+    post_content: string
+    post_excerpt: string
+    post_date: string
+    publishedAt: Date
+    updatedAt: Date
+    createdAt: Date
+    slug: string
+    reading_time: string
+    post_photo: BlogPostPhoto
 }
 
 interface BlogCategory {
     id: number;
-    attributes: {
-        category_name: string;
-        category_slug: string;
-        createdAt: string;
-        publishedAt: string;
-        updatedAt: string;
-    }
+    category_name: string;
+    category_slug: string;
+    createdAt: string;
+    publishedAt: string;
+    updatedAt: string;
 }
 
 
 interface AuthorDetail {
-    data: {
-        id: number
-        attributes: {
-            name: string
-        }
-    }
+    id: number
+    name: string
+    avatar: string
 }
 
 interface BlogPostPhoto {
-    data: {
-        id: string
-        attributes: {
-            url: string,
-            width: number
-            height: number
-            name: string
-            ext: string
-        }
-    }
+    id: string
+    url: string,
+    width: number
+    height: number
+    name: string
+    ext: string
 }
 
 interface Category {
-    data: {
-        id: number
-        attributes: {
-            category_name: string
-        }
-    }
+    id: number
+    category_name: string
 }
 
 
