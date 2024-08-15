@@ -5,9 +5,12 @@ import AlphabetsInRow from "~/components/pages/common/AlphabetsInRow.vue";
 import BusinessCardSkeleton from "~/components/pages/business-types/BusinessCardSkeleton.vue";
 import {useBusinessesStore} from "~/segments/business/store";
 import {businessFilters, getBusinessFilterQuery} from "~/components/core/constants/businesses.constants";
+import {useHomeStore} from "~/segments/home/store";
 
 const businessStore = useBusinessesStore();
-const { businessesList, total_page, businessesFound } = storeToRefs(businessStore);
+const homeStore = useHomeStore();
+const { businessesList, total_page } = storeToRefs(businessStore);
+const { businessTypesFilter } = storeToRefs(homeStore);
 
 const route = useRoute();
 const router = useRouter();
@@ -33,7 +36,8 @@ let checkboxesFilter = ref('');
 
 const filters = ref<JobFilter[]>(businessFilters);
 const isFilterSidebarVisible = ref<boolean>(false);
-const sidebarFilters = ref<{ [key :string]: string | string[] }>({})
+const sidebarFilters = ref<{ [key :string]: string | string[] }>({});
+const areFiltersLoading = ref<boolean>(true);
 
 const switchView = (view: string) => {
   isGridView.value = view;
@@ -49,6 +53,9 @@ const switchView = (view: string) => {
 
 onMounted(async () => {
   let savedLayout :string | null = '';
+  areFiltersLoading.value = true;
+  await fetchFilters();  // fetching side bar filters
+  areFiltersLoading.value = false;
   if (process.client) {   // using process.client due to SSR
     if (localStorage.getItem('BusinessLayout')) savedLayout = localStorage.getItem('BusinessLayout');
     else if (route?.query?.view) savedLayout = route?.query?.view as string
@@ -64,6 +71,15 @@ onMounted(async () => {
   await fetchBusinesses(); // Initial fetch
 });
 
+async function fetchFilters() {
+  await Promise.all([
+    homeStore.fetchBusinessTypes(),
+  ]);
+  console.log('filters ', filters.value)
+  if (filters.value[0].fieldName !== 'business_type_id')  // check to avoid duplicate occurrence of business type filter
+    filters.value.unshift(businessTypesFilter.value);
+}
+
 function assignQueryParamsOnInitialLoad(params :BusinessQueryParams) {
   query.value = {
     ...query.value,
@@ -77,16 +93,27 @@ function assignQueryParamsOnInitialLoad(params :BusinessQueryParams) {
     alphabetFilter.value = alphabetFilterVal;
   }
 
-  checkboxesFilter.value = splitFilterBy.filter(val => val.includes('job_count'))[0] || '';
-  selectedValues.value = checkboxesFilter.value.match(/\[(.*?)\]/)[1] // Extract within []
-      .split(",")
-  sidebarFilters.value.job_count = selectedValues.value;
+  const jobCountVal = splitFilterBy.filter(val => val.includes('job_count'))[0] || '';
+  if (jobCountVal) {
+    selectedValues.value = jobCountVal.match(/\[(.*?)\]/)[1] // Extract within []
+        .split(",");
+    sidebarFilters.value.job_count = selectedValues.value;
+  }
+
+  const businessTypeVal = splitFilterBy.filter(val => val.includes('business_type_id'))[0] || '';
+  if (businessTypeVal) {
+    selectedValues.value = businessTypeVal.match(/\[(.*?)\]/)[1] // Extract within []
+        .split(",");
+    sidebarFilters.value.business_type_id = selectedValues.value;
+  }
+  console.log('adding ', businessTypeVal, sidebarFilters.value)
 
   filters.value.forEach(filter => {
     if (filter.type === 'checkbox' && filter.list?.length) {
       filter.list.forEach(item => {
         const filterValues = sidebarFilters.value[filter.fieldName] || [];
-        item.checked = filterValues.includes(item.value as string);
+        item.checked = filterValues.includes(item.value.toString() as string);
+        console.log('filterValues ', filterValues, item)
       });
     }
   });
@@ -218,6 +245,7 @@ function updateSideBarFilters(selectedFilters :{ field: string, values: string[]
   checkboxesFilter.value = selectedFilters.map((obj: { field: string, values: string[] }) => {
     return `${obj.field}:=[${obj.values.join(',')}]`;
   }).join('&&');
+  console.log('check inside ', checkboxesFilter.value, selectedFilters, sidebarFilters.value);
 
   query.value.filter_by = getBusinessFilterQuery(alphabetFilter.value, checkboxesFilter.value);
 
@@ -234,7 +262,7 @@ function updateSideBarFilters(selectedFilters :{ field: string, values: string[]
           class="hidden lg:flex"
           :is-sidebar-filter="false"
           :filtration-list="filters"
-          :filters-loading="false"
+          :filters-loading="areFiltersLoading"
           @on-filters-change="updateSideBarFilters"
       />
 
@@ -242,7 +270,7 @@ function updateSideBarFilters(selectedFilters :{ field: string, values: string[]
         <ListingFilters
             :is-sidebar-filter="true"
             :filtration-list="filters"
-            :filters-loading="false"
+            :filters-loading="areFiltersLoading"
             @apply-filters-on-click="(selectedFilters, filters) => updateSideBarFilters(selectedFilters, filters, true)"
             @close-filter-sidebar="isFilterSidebarVisible = false"
         />
