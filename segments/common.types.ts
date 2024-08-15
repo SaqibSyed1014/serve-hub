@@ -20,7 +20,8 @@ export interface PaginationInfo {
 export interface TypesenseQueryParam {
     q: string,
     per_page: number,
-    page: number, query_by ?:string,
+    page: number,
+    query_by ?:string,
     filter_by: string
     sort_by?: string
 }

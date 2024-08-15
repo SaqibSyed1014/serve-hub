@@ -261,6 +261,7 @@ function updateSideBarFilters(selectedFilters :{ field: string, values: string[]
       <ListingFilters
           class="hidden lg:flex"
           :is-sidebar-filter="false"
+          :show-facet-count="false"
           :filtration-list="filters"
           :filters-loading="areFiltersLoading"
           @on-filters-change="updateSideBarFilters"
@@ -269,6 +270,7 @@ function updateSideBarFilters(selectedFilters :{ field: string, values: string[]
       <SideBarWrapper :is-sidebar-visible="isFilterSidebarVisible">
         <ListingFilters
             :is-sidebar-filter="true"
+            :show-facet-count="false"
             :filtration-list="filters"
             :filters-loading="areFiltersLoading"
             @apply-filters-on-click="(selectedFilters, filters) => updateSideBarFilters(selectedFilters, filters, true)"
@@ -285,36 +287,38 @@ function updateSideBarFilters(selectedFilters :{ field: string, values: string[]
     </template>
 
     <template #search-filters>
-      <div class="flex justify-between gap-4">
-        <form
-            @submit.prevent="search"
-            class="w-full"
-            action="#"
-            method="GET"
-        >
-          <label for="search-field" class="sr-only">Search</label>
-          <div class="search-input-prepended">
-            <SvgoSearchIcon
-                class="search-prepend-icon"
-                aria-hidden="true"
-            />
-            <input
-                v-model="searchedValue"
-                id="search-field"
-                class="search-input !w-full md:!w-[320px]"
-                placeholder="Search..."
-                type="search"
-                name="search"
-                @input="handleInput"
-            />
+      <div class="flex sm:flex-row flex-col gap-4 justify-between">
+        <div class="flex justify-between gap-4">
+          <form
+              @submit.prevent="search"
+              class="w-full"
+              action="#"
+              method="GET"
+          >
+            <label for="search-field" class="sr-only">Search</label>
+            <div class="search-input-prepended">
+              <SvgoSearchIcon
+                  class="search-prepend-icon"
+                  aria-hidden="true"
+              />
+              <input
+                  v-model="searchedValue"
+                  id="search-field"
+                  class="search-input !w-full md:!w-[320px]"
+                  placeholder="Search..."
+                  type="search"
+                  name="search"
+                  @input="handleInput"
+              />
+            </div>
+          </form>
+          <div class="flex shrink-0 items-center shadow-sm md:pr-3">
+            <BaseButton @click="isFilterSidebarVisible = true" color="gray" :outline="true" label="" class="lg:hidden">
+              <template #prepend-icon>
+                <SvgoFilter class="w-5 h-5 text-gray-600"/>
+              </template>
+            </BaseButton>
           </div>
-        </form>
-        <div class="flex shrink-0 items-center shadow-sm md:pr-3">
-          <BaseButton @click="isFilterSidebarVisible = true" color="gray" :outline="true" label="" class="lg:hidden">
-            <template #prepend-icon>
-              <SvgoFilter class="w-5 h-5 text-gray-600"/>
-            </template>
-          </BaseButton>
         </div>
         <div class="hidden md:inline-flex justify-end">
           <div
@@ -330,7 +334,7 @@ function updateSideBarFilters(selectedFilters :{ field: string, values: string[]
                     isGridView === 'list',
                 }"
             >
-              <SvgoList class="size-5" />
+              <SvgoList class="size-5"/>
               <span class="text-slate-700 text-sm font-semibold leading-tight">
                   List
                 </span>
@@ -345,7 +349,7 @@ function updateSideBarFilters(selectedFilters :{ field: string, values: string[]
                     isGridView === 'list',
                 }"
             >
-              <SvgoGrid class="size-5" />
+              <SvgoGrid class="size-5"/>
               <span class="text-gray-800 text-sm font-semibold leading-tight">
                   Grid
                 </span>
@@ -363,7 +367,7 @@ function updateSideBarFilters(selectedFilters :{ field: string, values: string[]
       />
 
       <!--  Listing    -->
-      <div class="pt-8 mt-1.5 mb-8">
+      <div class="mt-1.5 mb-8">
         <div v-if="isLoading || businessesList.length" class="grid gap-6" :class="[isGridView === 'grid' ? 'md:grid-cols-3' : 'grid-cols-1']">
           <template v-if="isLoading" v-for="i in pageInfo.itemsPerPage">
             <client-only>

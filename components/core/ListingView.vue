@@ -6,7 +6,7 @@
   <div class="listing-layout border-y border-gray-200 mb-12">
     <div class="container">
       <div class="grid grid-cols-12">
-        <div class="lg:col-span-3 border-r border-gray-200 md:px-4 md:py-8">
+        <div class="lg:col-span-3 border-r border-gray-200 lg:px-4 lg:py-8">
           <slot name="filters"/>
         </div>
         <div class="col-span-12 lg:col-span-9">
