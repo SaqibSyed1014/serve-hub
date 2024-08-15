@@ -65,7 +65,19 @@ watch(() => route.path, async (val) => {
 function assignPageMetaInfo(metaData :MetaData) {
   useSeoMeta({
     title: () => metaData.metaTitle,
-    description: () => metaData.metaDescription
+    description: () => metaData.metaDescription.length,
+    ogTitle: () => metaData.metaTitle,
+    ogDescription: () => metaData.metaDescription,
+    ogUrl: () => metaData.structuredData?.url
+  })
+
+  useHead({
+    script: [
+      {
+        type: "application/ld+json",
+        textContent: JSON.stringify(metaData.structuredData)
+      }
+    ],
   })
 }
 </script>
