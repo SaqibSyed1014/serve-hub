@@ -1,5 +1,8 @@
-<script setup>
-const nuxtApp = useNuxtApp()
+<script setup lang="ts">
+import { useHomeStore } from "~/segments/home/store";
+
+const nuxtApp = useNuxtApp();
+const homeStore = useHomeStore();
 
 nuxtApp.hook("page:finish", () => {
   window.scrollTo(0, 0); // emphasize scroll to top on route change
@@ -45,7 +48,38 @@ useHead({
             })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');`
     }
   ]
-})
+});
+
+const route = useRoute();
+
+watch(() => route.path, async (val) => {
+  let metaData;
+  if (val === '/') metaData = await homeStore.fetchSEOData('/');
+  else {
+    const routeName = val.split('/');
+    metaData = await homeStore.fetchSEOData(routeName[1]);
+  }
+  assignPageMetaInfo(metaData)
+}, { immediate: true });
+
+function assignPageMetaInfo(metaData :MetaData) {
+  useSeoMeta({
+    title: () => metaData.metaTitle,
+    description: () => metaData.metaDescription.length,
+    ogTitle: () => metaData.metaTitle,
+    ogDescription: () => metaData.metaDescription,
+    ogUrl: () => metaData.structuredData?.url
+  })
+
+  useHead({
+    script: [
+      {
+        type: "application/ld+json",
+        textContent: JSON.stringify(metaData.structuredData)
+      }
+    ],
+  })
+}
 </script>
 
 <template>

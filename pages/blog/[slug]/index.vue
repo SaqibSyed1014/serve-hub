@@ -46,30 +46,30 @@ function copyURL() {
             <span
                 class="bg-[#F9F5FF] rounded-full p-1 pr-2.5 border border-[#E9D7FE] text-xs text-brand-600 inline-flex items-center gap-2 mb-4">
                 <span class="bg-white rounded-full py-0.5 px-2 border border-[#E9D7FE]">
-                  {{ blogDetails?.attributes.category?.data.attributes.category_name || 'General' }}
+                  {{ blogDetails?.category?.category_name || 'General' }}
                 </span>
-              {{ blogDetails.attributes.reading_time }}
+              {{ blogDetails.reading_time }}
             </span>
               <h2 class="text-4xl md:text-5xl md:leading-[1.2] mb-6">
-                {{ blogDetails.attributes.title }}
+                {{ blogDetails.title }}
               </h2>
               <p class="text-black-light text-lg md:text-xl font-normal">
-                {{ blogDetails.attributes.post_excerpt }}
+                {{ blogDetails.post_excerpt }}
               </p>
             </div>
             <div>
-              <div v-if="blogDetails?.attributes.post_photo?.data" class="overflow-hidden mb-8 w-full lg:w-[65%] h-[250px] md:h-[450px] rounded-lg md:rounded-xl">
-                <img :src="blogDetails.attributes.post_photo.data?.attributes.url" :alt="`${blogDetails.attributes.title} Cover Photo`" class="h-full w-full object-cover"/>
+              <div v-if="blogDetails?.post_photo" class="overflow-hidden mb-8 w-full lg:w-[65%] h-[250px] md:h-[450px] rounded-lg md:rounded-xl">
+                <img :src="blogDetails.post_photo?.url" :alt="`${blogDetails.title} Cover Photo`" class="h-full w-full object-cover"/>
               </div>
               <div class="flex items-center gap-24">
                 <div class="flex gap-12">
                   <div class="text-lg font-medium">
                     <span class="text-brand-600 text-sm mb-3 block">Written by</span>
-                    {{ blogDetails?.attributes.author.data.attributes.name }}
+                    {{ blogDetails?.author.name }}
                   </div>
                   <div class="text-lg font-medium">
                     <span class="text-brand-600 text-sm mb-3 block">Published on</span>
-                    {{ convertDateFormat(blogDetails?.attributes.post_date) }}
+                    {{ convertDateFormat(blogDetails?.post_date) }}
                   </div>
                 </div>
                 <div class="hidden md:flex gap-3">
@@ -119,7 +119,7 @@ function copyURL() {
           <div class="container md:px-8">
             <div class="grid md:grid-cols-6 gap-4 xl:gap-24 pb-16 border-b border-[#EAECF0]">
               <div class="md:col-span-4 flex-1">
-                <div class="blog-content" v-html="blogDetails?.attributes.post_content"></div>
+                <div class="blog-content" v-html="blogDetails?.post_content"></div>
               </div>
               <div class="md:col-span-2 w-full md:max-w-72 xl:max-w-sm">
                 <div class="sticky top-20 z-[1] bg-[#F9FAFB] border border-[#EAECF0] rounded-2xl p-4 xl:px-8 xl:py-10">
@@ -165,35 +165,35 @@ function copyURL() {
                 <template v-for="blog in blogs.slice(1, 3)">
                   <div class="">
                     <div class="mb-5">
-                      <img :src="blog.attributes.post_photo.data?.attributes.url ?? '/images/others/blog-mockup.jpg'" :alt="`${blog.attributes.title} Cover Photo`"
+                      <img :src="blog.post_photo?.url ?? '/images/others/blog-mockup.jpg'" :alt="`${blog.title} Cover Photo`"
                            class="w-full h-[240px] rounded-lg object-cover">
                     </div>
                     <span
                         class="bg-[#F9F5FF] rounded-full p-1 pr-2.5 border border-[#E9D7FE] text-xs text-brand-600 inline-flex items-center gap-2 mb-4">
                     <span class="bg-white rounded-full py-0.5 px-2 border border-[#E9D7FE]">
-                                          {{ blog?.attributes.category?.category_name || 'General' }}
+                      {{ blog?.category?.category_name || 'General' }}
                     </span>
-                    {{ blog.attributes.reading_time }}
+                    {{ blog.reading_time }}
                 </span>
                     <h3 class="mb-2">
-                      <NuxtLink :to="`/blog/${blog.attributes.slug}`"
+                      <NuxtLink :to="`/blog/${blog.slug}`"
                                 class="flex justify-between items-center gap-2 text-2xl hover:text-brand-600">
-                        <div class="line-clamp-2">{{ blog.attributes.title }}</div>
+                        <div class="line-clamp-2">{{ blog.title }}</div>
                         <span class="shrink-0">
                             <SvgoArrowNarrowUpRight class="w-4 h-4"/>
                         </span>
                       </NuxtLink>
                     </h3>
                     <p class="line-clamp-2 font-normal mb-6">
-                      {{ blog.attributes.post_excerpt  }}
+                      {{ blog.post_excerpt  }}
                     </p>
                     <div class="flex gap-3">
                       <div class="overflow-hidden rounded-full w-12 h-12 shrink-0">
-                        <img :src="blog.attributes.author.data.attributes?.avatar ?? '/images/others/avatar-mockup.jpg'" alt="" class="w-full h-full object-cover object-top">
+                        <img :src="blog.author?.avatar ?? '/images/others/avatar-mockup.jpg'" alt="" class="w-full h-full object-cover object-top">
                       </div>
                       <div class="">
-                        <h4>{{ blog.attributes.author.data.attributes.name }}</h4>
-                        <p class="text-black-light font-normal">{{ convertDateFormat(blog.attributes.post_date) }}</p>
+                        <h4>{{ blog.author.name }}</h4>
+                        <p class="text-black-light font-normal">{{ convertDateFormat(blog.post_date) }}</p>
                       </div>
                     </div>
                   </div>

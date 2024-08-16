@@ -66,7 +66,7 @@ export const useBlogStore = defineStore('blogStore', {
     getters: {
         categoriesDropdown: (state) :{ label: string, value: number }[] => {
             const categoriesArray = state.categories.map((category: BlogCategory) => ({
-                label: category.attributes.category_name,
+                label: category.category_name,
                 value: category.id
             }));
 

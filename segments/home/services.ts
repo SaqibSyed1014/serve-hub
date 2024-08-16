@@ -101,6 +101,18 @@ const sendingClientMessage = (payload :ContactFormPayload) :Promise<{ content: {
     })
 }
 
+const fetchingSEOData = (routeName :string) :Promise<PageMetaResponse> => {
+    const { strapiBaseUrl, strapiApiToken } = usePayloadUrl();
+
+    const apiHeaders = {
+        Authorization: `Bearer ${strapiApiToken}`,
+    }
+    return $fetch(`${strapiBaseUrl}/api/pages?populate[0]=seo&filters[page_slug][$eq]=${routeName}&fields[0]=page_slug`, {
+        method: 'get',
+        headers: apiHeaders
+    })
+}
+
 
 
 
@@ -113,5 +125,6 @@ export {
     getFeaturedBusinesses,
     getOrgDetails,
     getStripeCheckoutURL,
-    sendingClientMessage
+    sendingClientMessage,
+    fetchingSEOData
 }

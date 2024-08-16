@@ -75,7 +75,13 @@ if (process.env.NODE_ENV === 'production') {
         'price_1PjV7zLckED7yHH5ii4KzzIz',
         'price_1PjV7zLckED7yHH5QxkjxGWf'
     ]
-} else if (process.env.NODE_ENV === 'development') {
+}
+
+const { host } = useRequestURL();
+
+
+if (process.env.NODE_ENV === 'development' || host?.includes('localhost') || host?.includes('netlify') || host?.includes('devweb')) {
+    console.log('using dev price Ids ', process.env.NODE_ENV, host)
     pricingPlanIDsList = [
         'price_1OMd9PLckED7yHH5UC3XcJjA',
         'price_1PjUuaLckED7yHH5Nto134vZ',

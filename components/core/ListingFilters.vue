@@ -1,14 +1,17 @@
 <script setup lang="ts">
 import JobFilterSkeleton from "~/components/core/Skeletons/JobFilterSkeleton.vue";
 
-const props = defineProps<{
-  filtrationList: any[],
+const props = withDefaults(defineProps<{
+  filtrationList: JobFilter[],
   isSidebarFilter: boolean,
-  selectedCompensation: number[]
-  wageType: string
-  includeAllJobs: boolean
+  selectedCompensation?: number[]
+  wageType?: string
+  includeAllJobs?: boolean
   filtersLoading: boolean
-}>()
+  showFacetCount: boolean
+}>(), {
+  showFacetCount: true
+});
 
 const emits = defineEmits([
   'closeFilterSidebar',
@@ -89,7 +92,8 @@ function emitSelectedValues() {
 }
 
 function applyFiltersOnClick() {
-  handleValueChange(savedCompensationValues.value, false)
+  if (props.selectedCompensation && props.wageType)
+    handleValueChange(savedCompensationValues.value, false)
   emits('applyFiltersOnClick', selectedValues.value);
 }
 
@@ -181,12 +185,12 @@ function includeJobsWithoutCompensation($event :any) {
                                :id="`label-cb-${index}-${i}`">
                     <label :for="`filter-cb-${index}-${i}`" class="font-medium cursor-pointer">
                       {{ item.label }}
-                      <span class="text-gray-400 font-normal">({{ item.counts }})</span>
+                      <span v-if="showFacetCount" class="text-gray-400 font-normal">({{ item.counts }})</span>
                     </label>
                   </BaseTooltip>
                   <label v-else :for="`filter-cb-${index}-${i}`" class="font-medium cursor-pointer">
                     {{ item.label }}
-                    <span class="text-gray-400 font-normal">({{ item.counts }})</span>
+                    <span v-if="showFacetCount" class="text-gray-400 font-normal">({{ item.counts }})</span>
                   </label>
                 </div>
               </template>

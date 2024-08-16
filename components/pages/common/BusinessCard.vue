@@ -1,6 +1,5 @@
 <script setup lang="ts">
 defineProps<{
-  businessType: 'bars' | 'restaurants' | 'hotels-resorts',
   data: BusinessDocument,
   hasGridLayout: boolean
 }>();
@@ -8,16 +7,17 @@ defineProps<{
 
 <template>
   <NuxtLink
-      :to="`/businesses/${businessType}/${data?.slug}`"
+      :to="`/businesses/${data?.slug}`"
       class="p-5 rounded-xl border border-gray-200"
   >
     <template v-if="hasGridLayout">
       <div class="flex flex-col">
         <div class="flex items-center gap-3">
-          <SvgoBuilding class="size-12 shrink-0"/>
-          <h4
-              class="text-gray-900 pl-3 text-sm md:text-base font-semibold leading-normal text-pretty line-clamp-2"
-          >
+          <div v-if="data?.logo_path?.length" class="flex place-items-center rounded-full overflow-hidden w-12 h-12 shrink-0">
+            <img :src="data.logo_path" :alt="data.name" class="w-full h-full object-cover">
+          </div>
+          <SvgoBuilding v-else class="size-12 shrink-0"/>
+          <h4 class="text-gray-900 pl-3 text-sm md:text-base font-semibold leading-normal text-pretty line-clamp-2">
             {{ data?.business_name }}
           </h4>
         </div>
@@ -35,10 +35,8 @@ defineProps<{
 
           <div class="inline-flex items-center text-center space-x-2">
             <SvgoBriefCaseLight class="size-5"/>
-            <span
-                class="text-gray-600 text-xs md:text-sm font-medium leading-tight"
-            >
-          0 jobs
+            <span class="text-gray-600 text-xs md:text-sm font-medium leading-tight">
+              {{ data?.job_count || '0' }} jobs
         </span>
           </div>
         </div>
@@ -47,21 +45,20 @@ defineProps<{
     <template v-else>
       <div class="flex flex-col gap-5 sm:gap-0 sm:flex-row justify-between items-start">
         <div class="flex flex-col md:flex-row md:items-center gap-3">
-          <SvgoBuilding class="size-12 shrink-0"/>
+          <div v-if="data?.logo_path?.length" class="flex place-items-center rounded-full overflow-hidden w-12 h-12 shrink-0">
+            <img :src="data.logo_path" :alt="data.name" class="w-full h-full object-cover">
+          </div>
+          <SvgoBuilding v-else class="size-12 shrink-0"/>
           <div>
-            <h4
-                class="text-gray-900 text-sm md:text-base font-semibold leading-normal"
-            >
+            <h4 class="text-gray-900 text-sm md:text-base font-semibold leading-normal">
               {{ data?.business_name }}
             </h4>
 
             <div class="inline-flex flex-wrap gap-5 pt-2">
               <div class="inline-flex items-center text-center space-x-2">
                 <SvgoBriefCaseLight class="size-5"/>
-                <span
-                    class="text-gray-600 text-xs md:text-sm font-medium leading-tight"
-                >
-              0 jobs
+                <span class="text-gray-600 text-xs md:text-sm font-medium leading-tight">
+                  {{ data?.job_count || '0' }} jobs
             </span>
               </div>
             </div>
