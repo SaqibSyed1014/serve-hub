@@ -75,7 +75,6 @@ async function fetchFilters() {
   await Promise.all([
     homeStore.fetchBusinessTypes(),
   ]);
-  console.log('filters ', filters.value)
   if (filters.value[0].fieldName !== 'business_type_id')  // check to avoid duplicate occurrence of business type filter
     filters.value.unshift(businessTypesFilter.value);
 }
@@ -106,14 +105,12 @@ function assignQueryParamsOnInitialLoad(params :BusinessQueryParams) {
         .split(",");
     sidebarFilters.value.business_type_id = selectedValues.value;
   }
-  console.log('adding ', businessTypeVal, sidebarFilters.value)
 
   filters.value.forEach(filter => {
     if (filter.type === 'checkbox' && filter.list?.length) {
       filter.list.forEach(item => {
         const filterValues = sidebarFilters.value[filter.fieldName] || [];
         item.checked = filterValues.includes(item.value.toString() as string);
-        console.log('filterValues ', filterValues, item)
       });
     }
   });
@@ -245,7 +242,6 @@ function updateSideBarFilters(selectedFilters :{ field: string, values: string[]
   checkboxesFilter.value = selectedFilters.map((obj: { field: string, values: string[] }) => {
     return `${obj.field}:=[${obj.values.join(',')}]`;
   }).join('&&');
-  console.log('check inside ', checkboxesFilter.value, selectedFilters, sidebarFilters.value);
 
   query.value.filter_by = getBusinessFilterQuery(alphabetFilter.value, checkboxesFilter.value);
 
