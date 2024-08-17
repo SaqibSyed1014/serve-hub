@@ -3,7 +3,6 @@ import {
   compensationTypesOptions,
   employmentOptions,
   hourlyRange,
-  jobRolesOptions,
   salaryRange,
   toolbarOptions
 } from "~/components/core/constants/post-job-form.constants";
@@ -14,6 +13,7 @@ import Datepicker from "@vuepic/vue-datepicker";
 import "@vuepic/vue-datepicker/dist/main.css";
 import Multiselect from 'vue-multiselect'
 import "vue-multiselect/dist/vue-multiselect.css"
+import {useHomeStore} from "~/segments/home/store";
 
 const emit = defineEmits(['moveToPrevStep', 'handleFormSubmission', 'formDataListener']);
 
@@ -22,9 +22,10 @@ const props = defineProps<{
 }>()
 
 const postJobStore = usePostjobStore();
-const { experienceLevelOptions } = storeToRefs(postJobStore);
+const homeStore = useHomeStore();
 
-const jobRoles = ref(jobRolesOptions);
+const { experienceLevelOptions } = storeToRefs(postJobStore);
+const { roleTypesList } = storeToRefs(homeStore)
 
 const schema = Yup.object({
     jobTitle: Yup.string().required("Job Title is required"),
@@ -54,7 +55,7 @@ const schema = Yup.object({
       is: 2,
       then: (schema) => schema.required("Hourly End Range is required")
     }),
-    jobRoleId: Yup.number().required("Job Role is required"),
+    jobRoleId: Yup.number().typeError('Job Role is required').required("Job Role is required"),
     jobDescription: Yup.string().required("Job Description is required"),
 })
 
@@ -183,7 +184,7 @@ watch(() => props.initialFormValues, (initialData) => {
             name="jobTitle"
             type="text"
             label="Job Title"
-            placeholder="e.g. Project Manager"
+            placeholder="e.g. Bartender"
             subLabel=""
             className="form-field-layout"
         />
@@ -320,20 +321,27 @@ watch(() => props.initialFormValues, (initialData) => {
             </label>
             <div class="col-span-2">
               <div class="flex gap-20">
-                <template v-for="option in compensationTypesOptions">
-                  <div class="flex gap-3">
-                    <Field
-                        v-model="compensationTypeId"
-                        name="compensationTypeId"
-                        type="radio"
-                        :value="option.value"
-                        class="cursor-pointer"
-                    />
-                    <label
-                        :for="option.label"
-                        class="text-sm font-medium text-gray-900"
-                    >{{ option.label }}</label>
-                  </div>
+                <template v-for="(option, i) in compensationTypesOptions">
+                  <BaseTooltip
+                      :id="`compensation-rb-${i}`"
+                      :tooltip-content="option.toolTipText"
+                      :hide-tooltip="!!option.toolTipText.length"
+                      position="right"
+                  >
+                    <div class="flex gap-3">
+                        <Field
+                            v-model="compensationTypeId"
+                            name="compensationTypeId"
+                            type="radio"
+                            :value="option.value"
+                            class="cursor-pointer"
+                        />
+
+                        <label :for="option.label" class="text-sm font-medium text-gray-900">
+                          {{ option.label }}
+                        </label>
+                    </div>
+                  </BaseTooltip>
                 </template>
               </div>
             </div>
@@ -367,7 +375,7 @@ watch(() => props.initialFormValues, (initialData) => {
             v-model="jobRoleId"
             name="jobRoleId"
             label="Job Role"
-            :data="jobRoles"
+            :data="roleTypesList"
             :label-value-options="true"
             subLabel=""
             :value="values.jobRoleId"
