@@ -6,6 +6,7 @@ import {
   employmentOptions,
   jobRolesOptions
 } from "~/components/core/constants/post-job-form.constants";
+import {useHomeStore} from "~/segments/home/store";
 
 const props = defineProps<{
   formData: any,
@@ -13,16 +14,16 @@ const props = defineProps<{
   makePayment: () => void
 }>()
 
+const homeStore = useHomeStore();
 const postJobStore = usePostjobStore();
-const {
-  businessTypesDropdown,
-  experienceLevelOptions
-} = storeToRefs(postJobStore);
+
+const { businessTypesList } = storeToRefs(homeStore)
+const { experienceLevelOptions } = storeToRefs(postJobStore);
 
 const emit = defineEmits(['editIconClicked', 'moveToPrevStep', 'updatedJobPostingPricing']);
 
 const businessTypeLabel = computed(() => {
-  return businessTypesDropdown.value.filter((business) => business?.value == props.formData.stepOne?.businessTypeId)[0].label
+  return businessTypesList.value.filter((business) => business?.value == props.formData.stepOne?.businessTypeId)[0].label
 })
 
 const employmentTypeLabel = computed(() => {

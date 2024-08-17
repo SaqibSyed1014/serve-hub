@@ -91,7 +91,7 @@ watch(() => businessDetails.value, (val) => {
                     to="/businesses"
                     class="text-slate-600 text-sm font-medium leading-tight"
                 >
-                  Business
+                  Businesses
                 </NuxtLink>
               </div>
               <SvgoChevronRight class="size-4" />

@@ -26,12 +26,12 @@ const getExperienceLevels = () :Promise<ExperienceLevel[]> => {
     })
 }
 
-const getSearchedOrgName = (query :string) :Promise<OrgResponseType> => {
+const getSearchedBusinessName = (query :string) :Promise<BusinessResponseType> => {
     const { baseUrl, apiKey } = usePayloadUrl()
     const apiHeaders = {
         'API-Key': apiKey,
     }
-    return $fetch(`${baseUrl}/org/search?q=*&filter_by=name:${query}*`, {
+    return $fetch(`${baseUrl}/org/search?q=*&filter_by=business_name:${query}*`, {
         method: 'get',
         headers: apiHeaders,
     })
@@ -65,7 +65,7 @@ export {
     getStripeCheckDetails,
     getExperienceLevels,
     getOrgTypes,
-    getSearchedOrgName,
+    getSearchedBusinessName,
     checkUserMailExists,
     saveJobData
 }

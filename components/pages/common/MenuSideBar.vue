@@ -5,10 +5,20 @@ const props = defineProps<{
   menuLinks: MenuLinksType[],
   isSidebarVisible: boolean,
   businessTypesMenuLinks: { label :string, business_type_slug :string }[]
-}>()
+}>();
+
+const businessLinks = ref([]);
 
 watch(() => props.isSidebarVisible, (val :boolean) => {
   if (!val) showSubLinksMenu.value = false  // resets submenu to its default position on sidebar closing
+})
+
+watch(() => props.businessTypesMenuLinks, (val :{ label :string, business_type_slug :string }[]) => {
+  if (!businessLinks.value.length) businessLinks.value = val;
+  const existingIndex = businessLinks.value.findIndex(item => item.business_type_slug === 'businesses');
+  if (existingIndex === -1) {
+    businessLinks.value.push({ label: 'View All', business_type_slug: 'businesses' });
+  }
 })
 
 const emits = defineEmits(['toggleSidebar'])
@@ -72,7 +82,7 @@ function returnToMainMenu() {
             <span>Back</span>
           </div>
           <ul class="font-semibold">
-            <template v-for="businessType in businessTypesMenuLinks">
+            <template v-for="businessType in businessLinks">
               <li class="py-3">
                 <NuxtLink
                     :to="`/${businessType.business_type_slug}`"
