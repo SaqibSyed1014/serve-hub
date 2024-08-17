@@ -6,14 +6,10 @@ export const employmentOptions = [
     { label: 'Volunteer', value: 5 },
 ]
 
-export const jobRolesOptions = [
-    { label: "Instructional", value: 1 },
-    { label: "Non-instructional", value: 2 }
-]
-
-export const compensationTypesOptions = [
-    { label: "Salary", value: 1 },
-    { label: "Hourly", value: 2 }
+export const compensationTypesOptions : { label: string, value: number, toolTipText: string }[] = [
+    { label: "Salary", value: 1, toolTipText: "" },
+    { label: "Hourly", value: 2, toolTipText: "" },
+    { label: "DOE", value: 3, toolTipText: "Depends on Experience" },
 ]
 
 export const applyMethodOptions = [

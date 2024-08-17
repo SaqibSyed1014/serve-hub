@@ -73,6 +73,12 @@ interface ShiftType {
     sort_order: number;
 }
 
+interface RoleType {
+    job_role: string;
+    job_role_id: number;
+    job_role_summary: string;
+}
+
 interface ContactFormPayload {
     fullName: string;
     email: string;

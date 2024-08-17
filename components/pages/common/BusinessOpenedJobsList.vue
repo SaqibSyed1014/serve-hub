@@ -11,6 +11,8 @@ const props = defineProps<{
 const route = useRoute();
 const businessStore = useBusinessesStore();
 
+const { totalPagesInBusinessJobs } = storeToRefs(businessStore);
+
 const businessJobsFetching = ref<boolean>(false);
 
 const pageInfo = ref<PaginationInfo>({
@@ -41,6 +43,7 @@ onMounted(async () => {
 async function getBusinessJobs() {
   businessJobsFetching.value = true;
   await businessStore.fetchBusinessJobs(queryParams.value);
+  pageInfo.value.totalPages = totalPagesInBusinessJobs.value;
   businessJobsFetching.value = false;
 }
 

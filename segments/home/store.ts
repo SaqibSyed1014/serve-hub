@@ -4,6 +4,7 @@ import {
     getBusinessTypes,
     getEmploymentTypes,
     getShiftTypes,
+    getRoleTypes,
     getFeaturedBusinesses,
     getOrgDetails,
     getStripeCheckoutURL,
@@ -18,6 +19,7 @@ interface HomeSectionsData {
     businessTypes: BusinessType[]
     employmentTypes: EmploymentType[]
     shiftTypes: ShiftType[]
+    roleTypes: RoleType[]
     featuredBusinesses: FeaturedBusinesses[]
     orgDetail: Org | null
     checkoutURL: string
@@ -30,6 +32,7 @@ export const useHomeStore = defineStore('homeStore', {
         businessTypes: [],
         employmentTypes: [],
         shiftTypes: [],
+        roleTypes: [],
         featuredBusinesses: [],
         orgDetail: null,
         checkoutURL: ''
@@ -49,6 +52,9 @@ export const useHomeStore = defineStore('homeStore', {
         },
         async fetchShiftTypes() {
             this.$state.shiftTypes = await getShiftTypes();
+        },
+        async fetchRoleTypes() {
+            this.$state.roleTypes = await getRoleTypes();
         },
         async fetchFeaturedBusinesses() {
             this.$state.featuredBusinesses = await getFeaturedBusinesses();
@@ -98,6 +104,13 @@ export const useHomeStore = defineStore('homeStore', {
                 value: business.business_type_id,
                 ...business
             })).sort((a :BusinessType, b :BusinessType) => a.sort_order - b.sort_order) || []
+        },
+        roleTypesList: (state) => {
+            return state.roleTypes?.map((role :RoleType) => ({
+                label: role.job_role,
+                value: role.job_role_id,
+                description: role.job_role_summary
+            })) || []
         },
         employmentTypesFilter: (state) => {
              const filterList = state.employmentTypes
