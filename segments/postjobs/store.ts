@@ -2,7 +2,7 @@ import {
     getStripeCheckDetails,
     getOrgTypes,
     getExperienceLevels,
-    getSearchedOrgName,
+    getSearchedBusinessName,
     checkUserMailExists,
     saveJobData
 } from "~/segments/postjobs/services"
@@ -13,7 +13,7 @@ interface StripeCheckout {
     status: string | null;
     requestId: string | null;
     experienceLevels: ExperienceLevel[];
-    searchedOrgNames: OrgDocument[];
+    searchedBusinessesNames: BusinessDocument[];
     checkoutURL: string;
 }
 
@@ -24,7 +24,7 @@ export const usePostjobStore = defineStore('postjobStore', {
         status: null,
         requestId: null,
         experienceLevels: [],
-        searchedOrgNames: [],
+        searchedBusinessesNames: [],
         checkoutURL: ''
     } as StripeCheckout),
     actions: {
@@ -47,9 +47,9 @@ export const usePostjobStore = defineStore('postjobStore', {
         async fetchExperienceLevels() {
             this.$state.experienceLevels = await getExperienceLevels();
         },
-        async fetchSearchedOrgNames(name :string) {
-            const { hits } = await getSearchedOrgName(name);
-            this.$state.searchedOrgNames = hits.map((org:OrgHit) => org.document)
+        async fetchSearchedBusinessNames(name :string) {
+            const { hits } = await getSearchedBusinessName(name);
+            this.$state.searchedBusinessesNames = hits.map((org :BusinessHit) => org.document)
         },
         async checkUserMail(mail :string) {
             return await checkUserMailExists(mail)
@@ -82,9 +82,9 @@ export const usePostjobStore = defineStore('postjobStore', {
                     desc: experience.experience_level_description
                 })) || []
         },
-        orgNamesDropdown: (state) => {
-            return state.searchedOrgNames?.map((org :OrgDocument) => ({
-                label: org.name,
+        businessNamesDropdown: (state) => {
+            return state.searchedBusinessesNames?.map((org :BusinessDocument) => ({
+                label: org.business_name,
                 value: org.id
             })) || []
         },

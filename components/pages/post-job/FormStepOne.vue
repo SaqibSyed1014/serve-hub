@@ -17,7 +17,7 @@ const jobPostStore = usePostjobStore();
 const homeStore = useHomeStore();
 
 const { businessTypesList } = storeToRefs(homeStore)
-const { orgNamesDropdown, searchedOrgNames } = storeToRefs(jobPostStore);
+const { businessNamesDropdown, searchedBusinessesNames } = storeToRefs(jobPostStore);
 
 const uploadedImage = ref("");
 
@@ -83,32 +83,32 @@ const searchedName = ref<any>(null);
 const searchingName = ref<boolean>(false);
 
 
-const orgAutocomplete = ref(null);
+const businessAutocomplete = ref(null);
 
 const getSearchedText = debounce(async (input :string) => {
   if (input.length) {
-    if (orgAutocomplete.value) orgAutocomplete.value.search = input;
+    if (businessAutocomplete.value) businessAutocomplete.value.search = input;
     searchingName.value = true;
-    await jobPostStore.fetchSearchedOrgNames(input);
+    await jobPostStore.fetchSearchedBusinessNames(input);
     searchingName.value = false;
-    if (!orgNamesDropdown.value.length) {  // if no results are found, assign default id i-e: 0
+    if (!businessNamesDropdown.value.length) {  // if no results are found, assign default id i-e: 0
       searchedName.value = {
         label: input,
         value: 0
       }
       checkSelection(); // assign to form values
     }
-  } else resetOrgAutocomplete();
+  } else resetBusinessAutocomplete();
 }, 600)
 
 function checkSelection() {
   businessName.value = searchedName.value.label;
   businessId.value = searchedName.value.value;
-  if (orgAutocomplete.value) orgAutocomplete.value.search = businessName.value;
+  if (businessAutocomplete.value) businessAutocomplete.value.search = businessName.value;
 }
 
 watch(() => props.initialFormValues, (val) => {
-  if (val.businessName) {  // if orgName is selected and exists in form
+  if (val.businessName) {  // if business name is selected and exists in form
     searchedName.value = {
       label: val.businessName,
       value: val.businessId
@@ -117,14 +117,14 @@ watch(() => props.initialFormValues, (val) => {
 }, { immediate: true })
 
 watch(() => searchedName.value, (val :any) => {
-  if (!val) resetOrgAutocomplete(); // reset search fields if autocomplete gets empty
+  if (!val) resetBusinessAutocomplete(); // reset search fields if autocomplete gets empty
 })
 function dropdownClosed() {
-  if (!searchedName.value) resetOrgAutocomplete();
+  if (!searchedName.value) resetBusinessAutocomplete();
 }
 
-function resetOrgAutocomplete() {
-  searchedOrgNames.value = [];
+function resetBusinessAutocomplete() {
+  searchedBusinessesNames.value = [];
   searchedName.value = null;
   businessName.value = '';
   businessId.value = null;
@@ -146,14 +146,14 @@ async function checkUserEmail(isFieldValid :boolean) {
     <div class="mt-5 border-b border-gray-900/10 sm:space-y-0 sm:divide-y sm:divide-gray-900/10 sm:border-t sm:pb-0">
       <div class="form-field-layout">
         <label class="block text-sm font-semibold text-gray-700 sm:pt-1.5">
-          Organization Name*
+          Business Name*
         </label>
         <div class="sm:col-span-2 sm:mt-0">
           <multiselect
-              ref="orgAutocomplete"
+              ref="businessAutocomplete"
               id="businessName"
               v-model="searchedName"
-              :options="orgNamesDropdown"
+              :options="businessNamesDropdown"
               label="label"
               track-by="value"
               :multiple="false"
@@ -164,7 +164,7 @@ async function checkUserEmail(isFieldValid :boolean) {
               :show-no-results="false"
               :clear-on-select="false"
               class="custom-multi-select autocomplete"
-              placeholder="e.g. Unified School District"
+              placeholder=""
               :loading="searchingName"
               @search-change="getSearchedText"
               @select="checkSelection"
