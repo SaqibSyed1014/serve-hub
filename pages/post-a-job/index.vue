@@ -9,7 +9,7 @@ import BaseSpinner from "~/components/core/BaseSpinner.vue";
 import FormStepFour from "~/components/pages/post-job/FormStepFour.vue";
 import {useHomeStore} from "~/segments/home/store";
 
-const currentStep = ref(1);
+const currentStep = ref(0);
 const postjobStore = usePostjobStore();
 const homeStore = useHomeStore();
 const { content,status, checkoutURL } = storeToRefs(postjobStore);
