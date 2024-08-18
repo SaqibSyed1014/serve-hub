@@ -32,7 +32,7 @@ export const useBlogStore = defineStore('blogStore', {
     } as BlogState),
     actions: {
         async fetchBlogs(pageInfo :PaginationInfo, queryVal :string = '', category :string = '') {
-            return await getBlogsList(pageInfo.currentPage, pageInfo.itemsPerPage, queryVal, category==='View All'? '':category)
+            return await getBlogsList(pageInfo.currentPage, pageInfo.itemsPerPage, queryVal, decodeURIComponent(category) === 'View All'? '':category)
                 .then(({data, meta }) => {
                     this.$state.blogs = data;
                     this.$state.pagination = meta.pagination

@@ -1,4 +1,4 @@
-import type { Router } from "vue-router";
+import type {Router} from "vue-router";
 
 export const usePayloadUrl = () => {
     const config = useRuntimeConfig()
@@ -27,6 +27,11 @@ export function convertDateFormat(date: Date | string) {
 export function convertTZDateToShortDate(givenDate :Date | string) {
     const date = new Date(givenDate);
     return (date.getMonth() + 1).toString().padStart(2, '0') + '/' + date.getDate().toString().padStart(2, '0') + '/' + date.getFullYear();
+}
+
+export function convertRFCDateStringToLocaleDate(dateString :string) {
+    const dateParts = dateString.split(' ');  // converting MM, dd yyyy 00:00:00 +0000 to just MM, dd yyyy format
+    return `${dateParts[0]}, ${dateParts[1]} ${dateParts[2]}`;
 }
 
 export function getDaysDifference(givenDateString :Date | string) :string {
