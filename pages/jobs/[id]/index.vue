@@ -3,7 +3,6 @@ import { initModals } from 'flowbite'
 import {useJobStore} from "~/segments/jobs/store";
 import QuickSignUpModal from "~/components/pages/job-listings/QuickSignUpModal.vue";
 import BaseSpinner from "~/components/core/BaseSpinner.vue";
-import {convertTZDateToShortDate} from "~/segments/utils";
 import {defaultImageMockup} from "~/components/core/constants/common.constants";
 const center = ref({ lat: 0, lng: 0 })
 

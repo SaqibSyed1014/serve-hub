@@ -1,6 +1,6 @@
 import {getJobDetails, getJobsList} from "~/segments/jobs/services";
 import type {Coordinates, TypesenseQueryParam} from "~/segments/common.types";
-import {convertUnixTimestamp} from "~/components/core/constants/jobs.constants";
+import { convertRFCDateStringToLocaleDate } from "~/segments/utils";
 
 interface JobsState {
     jobsList: Job[]
@@ -52,9 +52,9 @@ export const useJobStore = defineStore('jobStore', {
             if (jobDetail)
                 return {
                     ...jobDetail,
-                    application_deadline: jobDetail?.application_deadline ? jobDetail.application_deadline.slice(0, jobDetail.application_deadline.indexOf('00:00:00')) : '',
-                    date_posted: jobDetail?.date_posted.slice(0, jobDetail.date_posted.indexOf('00:00:00'))
-            }
+                    application_deadline: jobDetail?.application_deadline ? convertRFCDateStringToLocaleDate(jobDetail.application_deadline) : '',
+                    date_posted: convertRFCDateStringToLocaleDate(jobDetail?.date_posted)
+                }
             else return null
         },
         jobFaqs: (state) :JobFaq[] => {
