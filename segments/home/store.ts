@@ -162,6 +162,22 @@ export const useHomeStore = defineStore('homeStore', {
                 icon: 'SvgoClock',
                 list: filterList
             }
+        },
+        roleTypesFilter: (state) => {
+            const filterList = state.roleTypes
+                ?.map((role :RoleType) => ({
+                    label: role.job_role,
+                    value: role.job_role_id,
+                    checked: false,
+                    counts: 0
+                })) || []
+            return {
+                fieldName: 'job_role_id',
+                type: 'checkbox',
+                title: 'Role Type',
+                icon: 'SvgoBarChart',
+                list: filterList
+            }
         }
     }
 })
