@@ -25,7 +25,7 @@ const jobStore = useJobStore();
 const homeStore = useHomeStore();
 
 const { jobListings, facetCounts, totalPages, coordinates } = storeToRefs(jobStore);
-const { employmentTypesFilter, businessTypesFilter, shiftTypesFilter } = storeToRefs(homeStore);
+const { employmentTypesFilter, businessTypesFilter, shiftTypesFilter, roleTypesFilter } = storeToRefs(homeStore);
 
 const layoutOptionSelected = ref(0);
 const searchedLocationText = ref('');
@@ -46,7 +46,7 @@ const initialQuery = {
   page: pageInfo.value.currentPage,
   per_page: pageInfo.value.itemsPerPage,
   sort_by: 'date_posted:desc',
-  facet_by: 'employment_type_id,job_role,experience_level,business_type_id,shift_type_id',
+  facet_by: 'employment_type_id,job_role_id,experience_level,business_type_id,shift_type_id',
   filter_by: ''
 };
 const query = ref<TypesenseQueryParam>(initialQuery);
@@ -101,15 +101,17 @@ async function fetchFilters() {
   await Promise.all([
       homeStore.fetchEmploymentTypes(),
       homeStore.fetchBusinessTypes(),
-      homeStore.fetchShiftTypes()
+      homeStore.fetchShiftTypes(),
+      homeStore.fetchRoleTypes()
   ]);
-  console.log('filters ', filters.value)
   if (filters.value[0].fieldName !== 'employment_type_id')  // check to avoid duplicate occurrence of employment type filter
     filters.value.unshift(employmentTypesFilter.value);
   if (filters.value[1].fieldName !== 'business_type_id')  // check to avoid duplicate occurrence of business type filter
     filters.value.splice(1, 0, businessTypesFilter.value);
   if (filters.value[2].fieldName !== 'shift_type_id')  // check to avoid duplicate occurrence of shift type filter
     filters.value.splice(2, 0, shiftTypesFilter.value);
+  if (filters.value[3].fieldName !== 'job_role_id')  // check to avoid duplicate occurrence of shift type filter
+    filters.value.splice(3, 0, roleTypesFilter.value);
 }
 
 onUnmounted(() => {
@@ -161,7 +163,6 @@ async function doSearch(resetToDefaultPage = false) {
 }
 
 function updateFiltersWithFacetCounts() {
-  console.log('facet filters', filters.value)
   filters.value.map((filter) => {
     if (filter.type === 'checkbox') {
       facetCounts.value.forEach((facet) => {

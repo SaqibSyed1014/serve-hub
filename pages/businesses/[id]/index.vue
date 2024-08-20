@@ -15,8 +15,8 @@ const tabs = ref([
   },
   {
     name: "Open Jobs",
-    heading: "List Of Jobs",
-    subHeading: "Have a look to the list of Jobs."
+    heading: "List of Jobs",
+    subHeading: " Find exciting opportunities at"
   }
 ]);
 
@@ -91,7 +91,7 @@ watch(() => businessDetails.value, (val) => {
                     to="/businesses"
                     class="text-slate-600 text-sm font-medium leading-tight"
                 >
-                  Business
+                  Businesses
                 </NuxtLink>
               </div>
               <SvgoChevronRight class="size-4" />
@@ -241,7 +241,7 @@ watch(() => businessDetails.value, (val) => {
                     {{
                       activeTab === 0 && businessDetails.organization_description.length
                           ? `${tabs[activeTab].subHeading} ${businessDetails.name}.`
-                          : activeTab === 1 ? tabs[activeTab].subHeading : ""
+                          : activeTab === 1 ? `${tabs[activeTab].subHeading} ${businessDetails.name}` : ""
                     }}
                   </p>
                 </div>

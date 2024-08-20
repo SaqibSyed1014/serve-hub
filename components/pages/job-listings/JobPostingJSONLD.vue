@@ -3,6 +3,7 @@ const props = defineProps<{ jobData: Job }>();
 
 function convertDateFormat(dateString: string): string {
   const [monthName, day, year] = dateString.split(/,\s|\s/);
+  console.log('rr ', monthName, day, year, dateString)
   const months: { [key: string]: number } = {
     January: 0,
     February: 1,
@@ -17,7 +18,7 @@ function convertDateFormat(dateString: string): string {
     November: 10,
     December: 11,
   };
-  const monthIndex = months[monthName];
+  const monthIndex = months[monthName.replace(',', '')];
   if (monthIndex === undefined) throw new Error(`Invalid month name: ${monthName}`);
   const date = new Date(Date.UTC(Number(year), monthIndex, Number(day)));
   const isoDate = date.toISOString();

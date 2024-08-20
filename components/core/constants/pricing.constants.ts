@@ -80,8 +80,11 @@ if (process.env.NODE_ENV === 'production') {
 const { host } = useRequestURL();
 
 
-if (process.env.NODE_ENV === 'development' || host?.includes('localhost') || host?.includes('netlify') || host?.includes('devweb')) {
-    console.log('using dev price Ids ', process.env.NODE_ENV, host)
+if (process.env.NODE_ENV === 'development' ||
+    host?.includes('localhost') ||
+    host?.includes('netlify') ||
+    host?.includes('devweb')) {
+    console.log('using dev price Ids ')
     pricingPlanIDsList = [
         'price_1OMd9PLckED7yHH5UC3XcJjA',
         'price_1PjUuaLckED7yHH5Nto134vZ',

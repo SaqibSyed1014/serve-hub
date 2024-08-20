@@ -7,9 +7,11 @@ import {
 import { pricingPlansIDs } from "~/components/core/constants/pricing.constants";
 import BaseSpinner from "~/components/core/BaseSpinner.vue";
 import FormStepFour from "~/components/pages/post-job/FormStepFour.vue";
+import {useHomeStore} from "~/segments/home/store";
 
 const currentStep = ref(0);
 const postjobStore = usePostjobStore();
+const homeStore = useHomeStore();
 const { content,status, checkoutURL } = storeToRefs(postjobStore);
 const isFormLoading = ref<boolean>(true);
 const router = useRouter();
@@ -17,7 +19,8 @@ const router = useRouter();
 onMounted(async() => {
   isFormLoading.value = true;
   await Promise.all([
-    postjobStore.fetchExperienceLevels()
+    homeStore.fetchRoleTypes(),
+    postjobStore.fetchExperienceLevels(),
   ])
   isFormLoading.value = false;
 });

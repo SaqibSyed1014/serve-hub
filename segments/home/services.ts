@@ -55,6 +55,17 @@ const getShiftTypes = () :Promise<ShiftType[]> => {
     })
 }
 
+const getRoleTypes = () :Promise<RoleType[]> => {
+    const { baseUrl, apiKey } = usePayloadUrl()
+    const apiHeaders = {
+        'API-Key': apiKey,
+    }
+    return $fetch(`${baseUrl}/jobs/jobroles`, {
+        method: 'get',
+        headers: apiHeaders,
+    })
+}
+
 const getFeaturedBusinesses = () :Promise<FeaturedBusinesses[]> => {
     const { baseUrl, apiKey } = usePayloadUrl()
     const apiHeaders = {
@@ -122,6 +133,7 @@ export {
     getBusinessTypes,
     getEmploymentTypes,
     getShiftTypes,
+    getRoleTypes,
     getFeaturedBusinesses,
     getOrgDetails,
     getStripeCheckoutURL,

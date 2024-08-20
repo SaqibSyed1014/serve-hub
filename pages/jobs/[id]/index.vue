@@ -3,7 +3,6 @@ import { initModals } from 'flowbite'
 import {useJobStore} from "~/segments/jobs/store";
 import QuickSignUpModal from "~/components/pages/job-listings/QuickSignUpModal.vue";
 import BaseSpinner from "~/components/core/BaseSpinner.vue";
-import {convertTZDateToShortDate} from "~/segments/utils";
 import {defaultImageMockup} from "~/components/core/constants/common.constants";
 const center = ref({ lat: 0, lng: 0 })
 
@@ -81,11 +80,6 @@ function jobSharingOnFacebook() {
   const url = `https://www.facebook.com/sharer/sharer.php?u=#${currentJobURL}`;
   window.open(url, '_target');
 }
-
-function jobBusinessType() {
-  if (jobDetails.value?.business_type === 'Bars') return '/businesses/bars'
-  else if (jobDetails.value?.business_type === 'Restaurants') return '/businesses/restaurants'
-}
 </script>
 
 <template>
@@ -105,7 +99,7 @@ function jobBusinessType() {
               <div class="hidden md:flex items-center gap-3">
                 <span @click="router.go(-1)">Jobs</span>
                 <SvgoChevronRight class="w-4 h-4 text-gray-300" />
-                <NuxtLink :to="`/${jobBusinessType()}/${jobDetails.slug}`" class="text-brand-700 font-medium">
+                <NuxtLink :to="`/businesses/${jobDetails.slug}`" class="text-brand-700 font-medium">
                   {{ jobDetails.organization_name }}
                 </NuxtLink>
               </div>

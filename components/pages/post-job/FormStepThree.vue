@@ -25,7 +25,7 @@ const schema = Yup.object({
       is: "Email",
       then: (schema) => schema.email('Invalid email').required('Email is required')
     }),
-    applicationDeadline: Yup.string().required("Deadline Date is required"),
+    applicationDeadline: Yup.string(),
 })
 const initialFormValues = {
   applicationMethod: 'URL'
@@ -114,19 +114,13 @@ const textInputOptions = {
                 input-class-name="form-input w-full"
                 menu-class-name="dp-custom-menu"
                 autoApply
-                :state="!errors?.applicationDeadline?.length"
                 :text-input="textInputOptions"
                 :enable-time-picker="false"
             >
-              <template #input-icon> </template>
+              <template #input-icon />
             </Datepicker>
 
             <SvgoCalendar class="absolute h-5 top-3 right-3" />
-
-            <ErrorMessage
-                class="error-message"
-                name="applicationDeadline"
-            />
           </div>
         </div>
       </div>

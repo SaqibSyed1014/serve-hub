@@ -35,6 +35,7 @@ export const useBusinessesStore = defineStore('businessesStore', {
             else delete query.query_by;
             const { hits, found } = await getJobsList(query);
             this.$state.businessJobs = hits.map((hit :JobHit) => hit.document);
+            console.log('found ', hits, this.$state.businessJobs);
             this.$state.openedJobs = found;
             this.$state.totalPagesInBusinessJobs = Math.ceil(found / 10);
         }

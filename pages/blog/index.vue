@@ -63,7 +63,7 @@ const splitBlogs = computed(() => {
 watch(() => selectedCategory.value, async (val :string) => {
   showBlogsLoader.value = true;
   pageInfo.value.currentPage = 1;
-  await blogsStore.fetchBlogs(pageInfo.value, searchedBlog.value, val);
+  await blogsStore.fetchBlogs(pageInfo.value, searchedBlog.value, encodeURIComponent(val));
   pageInfo.value.totalPages = pagination.value.pageCount;
   showBlogsLoader.value = false;
 })

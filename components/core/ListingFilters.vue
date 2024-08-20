@@ -8,7 +8,7 @@ const props = withDefaults(defineProps<{
   wageType?: string
   includeAllJobs?: boolean
   filtersLoading: boolean
-  showFacetCount: boolean
+  showFacetCount?: boolean
 }>(), {
   showFacetCount: true
 });
@@ -24,7 +24,7 @@ const emits = defineEmits([
 const filterState = ref(JSON.parse(JSON.stringify(props.filtrationList)));
 
 const selectedValues = ref<{ field: string, values: string[] }[]>([]);
-const savedCompensationValues = ref<number[]>(props.selectedCompensation);
+const savedCompensationValues = ref<number[]>(props?.selectedCompensation || []);
 const selectedWageType = ref(props.wageType);
 const includeAllJobs = ref(props.includeAllJobs);
 
