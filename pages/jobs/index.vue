@@ -163,7 +163,6 @@ async function doSearch(resetToDefaultPage = false) {
 }
 
 function updateFiltersWithFacetCounts() {
-  console.log('facet filters', filters.value)
   filters.value.map((filter) => {
     if (filter.type === 'checkbox') {
       facetCounts.value.forEach((facet) => {
