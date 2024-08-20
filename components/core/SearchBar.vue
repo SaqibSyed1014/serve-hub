@@ -16,17 +16,20 @@ watch(() => props.queryValue, (val) => {
   searchedValue.value = val.q === '*' ? '' : val.q
 })
 
+watch(() => props.location, (val) => {
+  const field = document.getElementById('mapInput') as HTMLInputElement;
+  if (val?.length) {
+    field.value = val;
+  }
+})
+
 watch(() => props.coordinates, (val) => {
   if (val) coordinates.value = val
 })
 
 onMounted(() => {
   setTimeout(() => {
-    const field = document.getElementById('mapInput') as HTMLInputElement
-    if (props.location) {
-      field.value = props.location
-      // field.focus()
-    }
+    const field = document.getElementById('mapInput') as HTMLInputElement;
     field.addEventListener('keyup', function (event :KeyboardEvent) {
       if (event.key === 'Enter' && (coordinates.value.lat !== 0 && coordinates.value.lng !== 0))
         performSearch();
@@ -70,6 +73,7 @@ function checkFieldInput() {
         <SvgoSearch class="w-4 h-4 text-gray-400" />
         <input
             v-model="searchedValue"
+            id="searchKeywordField"
             type="text"
             placeholder="Keyword, Job title..."
             class="w-full"
