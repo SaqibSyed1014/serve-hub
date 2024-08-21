@@ -79,7 +79,6 @@ if (process.env.NODE_ENV === 'production') {
 
 const { host } = useRequestURL();
 
-
 if (process.env.NODE_ENV === 'development' ||
     host?.includes('localhost') ||
     host?.includes('netlify') ||

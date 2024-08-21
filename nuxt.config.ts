@@ -1,8 +1,9 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 // import { GlobalSettings } from './enviromentsettings'
-import { globalSettings } from './enviromentsettings'
+import { globalSettings} from './enviromentsettings'
+import type { EnvType } from "./enviromentsettings";
 
-const appEnv: string  = process.env.ENV || 'development'
+const appEnv :EnvType  = process.env.NODE_ENV as EnvType || 'development'
 
 
 export default defineNuxtConfig({
@@ -27,19 +28,19 @@ export default defineNuxtConfig({
         }
     },
     runtimeConfig: {
-        API_URL: globalSettings[appEnv as keyof typeof globalSettings].API_URL,
-        API_KEY: globalSettings[appEnv as keyof typeof globalSettings].API_KEY,
-        STRAPI_API_URL: globalSettings[appEnv as keyof typeof globalSettings].STRAPI_API_URL,
-        STRAPI_API_TOKEN: globalSettings[appEnv as keyof typeof globalSettings].STRAPI_API_TOKEN,
-        SITE_ENVIRONMENT: globalSettings[appEnv as keyof typeof globalSettings].SITE_ENVIRONMENT, //globalSettings[appEnv].telephone,
+        API_URL: globalSettings[appEnv].API_URL,
+        API_KEY: globalSettings[appEnv].API_KEY,
+        STRAPI_API_URL: globalSettings[appEnv].STRAPI_API_URL,
+        STRAPI_API_TOKEN: globalSettings[appEnv].STRAPI_API_TOKEN,
+        SITE_ENVIRONMENT: globalSettings[appEnv].SITE_ENVIRONMENT, //globalSettings[appEnv].telephone,
         public: {
-          API_URL: globalSettings[appEnv as keyof typeof globalSettings].API_URL,
-          API_KEY: globalSettings[appEnv as keyof typeof globalSettings].API_KEY,
-          STRAPI_API_URL: globalSettings[appEnv as keyof typeof globalSettings].STRAPI_API_URL,
-          STRAPI_API_TOKEN: globalSettings[appEnv as keyof typeof globalSettings].STRAPI_API_TOKEN,
-          SITE_ENVIRONMENT: globalSettings[appEnv as keyof typeof globalSettings].SITE_ENVIRONMENT, //globalSettings[appEnv].telephone,
+          API_URL: globalSettings[appEnv].API_URL,
+          API_KEY: globalSettings[appEnv].API_KEY,
+          STRAPI_API_URL: globalSettings[appEnv].STRAPI_API_URL,
+          STRAPI_API_TOKEN: globalSettings[appEnv].STRAPI_API_TOKEN,
+          SITE_ENVIRONMENT: globalSettings[appEnv].SITE_ENVIRONMENT, //globalSettings[appEnv].telephone,
         },
-      },
+    },
     build: {
         transpile: ['vue-google-maps-community-fork', '@googlemaps/markercluster', '@vuepic/vue-datepicker', 'vue-multiselect'],
     },

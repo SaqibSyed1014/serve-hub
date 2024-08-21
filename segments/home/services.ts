@@ -1,130 +1,48 @@
-import { usePayloadUrl } from "~/segments/utils"
+import { useApiCall, useStrapiApiCall } from "~/segments/utils"
 
-const getJobsSummaryByCities = () :Promise<JobsInCities[]> => {
-    const { baseUrl, apiKey } = usePayloadUrl()
-    const apiHeaders = {
-        'API-Key': apiKey,
-    }
-    return $fetch(`${baseUrl}/locations/summary`, {
-        method: 'get',
-        headers: apiHeaders,
-    })
+const getJobsSummaryByCities = async () :Promise<JobsInCities[]> => {
+    return await useApiCall<JobsInCities[]>(`locations/summary`);
 }
 
-const getPartnersLogo = () :Promise<PartnerLogo[]> => {
-    const { baseUrl, apiKey } = usePayloadUrl()
-    const apiHeaders = {
-        'API-Key': apiKey,
-    }
-    return $fetch(`${baseUrl}/org/homelogos`, {
-        method: 'get',
-        headers: apiHeaders,
-    })
+const getPartnersLogo = async () :Promise<PartnerLogo[]> => {
+    return await useApiCall<PartnerLogo[]>(`org/homelogos`);
 }
 
-const getBusinessTypes = () :Promise<BusinessType[]> => {
-    const { baseUrl, apiKey } = usePayloadUrl()
-    const apiHeaders = {
-        'API-Key': apiKey,
-    }
-    return $fetch(`${baseUrl}/businesses/types`, {
-        method: 'get',
-        headers: apiHeaders,
-    })
+const getBusinessTypes = async () :Promise<BusinessType[]> => {
+    return await useApiCall<BusinessType[]>(`businesses/types`);
 }
 
-const getEmploymentTypes= () :Promise<EmploymentType[]> => {
-    const { baseUrl, apiKey } = usePayloadUrl()
-    const apiHeaders = {
-        'API-Key': apiKey,
-    }
-    return $fetch(`${baseUrl}/jobs/employmenttypes`, {
-        method: 'get',
-        headers: apiHeaders,
-    })
+const getEmploymentTypes= async () :Promise<EmploymentType[]> => {
+    return await useApiCall<EmploymentType[]>(`jobs/employmenttypes`);
 }
 
-const getShiftTypes = () :Promise<ShiftType[]> => {
-    const { baseUrl, apiKey } = usePayloadUrl()
-    const apiHeaders = {
-        'API-Key': apiKey,
-    }
-    return $fetch(`${baseUrl}/jobs/shifttypes`, {
-        method: 'get',
-        headers: apiHeaders,
-    })
+const getShiftTypes = async () :Promise<ShiftType[]> => {
+    return await useApiCall<ShiftType[]>(`jobs/shifttypes`);
 }
 
-const getRoleTypes = () :Promise<RoleType[]> => {
-    const { baseUrl, apiKey } = usePayloadUrl()
-    const apiHeaders = {
-        'API-Key': apiKey,
-    }
-    return $fetch(`${baseUrl}/jobs/jobroles`, {
-        method: 'get',
-        headers: apiHeaders,
-    })
+const getRoleTypes = async () :Promise<RoleType[]> => {
+    return await useApiCall<RoleType[]>(`jobs/jobroles`);
 }
 
-const getFeaturedBusinesses = () :Promise<FeaturedBusinesses[]> => {
-    const { baseUrl, apiKey } = usePayloadUrl()
-    const apiHeaders = {
-        'API-Key': apiKey,
-    }
-    return $fetch(`${baseUrl}/org/getHomePageNavOrganizations`, {
-        method: 'get',
-        headers: apiHeaders,
-    })
+const getFeaturedBusinesses = async () :Promise<FeaturedBusinesses[]> => {
+    return await useApiCall<FeaturedBusinesses[]>(`org/getHomePageNavOrganizations`);
 }
 
-const getOrgDetails = (slug :string) :Promise<Org> => {
-    const { baseUrl, apiKey } = usePayloadUrl()
-    const apiHeaders = {
-        'API-Key': apiKey,
-    }
-    return $fetch(`${baseUrl}/org/${slug}`, {
-        method: 'get',
-        headers: apiHeaders,
-    })
+const getOrgDetails = async (slug :string) :Promise<Org> => {
+    return await useApiCall<Org>(`org/${slug}`);
 }
 
-const getStripeCheckoutURL = (payload :any) :Promise<{ content: { url: string } }> => {
-    const { baseUrl, apiKey } = usePayloadUrl()
-    const apiHeaders = {
-        'API-Key': apiKey,
-    }
-    return $fetch(`${baseUrl}/payment/pricingcheckout`, {
-        method: 'post',
-        headers: apiHeaders,
-        body: payload
-    })
+const getStripeCheckoutURL = async (payload :any) :Promise<{ content: { url: string } }> => {
+    return await useApiCall<{ content: { url: string } }>(`payment/pricingcheckout`, 'post', payload);
 }
 
-const sendingClientMessage = (payload :ContactFormPayload) :Promise<{ content: { url: string } }> => {
-    const { baseUrl, apiKey } = usePayloadUrl()
-    const apiHeaders = {
-        'API-Key': apiKey,
-    }
-    return $fetch(`${baseUrl}/contactform/save`, {
-        method: 'post',
-        headers: apiHeaders,
-        body: payload
-    })
+const sendingClientMessage = async (payload :ContactFormPayload) :Promise<{ content: { url: string } }> => {
+    return await useApiCall<{ content: { url: string } }>(`contactform/save`, 'post', payload);
 }
 
-const fetchingSEOData = (routeName :string) :Promise<PageMetaResponse> => {
-    const { strapiBaseUrl, strapiApiToken } = usePayloadUrl();
-
-    const apiHeaders = {
-        Authorization: `Bearer ${strapiApiToken}`,
-    }
-    return $fetch(`${strapiBaseUrl}/api/pages?populate[0]=seo&filters[page_slug][$eq]=${routeName}&fields[0]=page_slug`, {
-        method: 'get',
-        headers: apiHeaders
-    })
+const fetchingSEOData = async (routeName :string) :Promise<PageMetaResponse> => {
+    return await useStrapiApiCall<PageMetaResponse>(`api/pages?populate[0]=seo&filters[page_slug][$eq]=${routeName}&fields[0]=page_slug`);
 }
-
-
 
 
 export {
