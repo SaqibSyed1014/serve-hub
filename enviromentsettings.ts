@@ -6,11 +6,11 @@ export interface GlobalSettings {
     STRAPI_API_TOKEN: string;
 }
 
-export interface GlobalSettingsMap {
-    development: GlobalSettings;
-    staging: GlobalSettings;
-    production: GlobalSettings;
-}
+export type EnvType = 'development' | 'staging' | 'production';
+
+type GlobalSettingsMap = {
+    [key in EnvType]: GlobalSettings;
+};
 
 export const globalSettings: GlobalSettingsMap = {
     development: {
