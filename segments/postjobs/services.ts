@@ -1,70 +1,29 @@
-
-import { usePayloadUrl , convertQueryToString} from "~/segments/utils"
+import { useApiCall } from "~/segments/utils"
 
 const  getStripeCheckDetails = async (requestBody :JobPaymentPayload) :Promise<StripeResponse> => {
-
-    const { baseUrl, apiKey } = usePayloadUrl()
-    const apiHeaders = {
-        'API-Key': apiKey,
-    }
-
-    return $fetch(`${baseUrl}/payment/checkout`, {
-        method: 'POST',
-        headers: apiHeaders,
-        body: JSON.stringify(requestBody),
-    });
+    return await useApiCall<StripeResponse>(`payment/checkout`, 'post', JSON.stringify(requestBody));
 }
 
-const getExperienceLevels = () :Promise<ExperienceLevel[]> => {
-    const { baseUrl, apiKey } = usePayloadUrl()
-    const apiHeaders = {
-        'API-Key': apiKey,
-    }
-    return $fetch(`${baseUrl}/reference/experiencelevels`, {
-        method: 'get',
-        headers: apiHeaders,
-    })
+const getExperienceLevels = async () :Promise<ExperienceLevel[]> => {
+    return await useApiCall<ExperienceLevel[]>(`reference/experiencelevels`);
 }
 
-const getSearchedBusinessName = (query :string) :Promise<BusinessResponseType> => {
-    const { baseUrl, apiKey } = usePayloadUrl()
-    const apiHeaders = {
-        'API-Key': apiKey,
-    }
-    return $fetch(`${baseUrl}/org/search?q=*&filter_by=business_name:${query}*`, {
-        method: 'get',
-        headers: apiHeaders,
-    })
+const getSearchedBusinessName = async (query :string) :Promise<BusinessResponseType> => {
+    return await useApiCall<BusinessResponseType>(`org/search?q=*&filter_by=business_name:${query}*`);
 }
 
-const checkUserMailExists = (mail :string) :Promise<CheckUserMailResponseType> => {
-    const { baseUrl, apiKey } = usePayloadUrl()
-    const apiHeaders = {
-        'API-Key': apiKey,
-    }
-    return $fetch(`${baseUrl}/auth/userexists?email=${mail}`, {
-        method: 'post',
-        headers: apiHeaders,
-    })
+const checkUserMailExists = async (mail :string) :Promise<CheckUserMailResponseType> => {
+    return await useApiCall<CheckUserMailResponseType>(`auth/userexists?email=${mail}`, 'post');
 }
 
-const saveJobData = (payload :any) :Promise<JobSaveResponseType> => {
-    const { baseUrl, apiKey } = usePayloadUrl()
-    const apiHeaders = {
-        'API-Key': apiKey,
-    }
-    return $fetch(`${baseUrl}/job/save`, {
-        method: 'post',
-        headers: apiHeaders,
-        body: payload
-    })
+const saveJobData = async (payload :any) :Promise<JobSaveResponseType> => {
+    return await useApiCall<JobSaveResponseType>(`job/save`, 'post', payload);
 }
 
 
 export {
     getStripeCheckDetails,
     getExperienceLevels,
-    getOrgTypes,
     getSearchedBusinessName,
     checkUserMailExists,
     saveJobData

@@ -8,6 +8,34 @@ export const usePayloadUrl = () => {
     strapiBaseUrl = config.public.STRAPI_API_URL
     strapiApiToken = config.public.STRAPI_API_TOKEN
     return { baseUrl, apiKey, strapiBaseUrl ,strapiApiToken }
+};
+
+type MethodType = 'get' | 'post' | 'put';
+
+export function useApiCall<T>(endpoint: string, method :MethodType  = 'get', data? :any) :Promise<T> {
+    const { baseUrl, apiKey } = usePayloadUrl();
+    const apiHeaders = {
+        'X-Client-Type': 'Web',
+        'API-Key': apiKey,
+    };
+
+    return $fetch(`${baseUrl}/${endpoint}`, {
+        method,
+        headers: apiHeaders,
+        data
+    });
+}
+
+export function useStrapiApiCall<T>(endpoint: string) :Promise<T> {
+    const { strapiApiToken, strapiBaseUrl } = usePayloadUrl();
+    const apiHeaders = {
+        Authorization: `Bearer ${strapiApiToken}`
+    };
+
+    return $fetch(`${strapiBaseUrl}/${endpoint}`, {
+        method: 'get',
+        headers: apiHeaders
+    });
 }
 
 

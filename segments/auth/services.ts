@@ -1,15 +1,7 @@
-import { usePayloadUrl } from "~/segments/utils"
+import { useApiCall } from "~/segments/utils"
 
-const registerCandidate = (payload :SignUpPayload) :Promise<SignUpResponse> => {
-    const { baseUrl, apiKey } = usePayloadUrl()
-    const apiHeaders = {
-        'API-Key': apiKey,
-    }
-    return $fetch(`${baseUrl}/auth/registercandidate`, {
-        method: 'post',
-        headers: apiHeaders,
-        body: payload
-    })
+const registerCandidate = async (payload :SignUpPayload) :Promise<SignUpResponse> => {
+    return await useApiCall<SignUpResponse>(`auth/registercandidate`, 'post', payload);
 }
 
 
