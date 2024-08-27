@@ -77,22 +77,23 @@ if (process.env.NODE_ENV === 'production') {
     ]
 }
 
-const { host } = useRequestURL();
-
-if (process.env.NODE_ENV === 'development' ||
-    host?.includes('localhost') ||
-    host?.includes('netlify') ||
-    host?.includes('devweb')) {
-    console.log('using dev price Ids ')
-    pricingPlanIDsList = [
-        'price_1OMd9PLckED7yHH5UC3XcJjA',
-        'price_1PjUuaLckED7yHH5Nto134vZ',
-        'price_1PjUzfLckED7yHH5oLVxbDHh',
-        'price_1PjUzfLckED7yHH5AHyUL7a3',
-        'price_1PjUzfLckED7yHH5Xz9CtVjI',
-        'price_1PjUzfLckED7yHH5CEZWTO4g'
-    ]
+if (tryUseNuxtApp()) {
+    const { host} = useRequestURL();
+    if (process.env.NODE_ENV === 'development' ||
+        host?.includes('localhost') ||
+        host?.includes('netlify') ||
+        host?.includes('devweb')) {
+        pricingPlanIDsList = [
+            'price_1OMd9PLckED7yHH5UC3XcJjA',
+            'price_1PjUuaLckED7yHH5Nto134vZ',
+            'price_1PjUzfLckED7yHH5oLVxbDHh',
+            'price_1PjUzfLckED7yHH5AHyUL7a3',
+            'price_1PjUzfLckED7yHH5Xz9CtVjI',
+            'price_1PjUzfLckED7yHH5CEZWTO4g'
+        ]
+    }
 }
+
 
 export const pricingPlansIDs = pricingPlanIDsList
 

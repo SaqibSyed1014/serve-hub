@@ -65,7 +65,7 @@ watch(() => route.path, async (val) => {
 function assignPageMetaInfo(metaData :MetaData) {
   useSeoMeta({
     title: () => metaData.metaTitle,
-    description: () => metaData.metaDescription.length,
+    description: () => metaData.metaDescription,
     ogTitle: () => metaData.metaTitle,
     ogDescription: () => metaData.metaDescription,
     ogUrl: () => metaData.structuredData?.url

@@ -1,27 +1,13 @@
-import { usePayloadUrl , convertQueryToString} from "~/segments/utils"
+import { convertQueryToString, useApiCall } from "~/segments/utils"
 
 
-const getBarsList = (query: any) :Promise<BusinessResponseType> => {
-    const { baseUrl, apiKey } = usePayloadUrl()
-    const apiHeaders = {
-        'API-Key': apiKey,
-    }
+const getBarsList = async (query: any) :Promise<BusinessResponseType> => {
     const queryString = convertQueryToString(query);
-    return $fetch(`${baseUrl}/businesses/list?${queryString}`, {
-        method: 'get',
-        headers: apiHeaders,
-    })
+    return await useApiCall<BusinessResponseType>(`businesses/list?${queryString}`);
 }
 
-const getBarDetails = (slug: string) :Promise<BusinessDocument> => {
-    const { baseUrl, apiKey } = usePayloadUrl()
-    const apiHeaders = {
-        'API-Key': apiKey,
-    }
-    return $fetch(`${baseUrl}/org/${slug}`, {
-        method: 'get',
-        headers: apiHeaders,
-    })
+const getBarDetails = async (slug: string) :Promise<BusinessDocument> => {
+    return await useApiCall<BusinessDocument>(`org/${slug}`);
 }
 
 export {
