@@ -22,7 +22,7 @@ export function useApiCall<T>(endpoint: string, method :MethodType  = 'get', dat
     return $fetch(`${baseUrl}/${endpoint}`, {
         method,
         headers: apiHeaders,
-        data
+        body: data
     });
 }
 
