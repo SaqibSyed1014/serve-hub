@@ -3,7 +3,7 @@
 import { globalSettings} from './enviromentsettings'
 import type { EnvType } from "./enviromentsettings";
 
-const appEnv :EnvType  = process.env.NODE_ENV as EnvType || 'development'
+const appEnv :EnvType  = process.env.NUXT_ENV as EnvType || 'development'
 
 console.log('app env ', appEnv)
 console.log('app env obj ', process.env)
