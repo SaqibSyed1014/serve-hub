@@ -5,7 +5,8 @@ import type { EnvType } from "./enviromentsettings";
 
 const appEnv :EnvType  = process.env.NODE_ENV as EnvType || 'development'
 
-
+console.log('app env ', appEnv)
+console.log('app env obj ', process.env)
 export default defineNuxtConfig({
     app: {
         head: {
