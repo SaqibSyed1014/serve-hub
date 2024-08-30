@@ -212,7 +212,7 @@ async function processJobSaving() {
                         class="group relative flex items-center"
                         :aria-disabled="step.status !== 'complete'"
                       >
-                        <SvgoStepComp class="h-9 w-9" />
+                        <SvgoStepComp class="h-9 w-9 text-brand-600" />
                       </div>
                     </template>
                     <template v-else-if="step.status === 'current'">
