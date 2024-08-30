@@ -10,6 +10,8 @@ nuxtApp.hook("page:finish", () => {
 
 useState('userType', () => 'organization') // setting visitor as organization user
 
+console.log('app vue ', process.env.NODE_ENV)
+
 const { host } = useRequestURL();
 
 if (host?.includes('servehub.io')) {

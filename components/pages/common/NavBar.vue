@@ -47,6 +47,7 @@ function togglingSidebarVisibility() {
 
 const businessesFetching = ref(false);
 onMounted(async () => {
+  console.log('logging ', process.env.NODE_ENV)
   businessesFetching.value = true;
   await homeStore.fetchBusinessTypes();
   await homeStore.fetchFeaturedBusinesses();
