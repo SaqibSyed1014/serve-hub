@@ -1,10 +1,2 @@
-// Initialize Zoho SalesIQ
-window.$zoho = window.$zoho || {};
-$zoho.salesiq = $zoho.salesiq || {ready: function(){}};
-
-// Create and append the script element
-const script = document.createElement('script');
-script.id = 'zsiqscript';
-script.src = 'https://salesiq.zohopublic.com/widget?wc=siq656d221e7af6b219a6226220c00b9d4afc5c34bf10eab576a6e8b65eb55cdb79';
-script.defer = true;
-document.body.appendChild(script);
+!function(e,t,n){function a(){var e=t.getElementsByTagName("script")[0],n=t.createElement("script");n.type="text/javascript",n.async=!0,n.src="https://beacon-v2.helpscout.net",e.parentNode.insertBefore(n,e)}if(e.Beacon=n=function(t,n,a){e.Beacon.readyQueue.push({method:t,options:n,data:a})},n.readyQueue=[],"complete"===t.readyState)return a();e.attachEvent?e.attachEvent("onload",a):e.addEventListener("load",a,!1)}(window,document,window.Beacon||function(){});
+window.Beacon('init', '9988a4f3-0e80-4048-8df4-d07a0f211820')
