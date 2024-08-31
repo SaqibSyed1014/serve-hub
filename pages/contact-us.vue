@@ -1,10 +1,10 @@
 <script setup lang="ts">
-const center = { lat: 38.0400, lng: -122.7400 }
+const center = { lat: 38.1000, lng: -122.5000 }
 const mapOptions = {
   markers: [
     {
       position: {
-        lat: 38.0400, lng: -122.7400
+        lat: 38.1074, lng: -122.5697
       },
     }
   ]
@@ -36,15 +36,15 @@ const mapOptions = {
             </div>
             <p class="mb-2 text-lg md:text-xl font-semibold">Contact support</p>
             <p class="text-black-light font-normal">We’re here to help.</p>
-            <a href="mailto:support@dormstreet.com" class="text-brand-600 hover:underline mt-4 md:mt-5 inline-flex font-semibold">support@dormstreet.com</a>
+            <a href="mailto:support@dormstreet.com" class="text-brand-600 hover:underline mt-4 md:mt-5 inline-flex font-semibold">hello@servehub.io</a>
           </div>
           <div class="bg-gray-100 rounded-xl p-6">
             <div class="bg-brand-600 rounded-[10px] flex items-center justify-center text-white w-12 h-12 mb-12 md:mb-16">
               <SvgoPhone class="w-6 h-6" />
             </div>
             <p class="mb-2 text-lg md:text-xl font-semibold">Call us</p>
-            <p class="text-black-light font-normal">Mon-Fri from 8am to 5pm.</p>
-            <a href="to:+15550000000" class="text-brand-600 hover:underline mt-4 md:mt-5 inline-flex font-semibold">+1 (555) 000-0000</a>
+            <p class="text-black-light font-normal">Mon-Fri from 9am to 5pm.</p>
+            <a href="to:+15550000000" class="text-brand-600 hover:underline mt-4 md:mt-5 inline-flex font-semibold">+1 (213) 222-8363</a>
           </div>
         </div>
       </div>
@@ -54,7 +54,7 @@ const mapOptions = {
         <div class="grid md:grid-cols-2 gap-7 mb-16 md:mb-24">
           <div class="">
             <h3 class="text-brand-600 text-sm md:text-base mb-3">Contact us</h3>
-            <h2 class="text-3xl md:text-4xl mb-6">Our locations</h2>
+            <h2 class="text-3xl md:text-4xl mb-6">Our location</h2>
             <p class="text-black-light md:text-xl font-normal block sm:hidden">Come visit our friendly team at one of our offices.</p>
           </div>
           <div class="flex items-center gap-4">
