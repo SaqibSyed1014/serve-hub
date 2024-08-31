@@ -12,7 +12,7 @@ useState('userType', () => 'organization') // setting visitor as organization us
 
 const { host } = useRequestURL();
 
-if (host?.includes('servehub.io') || host?.includes('devweb')) {
+if (host?.includes('servehub.io') || host?.includes('devweb') ||  host?.includes('localhost')) {
   useHead({
     script: [
       {
