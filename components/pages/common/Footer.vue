@@ -32,12 +32,11 @@ const footerLinks = [
     ]
   },
   {
-    heading: 'Popular Job Searches',
+    heading: 'Customer Support',
     links: [
-      { label: 'Teaching Jobs', path: '' },
-      { label: 'School Jobs', path: '' },
-      { label: 'Match Teacher Jobs', path: '' },
-      { label: 'Stem Jobs', path: '' },
+      { label: 'Help Center', path: 'https://help.servehub.io' },
+      { label: 'Contact Us', path: '/contact-us' }
+    
     ]
   }
 ]

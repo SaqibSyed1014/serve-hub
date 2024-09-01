@@ -29,7 +29,7 @@ const mapOptions = {
             </div>
             <h2 class="mb-2 text-lg md:text-xl">Chat with us</h2>
             <p class="text-black-light font-normal">If you prefer chat, we're got you covered.</p>
-            <a href="#" onclick="$zoho.salesiq.chat.start()" class="text-brand-600 mt-4 md:mt-5 inline-flex font-semibold">Click to chat</a>
+            <a href="#" onclick="Beacon('open')" class="text-brand-600 mt-4 md:mt-5 inline-flex font-semibold">Click to chat</a>
           </div>
           <div class="bg-gray-100 rounded-xl p-6">
             <div class="bg-brand-600 rounded-[10px] flex items-center justify-center text-white w-12 h-12 mb-12 md:mb-16">
