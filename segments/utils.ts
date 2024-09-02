@@ -1,25 +1,33 @@
 import type {Router} from "vue-router";
+import { globalSettings } from "~/enviromentsettings";
+
+export const isDevEnv = () :boolean => {
+    if (tryUseNuxtApp()) {
+        const { host} = useRequestURL();
+        return process.env.NODE_ENV === 'development' ||
+            host?.includes('netlify') ||
+            host?.includes('devweb');
+    } return false;
+}
 
 export const usePayloadUrl = () => {
-    const config = useRuntimeConfig()
-    let baseUrl, apiKey, strapiBaseUrl, strapiApiToken
-    baseUrl = config.public.API_URL
-    apiKey = config.public.API_KEY
-    strapiBaseUrl = config.public.STRAPI_API_URL
-    strapiApiToken = config.public.STRAPI_API_TOKEN
-    return { baseUrl, apiKey, strapiBaseUrl ,strapiApiToken }
+    if (isDevEnv()) {
+        return { ...globalSettings.development };
+    } else {
+        return {...globalSettings.production};
+    }
 };
 
 type MethodType = 'get' | 'post' | 'put';
 
 export function useApiCall<T>(endpoint: string, method :MethodType  = 'get', data? :any) :Promise<T> {
-    const { baseUrl, apiKey } = usePayloadUrl();
+    const { API_URL, API_KEY } = usePayloadUrl();
     const apiHeaders = {
         'X-Client-Type': 'Web',
-        'API-Key': apiKey,
+        'API-Key': API_KEY,
     };
 
-    return $fetch(`${baseUrl}/${endpoint}`, {
+    return $fetch(`${API_URL}/${endpoint}`, {
         method,
         headers: apiHeaders,
         body: data
@@ -27,12 +35,12 @@ export function useApiCall<T>(endpoint: string, method :MethodType  = 'get', dat
 }
 
 export function useStrapiApiCall<T>(endpoint: string) :Promise<T> {
-    const { strapiApiToken, strapiBaseUrl } = usePayloadUrl();
+    const { STRAPI_API_URL, STRAPI_API_TOKEN } = usePayloadUrl();
     const apiHeaders = {
-        Authorization: `Bearer ${strapiApiToken}`
+        Authorization: `Bearer ${STRAPI_API_TOKEN}`
     };
 
-    return $fetch(`${strapiBaseUrl}/${endpoint}`, {
+    return $fetch(`${STRAPI_API_URL}/${endpoint}`, {
         method: 'get',
         headers: apiHeaders
     });

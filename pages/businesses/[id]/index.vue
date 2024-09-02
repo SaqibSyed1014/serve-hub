@@ -2,7 +2,7 @@
 import OrgMapLocation from "~/components/pages/schoolDistrict/OrgMapLocation.vue";
 import BaseSpinner from "~/components/core/BaseSpinner.vue";
 import BusinessOpenedJobsList from "~/components/pages/common/BusinessOpenedJobsList.vue";
-import {defaultImageMockup} from "~/components/core/constants/common.constants";
+import {defaultImageMockup} from "~/components/core/constants/home.constants";
 import {useBusinessesStore} from "~/segments/business/store";
 
 const activeTab = ref(0);

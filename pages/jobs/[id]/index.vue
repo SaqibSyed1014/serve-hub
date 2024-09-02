@@ -3,7 +3,7 @@ import { initModals } from 'flowbite'
 import {useJobStore} from "~/segments/jobs/store";
 import QuickSignUpModal from "~/components/pages/job-listings/QuickSignUpModal.vue";
 import BaseSpinner from "~/components/core/BaseSpinner.vue";
-import {defaultImageMockup} from "~/components/core/constants/common.constants";
+import { defaultImageMockup } from "~/components/core/constants/home.constants";
 const center = ref({ lat: 0, lng: 0 })
 
 const router = useRouter();

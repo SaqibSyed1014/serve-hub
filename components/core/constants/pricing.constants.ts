@@ -4,6 +4,7 @@ import ReportIcon from "assets/icons/report.svg";
 import HappyFaceIcon from "assets/icons/happy-face.svg";
 import ToolIcon from "assets/icons/tool.svg";
 import PositiveFeedbackIcon from "assets/icons/positive-feedback.svg";
+import {isDevEnv} from "~/segments/utils";
 
 export const faqs = [
     {
@@ -66,9 +67,17 @@ export const features = [
 ]
 
 let pricingPlanIDsList :string[] = [];
-console.log('env: ', process.env.NODE_ENV)
-if (process.env.NODE_ENV === 'production') {
-    pricingPlanIDsList = [
+if (isDevEnv()) {
+    pricingPlanIDsList = [   // dev env pricing ids
+        'price_1OMd9PLckED7yHH5UC3XcJjA',
+        'price_1PjUuaLckED7yHH5Nto134vZ',
+        'price_1PjUzfLckED7yHH5oLVxbDHh',
+        'price_1PjUzfLckED7yHH5AHyUL7a3',
+        'price_1PjUzfLckED7yHH5Xz9CtVjI',
+        'price_1PjUzfLckED7yHH5CEZWTO4g'
+    ]
+} else if (process.env.NODE_ENV === 'production') {
+    pricingPlanIDsList = [  // production env pricing ids
         'price_1PjUnOLckED7yHH5KCrFFVNJ',
         'price_1PjV5hLckED7yHH5pfPGMjo1',
         'price_1PjV7zLckED7yHH5TqoZqROF',
@@ -78,25 +87,8 @@ if (process.env.NODE_ENV === 'production') {
     ]
 }
 
-if (tryUseNuxtApp()) {
-    const { host} = useRequestURL();
-    if (process.env.NODE_ENV === 'development' ||
-        host?.includes('localhost') ||
-        host?.includes('netlify') ||
-        host?.includes('devweb')) {
-        pricingPlanIDsList = [
-            'price_1OMd9PLckED7yHH5UC3XcJjA',
-            'price_1PjUuaLckED7yHH5Nto134vZ',
-            'price_1PjUzfLckED7yHH5oLVxbDHh',
-            'price_1PjUzfLckED7yHH5AHyUL7a3',
-            'price_1PjUzfLckED7yHH5Xz9CtVjI',
-            'price_1PjUzfLckED7yHH5CEZWTO4g'
-        ]
-    }
-}
 
-
-export const pricingPlansIDs = pricingPlanIDsList
+export const pricingPlansIDs = pricingPlanIDsList;
 
 export const pricingPlans = [
     {
