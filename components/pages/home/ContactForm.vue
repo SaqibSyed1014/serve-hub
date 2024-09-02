@@ -76,7 +76,7 @@ const onSubmit = handleSubmit(async (values, { resetForm }) => {
           name="phoneNumber"
           type="text"
           label="Phone number"
-          placeholder="+1 (555) 000-0000"
+          placeholder="example: 213-555-1212"
       />
     </div>
     <div class="form-control">

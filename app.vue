@@ -12,13 +12,17 @@ useState('userType', () => 'organization') // setting visitor as organization us
 
 const { host } = useRequestURL();
 
-if (host?.includes('servehub.io')) {
-  useHead([
-    {
-      children: `window.$crisp=[];window.CRISP_WEBSITE_ID="9294fd27-8592-41bf-a6c9-ec44aa6d0905";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();`,
-      type: "text/javascript",
-    }
-  ])
+if (host?.includes('servehub.io') || host?.includes('devweb') ||  host?.includes('localhost')) {
+  useHead({
+    script: [
+      {
+        src: '/js/chat.js',
+        type: 'text/javascript',
+        tagPosition: 'bodyClose'
+      }
+    ]
+  })
+ 
 }
 
 useHead({
