@@ -11,7 +11,7 @@ import {
     sendingClientMessage,
     fetchingSEOData
 } from "~/segments/home/services";
-import {defaultMetaInfo} from "~/components/core/constants/common.constants";
+import { defaultMetaInfo } from "~/components/core/constants/home.constants";
 
 interface HomeSectionsData {
     jobsByCities: JobsInCities[]
@@ -63,8 +63,14 @@ export const useHomeStore = defineStore('homeStore', {
             this.$state.orgDetail = await getOrgDetails(slug);
         },
         async fetchStripeCheckoutURL(payload :any) {
-            const { content } = await getStripeCheckoutURL(payload);
-            this.$state.checkoutURL = content.url;
+            await getStripeCheckoutURL(payload)
+                .then(({ content }) => {
+                    this.$state.checkoutURL = content.url;
+                })
+                .catch((err) => {
+                    useNuxtApp().$toast.error('Something went wrong');
+                    throw err;
+                });
         },
         async sendClientMessage(payload :ContactFormPayload) {
             await sendingClientMessage(payload)
@@ -74,7 +80,7 @@ export const useHomeStore = defineStore('homeStore', {
                 })
                 .catch((err) => {
                     useNuxtApp().$toast.error('Message sending failed');
-                    throw err
+                    throw err;
                 });
         },
         fetchSEOData(routeName :string) {
