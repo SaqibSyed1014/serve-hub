@@ -1,71 +1,6 @@
 <script setup lang="ts">
 import ArrowUpRightIcon from "assets/icons/arrow-narrow-up-right.svg";
-import ArrowLeftIcon from "assets/icons/arrow-left.svg";
-import ArrowRightIcon from "assets/icons/arrow-right.svg";
 import {useJobStore} from "~/segments/jobs/store";
-
-const jobPostsList = [
-  {
-    logo: 'logo-one.jpg',
-    postedAt: '1h ago',
-    title: 'Marketing Associate',
-    country: 'Polymath, Melbourne, AU',
-    category: 'Design',
-    description: 'We’re looking for a mid-level product designer to join our team.',
-    duration: 'Full-time',
-    wage: '80k - 100k'
-  },
-  {
-    logo: 'logo-two.jpg',
-    postedAt: '6h ago',
-    title: 'Senior Graphic Designer',
-    country: 'Polymath, Melbourne, AU',
-    category: 'Design',
-    description: 'We’re looking for a mid-level product designer to join our team.',
-    duration: 'Full-time',
-    wage: '80k - 100k'
-  },
-  {
-    logo: 'logo-three.jpg',
-    postedAt: '2h ago',
-    title: 'Lead Product Designer',
-    country: 'Polymath, Melbourne, AU',
-    category: 'Design',
-    description: 'We’re looking for a mid-level product designer to join our team.',
-    duration: 'Full-time',
-    wage: '80k - 100k'
-  },
-  {
-    logo: 'logo-four.jpg',
-    postedAt: '6h ago',
-    title: 'Senior Graphic Designer',
-    country: 'Polymath, Melbourne, AU',
-    category: 'Design',
-    description: 'We’re looking for a mid-level product designer to join our team.',
-    duration: 'Full-time',
-    wage: '80k - 100k'
-  },
-  {
-    logo: 'logo-two.jpg',
-    postedAt: '2h ago',
-    title: 'Lead Product Designer',
-    country: 'Polymath, Melbourne, AU',
-    category: 'Design',
-    description: 'We’re looking for a mid-level product designer to join our team.',
-    duration: 'Full-time',
-    wage: '80k - 100k'
-  },
-  {
-    logo: 'logo-three.jpg',
-    postedAt: '2h ago',
-    title: 'Lead Product Designer',
-    country: 'Polymath, Melbourne, AU',
-    category: 'Design',
-    description: 'We’re looking for a mid-level product designer to join our team.',
-    duration: 'Full-time',
-    wage: '80k - 100k'
-  },
-]
 
 const jobStore = useJobStore();
 const { jobListings, itemsFound } = storeToRefs(jobStore)
@@ -104,10 +39,10 @@ const sliderBreakpoints = {
 
             <div class="hidden md:flex items-center gap-8 pt-16">
               <div @click="jobSlider?.swiper?.slidePrev()" class="slider-nav-arrows right">
-                <ArrowLeftIcon class="w-4 h-4" />
+                <SvgoArrowLeft class="w-4 h-4" />
               </div>
               <div @click="jobSlider?.swiper?.slideNext()" class="slider-nav-arrows left">
-                <ArrowRightIcon class="w-4 h-4" />
+                <SvgoArrowRight class="w-4 h-4" />
               </div>
             </div>
           </div>
@@ -127,10 +62,10 @@ const sliderBreakpoints = {
 
             <div class="flex md:hidden justify-between gap-8 py-8">
               <div @click="jobSlider?.swiper?.slidePrev()" class="slider-nav-arrows right">
-                <ArrowLeftIcon class="w-4 h-4" />
+                <SvgoArrowLeft class="w-4 h-4" />
               </div>
               <div @click="jobSlider?.swiper?.slideNext()" class="slider-nav-arrows left">
-                <ArrowRightIcon class="w-4 h-4" />
+                <SvgoArrowRight class="w-4 h-4" />
               </div>
             </div>
           </div>
@@ -146,7 +81,3 @@ const sliderBreakpoints = {
     </div>
   </section>
 </template>
-
-<style scoped lang="postcss">
-
-</style>
