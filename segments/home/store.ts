@@ -11,7 +11,7 @@ import {
     sendingClientMessage,
     fetchingSEOData
 } from "~/segments/home/services";
-import {defaultMetaInfo} from "~/components/core/constants/common.constants";
+import { defaultMetaInfo } from "~/components/core/constants/home.constants";
 
 interface HomeSectionsData {
     jobsByCities: JobsInCities[]

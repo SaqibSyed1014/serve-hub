@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed, defineProps, watch } from "vue";
+import { ref, computed, watch } from "vue";
 
 // Props
 const props = defineProps<{ currentPage: number; totalPages: number }>();
