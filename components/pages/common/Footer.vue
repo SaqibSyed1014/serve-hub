@@ -82,7 +82,7 @@ const selectUserType = (type :string) => {
       <div class="flex justify-between max-md:flex-col-reverse md:items-center text-gray-500 font-normal max-md:gap-6">
         <div class="flex max-md:flex-col md:items-center gap-4">
           <span class="max-md:block flex-1">
-            &copy; {{ currentYear }} ServeHub.org
+            &copy; {{ currentYear }} ServeHub, LLC
           </span>
           <div class="hidden md:block w-2 h-2 rounded-full bg-gray-500"/>
           <div class="flex items-center gap-4">
