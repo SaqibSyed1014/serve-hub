@@ -25,7 +25,7 @@ async function redirectToStripe(priceId :string, idx :number) {
   btnsLoading.value[idx] = true;
   await homeStore.fetchStripeCheckoutURL(payload);
   btnsLoading.value[idx] = false;
-  if (checkoutURL.value) window.open(checkoutURL.value, '_blank');
+  if (checkoutURL.value?.length) window.open(checkoutURL.value, '_blank');
 }
 </script>
 
