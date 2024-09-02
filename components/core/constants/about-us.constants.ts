@@ -9,32 +9,32 @@ import HeartInChatIcon from "assets/icons/heart-in-chat.svg";
 export const values = [
     {
         icon: ChatsIcon,
-        title: 'Share team inboxes',
-        description: 'Whether you have a team of 2 or 200, our shared team inboxes keep everyone on the same page and in the loop.'
+        title: 'Integrity',
+        description: 'We uphold the highest standards of honesty and transparency in all our interactions, fostering trust and reliability.'
     },
     {
         icon: FlashIcon,
-        title: 'Deliver instant answers',
-        description: 'An all-in-one customer service platform that helps you balance everything your customers need to be happy.'
+        title: 'Empowerment',
+        description: 'We believe in empowering individuals and businesses to achieve their full potential through access to opportunities and resources.'
     },
     {
         icon: ReportIcon,
-        title: 'Manage your team with reports',
-        description: 'Measure what matters with Untitled’s easy-to-use reports. You can filter, export, and drilldown on the data in a couple clicks.'
+        title: 'Passion',
+        description: 'Our enthusiasm for hospitality drives us to go above and beyond in serving our community.'
     },
     {
         icon: HappyFaceIcon,
-        title: 'Connect with customers',
-        description: 'Solve a problem or close a sale in real-time with chat. If no one is available, customers are seamlessly routed to email without confusion.'
+        title: 'Innovation',
+        description: 'We continuously seek new and creative solutions to enhance the experience for our users and stay ahead in the industry.'
     },
     {
         icon: ToolIcon,
-        title: 'Connect the tools you already use',
-        description: 'Explore 100+ integrations that make your day-to-day workflow more efficient and familiar. Plus, our extensive developer tools.'
+        title: 'Diversity',
+        description: 'We celebrate the richness of diverse backgrounds and perspectives, recognizing them as key drivers of creativity and growth.'
     },
     {
         icon: HeartInChatIcon,
-        title: 'Our people make the difference',
-        description: 'We’re an extension of your customer service team, and all of our resources are free. Chat to our friendly team 24/7 when you need help.'
+        title: 'Trust',
+        description: 'Building lasting relationships through consistent and dependable service is at the heart of what we do.'
     }
 ]
