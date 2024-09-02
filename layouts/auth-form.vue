@@ -4,34 +4,35 @@ register();
 
 const reviewList = [
   {
-    reviewerName: 'Lana Wilkinson',
-    reviewerPost: 'Junior, San Diego State University',
-    text: 'We’ve been using Untitled to kick start every new project and can’t imagine working without it.',
-    image: 'lana.png',
-    rating: 4
-  },
-  {
-    reviewerName: 'Malik Robinson',
-    reviewerPost: 'Senior, San Diego State University',
-    text: 'We’ve been using Untitled to kick start every new project and can’t imagine working without it.',
-    image: 'david.png',
+    reviewerName: 'Carlos Mendez',
+    reviewerPost: 'Line Cook, New York City',
+    text: 'ServeHub helped me find a great job where I can grow my skills in the kitchen. The process was simple and the job recommendations were spot on!',
+    image: 'carlos.png',
     rating: 5
   },
   {
-    reviewerName: 'Andi Lee',
-    reviewerPost: 'Staff, San Diego State University',
-    text: 'We’ve been using Untitled to kick start every new project and can’t imagine working without it.',
-    image: 'andi.png',
+    reviewerName: 'Emily Thompson',
+    reviewerPost: 'Bartender, Los Angeles',
+    text: 'Thanks to ServeHub, I landed my dream job at a top bar in the city. The personalized job alerts kept me informed of the best openings.',
+    image: 'emily.png',
     rating: 4
   },
   {
-    reviewerName: 'Demi',
-    reviewerPost: 'Senior, San Diego State University',
-    text: 'We’ve been using Untitled to kick start every new project and can’t imagine working without it.',
-    image: 'demi.png',
+    reviewerName: 'Jamal Harris',
+    reviewerPost: 'Server, Chicago',
+    text: 'ServeHub made my job search easy and stress-free. I found a position that perfectly matches my experience and schedule.',
+    image: 'jamal.png',
     rating: 5
   },
-]
+  {
+    reviewerName: 'Sophia Nguyen',
+    reviewerPost: 'Dishwasher, Miami',
+    text: 'Finding a job through ServeHub was a breeze. The platform is modern and intuitive, and I got hired quickly at a great restaurant.',
+    image: 'sophia.png',
+    rating: 4
+  },
+];
+
 
 const authReviewSlider = ref(null)
 
@@ -55,7 +56,7 @@ const date = new Date()
               :auto-resize="false"
               :autoplay-delay="3000"
               :autoplay-disable-on-interaction="false"
-              :speed="300"
+              :speed="400"
               class="reviews-slider z-20 max-w-[560px] mx-auto"
               :pagination="true"
               :pagination-clickable="true"
@@ -69,7 +70,7 @@ const date = new Date()
                   />
                 </template>
               </div>
-              <h2 class="text-center font-normal text-3xl px-6 mx-auto mb-3">
+              <h2 class="text-center font-normal text-2xl px-6 mx-auto mb-3">
                 {{ review.text }}
               </h2>
               <div class="flex flex-col justify-center items-center gap-y-4">
