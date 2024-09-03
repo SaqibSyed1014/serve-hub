@@ -28,6 +28,24 @@ function copyURL() {
     icon: false
   });
 }
+function postSharingOnX() {
+  const currentPostURL = encodeURIComponent(window.location.href);
+  const postTitle = blogDetails.value?.title || '';
+  const url = `https://x.com/intent/tweet?text=${encodeURIComponent(`Check out this blog post: ${postTitle}`)}&url=${currentPostURL}`;
+  window.open(url, '_target');
+}
+function postSharingOnFacebook() {
+  const currentPostURL = encodeURIComponent(window.location.href);
+  const postTitle = blogDetails.value?.title || '';
+  const url = `https://www.facebook.com/sharer/sharer.php?u=${currentPostURL}&quote=${encodeURIComponent(`Check out this blog post: ${postTitle}`)}`;
+  window.open(url, '_target');
+}
+function postSharingOnLinkedIn() {
+  const currentPostURL = encodeURIComponent(window.location.href);
+  const postTitle = blogDetails.value?.title || '';
+  const url = `https://www.linkedin.com/sharing/share-offsite/?url=${currentPostURL}&title=${encodeURIComponent(postTitle)}`;
+  window.open(url, '_target');
+}
 </script>
 
 <template>
@@ -50,7 +68,7 @@ function copyURL() {
                 </span>
               {{ blogDetails.reading_time }}
             </span>
-              <h2 class="text-4xl md:text-5xl md:leading-[1.2] mb-6">
+              <h2 class="text-3xl md:text-4xl md:leading-[1.2] mb-6">
                 {{ blogDetails.title }}
               </h2>
               <p class="text-black-light text-lg md:text-xl font-normal">
@@ -80,34 +98,18 @@ function copyURL() {
                     <SvgoClipboard class="w-5 h-5" />
                     Copy link
                   </div>
+                 
                   <div
                      class="w-10 h-10 flex items-center justify-center text-[#98A2B3] border border-[#D0D5DD] rounded-lg hover:bg-brand-600 hover:text-white hover:border-primary transition">
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path
-                          fill-rule="evenodd"
-                          clip-rule="evenodd"
-                          d="M13.2879 19.1666L8.66337 12.575L2.87405 19.1666H0.424805L7.57674 11.0258L0.424805 0.833252H6.71309L11.0717 7.04577L16.5327 0.833252H18.982L12.1619 8.59699L19.5762 19.1666H13.2879ZM16.0154 17.3083H14.3665L3.93176 2.69159H5.58092L9.7601 8.54422L10.4828 9.5598L16.0154 17.3083Z"
-                          fill="currentColor"
-                      />
-                    </svg>
+                     <SvgoTwitterX @click="postSharingOnX" class="w-6 h-6 cursor-pointer" />
                   </div>
                   <div
                      class="w-10 h-10 flex items-center justify-center text-[#98A2B3] border border-[#D0D5DD] rounded-lg hover:bg-brand-600 hover:text-white hover:border-primary transition">
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path
-                          d="M20 10C20 4.47715 15.5229 0 10 0C4.47715 0 0 4.47715 0 10C0 14.9912 3.65684 19.1283 8.4375 19.8785V12.8906H5.89844V10H8.4375V7.79688C8.4375 5.29063 9.93047 3.90625 12.2146 3.90625C13.3084 3.90625 14.4531 4.10156 14.4531 4.10156V6.5625H13.1922C11.95 6.5625 11.5625 7.3334 11.5625 8.125V10H14.3359L13.8926 12.8906H11.5625V19.8785C16.3432 19.1283 20 14.9912 20 10Z"
-                          fill="currentColor"
-                      />
-                    </svg>
+                     <SvgoFacebook @click="postSharingOnFacebook" class="w-6 h-6 cursor-pointer" />
                   </div>
                   <div
                      class="w-10 h-10 flex items-center justify-center text-[#98A2B3] border border-[#D0D5DD] rounded-lg hover:bg-brand-600 hover:text-white hover:border-primary transition">
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path
-                          d="M18.5195 0H1.47656C0.660156 0 0 0.644531 0 1.44141V18.5547C0 19.3516 0.660156 20 1.47656 20H18.5195C19.3359 20 20 19.3516 20 18.5586V1.44141C20 0.644531 19.3359 0 18.5195 0ZM5.93359 17.043H2.96484V7.49609H5.93359V17.043ZM4.44922 6.19531C3.49609 6.19531 2.72656 5.42578 2.72656 4.47656C2.72656 3.52734 3.49609 2.75781 4.44922 2.75781C5.39844 2.75781 6.16797 3.52734 6.16797 4.47656C6.16797 5.42188 5.39844 6.19531 4.44922 6.19531ZM17.043 17.043H14.0781V12.4023C14.0781 11.2969 14.0586 9.87109 12.5352 9.87109C10.9922 9.87109 10.7578 11.0781 10.7578 12.3242V17.043H7.79688V7.49609H10.6406V8.80078H10.6797C11.0742 8.05078 12.043 7.25781 13.4844 7.25781C16.4883 7.25781 17.043 9.23438 17.043 11.8047V17.043Z"
-                          fill="currentColor"
-                      />
-                    </svg>
+                     <SvgoLinkedin @click="postSharingOnLinkedIn" class="w-6 h-6 cursor-pointer" />
                   </div>
                 </div>
               </div>
@@ -130,17 +132,14 @@ function copyURL() {
                           stroke="#344054" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                   </div>
-                  <h2 class="text-2xl mb-2">Weekly newsletter</h2>
-                  <p class="font-normal text-black-light mb-8">No spam. Just the latest releases and tips, interesting
-                    articles, and exclusive interviews in your inbox every week.</p>
+                  <h2 class="text-2xl mb-2">Weekly Newsletter</h2>
+                  <p class="font-normal text-black-light mb-8">Stay ahead in your job search with curated job opportunities, valuable resources, tips, and insightful blog posts delivered to your inbox weekly.</p>
                   <form class="w-full mx-auto max-w-md text-left">
                     <div class="flex flex-col items-start gap-4">
                       <div class="w-full">
                         <input type="email" name="email" id="email" placeholder="Enter your email"
                                class="form-input w-full">
-                        <p class="font-normal text-sm mt-1.5 text-black-light">Read about our <a href="#"
-                                                                                                 class="underline hover:no-underline">privacy
-                          policy</a>.</p>
+                        <p class="font-normal text-sm mt-1.5 text-black-light">Read about our <NuxtLink to="/privacy-policy" class="underline hover:no-underline">privacy policy</NuxtLink>.</p>
                       </div>
                       <BaseButton label="Subscribe" :full-sized="true">Subscribe</BaseButton>
                     </div>

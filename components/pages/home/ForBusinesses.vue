@@ -8,21 +8,21 @@ import ArrowIcon from "assets/icons/arrow-right.svg";
 const cardsList = [
   {
     title: 'Get Started',
-    text: 'Set up a profile that highlights your schools\'s ethos and mission. Attract potential candidates by showcasing what makes your institution unique.',
+    text: 'Create a compelling profile that showcases your establishment\'s unique atmosphere and values. ',
     linkText: 'Create your business profile today',
     path: '/signup',
     icon: UsersIcon
   },
   {
     title: 'Post Your Open Roles',
-    text: 'Define and share the roles you\'re looking to fill, detailing key requirements and expectations to attract well-matched candidates.',
+    text: 'Clearly define and share your available positions, detailing key qualifications and your hiring expectations.',
     linkText: 'Post a job today!',
     path: '/post-a-job',
     icon: SearchRefractionIcon
   },
   {
     title: 'Attract Top Talent',
-    text: 'Showcase your tech, company culture, perks and benefits, and more. We\'ll help you tell your story to make sure you attract the best talent.',
+    text: 'Showcase your vibrant business culture, competitive benefits, and growth opportunities.',
     linkText: 'Showcase your business',
     path: '/signup',
     icon: AnnouncementIcon
@@ -37,10 +37,10 @@ const cardsList = [
         <div class="heading-and-subheading flex flex-col justify-center sm:items-center gap-3 sm:text-center">
           <p class="section-subheading">For Business</p>
           <h2 class="section-heading">
-            Find out what we have for your company
+            Let Us Help You Hire the Best Talent
           </h2>
           <p class="supporting-text">
-            Search and connect with the right candidates faster and go with a seamless flow
+            Connect with qualified candidates efficiently and streamline your hiring process
           </p>
         </div>
 

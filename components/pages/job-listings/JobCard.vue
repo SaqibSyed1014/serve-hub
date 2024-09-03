@@ -17,7 +17,7 @@ defineProps<{
           <div v-if="job.job_logo"  class="flex place-items-center rounded-full overflow-hidden w-12 h-12 shrink-0">
             <img :src="job.job_logo" :alt="job.job_title" class="w-full h-full object-cover">
           </div>
-          <SvgoBuilding v-else class="size-12" />
+          <SvgoBuilding v-else class="size-12 text-gray-600" />
 
           <div class="job-badge">
             {{ getDaysDifference(job.date_posted) }}

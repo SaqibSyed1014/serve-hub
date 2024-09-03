@@ -25,12 +25,12 @@ const schema = Yup.object().shape({
   userType: Yup.string(),
   orgName: Yup.string().when('userType', {
     is: (selectedUserType :string) => selectedUserType === 'organization',
-    then: () => Yup.string().required("Please enter your organization name"),
+    then: () => Yup.string().required("Please enter your business name"),
     otherwise: () => Yup.string()
   }),
   name: Yup.string().required("Please enter your name"),
   email: Yup.string().email().required("Please enter your email"),
-  password: Yup.string().min(6).required(),
+  password: Yup.string().min(6).required("Password must be at least 6 characters"),
 });
 
 const { handleSubmit, defineField, errors, meta, resetForm } = useForm({
@@ -80,7 +80,7 @@ onUnmounted(() => selectedUserType.value = 'organization')
         <div class="flex gap-12">
           <div class="flex items-center">
             <input v-model="userType" id="org-cb" type="radio" value="organization" name="user-type" class="w-4 h-4 text-brand-500 bg-gray-100 border-gray-300 focus:ring-brand-500 focus:ring-2">
-            <label for="org-cb" class="ms-2 cursor-pointer">Organization</label>
+            <label for="org-cb" class="ms-2 cursor-pointer">Business</label>
           </div>
           <div class="flex items-center">
             <input v-model="userType" id="job-seeker-cb" type="radio" name="user-type" value="jobSeeker" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
@@ -88,8 +88,8 @@ onUnmounted(() => selectedUserType.value = 'organization')
           </div>
         </div>
         <div v-if="isOrganizationSelected" class="form-control">
-          <label for="orgName">Organization Name</label>
-          <input v-bind="orgNameAttrs" v-model="orgName" type="text" id="orgName" placeholder="Enter your organization name" class="form-input" :class="{ 'has-error': errors.orgName }" />
+          <label for="orgName">Business Name</label>
+          <input v-bind="orgNameAttrs" v-model="orgName" type="text" id="orgName" placeholder="Enter your business name" class="form-input" :class="{ 'has-error': errors.orgName }" />
           <span class="input-error" v-if="errors.orgName">{{ errors.orgName }}</span>
         </div>
         <div class="form-control">
