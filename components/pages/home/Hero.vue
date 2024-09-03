@@ -9,7 +9,7 @@ register();
 const router = useRouter();
 const jobStore = useJobStore();
 
-const { jobListings, itemsFound } = storeToRefs(jobStore)
+const { jobListings } = storeToRefs(jobStore);
 
 function searchJobs(filters :JobSearchFilters) {
   jobStore.setCoordinates(filters.coordinates);  // saving coordinates in store for persistence purpose
@@ -64,7 +64,7 @@ function searchJobs(filters :JobSearchFilters) {
       <div class="bg-brand-100 w-[650px] h-[350px] absolute -bottom-1/2 -left-1/4 blur-3xl z-[-1]"></div>
     </div>
 
-    <template v-if="itemsFound !== 0">
+    <template v-if="jobListings.length !== 0">
       <swiper-container
           :loop="true"
           :space-between="20"

@@ -55,7 +55,7 @@ const sliderBreakpoints = {
                 :breakpoints="sliderBreakpoints"
                 class="jobs-slider z-20 mt-8"
             >
-              <swiper-slide v-for="job in jobListings" class="md:!w-[340px] my-1">
+              <swiper-slide v-for="job in jobListings" class="md:!w-[340px] max-h-full !h-auto my-1">
                 <JobCard :job="job" :card-form="true" :show-job-description="false" />
               </swiper-slide>
             </swiper-container>
