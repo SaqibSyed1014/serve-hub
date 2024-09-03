@@ -45,7 +45,7 @@ export const useJobStore = defineStore('jobStore', {
     getters: {
         jobListings: (state) :Job[] => state.jobsList.map(job => ({
             ...job,
-            date_posted: job.date_posted.slice(0, job.date_posted.indexOf('00:00:00'))
+            date_posted: convertRFCDateStringToLocaleDate(job?.date_posted)
         })),
         jobDetails: (state) :JobDetails | null => {
             const jobDetail = state.singleJob?.job_details
