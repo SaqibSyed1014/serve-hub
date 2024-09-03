@@ -35,7 +35,7 @@ function navigateToJob(cityDetails :JobsInCities) {
           <div class="heading-and-subheading flex flex-col gap-3">
             <p class="section-subheading">Explore More</p>
             <h2 class="section-heading">Browse Jobs by City</h2>
-            <p class="supporting-text">Dive into a variety of educational roles in cities and towns alike, where your skills make a difference</p>
+            <p class="supporting-text">Dive into a variety of roles in cities and towns alike, where your skills make a difference</p>
           </div>
           <BaseButton v-if="jobsInEachCity.length" navigate-to="/jobs" label="View Jobs" color="primary" :full-sized-on-small="true">
             <template #append-icon>
