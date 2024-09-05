@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ab7611ed-6f98-4ae4-b454-38c2d1a8a2f3" name="Changes" comment="nuxt env variable added">
+    <list default="true" id="ab7611ed-6f98-4ae4-b454-38c2d1a8a2f3" name="Changes" comment="minor UI fix">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -46,37 +46,37 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;staging&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/DevDock/WebstormProjects/Upwork Projects/ServeHub&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\WebStorm 2023.2.2\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "staging",
+    "last_opened_file_path": "C:/Users/DevDock/Desktop/tricky-bubbles.webflow",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\WebStorm 2023.2.2\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;vue.recent.templates&quot;: [
-      &quot;Vue Options API Component&quot;,
-      &quot;Vue Composition API Component&quot;
+  "keyToStringList": {
+    "vue.recent.templates": [
+      "Vue Options API Component",
+      "Vue Composition API Component"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\DevDock\WebstormProjects\Upwork Projects\ServeHub\public\images\others" />
       <recent name="C:\Users\DevDock\WebstormProjects\Upwork Projects\ServeHub\pages\businesses" />
       <recent name="C:\Users\DevDock\WebstormProjects\Upwork Projects\ServeHub\segments" />
       <recent name="C:\Users\DevDock\WebstormProjects\Upwork Projects\ServeHub\public\images\mockups" />
       <recent name="C:\Users\DevDock\WebstormProjects\Upwork Projects\ServeHub\pages" />
-      <recent name="C:\Users\DevDock\WebstormProjects\Upwork Projects\ServeHub\pages\bars" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\DevDock\WebstormProjects\Upwork Projects\ServeHub\segments\business" />
@@ -237,46 +237,10 @@
       <workItem from="1724880087733" duration="541000" />
       <workItem from="1725024103486" duration="8370000" />
       <workItem from="1725266244832" duration="130000" />
-    </task>
-    <task id="LOCAL-00333" summary="minor fixes">
-      <option name="closed" value="true" />
-      <created>1723273591309</created>
-      <option name="number" value="00333" />
-      <option name="presentableId" value="LOCAL-00333" />
-      <option name="project" value="LOCAL" />
-      <updated>1723273591310</updated>
-    </task>
-    <task id="LOCAL-00334" summary="pricing plan font size fix">
-      <option name="closed" value="true" />
-      <created>1723274528033</created>
-      <option name="number" value="00334" />
-      <option name="presentableId" value="LOCAL-00334" />
-      <option name="project" value="LOCAL" />
-      <updated>1723274528033</updated>
-    </task>
-    <task id="LOCAL-00335" summary="contact form fixed">
-      <option name="closed" value="true" />
-      <created>1723296424563</created>
-      <option name="number" value="00335" />
-      <option name="presentableId" value="LOCAL-00335" />
-      <option name="project" value="LOCAL" />
-      <updated>1723296424563</updated>
-    </task>
-    <task id="LOCAL-00336" summary="business type field in job cards">
-      <option name="closed" value="true" />
-      <created>1723296872113</created>
-      <option name="number" value="00336" />
-      <option name="presentableId" value="LOCAL-00336" />
-      <option name="project" value="LOCAL" />
-      <updated>1723296872113</updated>
-    </task>
-    <task id="LOCAL-00337" summary="minor fix">
-      <option name="closed" value="true" />
-      <created>1723296939519</created>
-      <option name="number" value="00337" />
-      <option name="presentableId" value="LOCAL-00337" />
-      <option name="project" value="LOCAL" />
-      <updated>1723296939519</updated>
+      <workItem from="1725284243222" duration="6207000" />
+      <workItem from="1725346585691" duration="31000" />
+      <workItem from="1725384828248" duration="3053000" />
+      <workItem from="1725430980650" duration="608000" />
     </task>
     <task id="LOCAL-00338" summary="opened job api slug updated">
       <option name="closed" value="true" />
@@ -630,7 +594,47 @@
       <option name="project" value="LOCAL" />
       <updated>1725045623997</updated>
     </task>
-    <option name="localTasksCounter" value="382" />
+    <task id="LOCAL-00382" summary="URL check for site environment!">
+      <option name="closed" value="true" />
+      <created>1725286113598</created>
+      <option name="number" value="00382" />
+      <option name="presentableId" value="LOCAL-00382" />
+      <option name="project" value="LOCAL" />
+      <updated>1725286113598</updated>
+    </task>
+    <task id="LOCAL-00383" summary="candidate section redesigned + assets refactoring">
+      <option name="closed" value="true" />
+      <created>1725289050960</created>
+      <option name="number" value="00383" />
+      <option name="presentableId" value="LOCAL-00383" />
+      <option name="project" value="LOCAL" />
+      <updated>1725289050961</updated>
+    </task>
+    <task id="LOCAL-00384" summary="UI fixes">
+      <option name="closed" value="true" />
+      <created>1725289846412</created>
+      <option name="number" value="00384" />
+      <option name="presentableId" value="LOCAL-00384" />
+      <option name="project" value="LOCAL" />
+      <updated>1725289846412</updated>
+    </task>
+    <task id="LOCAL-00385" summary="slider bug fixed">
+      <option name="closed" value="true" />
+      <created>1725387203301</created>
+      <option name="number" value="00385" />
+      <option name="presentableId" value="LOCAL-00385" />
+      <option name="project" value="LOCAL" />
+      <updated>1725387203302</updated>
+    </task>
+    <task id="LOCAL-00386" summary="minor UI fix">
+      <option name="closed" value="true" />
+      <created>1725387878162</created>
+      <option name="number" value="00386" />
+      <option name="presentableId" value="LOCAL-00386" />
+      <option name="project" value="LOCAL" />
+      <updated>1725387878162</updated>
+    </task>
+    <option name="localTasksCounter" value="387" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -660,11 +664,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="blog's attributes key removed" />
-    <MESSAGE value="SEO title and description in OG" />
-    <MESSAGE value="priceIDs dev check" />
-    <MESSAGE value="minor fixes" />
-    <MESSAGE value="business jobs fix" />
     <MESSAGE value="View all businesses option on mobile nav" />
     <MESSAGE value="post job form changes" />
     <MESSAGE value="business detail page fix" />
@@ -685,7 +684,12 @@
     <MESSAGE value="testing" />
     <MESSAGE value="testing to nuxt" />
     <MESSAGE value="nuxt env variable added" />
-    <option name="LAST_COMMIT_MESSAGE" value="nuxt env variable added" />
+    <MESSAGE value="URL check for site environment!" />
+    <MESSAGE value="candidate section redesigned + assets refactoring" />
+    <MESSAGE value="UI fixes" />
+    <MESSAGE value="slider bug fixed" />
+    <MESSAGE value="minor UI fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="minor UI fix" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

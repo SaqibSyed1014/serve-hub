@@ -3,7 +3,7 @@ export const businessFilters :JobFilter[] = [
         fieldName: 'job_count',
         type: 'checkbox',
         title: 'No of Jobs',
-        icon: 'SvgoBriefCaseLight',
+        icon: 'SvgoBriefCase',
         list: [
             {
                 label: '1 to 10',

@@ -165,22 +165,11 @@ watch(() => businessDetails.value, (val) => {
                 </div>
               </div>
 
-<!--              <div class="flex flex-col gap-2">-->
-<!--                <span class="text-gray-900 text-sm font-medium leading-tight">Number of Students</span>-->
-<!--                <div class="inline-flex gap-2">-->
-<!--                  <SvgoGraduationHat class="size-5" />-->
-<!--                  <span-->
-<!--                      class="text-slate-600 text-base font-medium leading-normal">-->
-<!--                    {{ businessDetails.student_count }}-->
-<!--                  </span>-->
-<!--                </div>-->
-<!--              </div>-->
-
-              <div class="flex flex-col gap-2">
+              <div class="flex flex-col items-start gap-2">
                 <span class="text-gray-900 text-sm font-medium leading-tight">Number of Jobs</span>
-                <div class="inline-flex gap-2 text-slate-600">
+                <div @click="activeTab = 1" class="inline-flex gap-2 group text-slate-600 hover:text-slate-800 cursor-pointer">
                   <SvgoBriefCase class="size-5" />
-                  <span class="text-base font-medium leading-normal">
+                  <span class="text-base font-medium leading-normal group-hover:underline">
                     {{ businessDetails.job_count }}
                   </span>
                 </div>
