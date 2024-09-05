@@ -12,9 +12,9 @@ const props = defineProps<{
     class="py-2 divide divide-gray-200 flex-col justify-start items-start gap-5 inline-flex w-full"
   >
     <div class="justify-between items-center inline-flex w-full pb-2">
-      <div class="justify-start items-center gap-3 flex">
+      <div class="justify-start items-center gap-3 flex text-gray-700">
         <component :is="options.icon" class="size-6" />
-        <div class="text-gray-700 text-base font-semibold leading-normal">
+        <div class="text-base font-semibold leading-normal">
           {{ title }}
         </div>
         <span class="text-gray-400 text-base font-normal leading-normal"

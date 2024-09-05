@@ -32,7 +32,7 @@ let alphabetFilter = ref('');
 let checkboxesFilter = ref('');
 
 const jobOptions = ref({
-  icon: "SvgoBriefCaseLight",
+  icon: "SvgoBriefCase",
   name: "jobOptions",
   data: [
     { id: "1", label: "1 to 10", value: "1..10", checked: false },
@@ -483,7 +483,7 @@ function getRestaurantFilterQuery(alphabetFilter :string, cbFilters :string) {
           </div>
         </div>
 
-        <div class="pt-8 flex sm:flex-row flex-col gap-4 justify-between">
+        <div class="py-8 flex sm:flex-row flex-col gap-4 justify-between">
           <div class="flex justify-between gap-4">
             <form
               @submit.prevent="search"

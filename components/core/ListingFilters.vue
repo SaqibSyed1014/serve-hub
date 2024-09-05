@@ -167,9 +167,9 @@ function includeJobsWithoutCompensation($event :any) {
       <template v-for="(filter, index) in filterState">
         <div>
           <div class="flex items-center justify-between">
-            <div class="flex items-center gap-3 font-semibold">
-              <component :is="filter.icon" class="w-5 h-5 text-gray-500"/>
-              <span class="text-gray-700">{{ filter.title }}</span>
+            <div class="flex items-center gap-3 font-semibold text-gray-700">
+              <component :is="filter.icon" class="w-5 h-5"/>
+              <span>{{ filter.title }}</span>
             </div>
           </div>
           <div class="filter-list pl-8 border-b border-gray-200">
