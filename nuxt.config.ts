@@ -1,6 +1,5 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 // import { GlobalSettings } from './enviromentsettings'
-import { VitePWA } from 'vite-plugin-pwa'
 import { globalSettings} from './enviromentsettings'
 import type { EnvType } from "./enviromentsettings";
 
@@ -52,37 +51,6 @@ export default defineNuxtConfig({
                 "fast-deep-equal",
             ],
         },
-        plugins:  [
-            VitePWA({
-                registerType: 'prompt',
-                devOptions: {
-                    navigateFallback: '/',
-                    enabled: false
-                },
-                manifest: {
-                    name: 'ServeHub.io',
-                    short_name: 'ServeHub',
-                    description: 'Find your next job in the hospitality industry. Explore roles in hotels, restaurants, bars, and more.',
-                    theme_color: '#099250',
-                    icons: [
-                        {
-                            src: 'android-chrome-192x192.png',
-                            sizes: '192x192',
-                            type: 'image/png'
-                        },
-                        {
-                            src: 'android-chrome-512x512.png',
-                            sizes: '512x512',
-                            type: 'image/png'
-                        }
-                    ],
-                    // devOptions: {
-                    //     enabled: true,
-                    //     type: 'module'
-                    // }
-                }
-            })
-        ]
     },
     modules: [
         '@nuxtjs/tailwindcss',
@@ -92,6 +60,35 @@ export default defineNuxtConfig({
         'nuxt-lodash',
         '@vite-pwa/nuxt'
     ],
+    pwa: {
+        mode: 'development',
+        registerType: 'autoUpdate',
+        manifest: {
+            name: 'ServeHub.io',
+            short_name: 'ServeHub',
+            description: 'Find ur next job in the hospitality industry. Explore roles in hotels, restaurants, bars, and more.',
+            theme_color: '#099250',
+            icons: [
+                {
+                    src: 'android-chrome-192x192.png',
+                    sizes: '192x192',
+                    type: 'image/png'
+                },
+                {
+                    src: 'android-chrome-512x512.png',
+                    sizes: '512x512',
+                    type: 'image/png'
+                }
+            ],
+        },
+        workbox: {
+            navigateFallback: '/'
+        },
+        devOptions: {
+            enabled: true,
+            type: 'module'
+        }
+    },
     components: [
         {
             path: '~/components', // will get any components nested in let's say /components/test too

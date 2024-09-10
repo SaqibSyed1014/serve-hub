@@ -88,8 +88,8 @@ function assignPageMetaInfo(metaData :MetaData) {
 
 <template>
   <Html lang="en-US">
+  <VitePwaManifest />
     <Body class="bg-gray-25 text-gray-900 antialiased transition-colors duration-300">
-      <VitePwaManifest />
       <NuxtLayout>
         <NuxtPage />
       </NuxtLayout>
