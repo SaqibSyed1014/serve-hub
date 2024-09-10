@@ -54,9 +54,10 @@ export default defineNuxtConfig({
         },
         plugins:  [
             VitePWA({
-                registerType: 'autoUpdate',
+                registerType: 'prompt',
                 devOptions: {
-                    enabled: true
+                    navigateFallback: '/',
+                    enabled: false
                 },
                 manifest: {
                     name: 'ServeHub.io',
