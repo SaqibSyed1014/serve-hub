@@ -1,5 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 // import { GlobalSettings } from './enviromentsettings'
+import { VitePWA } from 'vite-plugin-pwa'
 import { globalSettings} from './enviromentsettings'
 import type { EnvType } from "./enviromentsettings";
 
@@ -24,6 +25,7 @@ export default defineNuxtConfig({
                 { property: 'og:image', content: 'https://assets.servehub.io/images/og-logo.png' },
                 { property: 'og:url', content: 'https://www.servehub.io' },
                 { property: 'og:type', content: 'website' },
+                { name: 'theme-color', content: '#099250' }
             ]
         }
     },
@@ -50,13 +52,44 @@ export default defineNuxtConfig({
                 "fast-deep-equal",
             ],
         },
+        plugins:  [
+            VitePWA({
+                registerType: 'autoUpdate',
+                devOptions: {
+                    enabled: true
+                },
+                manifest: {
+                    name: 'ServeHub.io',
+                    short_name: 'ServeHub',
+                    description: 'Find your next job in the hospitality industry. Explore roles in hotels, restaurants, bars, and more.',
+                    theme_color: '#099250',
+                    icons: [
+                        {
+                            src: 'android-chrome-192x192.png',
+                            sizes: '192x192',
+                            type: 'image/png'
+                        },
+                        {
+                            src: 'android-chrome-512x512.png',
+                            sizes: '512x512',
+                            type: 'image/png'
+                        }
+                    ],
+                    // devOptions: {
+                    //     enabled: true,
+                    //     type: 'module'
+                    // }
+                }
+            })
+        ]
     },
     modules: [
         '@nuxtjs/tailwindcss',
         'nuxt-swiper',
         'nuxt-svgo',
         '@pinia/nuxt',
-        'nuxt-lodash'
+        'nuxt-lodash',
+        '@vite-pwa/nuxt'
     ],
     components: [
         {

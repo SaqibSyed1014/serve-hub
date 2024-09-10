@@ -4,8 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ab7611ed-6f98-4ae4-b454-38c2d1a8a2f3" name="Changes" comment="minor UI fix">
+    <list default="true" id="ab7611ed-6f98-4ae4-b454-38c2d1a8a2f3" name="Changes" comment="job count clickable + UI fixes">
+      <change afterPath="$PROJECT_DIR$/public/android-chrome-192x192.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/android-chrome-512x512.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.vue" beforeDir="false" afterPath="$PROJECT_DIR$/app.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nuxt.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/nuxt.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,7 +33,7 @@
     <option name="PUSH_AUTO_UPDATE" value="true" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="qa" />
+        <entry key="$PROJECT_DIR$" value="staging" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -51,8 +57,8 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "staging",
-    "last_opened_file_path": "C:/Users/DevDock/Desktop/tricky-bubbles.webflow",
+    "git-widget-placeholder": "pwa",
+    "last_opened_file_path": "C:/Users/DevDock/WebstormProjects/Upwork Projects/ServeHub/public",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -72,11 +78,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\DevDock\WebstormProjects\Upwork Projects\ServeHub\public" />
       <recent name="C:\Users\DevDock\WebstormProjects\Upwork Projects\ServeHub\public\images\others" />
       <recent name="C:\Users\DevDock\WebstormProjects\Upwork Projects\ServeHub\pages\businesses" />
       <recent name="C:\Users\DevDock\WebstormProjects\Upwork Projects\ServeHub\segments" />
       <recent name="C:\Users\DevDock\WebstormProjects\Upwork Projects\ServeHub\public\images\mockups" />
-      <recent name="C:\Users\DevDock\WebstormProjects\Upwork Projects\ServeHub\pages" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\DevDock\WebstormProjects\Upwork Projects\ServeHub\segments\business" />
@@ -241,14 +247,8 @@
       <workItem from="1725346585691" duration="31000" />
       <workItem from="1725384828248" duration="3053000" />
       <workItem from="1725430980650" duration="608000" />
-    </task>
-    <task id="LOCAL-00338" summary="opened job api slug updated">
-      <option name="closed" value="true" />
-      <created>1723298918317</created>
-      <option name="number" value="00338" />
-      <option name="presentableId" value="LOCAL-00338" />
-      <option name="project" value="LOCAL" />
-      <updated>1723298918317</updated>
+      <workItem from="1725542430753" duration="2700000" />
+      <workItem from="1725992315404" duration="5428000" />
     </task>
     <task id="LOCAL-00339" summary="location search from home ug fixed">
       <option name="closed" value="true" />
@@ -634,7 +634,15 @@
       <option name="project" value="LOCAL" />
       <updated>1725387878162</updated>
     </task>
-    <option name="localTasksCounter" value="387" />
+    <task id="LOCAL-00387" summary="job count clickable + UI fixes">
+      <option name="closed" value="true" />
+      <created>1725543757124</created>
+      <option name="number" value="00387" />
+      <option name="presentableId" value="LOCAL-00387" />
+      <option name="project" value="LOCAL" />
+      <updated>1725543757124</updated>
+    </task>
+    <option name="localTasksCounter" value="388" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -664,7 +672,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="View all businesses option on mobile nav" />
     <MESSAGE value="post job form changes" />
     <MESSAGE value="business detail page fix" />
     <MESSAGE value="post job form new changes" />
@@ -689,7 +696,8 @@
     <MESSAGE value="UI fixes" />
     <MESSAGE value="slider bug fixed" />
     <MESSAGE value="minor UI fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="minor UI fix" />
+    <MESSAGE value="job count clickable + UI fixes" />
+    <option name="LAST_COMMIT_MESSAGE" value="job count clickable + UI fixes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
