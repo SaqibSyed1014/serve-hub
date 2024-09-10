@@ -22,7 +22,7 @@ if (host?.includes('servehub.io') || host?.includes('devweb') ||  host?.includes
       }
     ]
   })
- 
+
 }
 
 useHead({
@@ -88,9 +88,8 @@ function assignPageMetaInfo(metaData :MetaData) {
 
 <template>
   <Html lang="en-US">
-    <Body
-        class="bg-gray-25 text-gray-900 antialiased transition-colors duration-300"
-    >
+  <VitePwaManifest />
+    <Body class="bg-gray-25 text-gray-900 antialiased transition-colors duration-300">
       <NuxtLayout>
         <NuxtPage />
       </NuxtLayout>

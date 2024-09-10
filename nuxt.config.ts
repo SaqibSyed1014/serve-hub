@@ -24,6 +24,7 @@ export default defineNuxtConfig({
                 { property: 'og:image', content: 'https://assets.servehub.io/images/og-logo.png' },
                 { property: 'og:url', content: 'https://www.servehub.io' },
                 { property: 'og:type', content: 'website' },
+                { name: 'theme-color', content: '#099250' }
             ]
         }
     },
@@ -56,8 +57,38 @@ export default defineNuxtConfig({
         'nuxt-swiper',
         'nuxt-svgo',
         '@pinia/nuxt',
-        'nuxt-lodash'
+        'nuxt-lodash',
+        '@vite-pwa/nuxt'
     ],
+    pwa: {
+        mode: 'development',
+        registerType: 'autoUpdate',
+        manifest: {
+            name: 'ServeHub.io',
+            short_name: 'ServeHub',
+            description: 'Find ur next job in the hospitality industry. Explore roles in hotels, restaurants, bars, and more.',
+            theme_color: '#099250',
+            icons: [
+                {
+                    src: 'android-chrome-192x192.png',
+                    sizes: '192x192',
+                    type: 'image/png'
+                },
+                {
+                    src: 'android-chrome-512x512.png',
+                    sizes: '512x512',
+                    type: 'image/png'
+                }
+            ],
+        },
+        workbox: {
+            navigateFallback: '/'
+        },
+        devOptions: {
+            enabled: true,
+            type: 'module'
+        }
+    },
     components: [
         {
             path: '~/components', // will get any components nested in let's say /components/test too
